@@ -48,6 +48,8 @@ for item in removed:
     server.remove(item)
 before = digest(doc)
 replacement = remapped_copy(script)
+if child(server, 'BoraDisasterRuntime') is not None:
+    replacement.find("Properties/bool[@name='Disabled']").text = 'true'
 server.append(replacement)
 payload = xml_bytes(doc)
 server.remove(replacement)

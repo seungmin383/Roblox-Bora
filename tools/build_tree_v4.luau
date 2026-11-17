@@ -2,6 +2,26 @@
 -- in that existing project without rebuilding or resetting the user's world.
 local fs,r,compiler,process=require('@lune/fs'),require('@lune/roblox'),require('@lune/luau'),require('@lune/process')
 assert(fs.isFile('Ro.rbxlx'),'Open/save the single project as Ro.rbxlx first; this build never creates another Place.')
+if table.find(process.args,'--disaster-stage') or table.find(process.args,'--disaster') then
+	local work=assert(process.env.BORA_DISASTER_WORK,'Set BORA_DISASTER_WORK to a task folder in 99_Code_Work')
+	local python=(process.env.USERPROFILE or '')..'/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe'
+	local function run(mode)
+		local result=process.exec(python,{'-B','tools/update_disaster.py',mode,work})
+		assert(result.ok,result.stderr)
+		if result.stdout~='' then print(result.stdout) end
+	end
+	if table.find(process.args,'--disaster-stage') then
+		run('check')
+		local server=r.Instance.new('Script');server.Name='BoraDisasterRuntime';server.Disabled=false
+		local logic=r.Instance.new('ModuleScript');logic.Name='DisasterRound';logic.Parent=server
+		local hud=r.Instance.new('LocalScript');hud.Name='BoraDisasterHUD';hud.Disabled=false
+		for item,file in {[server]='DisasterRuntime.server',[logic]='DisasterRound',[hud]='DisasterHUD.client'} do
+			item.Source=fs.readFile('src/'..file..'.luau');compiler.compile(item.Source)
+		end
+		fs.writeFile(work..'/BoraDisaster.rbxmx',r.serializeModel({server,hud},true))
+	else run('apply') end
+	return
+end
 if table.find(process.args,'--rocket-stage') or table.find(process.args,'--rocket') then
 	local work=assert(process.env.BORA_BUILDINGS_WORK,'Set BORA_BUILDINGS_WORK to a task folder in 99_Code_Work')
 	local python=(process.env.USERPROFILE or '')..'/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe'
