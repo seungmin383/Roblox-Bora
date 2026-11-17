@@ -1,0 +1,19 @@
+{
+  "place": "Ro.rbxlx",
+  "vehicle": "BORA S3",
+  "counts": {
+    "vehicles": 1,
+    "vehicleSignals": 16,
+    "pedestrianSignals": 28
+  },
+  "visualParts": 84,
+  "treesTerrainMapPreserved": true,
+  "roadsSettingsAndJunctionGeometryPreserved": true,
+  "signalPolesAndHeadPlacementPreserved": true,
+  "vehicleParkedFrameAndPhysicsPreserved": true,
+  "newMarkersAndPivotsApplied": true,
+  "approvedSignalsApplied": true,
+  "singlePlace": true,
+  "studioPlaytestPerformed": false,
+  "placeSha256": "0ce6d9ebd14f80f717e2b9cdc0c15179c9192c1c89ebf554d83b1ae8ec9e81bf"
+}

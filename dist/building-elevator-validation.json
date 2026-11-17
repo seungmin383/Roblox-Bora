@@ -1,0 +1,8 @@
+{
+  "DoorsCloseBeforeTravel": true,
+  "InvalidStopsRejected": true,
+  "PassengersReachSelectedFloor": true,
+  "PassengersReleasedOnRemoval": true,
+  "QueueAndFrameRates": true,
+  "StudioPlaytestPerformed": false
+}

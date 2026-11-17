@@ -1,0 +1,10 @@
+00:01.937  blend            | Read blend: "C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\assets\vehicles\retopology\BoraS2_Clean.blend"
+Windshield ray [('Front_Glass', 67, [0.15711116790771484, -0.6247320175170898, 1.2406549453735352]), ('Front_Glass', 163, [0.1601516157388687, -0.6216257214546204, 1.2398419380187988]), ('R_FrontGlass', 54, [0.7461584806442261, -0.02293074131011963, 1.0831315517425537]), ('R_FrontGlass', 6, [0.748687744140625, -0.02034670114517212, 1.0824551582336426]), ('QA_Ground', 0, [4.826359748840332, 4.145614147186279, -0.007999165914952755])]
+00:02.047  image.write      | ERROR OpenImageIO write failed: Could not open file "C:\Users\jinug\.thumbnails\large\blender_39436_5129d9f4e0e5c444f0647b6b75d983cd.png.png"
+00:10.047  render           | Saved: 'C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\assets\vehicles\retopology\s2-clean-front.png'
+00:17.344  render           | Saved: 'C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\assets\vehicles\retopology\s2-clean-side.png'
+00:25.047  render           | Saved: 'C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\assets\vehicles\retopology\s2-clean-rear.png'
+Info: Saved as "BoraS2_Clean.blend"
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

@@ -1,0 +1,31 @@
+{
+  "source": "Tripo Studio",
+  "taskId": "18113186-2d02-4423-8ea5-c805f7780b75",
+  "url": "https://studio.tripo3d.ai/ko/workspace/generate/18113186-2d02-4423-8ea5-c805f7780b75",
+  "credits": 55,
+  "originalTriangles": 1998256,
+  "triangles": 2514,
+  "vertices": 3503,
+  "boundsMeters": [
+    0.42399999499320984,
+    0.8190000057220459,
+    0.2662130296230316
+  ],
+  "lampCentersMeters": [
+    [
+      0,
+      0.1815,
+      -0.0305
+    ],
+    [
+      0,
+      -0.2075,
+      -0.0305
+    ]
+  ],
+  "localStudioAsset": true,
+  "cleanup": "Removed third unused compartment, closed bottom cap, retained upper two generated displays and UVs",
+  "activeRevision": "Clean approved topology",
+  "approvedMeshSha256": "76132eaf54615cb9949dd026ffca8714c22ce4c8d4cb7633306c290fb608ba94",
+  "approvedMesh": "assets\\traffic\\retopology\\PedestrianSignal_Clean.mesh"
+}

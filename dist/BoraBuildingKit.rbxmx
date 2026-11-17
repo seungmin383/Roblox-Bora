@@ -1,0 +1,1371 @@
+<roblox version="4">
+  <Item class="Model" referent="0">
+    <Properties>
+      <string name="Name">BoraBuildingKit</string>
+      <BinaryString name="AttributesSerialize">AQAAAAcAAABWZXJzaW9uAgUAAAAxLjIuMA==</BinaryString>
+    </Properties>
+    <Item class="ModuleScript" referent="1">
+      <Properties>
+        <string name="Name">BuildingParameters</string>
+        <string name="Source"><![CDATA[-- Persisted, bounded recipes. Measurements are metres; frames are Roblox studs.
+local P={Version=1}
+P.Kinds={'Shop','Cafe','Pharmacy','Market','Residential','Apartment','House'}
+P.KindLabels={'상가','카페','약국','마트','빌라','아파트','주택'}
+P.Numbers={
+	{'Floors','층수',3,1,24,1}, {'FloorHeight','상층 높이 · m',3.05,2.6,4.2,.05},
+	{'GroundHeight','1층 높이 · m',3.45,2.8,5,.05}, {'Width','가로 · m',12,6,32,.1},
+	{'Depth','깊이 · m',10,6,24,.1}, {'WindowWidth','창문 폭 · m',1.65,.8,2.4,.05},
+	{'Apron','앞마당 깊이 · m',3,0,12,.1},
+}
+P.Defaults={Kind='Shop',Title='보라 상가',Wall='D2CAB5',Trim='E4DFCF',Accent='47675C',Sign=true,Balconies=false,Awning=true,Details=true,PlanJSON=''}
+local function color(value,fallback)
+	if value==nil then return fallback end
+	assert(type(value)=='string','색상은 HEX 6자리입니다.')
+	value=value:gsub('^#',''):upper()
+	assert(#value==6 and value:match('^[0-9A-F]+$'),'색상은 HEX 6자리입니다.')
+	return value
+end
+function P.normalize(config)
+	config=config or {};local result={}
+	result.Kind=config.Kind or P.Defaults.Kind
+	assert(table.find(P.Kinds,result.Kind),'알 수 없는 건물 종류입니다.')
+	for _,spec in P.Numbers do
+		local n=config[spec[1]];if n==nil then n=spec[3] end
+		assert(type(n)=='number' and n==n and math.abs(n)<math.huge,'올바른 숫자를 입력하세요: '..spec[2])
+		n=math.clamp(n,spec[4],spec[5]);result[spec[1]]=math.floor(n/spec[6]+.5)*spec[6]
+	end
+	local title=if config.Title~=nil then config.Title else P.Defaults.Title
+	assert(type(title)=='string' and utf8.len(title)~=nil,'간판 문자를 확인하세요.')
+	assert(utf8.len(title)<=48,'간판은 48자 이내로 입력하세요.')
+	result.Title=title:gsub('[%c]',' ')
+	result.PlanJSON=config.PlanJSON or '';assert(type(result.PlanJSON)=='string' and #result.PlanJSON<=50000,'도면 저장 값을 확인하세요.')
+	for _,key in {'Wall','Trim','Accent'} do result[key]=color(config[key],P.Defaults[key]) end
+	for _,key in {'Sign','Balconies','Awning','Details'} do
+		local value=config[key];if value==nil then value=P.Defaults[key] end
+		assert(type(value)=='boolean','켜기/끄기 값을 확인하세요: '..key);result[key]=value
+	end
+	return result
+end
+function P.write(model,config)
+	local p=P.normalize(config)
+	for key,value in p do model:SetAttribute('BB_'..key,value) end
+	model:SetAttribute('AssetKind','BoraBuilding');model:SetAttribute('BuildingSchema',P.Version)
+	model:SetAttribute('Floors',p.Floors);model:SetAttribute('BuildingUse',p.Kind)
+	return p
+end
+function P.read(model)
+	local p={};for key in P.Defaults do p[key]=model:GetAttribute('BB_'..key) end
+	for _,spec in P.Numbers do p[spec[1]]=model:GetAttribute('BB_'..spec[1]) end
+	return P.normalize(p)
+end
+return P
+]]></string>
+      </Properties>
+    </Item>
+    <Item class="ModuleScript" referent="2">
+      <Properties>
+        <string name="Name">BuildingFactory</string>
+        <string name="Source"><![CDATA[-- Exact modular architecture. Only Geometry is regenerated; root identity and
+-- user additions outside Geometry survive editing, including Undo snapshots.
+return function(api,P,decorations,Plan,Interior)
+	local I,V,C,Color,E=api.Instance,api.Vector3,api.CFrame,api.Color3,api.Enum
+	local S=1/.28;local F={Version='1.2.0'}
+	local function rgb(hex)
+		return Color.fromRGB(tonumber(hex:sub(1,2),16),tonumber(hex:sub(3,4),16),tonumber(hex:sub(5,6),16))
+	end
+	local function model(name,parent) local m=I.new('Model');m.Name,m.Parent=name,parent;return m end
+	local function part(parent,frame,name,size,pos,color,mat,collide)
+		assert(size[1]>0 and size[2]>0 and size[3]>0,'Degenerate building part: '..name)
+		local p=I.new('Part');p.Name,p.Size,p.CFrame=name,V.new(table.unpack(size))*S,frame*C.new(V.new(table.unpack(pos))*S)
+		p.Anchored,p.CanCollide,p.CanQuery,p.CanTouch=true,collide~=false,collide~=false,false
+		p.Color,p.Material=rgb(color),mat or E.Material.Concrete;p.TopSurface,p.BottomSurface=E.SurfaceType.Smooth,E.SurfaceType.Smooth
+		p.Parent=parent;return p
+	end
+	local function sign(board,text)
+		local gui=I.new('SurfaceGui');gui.Name='SignFace';gui.Face=E.NormalId.Front
+		gui.CanvasSize,gui.LightInfluence=api.Vector2.new(1400,200),.4;gui.Parent=board
+		local t=I.new('TextLabel');t.Name='Lettering';t.Size=api.UDim2.fromScale(1,1);t.BackgroundTransparency=1
+		t.Text,t.TextColor3,t.Font,t.TextScaled=text,rgb('F5F1DE'),E.Font.SourceSansBold,true;t.Parent=gui
+		local pad=I.new('UIPadding');pad.PaddingLeft,pad.PaddingRight=api.UDim.new(.04,0),api.UDim.new(.04,0);pad.Parent=t
+	end
+	function F.isBuilding(m) return m:IsA('Model') and m:GetAttribute('AssetKind')=='BoraBuilding' and m:FindFirstChild('BuildingOrigin')~=nil end
+	function F.geometry(config,base)
+		local p=P.normalize(config)
+		assert(p.PlanJSON=='' or (Plan and Interior),'도면 모듈이 필요합니다. 건물 플러그인을 갱신하세요.')
+		local plan=if Plan then Plan.decode(p.PlanJSON,p) else {Items={}}
+		local custom=p.PlanJSON~=''
+		local g=model('Geometry');g:SetAttribute('BoraGenerated',true)
+		local w,d,gh,fh=p.Width,p.Depth,p.GroundHeight,p.FloorHeight
+		local h=gh+(p.Floors-1)*fh;local front=-d*.5
+		local residential=p.Kind=='Residential' or p.Kind=='Apartment' or p.Kind=='House'
+		local masonry=if p.Kind=='Market' or p.Kind=='House' then E.Material.Brick else E.Material.Concrete
+		local function q(parent,n,size,pos,color,mat,collide,frame) return part(parent,frame or base,n,size,pos,color or p.Wall,mat,collide) end
+		-- Window openings have masonry surrounds, reveals, real glass and an
+		-- interior behind them. No solid wall is hidden directly behind a pane.
+		local function facade(parent,frame,span,level,height,store,door)
+			local bays=math.max(2,math.floor(span/2.7));local pitch=span/bays
+			local paneWidth=if store then pitch-.16 else math.min(p.WindowWidth,pitch-.45)
+			local bottom=if store then .18 else .86
+			local top=if store then height-.82 else math.min(height-.42,bottom+1.65)
+			local left=-span*.5
+			for bay=1,bays do
+				local x=left+(bay-.5)*pitch;local a,b=x-paneWidth*.5,x+paneWidth*.5
+				local opening=door and bay==math.ceil(bays*.65)
+				local lo,hi=if opening then .02 else bottom,if opening then math.min(2.55,height-.35) else top
+				if lo>.02 then q(parent,'WindowApron',{paneWidth,lo,.24},{x,level+lo*.5,.12},p.Wall,masonry,true,frame) end
+				q(parent,'WindowLintel',{paneWidth,height-hi,.24},{x,level+(height+hi)*.5,.12},p.Wall,masonry,true,frame)
+				if not opening then
+					local pane=q(parent,'WindowGlass',{paneWidth-.08,hi-lo-.08,.045},{x,level+(lo+hi)*.5,.105},'91ADB2',E.Material.Glass,true,frame)
+					pane.Transparency=.42;pane.Reflectance=.1
+					for _,dx in {-paneWidth*.5,0,paneWidth*.5} do q(parent,'WindowMullion',{.055,hi-lo+.07,.13},{x+dx,level+(lo+hi)*.5,.04},p.Accent,E.Material.Metal,false,frame) end
+				end
+				for _,dx in {-paneWidth*.5,paneWidth*.5} do q(parent,'OpeningReveal',{.06,hi-lo,.26},{x+dx,level+(lo+hi)*.5,.12},p.Trim,nil,false,frame) end
+				for _,y in {lo,hi} do q(parent,'WindowRail',{paneWidth+.1,.055,.16},{x,level+y,.015},p.Accent,E.Material.Metal,false,frame) end
+				if not store and not opening then q(parent,'WindowSill',{paneWidth+.22,.09,.36},{x,level+lo-.05,.035},p.Trim,nil,false,frame) end
+				if opening then
+					q(parent,'EntryMat',{paneWidth,.02,.75},{x,level+.025,.55},'4A514D',E.Material.Fabric,false,frame)
+					-- Door is held inward: the full central opening remains clear.
+					local doorFrame=frame*C.new((a+.02)*S,level*S,.12*S)*C.Angles(0,math.rad(-82),0)*C.new((paneWidth-.08)*.5*S,(hi-lo)*.5*S,0)
+					local leaf=q(parent,'OpenDoor',{paneWidth-.08,hi-lo-.08,.055},{0,0,0},p.Accent,E.Material.Metal,false,doorFrame)
+					leaf.Transparency=.25
+					q(parent,'DoorHandle',{.035,.30,.08},{paneWidth*.5-.15,0,-.055},p.Trim,E.Material.Metal,false,doorFrame)
+				end
+			end
+			local gap=pitch-paneWidth
+			for i=0,bays do
+				local edge=i==0 or i==bays
+				local width=if edge then gap*.5 else gap
+				local x=left+i*pitch+(if i==0 then gap*.25 elseif i==bays then -gap*.25 else 0)
+				q(parent,'MasonryPier',{width,height,.24},{x,level+height*.5,.12},p.Wall,masonry,true,frame)
+			end
+		end
+		for n=1,p.Floors do
+			local floor=model('Floor_'..n,g);floor:SetAttribute('Floor',n)
+			local level=if n==1 then 0 else gh+(n-2)*fh;local height=if n==1 then gh else fh
+			local holes=if Plan then Plan.holes(plan,n) else {}
+			if #holes==0 then q(floor,'FloorSlab',{w,.18,d},{0,level-.09,0},p.Trim)
+			else for _,tile in Plan.tiles(w,d,holes) do q(floor,'FloorSlabTile',{tile.X1-tile.X0,.18,tile.Z1-tile.Z0},{(tile.X0+tile.X1)*.5,level-.09,(tile.Z0+tile.Z1)*.5},p.Trim) end end
+			for _,side in {-1,1} do
+				q(floor,'FloorBand',{w+.08,.12,.20},{0,level+.02,side*(d*.5-.06)},p.Trim,nil,false)
+				q(floor,'FloorBand',{.20,.12,d-.32},{side*(w*.5-.06),level+.02,0},p.Trim,nil,false)
+			end
+			local frontFrame=base*C.new(0,0,front*S)
+			local rearFrame=base*C.new(0,0,d*.5*S)*C.Angles(0,math.pi,0)
+			facade(floor,frontFrame,w,level,height,n==1 and not residential,n==1)
+			facade(floor,rearFrame,w,level,height,false,false)
+			for _,side in {-1,1} do
+				local sideFrame=base*C.new(side*w*.5*S,0,0)*C.Angles(0,-side*math.pi*.5,0)
+				facade(floor,sideFrame,d-.48,level,height,false,false)
+			end
+			-- Interior depth visible through glass, without claiming complete flats.
+			if not custom then
+				q(floor,'RearInteriorPartition',{w-.55,height-.2,.12},{0,level+height*.5,d*.24},'D9D5C9')
+				q(floor,'LobbyPartition',{.12,height-.2,d*.40},{w*.18,level+height*.5,d*.02},'D9D5C9')
+			end
+			if p.Balconies and n>1 then
+				local balconyWidth=math.min(w-.8,5.2);local railZ=front-.92
+				q(floor,'BalconySlab',{balconyWidth,.15,1.05},{0,level+.02,front-.44},p.Trim)
+				q(floor,'BalconyFrontRail',{balconyWidth,.055,.055},{0,level+1.05,railZ},p.Accent,E.Material.Metal,false)
+				for _,side in {-1,1} do q(floor,'BalconySideRail',{.055,.055,.95},{side*balconyWidth*.5,level+1.05,front-.45},p.Accent,E.Material.Metal,false) end
+				local count=math.ceil(balconyWidth/.23)
+				for i=0,count do q(floor,'BalconyPicket',{.035,.95,.035},{-balconyWidth*.5+i*balconyWidth/count,level+.56,railZ},p.Accent,E.Material.Metal,false) end
+			end
+		end
+		local roof=model('Roof',g)
+		q(roof,'RoofSlab',{w+.22,.20,d+.22},{0,h+.10,0},p.Trim)
+		for _,side in {-1,1} do
+			q(roof,'Parapet',{w,.54,.18},{0,h+.43,side*(d*.5-.09)})
+			q(roof,'Parapet',{.18,.54,d-.36},{side*(w*.5-.09),h+.43,0})
+			q(roof,'Coping',{w-.48,.065,.30},{0,h+.73,side*(d*.5-.09)},p.Trim,nil,false)
+			q(roof,'Coping',{.30,.065,d+.12},{side*(w*.5-.09),h+.73,0},p.Trim,nil,false)
+		end
+		q(roof,'RoofAccess',{1.9,2.1,2.1},{w*.26,h+1.25,d*.22})
+		q(roof,'AccessCap',{2.10,.12,2.30},{w*.26,h+2.36,d*.22},p.Trim)
+		q(roof,'RoofDoor',{.85,1.8,.06},{w*.26,h+1.13,d*.22-1.08},p.Accent,E.Material.Metal,false)
+		if p.Sign then
+			local board=q(g,'ShopSign',{w-.5,.64,.16},{0,gh-.42,front-.14},p.Accent,E.Material.SmoothPlastic,false)
+			sign(board,p.Title)
+		end
+		if p.Awning and not residential then
+			local a=model('Awning',g);local span=w-.32;local count=math.ceil(span/.8);local pitch=span/count
+			for i=1,count do
+				local canopy=q(a,'CanvasPanel',{pitch,.055,1.12},{-span*.5+(i-.5)*pitch,gh-1.05,front-.54},if i%2==1 then p.Accent else 'E5DDC5',E.Material.Fabric,false)
+				canopy.CFrame=canopy.CFrame*C.Angles(math.rad(-8),0,0)
+			end
+			q(a,'Valance',{span,.16,.035},{0,gh-1.20,front-1.1},p.Accent,E.Material.Fabric,false)
+		end
+		if p.Apron>0 then
+			local court=model('Forecourt',g)
+			q(court,'Paving',{w+.7,.12,p.Apron},{0,-.06,front-p.Apron*.5},'B7B5A9',E.Material.Pavement)
+			for x=-math.floor(w*.5),math.floor(w*.5) do q(court,'PavingJoint',{.012,.005,p.Apron},{x,.004,front-p.Apron*.5},'97998F',nil,false) end
+		end
+		if p.Details then
+			local details=model('Details',g)
+			for _,x in {-w*.5+.4,w*.5-.4} do
+				-- A measured decoration can be replaced by a cleaned asset template.
+				if decorations and decorations:FindFirstChild('WallSconce') then
+					local lamp=decorations.WallSconce:Clone();lamp.Parent=details
+					local target=base*C.new(x*S,2.25*S,(front-.02)*S)
+					for _,piece in lamp:GetDescendants() do if piece:IsA('BasePart') then piece.CFrame=target*piece.CFrame end end
+				else
+					q(details,'SconceBack',{.12,.34,.05},{x,2.25,front-.025},'303A3C',E.Material.Metal,false)
+					q(details,'SconceDiffuser',{.13,.24,.12},{x,2.25,front-.1},'E7DDC4',E.Material.SmoothPlastic,false)
+				end
+			end
+			for _,x in {-w*.28,w*.28} do
+				q(details,'Condenser',{.95,.65,.5},{x,h+.55,d*.2},'B3B8B4',E.Material.Metal,false)
+				for i=1,6 do q(details,'CondenserLouvre',{.78,.028,.025},{x,h+.3+i*.075,d*.2-.265},'3B4546',E.Material.Metal,false) end
+			end
+			-- Small fittings distinguish a shop from a residential entrance.
+			if residential then
+				for i=1,4 do q(details,'Mailbox',{.28,.22,.12},{-w*.24+(i-2.5)*.30,1.20,front-.09},p.Accent,E.Material.Metal,false) end
+			elseif not custom then
+				q(details,'ShopCounter',{w*.26,1,.62},{-w*.22,.5,front+2.0},p.Accent,E.Material.Wood)
+				q(details,'CounterTop',{w*.26+.08,.07,.76},{-w*.22,1.035,front+2.0},'99734E',E.Material.Wood,false)
+				for i=1,3 do q(details,'DisplayShelf',{w*.34,.06,.32},{-w*.23,.55+i*.42,d*.24-.24},p.Trim,E.Material.Wood,false) end
+			end
+			if p.Kind=='Cafe' and p.Apron>=2.4 then
+				for _,x in {-w*.30,-w*.06} do
+					local z=front-p.Apron*.55
+					q(details,'CafeTableTop',{.72,.07,.65},{x,.76,z},'99734E',E.Material.Wood)
+					q(details,'CafeTableLeg',{.07,.72,.07},{x,.36,z},p.Accent,E.Material.Metal)
+					for _,side in {-1,1} do
+						q(details,'CafeChairSeat',{.38,.06,.38},{x,.44,z+side*.52},p.Accent,E.Material.Wood)
+						q(details,'CafeChairBack',{.38,.32,.05},{x,.64,z+side*.69},p.Accent,E.Material.Wood,false)
+						for _,dx in {-.14,.14} do q(details,'CafeChairLeg',{.04,.42,.04},{x+dx,.21,z+side*.52},p.Accent,E.Material.Metal,false) end
+					end
+				end
+			elseif p.Kind=='Pharmacy' then
+				local board=q(details,'PharmacyBlade',{.58,.58,.10},{w*.5+.28,gh-.14,front+.2},p.Accent,E.Material.SmoothPlastic,false)
+				board.CFrame=board.CFrame*C.Angles(0,math.pi*.5,0);sign(board,'+')
+			elseif p.Kind=='Market' and p.Apron>=1.2 then
+				for i=1,3 do
+					q(details,'ProduceCrate',{.56,.42,.48},{-w*.30+(i-2)*.65,.23,front-.46},'99734E',E.Material.Wood)
+					for n=1,3 do local fruit=q(details,'Produce',{.14,.14,.14},{-w*.30+(i-2)*.65+(n-2)*.15,.50,front-.46},if i==2 then 'D3A040' else '91A251',E.Material.SmoothPlastic,false);fruit.Shape=E.PartType.Ball end
+				end
+			end
+		end
+		if custom then Interior.create(g,p,plan,base) end
+		return g,p
+	end
+	function F.create(config,base)
+		local geometry,p=F.geometry(config,base)
+		local b=model('보라 '..P.KindLabels[table.find(P.Kinds,p.Kind)])
+		local origin=part(b,base,'BuildingOrigin',{.08,.08,.08},{0,0,0},'FFFFFF',nil,false)
+		origin.Transparency=1;origin.Locked=true;b.PrimaryPart=origin
+		geometry.Parent=b;P.write(b,p);return b
+	end
+	function F.rebuild(b,config)
+		assert(F.isBuilding(b),'보라 건물을 하나 선택하세요.')
+		local geometry,p=F.geometry(config,b.BuildingOrigin.CFrame)
+		local old=b:FindFirstChild('Geometry');assert(old and old:GetAttribute('BoraGenerated')==true,'생성 부품 폴더를 확인하세요.')
+		old.Parent=nil;geometry.Parent=b;P.write(b,p)
+		return old
+	end
+	return F
+end
+]]></string>
+      </Properties>
+    </Item>
+    <Item class="ModuleScript" referent="3">
+      <Properties>
+        <string name="Name">BuildingPlan</string>
+        <string name="Source"><![CDATA[-- Floor-plan schema and geometry in building-local metres. No world mutation.
+return function(codec)
+	local B={Version=1,Grid=.25,StairWidth=3,StairDepth=4.8,LiftWidth=2.8,LiftDepth=2.8}
+	local function number(n,name)
+		assert(type(n)=='number' and n==n and math.abs(n)<math.huge,'도면 숫자를 확인하세요: '..name);return n
+	end
+	function B.snap(n) return math.floor(n/B.Grid+.5)*B.Grid end
+	function B.center(e) return if e.Kind=='Wall' then (e.X+e.X2)*.5 else e.X,if e.Kind=='Wall' then (e.Z+e.Z2)*.5 else e.Z end
+	function B.angle(e) return if e.Kind=='Wall' then math.deg(math.atan2(-(e.Z2-e.Z),e.X2-e.X))%360 else e.Rotation end
+	function B.transform(e,dx,dz,angle)
+		dx,dz,angle=number(dx,'이동 X'),number(dz,'이동 Z'),number(angle,'회전')
+		local n=table.clone(e)
+		if e.Kind=='Wall' then
+			local x,z=B.center(e);local a=math.rad(angle);local c,s=math.cos(a),math.sin(a)
+			local function rotate(px,pz) return x+c*(px-x)+s*(pz-z)+dx,z-s*(px-x)+c*(pz-z)+dz end
+			n.X,n.Z=rotate(e.X,e.Z);n.X2,n.Z2=rotate(e.X2,e.Z2)
+		else n.X,n.Z,n.Rotation=e.X+dx,e.Z+dz,(e.Rotation+angle)%360 end
+		return n
+	end
+	function B.level(p,floor) return if floor==1 then 0 else p.GroundHeight+(floor-2)*p.FloorHeight end
+	function B.height(p,floor) return if floor==1 then p.GroundHeight else p.FloorHeight end
+	function B.bounds(e)
+		if e.Kind=='Wall' then
+			local t=e.Thickness*.5
+			return {X0=math.min(e.X,e.X2)-t,X1=math.max(e.X,e.X2)+t,Z0=math.min(e.Z,e.Z2)-t,Z1=math.max(e.Z,e.Z2)+t}
+		end
+		local w=if e.Kind=='Stairs' then B.StairWidth elseif e.Kind=='Elevator' then B.LiftWidth else e.Width
+		local d=if e.Kind=='Stairs' then B.StairDepth elseif e.Kind=='Elevator' then B.LiftDepth else e.Depth
+		if e.Rotation%180~=0 then w,d=d,w end
+		return {X0=e.X-w*.5,X1=e.X+w*.5,Z0=e.Z-d*.5,Z1=e.Z+d*.5}
+	end
+	local function intersects(a,b)
+		return math.min(a.X1,b.X1)-math.max(a.X0,b.X0)>.001 and math.min(a.Z1,b.Z1)-math.max(a.Z0,b.Z0)>.001
+	end
+	function B.visible(e,floor) return e.Kind=='Elevator' or e.Floor==floor end
+	function B.normalize(plan,p)
+		assert(type(plan)=='table' and (plan.Version==nil or plan.Version==1),'지원하지 않는 도면입니다.')
+		local result={Version=1,Items={}};local ids={};local items=plan.Items or {}
+		assert(type(items)=='table' and #items<=256,'도면은 건물당 최대 256개 부품입니다.')
+		for _,e in items do
+			assert(type(e)=='table' and table.find({'Wall','Block','Stairs','Elevator'},e.Kind),'도면 부품 종류를 확인하세요.')
+			local id=number(e.Id,'ID');assert(id%1==0 and id>0 and id<=1000000 and not ids[id],'도면 ID가 중복됐습니다.');ids[id]=true
+			local f=if e.Kind=='Elevator' then 1 else number(e.Floor,'층')
+			assert(f%1==0 and f>=1 and f<=p.Floors,'층수를 줄이기 전에 해당 층의 도면 부품을 지우세요.')
+			assert(e.Kind~='Stairs' or f<p.Floors,'계단은 다음 층이 있는 층에 놓으세요.')
+			assert(e.Kind~='Elevator' or p.Floors>=2,'엘리베이터는 2층 이상 건물에 놓으세요.')
+			local n={Id=id,Kind=e.Kind,Floor=f,X=number(e.X,'X'),Z=number(e.Z,'Z')}
+			if e.Kind=='Wall' then
+				n.X2,n.Z2=number(e.X2,'끝 X'),number(e.Z2,'끝 Z');n.Thickness=number(e.Thickness or .16,'벽 두께')
+				assert(n.Thickness>=.08 and n.Thickness<=.4,'벽 두께는 0.08~0.4m입니다.')
+				assert((n.X2-n.X)^2+(n.Z2-n.Z)^2>=.24^2,'벽 길이는 0.25m 이상이어야 합니다.')
+			else
+				n.Rotation=number(e.Rotation or 0,'회전')%360;assert(n.Rotation%90==0,'회전은 90도 단위입니다.')
+				if e.Kind=='Block' then
+					n.Width,n.Depth=number(e.Width,'블록 폭'),number(e.Depth,'블록 깊이')
+					assert(n.Width>=.25 and n.Depth>=.25,'블록은 0.25m 이상이어야 합니다.')
+				end
+			end
+			local b=B.bounds(n)
+			assert(b.X0>=-p.Width*.5+.28 and b.X1<=p.Width*.5-.28 and b.Z0>=-p.Depth*.5+.28 and b.Z1<=p.Depth*.5-.28,'외벽 안쪽에 배치하세요. 크기를 줄이기 전에 도면도 조절하세요.')
+			table.insert(result.Items,n)
+		end
+		for i,a in result.Items do for j=i+1,#result.Items do
+			local b=result.Items[j];local coreA=a.Kind=='Stairs' or a.Kind=='Elevator';local coreB=b.Kind=='Stairs' or b.Kind=='Elevator'
+			if coreA or coreB then
+				local same= a.Kind=='Elevator' or b.Kind=='Elevator' or a.Floor==b.Floor
+				-- Stacked stairs are allowed; walls must not obstruct their upper exit.
+				if not coreA and b.Kind=='Stairs' and a.Floor==b.Floor+1 then same=true end
+				if not coreB and a.Kind=='Stairs' and b.Floor==a.Floor+1 then same=true end
+				assert(not same or not intersects(B.bounds(a),B.bounds(b)),'벽·블록이 계단/엘리베이터 공간과 겹칩니다.')
+			end
+		end end
+		return result
+	end
+	function B.decode(text,p)
+		if text==nil or text=='' then return {Version=1,Items={}} end
+		assert(type(text)=='string' and #text<=50000,'도면 저장 크기를 초과했습니다.')
+		local ok,value=pcall(codec.Decode,text);assert(ok,'도면 JSON을 읽을 수 없습니다.')
+		return B.normalize(value,p)
+	end
+	function B.encode(plan,p)
+		local text=codec.Encode(B.normalize(plan,p));assert(#text<=50000,'도면 저장 크기를 초과했습니다.');return text
+	end
+	function B.holes(plan,floor)
+		local holes={}
+		for _,e in plan.Items do if (e.Kind=='Elevator' and floor>1) or (e.Kind=='Stairs' and e.Floor+1==floor) then table.insert(holes,B.bounds(e)) end end
+		return holes
+	end
+	-- A rectangular tiling exactly subtracts every stair/lift opening. Merge
+	-- adjacent X cells into strips to avoid one slab for every grid square.
+	function B.tiles(width,depth,holes)
+		local xs,zs={-width*.5,width*.5},{-depth*.5,depth*.5}
+		for _,b in holes do table.insert(xs,b.X0);table.insert(xs,b.X1);table.insert(zs,b.Z0);table.insert(zs,b.Z1) end
+		local function sorted(values)
+			table.sort(values);local out={};for _,v in values do if #out==0 or math.abs(v-out[#out])>.00001 then table.insert(out,v) end end;return out
+		end
+		xs,zs=sorted(xs),sorted(zs);local result={}
+		for z=1,#zs-1 do
+			local start=nil
+			for x=1,#xs do
+				local clear=x<#xs
+				if clear then local px,pz=(xs[x]+xs[x+1])*.5,(zs[z]+zs[z+1])*.5
+					for _,b in holes do if px>b.X0 and px<b.X1 and pz>b.Z0 and pz<b.Z1 then clear=false;break end end
+				end
+				if clear and not start then start=xs[x] end
+				if not clear and start then table.insert(result,{X0=start,X1=xs[x],Z0=zs[z],Z1=zs[z+1]});start=nil end
+			end
+		end
+		return result
+	end
+	function B.pick(plan,floor,x,z)
+		for i=#plan.Items,1,-1 do local e=plan.Items[i];if B.visible(e,floor) then
+			if e.Kind=='Wall' then
+				local dx,dz=e.X2-e.X,e.Z2-e.Z;local t=math.clamp(((x-e.X)*dx+(z-e.Z)*dz)/(dx*dx+dz*dz),0,1)
+				if (x-e.X-t*dx)^2+(z-e.Z-t*dz)^2<math.max(.18,e.Thickness*.5)^2 then return e end
+			else local b=B.bounds(e);if x>=b.X0 and x<=b.X1 and z>=b.Z0 and z<=b.Z1 then return e end end
+		end end
+		return nil
+	end
+	return B
+end
+]]></string>
+      </Properties>
+    </Item>
+    <Item class="ModuleScript" referent="4">
+      <Properties>
+        <string name="Name">BuildingInteriorFactory</string>
+        <string name="Source"><![CDATA[return function(api,B)
+	local I,V,C,E,Color=api.Instance,api.Vector3,api.CFrame,api.Enum,api.Color3;local S=1/.28;local F={}
+	local function model(parent,name) local m=I.new('Model');m.Name,m.Parent=name,parent;return m end
+	local function part(parent,base,name,size,pos,color,collide)
+		local p=I.new('Part');p.Name,p.Size,p.CFrame=name,V.new(table.unpack(size))*S,base*C.new(V.new(table.unpack(pos))*S)
+		p.Anchored,p.CanCollide,p.CanQuery,p.CanTouch=true,collide~=false,collide~=false,false
+		p.Color=Color.fromRGB(table.unpack(color or {215,211,199}));p.Material=E.Material.SmoothPlastic
+		p.TopSurface,p.BottomSurface=E.SurfaceType.Smooth,E.SurfaceType.Smooth;p.Parent=parent;return p
+	end
+	local function prompt(parent,name,text)
+		local p=I.new('ProximityPrompt');p.Name,p.ActionText,p.ObjectText=name,text,'엘리베이터'
+		p.KeyboardKeyCode,p.HoldDuration,p.MaxActivationDistance=E.KeyCode.E,0,8;p.Parent=parent
+	end
+	local function display(parent)
+		local gui=I.new('SurfaceGui');gui.Name='Display';gui.Face=E.NormalId.Front;gui.CanvasSize=api.Vector2.new(240,130);gui.Parent=parent
+		local t=I.new('TextLabel');t.Name='FloorText';t.Size=api.UDim2.fromScale(1,1);t.BackgroundTransparency=1
+		t.Text,t.TextColor3,t.TextScaled,t.Font='1층',Color.fromRGB(237,228,195),true,E.Font.SourceSansBold;t.Parent=gui
+	end
+	local function stair(parent,p,e,base)
+		local root=model(parent,'Stairs_'..e.Id);root:SetAttribute('PlanId',e.Id);root:SetAttribute('FromFloor',e.Floor)
+		local y,h=B.level(p,e.Floor),B.height(p,e.Floor);local n=math.ceil(h/.36);local rise=h/(2*n)
+		local frame=base*C.new(e.X*S,y*S,e.Z*S)*C.Angles(0,math.rad(e.Rotation),0);local tread=3.7/n
+		for i=1,n do
+			part(root,frame,'LowerTread',{1.28,i*rise,tread},{-.73,i*rise*.5,-2.4+(i-.5)*tread})
+			part(root,frame,'UpperTread',{1.28,i*rise,tread},{.73,h*.5+i*rise*.5,1.3-(i-.5)*tread})
+		end
+		part(root,frame,'MidLanding',{3,.16,1.1},{0,h*.5-.08,1.85})
+		part(root,frame,'MidBackGuard',{3,1,.055},{0,h*.5+.5,2.37},{83,96,94})
+		local function rail(x,z0,z1,y0,y1)
+			local a,b=V.new(x,y0,z0)*S,V.new(x,y1,z1)*S
+			local r=part(root,C.new(),'Handrail',{.045,.045,(b-a).Magnitude/S},{0,0,0},{83,96,94},false)
+			r.CFrame=frame*C.lookAt((a+b)*.5,b)
+			for i=0,5 do local t=i/5;part(root,frame,'RailPost',{.035,.9,.035},{x,y0+(y1-y0)*t-.45,z0+(z1-z0)*t},{83,96,94},false) end
+		end
+		rail(-1.43,-2.35,1.3,rise+.95,h*.5+.95);rail(1.43,1.3,-2.35,h*.5+rise+.95,h+.95)
+		for _,x in {-1.43,1.43} do part(root,frame,'UpperOpeningGuard',{.045,1,4.75},{x,h+.5,0},{83,96,94}) end
+		part(root,frame,'UpperBackGuard',{2.85,1,.045},{0,h+.5,2.37},{83,96,94})
+	end
+	local function elevator(parent,p,e,base)
+		local root=model(parent,'Elevator_'..e.Id);root:SetAttribute('BoraElevator',true);root:SetAttribute('PlanId',e.Id);root:SetAttribute('Floors',p.Floors)
+		local frame=base*C.new(e.X*S,0,e.Z*S)*C.Angles(0,math.rad(e.Rotation),0)
+		local origin=part(root,frame,'ShaftOrigin',{.04,.04,.04},{0,0,0},nil,false);origin.Transparency=1;origin.Locked=true
+		local stops=I.new('Folder');stops.Name,stops.Parent='Stops',root
+		local landings=model(root,'Landings');local h=B.level(p,p.Floors)+B.height(p,p.Floors)
+		for _,x in {-1.32,1.32} do part(root,frame,'ShaftSide',{.16,h,2.8},{x,h*.5,0},{191,194,190}) end
+		part(root,frame,'ShaftBack',{2.48,h,.16},{0,h*.5,1.32},{191,194,190})
+		for floor=1,p.Floors do
+			local y,height=B.level(p,floor),B.height(p,floor)
+			local stop=I.new('NumberValue');stop.Name,stop.Value,stop.Parent='Floor_'..floor,y*S,stops
+			local landing=model(landings,'Floor_'..floor);landing:SetAttribute('Floor',floor)
+			for _,side in {-1,1} do
+				part(landing,frame,'DoorPier',{.75,height,.16},{side*1.025,y+height*.5,-1.32})
+				local door=part(landing,frame,if side<0 then 'DoorLeft' else 'DoorRight',{.65,2.3,.075},{side*.325,y+1.15,-1.365},{148,158,157})
+				door:SetAttribute('DoorSide',side)
+			end
+			part(landing,frame,'DoorLintel',{1.3,height-2.3,.16},{0,y+(height+2.3)*.5,-1.32})
+			part(landing,frame,'LandingThreshold',{1.3,.12,.37},{0,y-.06,-1.315},{151,158,152})
+			local call=part(landing,frame,'CallButton',{.16,.27,.06},{.96,y+1.20,-1.435},{75,91,87},false)
+			prompt(call,'Call','호출 · '..floor..'층')
+		end
+		local cab=model(root,'Cab');local cabRoot=part(cab,frame,'CabRoot',{.04,.04,.04},{0,0,0},nil,false);cabRoot.Transparency=1;cab.PrimaryPart=cabRoot
+		part(cab,frame,'CabFloor',{2.18,.14,2.25},{0,-.07,0},{126,133,128})
+		part(cab,frame,'CabCeiling',{2.18,.10,2.25},{0,2.39,0},{224,225,211})
+		for _,x in {-1.06,1.06} do part(cab,frame,'CabSide',{.06,2.34,2.25},{x,1.17,0},{172,181,176}) end
+		part(cab,frame,'CabBack',{2.06,2.34,.06},{0,1.17,1.095},{172,181,176})
+		for _,x in {-.835,.835} do part(cab,frame,'CabFrontPier',{.39,2.34,.06},{x,1.17,-1.105},{172,181,176}) end
+		for _,side in {-1,1} do
+			local door=part(cab,frame,if side<0 then 'DoorLeft' else 'DoorRight',{.64,2.3,.045},{side*.32,1.15,-1.105},{145,157,153})
+			door:SetAttribute('DoorSide',side)
+		end
+		local panel=part(cab,frame,'ControlPanel',{.22,.42,.045},{.78,1.36,1.045},{50,64,60},false)
+		prompt(panel,'SelectFloor','층 선택');display(panel)
+	end
+	function F.create(parent,p,plan,base)
+		local root=model(parent,'FloorPlanInterior')
+		for _,e in plan.Items do
+			local y,h=B.level(p,e.Floor),B.height(p,e.Floor)
+			if e.Kind=='Wall' then
+				local dx,dz=e.X2-e.X,e.Z2-e.Z
+				local wall=part(root,C.new(),'PlanWall_'..e.Id,{e.Thickness,h,math.sqrt(dx*dx+dz*dz)},{0,0,0})
+				local a,b=V.new(e.X,y+h*.5,e.Z)*S,V.new(e.X2,y+h*.5,e.Z2)*S
+				wall.CFrame=base*C.lookAt((a+b)*.5,b);wall:SetAttribute('PlanId',e.Id);wall:SetAttribute('Floor',e.Floor)
+			elseif e.Kind=='Block' then
+				local frame=base*C.new(e.X*S,y*S,e.Z*S)*C.Angles(0,math.rad(e.Rotation),0)
+				local block=part(root,frame,'PlanBlock_'..e.Id,{e.Width,h,e.Depth},{0,h*.5,0})
+				block:SetAttribute('PlanId',e.Id);block:SetAttribute('Floor',e.Floor)
+			elseif e.Kind=='Stairs' then stair(root,p,e,base)
+			elseif e.Kind=='Elevator' then elevator(root,p,e,base) end
+		end
+		return root
+	end
+	return F
+end
+]]></string>
+      </Properties>
+    </Item>
+    <Item class="ModuleScript" referent="5">
+      <Properties>
+        <string name="Name">BuildingPlanEditor</string>
+        <string name="Source"><![CDATA[-- A top-down Studio canvas. Every completed gesture commits one Undo record.
+return function(plugin,services,P,B,bridge)
+	local Input,Run=services.Input,services.Run
+	local widget=plugin:CreateDockWidgetPluginGuiAsync('BoraBuildingFloorPlan_v1',DockWidgetPluginGuiInfo.new(Enum.InitialDockState.Float,false,true,760,850,620,700))
+	widget.Title='건물 층별 도면'
+	local root=Instance.new('Frame');root.Size=UDim2.fromScale(1,1);root.BackgroundColor3=Color3.fromRGB(29,35,42);root.Parent=widget
+	local function label(parent,value,pos,size)
+		local o=Instance.new('TextLabel');o.Text,o.Position,o.Size=value,pos,size;o.BackgroundTransparency=1
+		o.TextColor3,o.Font,o.TextSize=Color3.fromRGB(229,235,238),Enum.Font.SourceSans,16;o.TextWrapped=true;o.Parent=parent;return o
+	end
+	local function button(value,x,y,w)
+		local o=Instance.new('TextButton');o.Text,o.Position,o.Size=value,UDim2.fromOffset(x,y),UDim2.fromOffset(w,32)
+		o.BackgroundColor3,o.TextColor3,o.Font,o.TextSize=Color3.fromRGB(56,72,81),Color3.new(1,1,1),Enum.Font.SourceSansBold,15;o.Parent=root;return o
+	end
+	local title=label(root,'건물을 선택하세요',UDim2.fromOffset(16,8),UDim2.new(1,-32,0,25))
+	local prev=button('◀',16,40,42);local nextFloor=button('▶',172,40,42)
+	prev.Name,nextFloor.Name='PreviousFloor','NextFloor'
+	local floorBox=Instance.new('TextBox');floorBox.Position,floorBox.Size=UDim2.fromOffset(65,40),UDim2.fromOffset(100,32)
+	floorBox.Name,floorBox.Text,floorBox.ClearTextOnFocus,floorBox.TextSize='FloorNumber','1',false,18;floorBox.Parent=root
+	local copy=button('다음 층에 복사',225,40,136)
+	copy.Name='CopyFloor'
+	local rotate=button('90° 회전',370,40,104);local remove=button('선택 삭제',482,40,104)
+	rotate.Name,remove.Name='RotateSelection','DeleteSelection'
+	local tools={};local tool='Select';local floor,rotation=1,0;local selected=nil;local pending=nil;local drag=nil
+	for i,spec in {{'Select','선택·이동'},{'Wall','벽 선'},{'Block','벽 블록'},{'Stairs','계단'},{'Elevator','엘리베이터'},{'Erase','지우개'}} do
+		tools[spec[1]]=button(spec[2],16+(i-1)*98,80,90)
+		tools[spec[1]].Name='PlanTool'..spec[1]
+	end
+	label(root,'벽 두께 m',UDim2.fromOffset(16,122),UDim2.fromOffset(85,28))
+	local thickness=Instance.new('TextBox');thickness.Position,thickness.Size=UDim2.fromOffset(105,122),UDim2.fromOffset(65,28)
+	thickness.Name,thickness.Text,thickness.ClearTextOnFocus,thickness.TextSize='WallThickness','.16',false,16;thickness.Parent=root
+	local hint=label(root,'선택하면 피봇 표시 · 이동 0.25m · 벽 회전 15° / 블록·계단·엘베 90°',UDim2.fromOffset(181,151),UDim2.new(1,-197,0,14));hint.TextSize=12
+	local function field(name,text,x,w)
+		label(root,text,UDim2.fromOffset(x,122),UDim2.fromOffset(w,28)).TextSize=14
+		local o=Instance.new('TextBox');o.Name,o.Position,o.Size=name,UDim2.fromOffset(x+w,122),UDim2.fromOffset(68,28)
+		o.ClearTextOnFocus,o.TextSize,o.Text=false,15,'—';o.Parent=root;return o
+	end
+	local pivotX=field('PivotX','X',181,18);local pivotZ=field('PivotZ','Z',277,18);local pivotAngle=field('PivotAngle','각도',373,34)
+	local applyPivot=button('좌표 적용',485,122,100);applyPivot.Name='ApplyPivot'
+	local canvas=Instance.new('TextButton');canvas.Name='FloorPlanCanvas';canvas.Text='';canvas.AutoButtonColor=false;canvas.BorderSizePixel=0
+	canvas.Position,canvas.Size=UDim2.fromOffset(16,168),UDim2.new(1,-32,1,-250);canvas.ClipsDescendants=true;canvas.BackgroundColor3=Color3.fromRGB(38,47,57);canvas.Parent=root
+	local drawing=Instance.new('Frame');drawing.Size=UDim2.fromScale(1,1);drawing.BackgroundTransparency=1;drawing.Parent=canvas
+	local hover=Instance.new('Frame');hover.Size=UDim2.fromScale(1,1);hover.BackgroundTransparency=1;hover.Parent=canvas
+	local gizmo=Instance.new('Frame');gizmo.Name='PlanPivot';gizmo.Size=UDim2.fromScale(1,1);gizmo.BackgroundTransparency=1;gizmo.ZIndex=20;gizmo.Visible=false;gizmo.Parent=canvas
+	local ring=Instance.new('Frame');ring.Name='RotationRing';ring.Size=UDim2.fromOffset(104,104);ring.AnchorPoint=Vector2.new(.5,.5);ring.BackgroundTransparency=1;ring.ZIndex=21;ring.Parent=gizmo
+	local corner=Instance.new('UICorner');corner.CornerRadius=UDim.new(1,0);corner.Parent=ring
+	local outline=Instance.new('UIStroke');outline.Color=Color3.fromRGB(235,191,83);outline.Thickness=2;outline.Transparency=.15;outline.Parent=ring
+	local gizmoHandles={};local handlePositions={};local beginDrag
+	for _,spec in {{'X','▶',Color3.fromRGB(218,103,99)},{'XNegative','◀',Color3.fromRGB(218,103,99)},
+		{'Z','▲',Color3.fromRGB(90,164,220)},{'ZNegative','▼',Color3.fromRGB(90,164,220)},
+		{'Move','✥',Color3.fromRGB(223,231,220)},{'Rotate','↻',Color3.fromRGB(235,191,83)}} do
+		local o=Instance.new('TextButton');o.Name,o.Text,o.Size='PlanGizmo'..spec[1],spec[2],UDim2.fromOffset(26,26)
+		o.AnchorPoint,o.BackgroundColor3,o.TextColor3=Vector2.new(.5,.5),spec[3],Color3.fromRGB(23,34,40)
+		o.BorderSizePixel,o.TextSize,o.Font,o.ZIndex,o.Parent=0,20,Enum.Font.SourceSansBold,24,gizmo
+		gizmoHandles[spec[1]]=o
+		o.InputBegan:Connect(function(input)
+			if input.UserInputType==Enum.UserInputType.MouseButton1 and beginDrag then beginDrag(spec[1]) end
+		end)
+	end
+	local axisX=Instance.new('Frame');axisX.BackgroundColor3=Color3.fromRGB(218,103,99);axisX.Size=UDim2.fromOffset(128,2);axisX.AnchorPoint=Vector2.new(.5,.5);axisX.BorderSizePixel=0;axisX.ZIndex=22;axisX.Parent=gizmo
+	local axisZ=Instance.new('Frame');axisZ.BackgroundColor3=Color3.fromRGB(90,164,220);axisZ.Size=UDim2.fromOffset(2,128);axisZ.AnchorPoint=Vector2.new(.5,.5);axisZ.BorderSizePixel=0;axisZ.ZIndex=22;axisZ.Parent=gizmo
+	local status=label(root,'출입구 쪽은 도면 아래입니다. 완성한 배치는 실제 건물에 즉시 적용됩니다.',UDim2.new(0,16,1,-72),UDim2.new(1,-32,0,62))
+	local target,p,plan=nil,nil,nil;local scale,ox,oy=1,0,0;local controller={};local globalConnections={}
+	local colors={Wall=Color3.fromRGB(225,229,220),Block=Color3.fromRGB(199,207,196),Stairs=Color3.fromRGB(219,173,84),Elevator=Color3.fromRGB(91,176,209)}
+	local function point(x,z) return ox+x*scale,oy-z*scale end
+	local function frame(parent,x,y,w,h,color,alpha)
+		local o=Instance.new('Frame');o.Position,o.Size=UDim2.fromOffset(math.floor(x+.5),math.floor(y+.5)),UDim2.fromOffset(math.max(1,math.floor(w+.5)),math.max(1,math.floor(h+.5)))
+		o.BorderSizePixel,o.BackgroundColor3,o.BackgroundTransparency=0,color,alpha or 0;o.Parent=parent;return o
+	end
+	local function clear(parent) for _,o in parent:GetChildren() do o:Destroy() end end
+	local function entry(id) if plan then for _,e in plan.Items do if e.Id==id then return e end end end;return nil end
+	local function showGizmo(e,preview)
+		gizmo.Visible=e~=nil and tool=='Select';table.clear(handlePositions)
+		if not e then pivotX.Text,pivotZ.Text,pivotAngle.Text='—','—','—';return end
+		local x,z=B.center(e);local px,py=point(x,z);local angle=B.angle(e)
+		local function position(o,a,b) o.Position=UDim2.fromOffset(math.floor(a+.5),math.floor(b+.5)) end
+		position(ring,px,py);position(axisX,px,py);position(axisZ,px,py)
+		local theta=math.rad(angle-90)
+		local positions={X={px+64,py},XNegative={px-64,py},Z={px,py-64},ZNegative={px,py+64},Move={px,py},Rotate={px+52*math.cos(theta),py+52*math.sin(theta)}}
+		for key,pixels in positions do position(gizmoHandles[key],pixels[1],pixels[2]);handlePositions[key]=pixels end
+		if not preview then pivotX.Text,pivotZ.Text,pivotAngle.Text=string.format('%.3f',x),string.format('%.3f',z),string.format('%.1f',angle) end
+	end
+	local function line(parent,x0,z0,x1,z1,width,color,alpha)
+		local x,y=point(x0,z0);local a,b=point(x1,z1);local dx,dy=a-x,b-y
+		local o=frame(parent,(x+a)*.5,(y+b)*.5,math.sqrt(dx*dx+dy*dy),width*scale,color,alpha)
+		o.AnchorPoint=Vector2.new(.5,.5);o.Rotation=math.deg(math.atan2(dy,dx));return o
+	end
+	local function rectangle(parent,e,color,alpha)
+		local bounds=B.bounds(e);local x,y=point(bounds.X0,bounds.Z1)
+		return frame(parent,x,y,(bounds.X1-bounds.X0)*scale,(bounds.Z1-bounds.Z0)*scale,color,alpha)
+	end
+	local function drawItem(parent,e,ghost)
+		local color=if e.Id==selected then Color3.fromRGB(148,226,158) else colors[e.Kind]
+		if e.Kind=='Wall' then line(parent,e.X,e.Z,e.X2,e.Z2,e.Thickness,color,if ghost then .65 else 0)
+		else
+			local o=rectangle(parent,e,color,if ghost then .8 else .12)
+			if e.Kind=='Stairs' or e.Kind=='Elevator' then
+				label(o,if e.Kind=='Stairs' then '계단 ↑'..(e.Floor+1)..'층\n'..e.Rotation..'°' else '엘리베이터\n전 층 연결',UDim2.fromScale(0,0),UDim2.fromScale(1,1)).TextColor3=Color3.fromRGB(25,38,42)
+			end
+		end
+	end
+	local function render()
+		clear(drawing);clear(hover);if not p then showGizmo(nil);return end
+		local size=canvas.AbsoluteSize;scale=math.max(1,math.min((size.X-70)/p.Width,(size.Y-70)/p.Depth));ox,oy=size.X*.5,size.Y*.5
+		local x,y=point(-p.Width*.5,p.Depth*.5)
+		frame(drawing,x,y,p.Width*scale,p.Depth*scale,Color3.fromRGB(62,75,85))
+		for gx=-math.floor(p.Width*2)*.25,p.Width*.5,.25 do line(drawing,gx,-p.Depth*.5,gx,p.Depth*.5,.012,Color3.fromRGB(78,93,104),.45) end
+		for gz=-math.floor(p.Depth*2)*.25,p.Depth*.5,.25 do line(drawing,-p.Width*.5,gz,p.Width*.5,gz,.012,Color3.fromRGB(78,93,104),.45) end
+		local edge=Color3.fromRGB(173,186,190)
+		for _,sx in {-1,1} do line(drawing,sx*p.Width*.5,-p.Depth*.5,sx*p.Width*.5,p.Depth*.5,.20,edge) end
+		for _,sz in {-1,1} do line(drawing,-p.Width*.5,sz*p.Depth*.5,p.Width*.5,sz*p.Depth*.5,.20,edge) end
+		if floor==1 then
+			local bays=math.max(2,math.floor(p.Width/2.7));local pitch=p.Width/bays;local door=(math.ceil(bays*.65)-(bays+1)*.5)*pitch
+			line(drawing,door-.55,-p.Depth*.5,door+.55,-p.Depth*.5,.23,Color3.fromRGB(126,213,157))
+		end
+		if p.PlanJSON=='' then
+			line(drawing,-p.Width*.5+.28,p.Depth*.24,p.Width*.5-.28,p.Depth*.24,.12,Color3.fromRGB(119,133,140),.45)
+			line(drawing,p.Width*.18,-p.Depth*.18,p.Width*.18,p.Depth*.22,.12,Color3.fromRGB(119,133,140),.45)
+		end
+		for _,e in plan.Items do if B.visible(e,floor) then drawItem(drawing,e,drag~=nil and e.Id==selected)
+		elseif e.Kind=='Stairs' and e.Floor+1==floor then drawItem(drawing,e,true) end end
+		local _,bottom=point(0,-p.Depth*.5)
+		label(drawing,'출입구 쪽 · '..p.Width..' × '..p.Depth..' m',UDim2.fromOffset(0,math.floor(bottom+7)),UDim2.new(1,0,0,23))
+		floorBox.Text=tostring(floor);title.Text=(target and target.Name or '')..' · '..floor..' / '..p.Floors..'층'
+		for key,b in tools do b.BackgroundColor3=if key==tool then Color3.fromRGB(83,131,109) else Color3.fromRGB(56,72,81) end
+		showGizmo(entry(selected))
+	end
+	local function rawMouse()
+		local mouse=widget:GetRelativeMousePosition()-canvas.AbsolutePosition
+		return (mouse.X-ox)/scale,(oy-mouse.Y)/scale
+	end
+	local function atMouse()
+		local x,z=rawMouse();return B.snap(x),B.snap(z)
+	end
+	local function clone()
+		local out={Version=1,Items={}};for _,e in plan.Items do table.insert(out.Items,table.clone(e)) end;return out
+	end
+	local function commit(candidate,id)
+		if not target or bridge.Get()~=target or not target.Parent then status.Text='같은 건물을 선택한 상태에서 편집하세요.';return false end
+		local ok,result=pcall(function()
+			local encoded=B.encode(candidate,p);local success,err=bridge.Apply(target,encoded);assert(success,err or '도면 적용 실패')
+			return B.decode(encoded,p)
+		end)
+		if ok then plan=result;p=P.read(target);selected=id;status.Text='건물에 적용 완료 · Ctrl+Z로 되돌릴 수 있어요.'
+		else status.Text=tostring(result) end
+		pending,drag=nil,nil;render();return ok
+	end
+	local function newId() local id=0;for _,e in plan.Items do id=math.max(id,e.Id) end;return id+1 end
+	local function erase(id)
+		local candidate=clone();for i=#candidate.Items,1,-1 do if candidate.Items[i].Id==id then table.remove(candidate.Items,i) end end;commit(candidate,nil)
+	end
+	beginDrag=function(axis)
+		if not widget.Enabled or Run:IsRunning() or not p or tool~='Select' then return end
+		local e=entry(selected);if not e then return end
+		local x,z=rawMouse();local cx,cz=B.center(e)
+		drag={Id=e.Id,Axis=axis,X=x,Z=z,Original=table.clone(e),StartAngle=math.atan2(-(z-cz),x-cx),Owner=target,Floor=floor}
+		render()
+		pending=nil;status.Text=if axis=='Rotate' then '회전 링을 끌어 방향 조절 · 놓으면 적용 · Esc 취소' else '피봇을 끌어 이동 · 놓으면 적용 · Esc 취소'
+	end
+	local function transformed()
+		if not drag then return nil end
+		local x,z=rawMouse();local dx,dz=B.snap(x-drag.X),B.snap(z-drag.Z);local angle=0
+		if drag.Axis=='Rotate' then
+			local cx,cz=B.center(drag.Original)
+			if ((x-cx)^2+(z-cz)^2)*scale^2<64 then return drag.Preview or drag.Original end
+			local delta=math.atan2(-(z-cz),x-cx)-drag.StartAngle;delta=math.atan2(math.sin(delta),math.cos(delta))
+			local step=if drag.Original.Kind=='Wall' then 15 else 90
+			angle=math.floor(math.deg(delta)/step+.5)*step;dx,dz=0,0
+		elseif drag.Axis=='X' or drag.Axis=='XNegative' then dz=0
+		elseif drag.Axis=='Z' or drag.Axis=='ZNegative' then dx=0 end
+		return B.transform(drag.Original,dx,dz,angle)
+	end
+	local function drawDrag()
+		if not drag then return end
+		clear(hover);local preview=transformed();if not preview then return end
+		drag.Preview=preview;drawItem(hover,preview,false);showGizmo(preview,true)
+		local x,z=B.center(preview);status.Text=string.format('X %.2f m · Z %.2f m · 각도 %.0f° · 놓으면 적용 / Esc 취소',x,z,B.angle(preview))
+	end
+	local function overGizmo()
+		if not gizmo.Visible then return false end
+		local mouse=widget:GetRelativeMousePosition()-canvas.AbsolutePosition
+		for _,pos in handlePositions do if math.abs(mouse.X-pos[1])<=14 and math.abs(mouse.Y-pos[2])<=14 then return true end end
+		return false
+	end
+	local function applyCoordinates()
+		local e=entry(selected);if not e or not p or Run:IsRunning() then return end
+		local x,z,a=tonumber(pivotX.Text),tonumber(pivotZ.Text),tonumber(pivotAngle.Text)
+		if not x or not z or not a or x~=x or z~=z or a~=a or math.abs(x)==math.huge or math.abs(z)==math.huge or math.abs(a)==math.huge then status.Text='X·Z·각도를 올바른 숫자로 입력하세요.';return end
+		local cx,cz=B.center(e);local candidate=clone()
+		for i,item in candidate.Items do if item.Id==selected then candidate.Items[i]=B.transform(item,x-cx,z-cz,a-B.angle(item)) end end
+		commit(candidate,selected)
+	end
+	applyPivot.MouseButton1Click:Connect(applyCoordinates)
+	for _,box in {pivotX,pivotZ,pivotAngle} do box.FocusLost:Connect(function(enter) if enter then applyCoordinates() end end) end
+	for key,b in tools do b.MouseButton1Click:Connect(function() tool=key;pending,drag=nil,nil;render() end) end
+	local function changeFloor(value)
+		if not p then return end;floor=math.clamp(math.floor(value),1,p.Floors);pending,drag,selected=nil,nil,nil;render()
+	end
+	prev.MouseButton1Click:Connect(function() changeFloor(floor-1) end);nextFloor.MouseButton1Click:Connect(function() changeFloor(floor+1) end)
+	floorBox.FocusLost:Connect(function() changeFloor(tonumber(floorBox.Text) or floor) end)
+	remove.MouseButton1Click:Connect(function() if selected then erase(selected) end end)
+	rotate.MouseButton1Click:Connect(function()
+		if not p then return end
+		if not selected then rotation=(rotation+90)%360;status.Text='새 계단·블록 방향: '..rotation..'°';return end
+		local candidate=clone()
+		for i,e in candidate.Items do if e.Id==selected then candidate.Items[i]=B.transform(e,0,0,90) end end
+		commit(candidate,selected)
+	end)
+	copy.MouseButton1Click:Connect(function()
+		if not p or floor>=p.Floors then status.Text='복사할 다음 층이 없습니다.';return end
+		for _,e in plan.Items do if e.Kind~='Elevator' and e.Floor==floor+1 then status.Text='다음 층의 기존 도면을 먼저 비워주세요.';return end end
+		local candidate=clone();local id=newId()
+		for _,e in plan.Items do if e.Kind~='Elevator' and e.Floor==floor and (e.Kind~='Stairs' or floor+1<p.Floors) then
+			local c=table.clone(e);c.Id,c.Floor=id,floor+1;id+=1;table.insert(candidate.Items,c)
+		end end
+		if commit(candidate,nil) then changeFloor(floor+1) end
+	end)
+	canvas.InputBegan:Connect(function(input)
+		if not p or Run:IsRunning() or input.UserInputType~=Enum.UserInputType.MouseButton1 then return end
+		if tool=='Select' and overGizmo() then return end
+		local x,z=atMouse();if math.abs(x)>p.Width*.5 or math.abs(z)>p.Depth*.5 then return end
+		local hit=B.pick(plan,floor,x,z)
+		if tool=='Erase' then if hit then erase(hit.Id) end;return end
+		if tool=='Select' then selected=hit and hit.Id;render();if hit then beginDrag('Move') end;return end
+		if tool=='Wall' or tool=='Block' then
+			if not pending then pending={X=x,Z=z};status.Text='끝점을 한 번 더 클릭하세요. Esc로 취소합니다.';return end
+			local candidate=clone();local id=newId();local entry={Id=id,Kind=tool,Floor=floor,X=pending.X,Z=pending.Z}
+			if tool=='Wall' then if not tonumber(thickness.Text) then status.Text='벽 두께를 숫자로 입력하세요.';return end;entry.X2,entry.Z2,entry.Thickness=x,z,tonumber(thickness.Text)
+			else entry.X,entry.Z=(pending.X+x)*.5,(pending.Z+z)*.5;entry.Width,entry.Depth=math.abs(x-pending.X),math.abs(z-pending.Z);entry.Rotation=0 end
+			table.insert(candidate.Items,entry);commit(candidate,id)
+		else
+			local candidate=clone();local id=newId();table.insert(candidate.Items,{Id=id,Kind=tool,Floor=floor,X=x,Z=z,Rotation=rotation});commit(candidate,id)
+		end
+	end)
+	table.insert(globalConnections,Input.InputEnded:Connect(function(input)
+		if not widget.Enabled or not drag or input.UserInputType~=Enum.UserInputType.MouseButton1 then return end
+		local result=transformed();local old=drag;drag=nil
+		if not result or old.Owner~=target or old.Floor~=floor then render();return end
+		local cx,cz=B.center(old.Original);local x,z=B.center(result)
+		if math.abs(x-cx)<.00001 and math.abs(z-cz)<.00001 and math.abs(B.angle(result)-B.angle(old.Original))<.00001 then render();return end
+		local candidate=clone();for i,e in candidate.Items do if e.Id==old.Id then candidate.Items[i]=result end end;commit(candidate,old.Id)
+	end))
+	table.insert(globalConnections,Input.InputBegan:Connect(function(input) if widget.Enabled and input.KeyCode==Enum.KeyCode.Escape then pending,drag=nil,nil;render();status.Text='진행 중인 그리기·이동·회전을 취소했습니다.' end end))
+	local elapsed=0
+	table.insert(globalConnections,Run.Heartbeat:Connect(function(dt)
+		elapsed+=dt;if elapsed<.04 then return end;elapsed=0
+		if not widget.Enabled or not p then return end
+		if drag then drawDrag();return end
+		if not pending then return end
+		clear(hover);local x,z=atMouse()
+		if tool=='Wall' then line(hover,pending.X,pending.Z,x,z,tonumber(thickness.Text) or .16,Color3.fromRGB(147,219,163),.2)
+		elseif tool=='Block' then rectangle(hover,{Kind='Block',X=(pending.X+x)*.5,Z=(pending.Z+z)*.5,Width=math.abs(x-pending.X),Depth=math.abs(z-pending.Z),Rotation=0},Color3.fromRGB(147,219,163),.3) end
+	end))
+	canvas:GetPropertyChangedSignal('AbsoluteSize'):Connect(render)
+	function controller.Refresh()
+		if not widget.Enabled then return end
+		local building=bridge.Get();if not building or not building.Parent then target,p,plan=nil,nil,nil;drag,pending,selected=nil,nil,nil;clear(drawing);clear(hover);showGizmo(nil);title.Text='건물을 하나 선택하세요.';return end
+		local config=P.read(building);local ok,value=pcall(B.decode,config.PlanJSON,config)
+		if not ok then status.Text=tostring(value);return end
+		if target~=building then selected=nil end
+		target,p,plan=building,config,value;floor=math.clamp(floor,1,p.Floors);pending,drag=nil,nil;render()
+	end
+	function controller.Open() widget.Enabled=true;controller.Refresh() end
+	function controller.Destroy() for _,connection in globalConnections do connection:Disconnect() end;widget:Destroy() end
+	widget:BindToClose(function() pending,drag=nil,nil;widget.Enabled=false end)
+	return controller
+end
+]]></string>
+      </Properties>
+    </Item>
+    <Item class="Script" referent="6">
+      <Properties>
+        <string name="Name">BuildingPlugin</string>
+        <string name="Source"><![CDATA[if not plugin or game:GetService('RunService'):IsRunning() then return end
+local Selection=game:GetService('Selection')
+local History=game:GetService('ChangeHistoryService')
+local Input=game:GetService('UserInputService')
+local Run=game:GetService('RunService')
+local Http=game:GetService('HttpService')
+local P=require(script.Parent.BuildingParameters)
+local api={Instance=Instance,Vector3=Vector3,Vector2=Vector2,CFrame=CFrame,Color3=Color3,Enum=Enum,UDim=UDim,UDim2=UDim2}
+local B=require(script.Parent.BuildingPlan)({Decode=function(text) return Http:JSONDecode(text) end,Encode=function(value) return Http:JSONEncode(value) end})
+local Interior=require(script.Parent.BuildingInteriorFactory)(api,B)
+local F=require(script.Parent.BuildingFactory)(api,P,script.Parent:FindFirstChild('Decorations'),B,Interior)
+local toolbar=plugin:CreateToolbar('보라동 건물')
+local placeButton=toolbar:CreateButton('BoraBuildingPlace_v1','지면을 클릭해서 설정한 건물을 설치합니다.','','건물 설치')
+local editButton=toolbar:CreateButton('BoraBuildingEdit_v1','선택한 건물의 층수·간판·외관을 편집합니다.','','건물 편집')
+local planButton=toolbar:CreateButton('BoraBuildingPlan_v1','층별 도면에서 벽·계단·엘리베이터를 배치합니다.','','층별 도면')
+planButton.ClickableWhenViewportHidden=true
+placeButton.ClickableWhenViewportHidden,editButton.ClickableWhenViewportHidden=true,true
+local widget=plugin:CreateDockWidgetPluginGuiAsync('BoraBuildingInspector_v1',DockWidgetPluginGuiInfo.new(Enum.InitialDockState.Float,false,true,410,860,375,550))
+widget.Title='건물 인스펙터'
+local bg=Instance.new('ScrollingFrame');bg.Size=UDim2.fromScale(1,1);bg.BackgroundColor3=Color3.fromRGB(30,34,40)
+bg.BorderSizePixel,bg.ScrollBarThickness,bg.CanvasSize=0,6,UDim2.fromOffset(0,1165);bg.Parent=widget
+local function label(text,y,height)
+	local o=Instance.new('TextLabel');o.Text,o.Position,o.Size=text,UDim2.fromOffset(16,y),UDim2.new(1,-32,0,height or 24)
+	o.BackgroundTransparency,o.TextColor3,o.TextSize=1,Color3.fromRGB(230,235,237),15
+	o.Font,o.TextXAlignment,o.TextWrapped=Enum.Font.SourceSans,Enum.TextXAlignment.Left,true;o.Parent=bg;return o
+end
+local function button(text,y)
+	local o=Instance.new('TextButton');o.Text,o.Position,o.Size=text,UDim2.fromOffset(16,y),UDim2.new(1,-32,0,34)
+	o.BackgroundColor3,o.TextColor3,o.Font,o.TextSize=Color3.fromRGB(66,91,87),Color3.new(1,1,1),Enum.Font.SourceSansBold,16;o.Parent=bg;return o
+end
+local function box(text,position,size)
+	local o=Instance.new('TextBox');o.Text,o.Position,o.Size=text,position,size
+	o.ClearTextOnFocus,o.BackgroundColor3,o.TextColor3=false,Color3.fromRGB(49,56,65),Color3.fromRGB(243,240,229)
+	o.Font,o.TextSize,o.Parent=Enum.Font.SourceSans,17,bg;return o
+end
+label('종류와 층을 조합하는 건물',12,30).TextSize=23
+local selected=label('건물 선택 또는 새 건물 설치',48,32)
+local kind='Shop';local kinds={};local values={};local toggles={};local sliders={}
+for i,name in P.Kinds do
+	local o=button(P.KindLabels[i],90+math.floor((i-1)/4)*37)
+	o.Position,o.Size=UDim2.new(((i-1)%4)*.25,16-((i-1)%4)*4,0,90+math.floor((i-1)/4)*37),UDim2.new(.25,-8,0,31)
+	kinds[name]=o;o.MouseButton1Click:Connect(function() kind=name;for k,b in kinds do b.BackgroundColor3=if k==kind then Color3.fromRGB(88,140,112) else Color3.fromRGB(49,56,65) end end)
+end
+label('간판 이름 · 최대 48자',168)
+values.Title=box('보라 상가',UDim2.fromOffset(16,195),UDim2.new(1,-32,0,32))
+local function paint(key,n)
+	local bar=sliders[key];local ratio=math.clamp((n-bar.Min)/(bar.Max-bar.Min),0,1)
+	bar.Fill.Size,bar.Knob.Position=UDim2.fromScale(ratio,1),UDim2.fromScale(ratio,.5)
+end
+for i,spec in P.Numbers do
+	local y=240+(i-1)*61;label(spec[2]..'  '..spec[4]..'~'..spec[5],y)
+	values[spec[1]]=box(tostring(spec[3]),UDim2.new(1,-98,0,y),UDim2.fromOffset(80,26))
+	local bar=button('',y+31);bar.Size=UDim2.new(1,-32,0,16);bar.AutoButtonColor=false;bar.BackgroundColor3=Color3.fromRGB(65,73,80)
+	local fill=Instance.new('Frame');fill.BackgroundColor3,fill.BorderSizePixel,fill.Parent=Color3.fromRGB(108,154,129),0,bar
+	local knob=Instance.new('Frame');knob.Size,knob.AnchorPoint,knob.Parent=UDim2.fromOffset(6,24),Vector2.new(.5,.5),bar
+	knob.BackgroundColor3,knob.BorderSizePixel=Color3.fromRGB(219,239,224),0
+	sliders[spec[1]]={Track=bar,Fill=fill,Knob=knob,Min=spec[4],Max=spec[5],Step=spec[6]};paint(spec[1],spec[3])
+	values[spec[1]]:GetPropertyChangedSignal('Text'):Connect(function() local n=tonumber(values[spec[1]].Text);if n and n==n and math.abs(n)<math.huge then paint(spec[1],n) end end)
+end
+local optionNames={Sign='간판',Balconies='발코니',Awning='차양',Details='벽등·옥상 장식'}
+for i,key in {'Sign','Balconies','Awning','Details'} do
+	local o=button('',672+(i-1)*35);toggles[key]={Button=o,Value=P.Defaults[key]}
+	o.MouseButton1Click:Connect(function() local t=toggles[key];t.Value=not t.Value;o.Text=optionNames[key]..'  '..(if t.Value then '켜짐' else '꺼짐') end)
+end
+for i,spec in {{'Wall','외벽 색'},{'Trim','띠·창턱 색'},{'Accent','창틀·간판 색'}} do
+	label(spec[2]..' · HEX',817+(i-1)*35)
+	values[spec[1]]=box(P.Defaults[spec[1]],UDim2.new(1,-130,0,817+(i-1)*35),UDim2.fromOffset(112,28))
+end
+label('새 건물 방향 · 도 (0~359)',926)
+local rotation=box('0',UDim2.new(1,-98,0,926),UDim2.fromOffset(80,28))
+local openPlan=button('층별 도면 · 벽 / 계단 / 엘리베이터',968)
+local apply=button('선택한 건물에 적용',1010)
+local status=label('슬라이더는 놓을 때 적용됩니다. 직접 추가한 소품은 Geometry 밖에 두세요. 생성 부품의 수동 수정은 적용 시 다시 제작됩니다.',1054,88)
+local current,busy,placing,marker,drag=nil,false,false,nil,nil
+local retired={};local mouse=plugin:GetMouse();local S=1/.28
+local planEditor=nil
+local function message(text) status.Text=text end
+local function read()
+	local p={Kind=kind};for k,field in values do
+		if sliders[k] then local n=tonumber(field.Text);assert(n,'올바른 숫자를 입력하세요: '..k);p[k]=n else p[k]=field.Text end
+	end
+	for k,t in toggles do p[k]=t.Value end
+	p.PlanJSON=if current and current.Parent then current:GetAttribute('BB_PlanJSON') or '' else ''
+	return P.normalize(p)
+end
+local function refresh(config)
+	local p=config or (if current and current.Parent then P.read(current) else P.normalize())
+	kind=p.Kind;for k,b in kinds do b.BackgroundColor3=if k==kind then Color3.fromRGB(88,140,112) else Color3.fromRGB(49,56,65) end
+	for k,field in values do field.Text=if type(p[k])=='number' then string.format('%g',p[k]) else p[k] end
+	for k,t in toggles do t.Value=p[k];t.Button.Text=optionNames[k]..'  '..(if p[k] then '켜짐' else '꺼짐') end
+	selected.Text=if current and current.Parent then '선택: '..current.Name else '새 건물 설정 · 지면 클릭으로 설치'
+	if planEditor then planEditor.Refresh() end
+end
+local function inspect()
+	if busy or placing then return end
+	local items=Selection:Get();current=nil
+	if #items==1 then local m=items[1];while m and m~=workspace do if F.isBuilding(m) then current=m;break end;m=m.Parent end end
+	if current then widget.Enabled=true;refresh() else selected.Text='건물을 하나 선택하세요 · 새 건물 설치 가능';if planEditor then planEditor.Refresh() end end
+end
+local function checkSpace(p,base,ignore)
+	local h=p.GroundHeight+(p.Floors-1)*p.FloorHeight
+	local query=OverlapParams.new();query.FilterType=Enum.RaycastFilterType.Exclude
+	local excluded={};if ignore then table.insert(excluded,ignore) end;if marker then table.insert(excluded,marker) end
+	query.FilterDescendantsInstances=excluded
+	for _,hit in workspace:GetPartBoundsInBox(base*CFrame.new(0,(h*.5+.4)*S,0),Vector3.new(p.Width-.10,h-.3,p.Depth-.10)*S,query) do
+		if hit.CanCollide then error('다른 물체와 겹칩니다: '..hit.Name..' · 크기나 위치를 조절하세요.') end
+	end
+	local roads=workspace:FindFirstChild('BoraRoads');if not roads then return end
+	local asphalt={};for _,item in roads:GetDescendants() do if item.Name=='Asphalt' then table.insert(asphalt,item) end end
+	if #asphalt==0 then return end
+	query.FilterType=Enum.RaycastFilterType.Include;query.FilterDescendantsInstances=asphalt
+	local hits=workspace:GetPartBoundsInBox(base*CFrame.new(0,-.05*S,-p.Apron*.5*S),Vector3.new(p.Width+.7,.65,p.Depth+p.Apron)*S,query)
+	assert(#hits==0,'건물 또는 앞마당이 차도와 겹칩니다. 크기·앞마당 깊이를 줄이세요.')
+end
+local function ensureRuntime()
+	local server=game:GetService('ServerScriptService');local scripts=game:GetService('StarterPlayer'):FindFirstChildOfClass('StarterPlayerScripts')
+	assert(scripts,'StarterPlayerScripts가 필요합니다.')
+	for _,spec in {{server,'BoraBuildingRuntime','RuntimeTemplate'},{scripts,'BoraBuildingClient','ClientTemplate'}} do
+		local old=spec[1]:FindFirstChild(spec[2]);assert(not old or old:GetAttribute('BoraOwned')==true,'건물 런타임 이름이 사용 중입니다.')
+	end
+	for _,spec in {{server,'BoraBuildingRuntime','RuntimeTemplate'},{scripts,'BoraBuildingClient','ClientTemplate'}} do
+		local old=spec[1]:FindFirstChild(spec[2]);local template=script.Parent[spec[3]]
+		if not old then old=template:Clone();old.Name=spec[2];old.Disabled=false;old.Parent=spec[1]
+		elseif old:GetAttribute('BuildingVersion')~=F.Version then
+			old.Source=template.Source
+			for _,child in template:GetChildren() do local existing=old:FindFirstChild(child.Name);if existing then existing.Source=child.Source else child:Clone().Parent=old end end
+		end
+		old:SetAttribute('BoraOwned',true);old:SetAttribute('BuildingVersion',F.Version)
+	end
+end
+local function applyConfig(override)
+	if busy or Run:IsRunning() then return end
+	if not current or not current.Parent then message('먼저 보라 건물을 하나 선택하세요.');return false,'건물을 선택하세요.' end
+	local valid,p=pcall(function() local config=if type(override)=='table' then P.normalize(override) else read();B.decode(config.PlanJSON,config);return config end)
+	if not valid then message(tostring(p));return false,tostring(p) end
+	local clear,err=pcall(checkSpace,p,current.BuildingOrigin.CFrame,current);if not clear then message(tostring(err));return false,tostring(err) end
+	local record=History:TryBeginRecording('BoraBuildingEdit','건물 설정 변경');if not record then message('다른 편집이 끝난 뒤 다시 시도하세요.');return end
+	busy=true;local ok,old=pcall(function() ensureRuntime();return F.rebuild(current,p) end)
+	if ok then table.insert(retired,old) end
+	History:FinishRecording(record,if ok then Enum.FinishRecordingOperation.Commit else Enum.FinishRecordingOperation.Cancel)
+	busy=false;if ok then Selection:Set({current});refresh();message('적용 완료 · Ctrl+Z로 되돌릴 수 있어요.') else message(tostring(old));warn(old) end
+	return ok,if ok then nil else tostring(old)
+end
+apply.MouseButton1Click:Connect(applyConfig)
+local function updateDrag()
+	if not drag then return end
+	local bar=sliders[drag.Key];local point=widget:GetRelativeMousePosition()
+	local n=bar.Min+math.clamp((point.X-bar.Track.AbsolutePosition.X)/bar.Track.AbsoluteSize.X,0,1)*(bar.Max-bar.Min)
+	values[drag.Key].Text=string.format('%g',math.floor(n/bar.Step+.5)*bar.Step)
+end
+local function finishDrag(commit)
+	if not drag then return end
+	local old=drag;drag=nil
+	if not commit then values[old.Key].Text=old.Original
+	elseif current and values[old.Key].Text~=old.Original then applyConfig() end
+end
+for key,bar in sliders do bar.Track.InputBegan:Connect(function(input)
+	if busy or Run:IsRunning() or input.UserInputType~=Enum.UserInputType.MouseButton1 then return end
+	finishDrag(true);drag={Key=key,Original=values[key].Text,Input=input};updateDrag()
+end) end
+Input.InputEnded:Connect(function(input) if input.UserInputType==Enum.UserInputType.MouseButton1 and drag then updateDrag();finishDrag(true) end end)
+Run.Heartbeat:Connect(function() if drag then if Run:IsRunning() then finishDrag(false) elseif drag.Input.UserInputState==Enum.UserInputState.End then updateDrag();finishDrag(true) else updateDrag() end end end)
+local function stop()
+	placing=false;placeButton:SetActive(false);if marker then marker:Destroy();marker=nil end;plugin:Deactivate()
+end
+local function ground()
+	local ray=mouse.UnitRay;local query=RaycastParams.new();query.FilterType=Enum.RaycastFilterType.Exclude
+	query.FilterDescendantsInstances=if marker then {marker} else {}
+	local hit=workspace:Raycast(ray.Origin,ray.Direction*3000,query)
+	if not hit or hit.Normal.Y<.98 then return nil end
+	local yaw=tonumber(rotation.Text);if not yaw or yaw~=yaw or math.abs(yaw)==math.huge then return nil end
+	return CFrame.new(hit.Position)*CFrame.Angles(0,math.rad(yaw%360),0)
+end
+local function move()
+	if not placing or not marker then return end
+	local base=ground();local valid,p=pcall(read)
+	if base and valid then marker.Size=Vector3.new(p.Width,.04,p.Depth)*S;marker.CFrame=base*CFrame.new(0,.03*S,0);marker.Transparency=.65 else marker.Transparency=1 end
+end
+placeButton.Click:Connect(function()
+	if busy or Run:IsRunning() then return end
+	if placing then stop();return end
+	current=nil;widget.Enabled=true;placing=true;plugin:Activate(true);placeButton:SetActive(true)
+	marker=Instance.new('Part');marker.Name='BoraBuildingPlacementMarker';marker.Anchored=true
+	marker.CanCollide,marker.CanTouch,marker.CanQuery=false,false,false
+	marker.Material,marker.Color,marker.Parent=Enum.Material.Neon,Color3.fromRGB(100,194,160),workspace
+	message('지면을 클릭하면 건물 중심을 놓습니다. Esc로 취소합니다.');move()
+end)
+mouse.Move:Connect(move)
+mouse.Button1Down:Connect(function()
+	if not placing or busy or Run:IsRunning() then return end
+	local base=ground();if not base then message('평평한 지면을 선택하세요.');return end
+	local valid,p=pcall(read);if not valid then message(tostring(p));return end
+	local clear,err=pcall(checkSpace,p,base,nil);if not clear then message(tostring(err));return end
+	local record=History:TryBeginRecording('BoraBuildingPlace','건물 설치');if not record then return end
+	busy=true;local ok,b=pcall(function()
+		local made=F.create(p,base);local folder=workspace:FindFirstChild('BoraBuildings')
+		ensureRuntime()
+		if folder then assert(folder:IsA('Folder'),'BoraBuildings 이름이 사용 중입니다.') else folder=Instance.new('Folder');folder.Name,folder.Parent='BoraBuildings',workspace end
+		made.Parent=folder;return made
+	end)
+	History:FinishRecording(record,if ok then Enum.FinishRecordingOperation.Commit else Enum.FinishRecordingOperation.Cancel)
+	busy=false;if ok then stop();Selection:Set({b});inspect();message('건물 설치 완료 · Ctrl+Z로 취소할 수 있어요.') else message(tostring(b));warn(b) end
+end)
+editButton.Click:Connect(function() stop();widget.Enabled=true;inspect() end)
+local function showPlan()
+	if busy or Run:IsRunning() then return end
+	if not current or not current.Parent then widget.Enabled=true;message('도면을 편집할 건물을 하나 선택하세요.');return end
+	if not planEditor then planEditor=require(script.Parent.BuildingPlanEditor)(plugin,{Input=Input,Run=Run},P,B,{
+		Get=function() return current end,
+		Apply=function(building,json)
+			if building~=current then return false,'선택한 건물이 바뀌었습니다.' end
+			local config=P.read(building);config.PlanJSON=json;return applyConfig(config)
+		end,
+	}) end
+	planEditor.Open()
+end
+planButton.Click:Connect(showPlan);openPlan.MouseButton1Click:Connect(showPlan)
+Selection.SelectionChanged:Connect(inspect)
+History.OnUndo:Connect(inspect);History.OnRedo:Connect(inspect)
+widget.WindowFocusReleased:Connect(function() finishDrag(true) end)
+widget:BindToClose(function() finishDrag(true);stop();widget.Enabled=false end)
+plugin.Deactivation:Connect(function() placing=false;placeButton:SetActive(false);if marker then marker:Destroy();marker=nil end end)
+Input.InputBegan:Connect(function(input) if input.KeyCode==Enum.KeyCode.Escape then finishDrag(false);if placing then stop() end end end)
+plugin.Unloading:Connect(function() drag=nil;if marker then marker:Destroy() end;if planEditor then planEditor.Destroy() end;widget:Destroy() end)
+refresh(P.normalize())
+print('[BoraBuilding] v1.2.0 ready: floor-plan pivots / walls / walkable stairs / working elevators / Undo')
+]]></string>
+      </Properties>
+    </Item>
+    <Item class="Script" referent="7">
+      <Properties>
+        <string name="Name">RuntimeTemplate</string>
+        <BinaryString name="AttributesSerialize">AgAAAAkAAABCb3JhT3duZWQDAQ8AAABCdWlsZGluZ1ZlcnNpb24CBQAAADEuMi4w</BinaryString>
+        <bool name="Disabled">true</bool>
+        <string name="Source"><![CDATA[-- [BoraBuilding] elevator runtime. Geometry is authored in Studio; Play animates it.
+local Players=game:GetService('Players');local Run=game:GetService('RunService')
+local Replicated=game:GetService('ReplicatedStorage')
+local Motion=require(script.BuildingElevatorMotion)
+local Actor=require(script.BuildingElevatorActor)({CFrame=CFrame,Vector3=Vector3},Motion)
+local remote=Replicated:FindFirstChild('BoraBuildingElevator')
+if remote then assert(remote:IsA('RemoteEvent') and remote:GetAttribute('BoraOwned'),'Elevator remote name collision')
+else remote=Instance.new('RemoteEvent');remote.Name='BoraBuildingElevator';remote:SetAttribute('BoraOwned',true);remote.Parent=Replicated end
+local actors={};local requests={}
+local function characters() local out={};for _,p in Players:GetPlayers() do if p.Character then table.insert(out,p.Character) end end;return out end
+local function near(player,part)
+	local root=player.Character and player.Character:FindFirstChild('HumanoidRootPart')
+	local h=player.Character and player.Character:FindFirstChildOfClass('Humanoid')
+	return root and h and h.Health>0 and (root.CFrame.Position-part.CFrame.Position).Magnitude<=10
+end
+local function register(model)
+	if not model:IsA('Model') or model:GetAttribute('BoraElevator')~=true or actors[model] then return end
+	if not model:FindFirstChild('ShaftOrigin') or not model:FindFirstChild('Cab') or not model:FindFirstChild('Stops') or not model:FindFirstChild('Landings') then return end
+	local ok,actor=pcall(Actor.new,model,characters);if not ok then warn('[BoraBuilding] elevator: '..tostring(actor));return end
+	actors[model]=actor
+	for floor=1,#actor.State.Stops do
+		local button=model.Landings['Floor_'..floor].CallButton
+		table.insert(actor.Connections,button.Call.Triggered:Connect(function(player) if near(player,button) then Motion.request(actor.State,floor) end end))
+	end
+	table.insert(actor.Connections,model.Cab.ControlPanel.SelectFloor.Triggered:Connect(function(player)
+		if actor:inside(player.Character) then remote:FireClient(player,'Open',model,#actor.State.Stops,actor.State.Floor) end
+	end))
+end
+for _,model in workspace:GetDescendants() do register(model) end
+workspace.DescendantAdded:Connect(function(item)
+	if item:IsA('Model') then task.defer(function() if item:IsDescendantOf(workspace) then register(item) end end) end
+end)
+workspace.DescendantRemoving:Connect(function(item) local actor=actors[item];if actor then actor:destroy();actors[item]=nil end end)
+remote.OnServerEvent:Connect(function(player,model,floor)
+	local actor=actors[model];if not actor or not actor:inside(player.Character) then return end
+	local now=os.clock();if now-(requests[player] or -math.huge)<.2 then return end;requests[player]=now
+	Motion.request(actor.State,floor)
+end)
+Players.PlayerRemoving:Connect(function(player) requests[player]=nil end)
+Run.Heartbeat:Connect(function(dt)
+	for model,actor in actors do
+		local ok,err=pcall(actor.step,actor,dt)
+		if not ok then actor:destroy();actors[model]=nil;warn('[BoraBuilding] stopped elevator: '..tostring(err)) end
+	end
+end)
+game:BindToClose(function() for _,actor in actors do actor:destroy() end end)
+]]></string>
+      </Properties>
+      <Item class="ModuleScript" referent="8">
+        <Properties>
+          <string name="Name">BuildingElevatorMotion</string>
+          <string name="Source"><![CDATA[-- Deterministic stop/door/travel controller; units are metres and seconds.
+local M={}
+function M.new(stops)
+	assert(#stops>=2);return {Stops=stops,Floor=1,Y=stops[1],Phase='Idle',Door=1,Queue={},Speed=0,Clock=0}
+end
+function M.request(s,floor)
+	if type(floor)~='number' or floor%1~=0 or not s.Stops[floor] then return false end
+	if floor==s.Floor and s.Phase=='Idle' then s.Clock=0;return true end
+	if floor==s.Target or table.find(s.Queue,floor) then return true end
+	if #s.Queue>=#s.Stops then return false end
+	table.insert(s.Queue,floor);return true
+end
+function M.step(s,dt)
+	dt=math.clamp(dt,0,.1)
+	if s.Phase=='Idle' then
+		s.Clock+=dt
+		if #s.Queue>0 and s.Clock>=1 then s.Target=table.remove(s.Queue,1);s.Phase='Closing';s.Clock=0 end
+	elseif s.Phase=='Closing' then
+		s.Door=math.max(0,s.Door-dt/.65)
+		if s.Door==0 then s.Phase='Moving';s.Speed=0 end
+	elseif s.Phase=='Moving' then
+		local target=s.Stops[s.Target];local distance=math.abs(target-s.Y)
+		s.Speed=math.min(1.8,s.Speed+2*dt,math.sqrt(4*distance))
+		local travel=math.min(distance,s.Speed*dt)
+		s.Y+=math.sign(target-s.Y)*travel
+		if distance<=.002 or travel>=distance then s.Y=target;s.Floor=s.Target;s.Target=nil;s.Speed=0;s.Phase='Opening' end
+	elseif s.Phase=='Opening' then
+		s.Door=math.min(1,s.Door+dt/.65)
+		if s.Door==1 then s.Phase='Idle';s.Clock=0 end
+	end
+	return s
+end
+return M
+]]></string>
+        </Properties>
+      </Item>
+      <Item class="ModuleScript" referent="9">
+        <Properties>
+          <string name="Name">BuildingElevatorActor</string>
+          <string name="Source"><![CDATA[-- Owns one moving cab and its passengers. Destroy/error always releases riders.
+return function(api,Motion)
+	local A={};A.__index=A;local S=1/.28;local C=api.CFrame
+	function A.new(model,characters)
+		local stops={};for floor=1,model:GetAttribute('Floors') do stops[floor]=model.Stops['Floor_'..floor].Value/S end
+		local self=setmetatable({Model=model,Characters=characters,State=Motion.new(stops),Riders={},CabParts={},LandingDoors={},Connections={}},A)
+		local base=model.ShaftOrigin.CFrame;self.Base=base
+		for _,p in model.Cab:GetDescendants() do if p:IsA('BasePart') then
+			table.insert(self.CabParts,{Part=p,Frame=base:ToObjectSpace(p.CFrame),Side=p:GetAttribute('DoorSide')})
+		end end
+		for floor=1,#stops do
+			local landing=model.Landings['Floor_'..floor]
+			for _,name in {'DoorLeft','DoorRight'} do local p=landing[name];table.insert(self.LandingDoors,{Part=p,Frame=base:ToObjectSpace(p.CFrame),Side=p:GetAttribute('DoorSide'),Floor=floor}) end
+		end
+		self:pose();return self
+	end
+	function A:inside(character)
+		if not character then return nil end
+		local root=character:FindFirstChild('HumanoidRootPart');local h=character:FindFirstChildOfClass('Humanoid')
+		if not root or not h or h.Health<=0 or h.SeatPart then return nil end
+		local frame=self.Base*C.new(0,self.State.Y*S,0);local p=frame:PointToObjectSpace(root.CFrame.Position)/S
+		if math.abs(p.X)>.98 or math.abs(p.Z)>1.04 or p.Y<.25 or p.Y>2.4 then return nil end
+		return root,frame:ToObjectSpace(root.CFrame)
+	end
+	function A:capture()
+		for _,character in self.Characters() do
+			local root,relative=self:inside(character)
+			if root and not root.Anchored then
+				self.Riders[root]={Relative=relative,Anchored=root.Anchored,Character=character};root.Anchored=true
+				if api.Vector3 then root.AssemblyLinearVelocity=api.Vector3.zero;root.AssemblyAngularVelocity=api.Vector3.zero end
+			end
+		end
+	end
+	function A:doorBlocked()
+		local frame=self.Base*C.new(0,self.State.Y*S,0)
+		for _,character in self.Characters() do
+			local root=character:FindFirstChild('HumanoidRootPart');local h=character:FindFirstChildOfClass('Humanoid')
+			if root and h and h.Health>0 then
+				local p=frame:PointToObjectSpace(root.CFrame.Position)/S
+				if math.abs(p.X)<.8 and p.Z> -1.75 and p.Z< -.75 and p.Y>.25 and p.Y<2.4 then return true end
+			end
+		end
+		return false
+	end
+	function A:release()
+		for root,rider in self.Riders do
+			root.Anchored=rider.Anchored
+			if api.Vector3 then root.AssemblyLinearVelocity=api.Vector3.zero;root.AssemblyAngularVelocity=api.Vector3.zero end
+		end
+		table.clear(self.Riders)
+	end
+	function A:pose()
+		local s=self.State;local frame=self.Base*C.new(0,s.Y*S,0)
+		for _,piece in self.CabParts do
+			local offset=if piece.Side then C.new(piece.Side*.66*S*s.Door,0,0) else C.new()
+			piece.Part.CFrame=frame*offset*piece.Frame
+		end
+		for _,piece in self.LandingDoors do
+			local open=if piece.Floor==s.Floor and s.Phase~='Moving' then s.Door else 0
+			piece.Part.CFrame=self.Base*C.new(piece.Side*.67*S*open,0,0)*piece.Frame
+		end
+		for root,rider in self.Riders do
+			local h=rider.Character:FindFirstChildOfClass('Humanoid')
+			if root.Parent and h and h.Health>0 then root.CFrame=frame*rider.Relative
+			else root.Anchored=rider.Anchored;self.Riders[root]=nil end
+		end
+		self.Model:SetAttribute('CurrentFloor',s.Floor);self.Model:SetAttribute('ElevatorPhase',s.Phase)
+		local panel=self.Model.Cab:FindFirstChild('ControlPanel')
+		if panel and panel:FindFirstChild('Display') then panel.Display.FloorText.Text=tostring(s.Floor)..'층'..(if s.Phase=='Moving' then ' 이동 중' else '') end
+	end
+	function A:step(dt)
+		if self.State.Phase=='Closing' and self:doorBlocked() then self.State.Door=1;self:pose();return end
+		local previous=self.State.Phase;Motion.step(self.State,dt)
+		if previous~='Moving' and self.State.Phase=='Moving' then self:capture() end
+		self:pose()
+		if previous=='Moving' and self.State.Phase~='Moving' then self:release() end
+	end
+	function A:destroy()
+		self:release();for _,connection in self.Connections do connection:Disconnect() end;table.clear(self.Connections)
+	end
+	return A
+end
+]]></string>
+        </Properties>
+      </Item>
+    </Item>
+    <Item class="LocalScript" referent="10">
+      <Properties>
+        <string name="Name">ClientTemplate</string>
+        <BinaryString name="AttributesSerialize">AgAAAAkAAABCb3JhT3duZWQDAQ8AAABCdWlsZGluZ1ZlcnNpb24CBQAAADEuMi4w</BinaryString>
+        <bool name="Disabled">true</bool>
+        <string name="Source"><![CDATA[local Players=game:GetService('Players');local Input=game:GetService('UserInputService');local Run=game:GetService('RunService')
+local player=Players.LocalPlayer;local remote=game:GetService('ReplicatedStorage'):WaitForChild('BoraBuildingElevator')
+local gui=Instance.new('ScreenGui');gui.Name='BoraElevatorFloors';gui.ResetOnSpawn=false;gui.Enabled=false;gui.Parent=player:WaitForChild('PlayerGui')
+local frame=Instance.new('Frame');frame.AnchorPoint=Vector2.new(.5,.5);frame.Position=UDim2.fromScale(.5,.5);frame.Size=UDim2.new(.8,0,0,410)
+frame.BackgroundColor3=Color3.fromRGB(30,38,40);frame.Parent=gui
+local constraint=Instance.new('UISizeConstraint');constraint.MaxSize=Vector2.new(360,410);constraint.Parent=frame
+local title=Instance.new('TextLabel');title.Size=UDim2.new(1,-60,0,48);title.Position=UDim2.fromOffset(14,0);title.BackgroundTransparency=1
+title.Text,title.TextColor3,title.TextSize,title.Font='이동할 층 선택',Color3.new(1,1,1),22,Enum.Font.SourceSansBold;title.Parent=frame
+local close=Instance.new('TextButton');close.Text='닫기';close.Position=UDim2.new(1,-60,0,10);close.Size=UDim2.fromOffset(50,30);close.Parent=frame
+local list=Instance.new('ScrollingFrame');list.Position=UDim2.fromOffset(14,54);list.Size=UDim2.new(1,-28,1,-68);list.BackgroundTransparency=1;list.BorderSizePixel=0;list.ScrollBarThickness=5;list.Parent=frame
+local layout=Instance.new('UIGridLayout');layout.CellSize=UDim2.new(1/3,-6,0,50);layout.CellPadding=UDim2.fromOffset(6,6);layout.Parent=list
+local target=nil
+local function hide() gui.Enabled=false;target=nil end
+close.MouseButton1Click:Connect(hide)
+Input.InputBegan:Connect(function(input) if input.KeyCode==Enum.KeyCode.Escape then hide() end end)
+player.CharacterRemoving:Connect(hide)
+remote.OnClientEvent:Connect(function(action,model,floors,current)
+	if action~='Open' or not model or not model:IsDescendantOf(workspace) then return end
+	for _,child in list:GetChildren() do if child:IsA('TextButton') then child:Destroy() end end
+	target=model
+	for floor=1,math.clamp(floors,2,24) do
+		local b=Instance.new('TextButton');b.Text=floor..'층'..(if floor==current then ' · 현재' else '');b.TextColor3=Color3.new(1,1,1)
+		b.BackgroundColor3=if floor==current then Color3.fromRGB(83,132,108) else Color3.fromRGB(59,74,78)
+		b.TextSize,b.Font,b.LayoutOrder,b.Parent=18,Enum.Font.SourceSansBold,floor,list
+		b.MouseButton1Click:Connect(function() if target then remote:FireServer(target,floor) end;hide() end)
+	end
+	list.CanvasSize=UDim2.fromOffset(0,math.ceil(floors/3)*56);gui.Enabled=true
+end)
+Run.Heartbeat:Connect(function()
+	if not target then return end
+	local root=player.Character and player.Character:FindFirstChild('HumanoidRootPart')
+	local cab=target.Parent and target:FindFirstChild('Cab');local origin=cab and cab:FindFirstChild('CabRoot')
+	if not root or not origin or (root.Position-origin.Position).Magnitude>16 then hide() end
+end)
+]]></string>
+      </Properties>
+    </Item>
+    <Item class="Model" referent="11">
+      <Properties>
+        <string name="Name">Decorations</string>
+      </Properties>
+      <Item class="Model" referent="12">
+        <Properties>
+          <string name="Name">WallSconce</string>
+          <BinaryString name="AttributesSerialize">AgAAAAoAAABTb3VyY2VUYXNrAiQAAABlYjY1NjRhMy1mNDlkLTQyM2ItYWU1Ni1lZWU0NWU3MjI0NjYJAAAAVHJpYW5nbGVzBQDAtEU=</BinaryString>
+        </Properties>
+        <Item class="Part" referent="13">
+          <Properties>
+            <string name="Name">Sconce_1</string>
+            <bool name="Anchored">true</bool>
+            <CoordinateFrame name="CFrame">
+              <X>0</X>
+              <Y>0</Y>
+              <Z>0</Z>
+              <R00>1</R00>
+              <R01>0</R01>
+              <R02>0</R02>
+              <R10>0</R10>
+              <R11>1</R11>
+              <R12>0</R12>
+              <R20>0</R20>
+              <R21>0</R21>
+              <R22>1</R22>
+            </CoordinateFrame>
+            <bool name="CanCollide">false</bool>
+            <bool name="CanQuery">false</bool>
+            <bool name="CanTouch">false</bool>
+            <Color3uint8 name="Color3uint8">3226173</Color3uint8>
+            <token name="Material">1088</token>
+            <Vector3 name="size">
+              <X>0.72579956</X>
+              <Y>1.3320923</Y>
+              <Z>0.91407776</Z>
+            </Vector3>
+            <float name="Transparency">0</float>
+          </Properties>
+          <Item class="SpecialMesh" referent="14">
+            <Properties>
+              <string name="Name">SpecialMesh</string>
+              <Content name="MeshContent">
+                <uri>rbxasset://BoraBuildingKit/WallSconce_0.mesh</uri>
+              </Content>
+              <token name="MeshType">5</token>
+              <Vector3 name="Scale">
+                <X>3.5714264</X>
+                <Y>3.5714264</Y>
+                <Z>3.5714264</Z>
+              </Vector3>
+            </Properties>
+          </Item>
+        </Item>
+        <Item class="Part" referent="15">
+          <Properties>
+            <string name="Name">Sconce_2</string>
+            <bool name="Anchored">true</bool>
+            <CoordinateFrame name="CFrame">
+              <X>0</X>
+              <Y>0</Y>
+              <Z>0</Z>
+              <R00>1</R00>
+              <R01>0</R01>
+              <R02>0</R02>
+              <R10>0</R10>
+              <R11>1</R11>
+              <R12>0</R12>
+              <R20>0</R20>
+              <R21>0</R21>
+              <R22>1</R22>
+            </CoordinateFrame>
+            <bool name="CanCollide">false</bool>
+            <bool name="CanQuery">false</bool>
+            <bool name="CanTouch">false</bool>
+            <Color3uint8 name="Color3uint8">11848910</Color3uint8>
+            <token name="Material">1568</token>
+            <Vector3 name="size">
+              <X>0.63835144</X>
+              <Y>0.5873413</Y>
+              <Z>0.63835144</Z>
+            </Vector3>
+            <float name="Transparency">0.72</float>
+          </Properties>
+          <Item class="SpecialMesh" referent="16">
+            <Properties>
+              <string name="Name">SpecialMesh</string>
+              <Content name="MeshContent">
+                <uri>rbxasset://BoraBuildingKit/WallSconce_1.mesh</uri>
+              </Content>
+              <token name="MeshType">5</token>
+              <Vector3 name="Scale">
+                <X>3.5714264</X>
+                <Y>3.5714264</Y>
+                <Z>3.5714264</Z>
+              </Vector3>
+            </Properties>
+          </Item>
+        </Item>
+        <Item class="Part" referent="17">
+          <Properties>
+            <string name="Name">Sconce_3</string>
+            <bool name="Anchored">true</bool>
+            <CoordinateFrame name="CFrame">
+              <X>0</X>
+              <Y>0</Y>
+              <Z>0</Z>
+              <R00>1</R00>
+              <R01>0</R01>
+              <R02>0</R02>
+              <R10>0</R10>
+              <R11>1</R11>
+              <R12>0</R12>
+              <R20>0</R20>
+              <R21>0</R21>
+              <R22>1</R22>
+            </CoordinateFrame>
+            <bool name="CanCollide">false</bool>
+            <bool name="CanQuery">false</bool>
+            <bool name="CanTouch">false</bool>
+            <Color3uint8 name="Color3uint8">16114620</Color3uint8>
+            <token name="Material">272</token>
+            <Vector3 name="size">
+              <X>0.26234436</X>
+              <Y>0.43286133</Y>
+              <Z>0.26234436</Z>
+            </Vector3>
+            <float name="Transparency">0</float>
+          </Properties>
+          <Item class="SpecialMesh" referent="18">
+            <Properties>
+              <string name="Name">SpecialMesh</string>
+              <Content name="MeshContent">
+                <uri>rbxasset://BoraBuildingKit/WallSconce_2.mesh</uri>
+              </Content>
+              <token name="MeshType">5</token>
+              <Vector3 name="Scale">
+                <X>3.5714264</X>
+                <Y>3.5714264</Y>
+                <Z>3.5714264</Z>
+              </Vector3>
+            </Properties>
+          </Item>
+        </Item>
+      </Item>
+    </Item>
+  </Item>
+</roblox>

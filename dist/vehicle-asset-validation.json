@@ -1,0 +1,10 @@
+{
+  "DisplayName": "BORA S3",
+  "triangles": 176384,
+  "parts": 84,
+  "maxPartTriangles": 7600,
+  "properAxisConversion": true,
+  "clearForwardEyeRay": true,
+  "driverFacingSteering": true,
+  "approvedSourceUnchanged": true
+}

@@ -1,0 +1,40 @@
+{
+  "input": "C:\\Users\\jinug\\Desktop\\SEUNGMIN_BAEK\\Ro\\assets\\vehicles\\BoraS3\\BoraS3.blend",
+  "blender_version": "5.2.2 LTS",
+  "scene_unit_scale_length": 1.0,
+  "face_tags": [],
+  "area_epsilon_object_units_squared": 1e-12,
+  "objects": [
+    {
+      "object": "Front | continuous bumper and lamp apertures",
+      "coordinate_space": "object-local",
+      "object_scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "selected_faces": 2228,
+      "selected_vertices": 2222,
+      "selected_triangles": 4456,
+      "quads": 2228,
+      "ngons": 0,
+      "positions_finite": true,
+      "normals_finite": true,
+      "nonunit_or_invalid_corner_normals": 0,
+      "active_uv_layer": "UVMap",
+      "uv_finite": true,
+      "components": [
+        {
+          "faces": 2228,
+          "vertices": 2222,
+          "edges": 4456,
+          "open_edges": 0,
+          "nonmanifold_edges": 0,
+          "euler": -6,
+          "degenerate_faces": 0,
+          "closed": true
+        }
+      ]
+    }
+  ]
+}

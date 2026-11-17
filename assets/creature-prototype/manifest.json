@@ -1,0 +1,2565 @@
+{
+  "schemaVersion": 1,
+  "kind": "minimal-source-and-configuration-preservation",
+  "project": "creature_prototype",
+  "capturedLocalDate": "2026-10-29",
+  "studio": {
+    "name": "Place1",
+    "device": "default",
+    "placeId": 0,
+    "mode": "Edit",
+    "orientation": "Enum.ScreenOrientation.LandscapeRight"
+  },
+  "scope": {
+    "exactScriptSources": true,
+    "sourceCount": 20,
+    "totalSourceBytes": 105823,
+    "configurationSummaryOnly": true,
+    "sceneGeometrySerialized": false,
+    "rbxmxFiles": 0,
+    "fullyRestorablePackage": false,
+    "restorationExecutionTested": false,
+    "playerRuntimeStateExported": false,
+    "persistenceAdded": false,
+    "studioModified": false,
+    "placeSaved": false,
+    "buildExecuted": false
+  },
+  "placeBefore": [
+    {
+      "path": "C:\\Users\\jinug\\Desktop\\SEUNGMIN_BAEK\\Ro\\Ro.rbxlx",
+      "bytes": 54746429,
+      "sha256": "56C098CDB2C3CDA83CA303D50B08D15A3F1CEB830B75F0A636AEB8735587E516"
+    }
+  ],
+  "placeAfter": [
+    {
+      "path": "C:\\Users\\jinug\\Desktop\\SEUNGMIN_BAEK\\Ro\\Ro.rbxlx",
+      "bytes": 54746429,
+      "sha256": "56C098CDB2C3CDA83CA303D50B08D15A3F1CEB830B75F0A636AEB8735587E516"
+    }
+  ],
+  "sources": [
+    {
+      "sourceBytes": 16957,
+      "path": "ServerScriptService.SeaCaptureServer_Stage2",
+      "name": "SeaCaptureServer_Stage2",
+      "className": "Script",
+      "parent": "ServerScriptService",
+      "runContext": "Enum.RunContext.Legacy",
+      "archivable": true,
+      "disabled": false,
+      "file": "src/creature_prototype/ServerScriptService/SeaCaptureServer_Stage2.server.luau",
+      "encoding": "UTF-8",
+      "byteOrderMark": false,
+      "sourceLines": 278,
+      "lineEndings": "LF",
+      "endsWithNewline": true,
+      "dependencyLines": [
+        "local region = workspace:WaitForChild(\"SeaRegion_Stage1\")",
+        "local exploration=region:WaitForChild(\"Stage8_Exploration\")",
+        "local legendRoot=region:WaitForChild(\"Stage9_Legend\")",
+        " {model=region:WaitForChild(\"Stage2_Collection\"):WaitForChild(\"ActiveBeachSite\"),zone=\"beach\"},",
+        " {model=exploration:WaitForChild(\"Active_coral\"),zone=\"coral\"},",
+        " {model=exploration:WaitForChild(\"Active_far\"),zone=\"far\"},",
+        " {model=legendRoot:WaitForChild(\"SeaDragonSite\"),zone=\"far\",legend=true},",
+        "for _,site in ipairs(sites) do site.anchor=site.model:WaitForChild(\"PromptAnchor\"); site.prompt=site.anchor:WaitForChild(site.legend and \"AwakenSeaDragon\" or \"FindCreature\") end",
+        "local Catalog=require(ReplicatedStorage:WaitForChild(\"SpeciesCatalog_Stage8\"))",
+        "local access=game.ServerScriptService:WaitForChild(\"SeaExplorationServer_Stage8\"):WaitForChild(\"CheckAccess\")",
+        "local resultEvent = ReplicatedStorage:WaitForChild(\"SeaCapture_Stage2\"):WaitForChild(\"CaptureResult\")",
+        "local templates = ServerStorage:WaitForChild(\"SeaCapture_Stage2\"):WaitForChild(\"SpeciesTools_Stage8\")",
+        "local Economy=require(game.ServerScriptService:WaitForChild(\"PlayerEconomy_Stage11\"))",
+        "local equipEvent=ReplicatedStorage.SeaCapture_Stage2:WaitForChild(\"EquipIndividual\")",
+        "local Growth=require(ReplicatedStorage:WaitForChild(\"TrainingRules_Stage6\"))",
+        "local getTraining=game.ServerScriptService:WaitForChild(\"TrainingServer_Stage6\"):WaitForChild(\"GetTrainingStats\")",
+        "local beginGrowth=game.ServerScriptService.TrainingServer_Stage6:WaitForChild(\"BeginGrowthAction\")",
+        "local endGrowth=game.ServerScriptService.TrainingServer_Stage6:WaitForChild(\"EndGrowthAction\")",
+        "   player:WaitForChild(\"Backpack\",10)"
+      ],
+      "serviceNames": [
+        "Players",
+        "RunService",
+        "ReplicatedStorage",
+        "ServerStorage",
+        "HttpService"
+      ],
+      "sha256": "4a83addaf47fea703e5bac9ca15884aee607892c94f412cd9a6a2ea0a53d4dae"
+    },
+    {
+      "sourceBytes": 9662,
+      "path": "ServerScriptService.SeaExhibitionServer_Stage4",
+      "name": "SeaExhibitionServer_Stage4",
+      "className": "Script",
+      "parent": "ServerScriptService",
+      "runContext": "Enum.RunContext.Legacy",
+      "archivable": true,
+      "disabled": false,
+      "file": "src/creature_prototype/ServerScriptService/SeaExhibitionServer_Stage4.server.luau",
+      "encoding": "UTF-8",
+      "byteOrderMark": false,
+      "sourceLines": 134,
+      "lineEndings": "LF",
+      "endsWithNewline": true,
+      "dependencyLines": [
+        "local root=workspace:WaitForChild(\"CentralHub_Stage5\"):WaitForChild(\"Stage4_Exhibition\")",
+        "local origin=root:WaitForChild(\"ArenaOrigin\")",
+        "local event=game.ReplicatedStorage:WaitForChild(\"SeaBattle_Stage4\"):WaitForChild(\"BattleEvent\")",
+        "local rules=require(script:WaitForChild(\"BattleRules\"))",
+        "local owned=game.ServerScriptService:WaitForChild(\"SeaCaptureServer_Stage2\"):WaitForChild(\"GetOwnedIndividual_Stage4\")",
+        "local templates=game.ReplicatedStorage:WaitForChild(\"CreaturePreviews_Stage8\")",
+        "local Catalog=require(game.ReplicatedStorage:WaitForChild(\"SpeciesCatalog_Stage8\"))"
+      ],
+      "serviceNames": [
+        "Players",
+        "HttpService",
+        "TweenService"
+      ],
+      "sha256": "c6780d8fe9f029f50170f774a2283322184f4bd64ec7dbb01a4df4f3a0aba67d"
+    },
+    {
+      "sourceBytes": 614,
+      "path": "ServerScriptService.SeaExhibitionServer_Stage4.BattleRules",
+      "name": "BattleRules",
+      "className": "ModuleScript",
+      "parent": "ServerScriptService.SeaExhibitionServer_Stage4",
+      "archivable": true,
+      "file": "src/creature_prototype/ServerScriptService/SeaExhibitionServer_Stage4/BattleRules.luau",
+      "encoding": "UTF-8",
+      "byteOrderMark": false,
+      "sourceLines": 11,
+      "lineEndings": "LF",
+      "endsWithNewline": false,
+      "dependencyLines": [],
+      "serviceNames": [],
+      "sha256": "2ec19b2222e94139bc7bc3849a1b50eba85903a45c052c52d0cc7c834220afeb"
+    },
+    {
+      "sourceBytes": 864,
+      "path": "ServerScriptService.HubSafetyServer_Stage5",
+      "name": "HubSafetyServer_Stage5",
+      "className": "Script",
+      "parent": "ServerScriptService",
+      "runContext": "Enum.RunContext.Legacy",
+      "archivable": true,
+      "disabled": false,
+      "file": "src/creature_prototype/ServerScriptService/HubSafetyServer_Stage5.server.luau",
+      "encoding": "UTF-8",
+      "byteOrderMark": false,
+      "sourceLines": 17,
+      "lineEndings": "LF",
+      "endsWithNewline": false,
+      "dependencyLines": [
+        "local root=workspace:WaitForChild(\"CentralHub_Stage5\")",
+        "local origin=root:WaitForChild(\"HubOrigin\")"
+      ],
+      "serviceNames": [
+        "Players",
+        "RunService"
+      ],
+      "sha256": "36c647a1ba2a700d04a2eefa90cbf827df46c6320a1ba102c56dadac8a4395d1"
+    },
+    {
+      "sourceBytes": 9158,
+      "path": "ServerScriptService.TrainingServer_Stage6",
+      "name": "TrainingServer_Stage6",
+      "className": "Script",
+      "parent": "ServerScriptService",
+      "runContext": "Enum.RunContext.Legacy",
+      "archivable": true,
+      "disabled": false,
+      "file": "src/creature_prototype/ServerScriptService/TrainingServer_Stage6.server.luau",
+      "encoding": "UTF-8",
+      "byteOrderMark": false,
+      "sourceLines": 145,
+      "lineEndings": "LF",
+      "endsWithNewline": true,
+      "dependencyLines": [
+        "local Growth=require(game.ReplicatedStorage:WaitForChild(\"TrainingRules_Stage6\"))",
+        "local root=workspace:WaitForChild(\"CentralHub_Stage5\"):WaitForChild(\"Stage6_Training\")",
+        "local zones={{name=\"Speed\",machine=root:WaitForChild(\"SpeedTreadmill\")},{name=\"Strength\",machine=root:WaitForChild(\"StrengthMachine\")}}",
+        "for _,z in ipairs(zones) do z.surface=z.machine:WaitForChild(\"TrainingSurface\") end",
+        "local Economy=require(game.ServerScriptService:WaitForChild(\"PlayerEconomy_Stage11\"))",
+        "local remote=game.ReplicatedStorage:WaitForChild(\"Rebirth_Stage7\")",
+        "local request=remote:WaitForChild(\"Request\"); local response=remote:WaitForChild(\"Result\")",
+        "  task.spawn(function() local h=c:WaitForChild(\"Humanoid\",10); if h and p.Character==c then h.WalkSpeed=Growth.WalkSpeed(s.speed); publish(p,s) end end)",
+        "local upgrades=game.ReplicatedStorage:WaitForChild(\"TrainingUpgrade_Stage11\")"
+      ],
+      "serviceNames": [
+        "Players",
+        "RunService"
+      ],
+      "sha256": "65480ca02c4ca4bab406acfa1df9f347018e55fd0ae393d43a731b27ce8c3541"
+    },
+    {
+      "sourceBytes": 1921,
+      "path": "ServerScriptService.SeaExplorationServer_Stage8",
+      "name": "SeaExplorationServer_Stage8",
+      "className": "Script",
+      "parent": "ServerScriptService",
+      "runContext": "Enum.RunContext.Legacy",
+      "archivable": true,
+      "disabled": false,
+      "file": "src/creature_prototype/ServerScriptService/SeaExplorationServer_Stage8.server.luau",
+      "encoding": "UTF-8",
+      "byteOrderMark": false,
+      "sourceLines": 39,
+      "lineEndings": "LF",
+      "endsWithNewline": false,
+      "dependencyLines": [
+        "local Catalog=require(game.ReplicatedStorage:WaitForChild(\"SpeciesCatalog_Stage8\"))",
+        "local getter=game.ServerScriptService:WaitForChild(\"TrainingServer_Stage6\"):WaitForChild(\"GetTrainingStats\")"
+      ],
+      "serviceNames": [
+        "Players",
+        "RunService"
+      ],
+      "sha256": "beb00479e29ffa62cc645d691e2a5fe4f6365c1033ea25fbc3c5d0fa160d8968"
+    },
+    {
+      "sourceBytes": 4456,
+      "path": "ServerScriptService.JourneyServer_Stage10",
+      "name": "JourneyServer_Stage10",
+      "className": "Script",
+      "parent": "ServerScriptService",
+      "runContext": "Enum.RunContext.Legacy",
+      "archivable": true,
+      "disabled": false,
+      "file": "src/creature_prototype/ServerScriptService/JourneyServer_Stage10.server.luau",
+      "encoding": "UTF-8",
+      "byteOrderMark": false,
+      "sourceLines": 77,
+      "lineEndings": "LF",
+      "endsWithNewline": true,
+      "dependencyLines": [],
+      "serviceNames": [
+        "Players",
+        "RunService"
+      ],
+      "sha256": "54dbf6d6a5529d071e5334774c46da9223d1ef0e489226f1ad25ecb66297448d"
+    },
+    {
+      "sourceBytes": 2523,
+      "path": "ServerScriptService.PlayerEconomy_Stage11",
+      "name": "PlayerEconomy_Stage11",
+      "className": "ModuleScript",
+      "parent": "ServerScriptService",
+      "archivable": true,
+      "file": "src/creature_prototype/ServerScriptService/PlayerEconomy_Stage11.luau",
+      "encoding": "UTF-8",
+      "byteOrderMark": false,
+      "sourceLines": 45,
+      "lineEndings": "LF",
+      "endsWithNewline": false,
+      "dependencyLines": [
+        "local Rules=require(game.ReplicatedStorage:WaitForChild(\"TrainingEquipmentRules_Stage11\"))"
+      ],
+      "serviceNames": [
+        "Players",
+        "HttpService"
+      ],
+      "sha256": "2b04071ef7c4d997ebab704be6ac57752147696216b448116d2752d7b7292b59"
+    },
+    {
+      "sourceBytes": 448,
+      "path": "ReplicatedStorage.TrainingRules_Stage6",
+      "name": "TrainingRules_Stage6",
+      "className": "ModuleScript",
+      "parent": "ReplicatedStorage",
+      "archivable": true,
+      "file": "src/creature_prototype/ReplicatedStorage/TrainingRules_Stage6.luau",
+      "encoding": "UTF-8",
+      "byteOrderMark": false,
+      "sourceLines": 7,
+      "lineEndings": "LF",
+      "endsWithNewline": false,
+      "dependencyLines": [
+        "local Catalog=require(game.ReplicatedStorage:WaitForChild(\"SpeciesCatalog_Stage8\"))"
+      ],
+      "serviceNames": [],
+      "sha256": "92d0224e84919da3967ae818e3154770ebb61a8af105e2a4d00b3f308e248dc3"
+    },
+    {
+      "sourceBytes": 878,
+      "path": "ReplicatedStorage.SpeciesCatalog_Stage8",
+      "name": "SpeciesCatalog_Stage8",
+      "className": "ModuleScript",
+      "parent": "ReplicatedStorage",
+      "archivable": true,
+      "file": "src/creature_prototype/ReplicatedStorage/SpeciesCatalog_Stage8.luau",
+      "encoding": "UTF-8",
+      "byteOrderMark": false,
+      "sourceLines": 21,
+      "lineEndings": "LF",
+      "endsWithNewline": false,
+      "dependencyLines": [],
+      "serviceNames": [],
+      "sha256": "1ea1a49ea9506a17dc489c3c6da5d5651649bffc2366da71a0b3e958f298008e"
+    },
+    {
+      "sourceBytes": 239,
+      "path": "ReplicatedStorage.TrainingEquipmentRules_Stage11",
+      "name": "TrainingEquipmentRules_Stage11",
+      "className": "ModuleScript",
+      "parent": "ReplicatedStorage",
+      "archivable": true,
+      "file": "src/creature_prototype/ReplicatedStorage/TrainingEquipmentRules_Stage11.luau",
+      "encoding": "UTF-8",
+      "byteOrderMark": false,
+      "sourceLines": 6,
+      "lineEndings": "LF",
+      "endsWithNewline": false,
+      "dependencyLines": [],
+      "serviceNames": [],
+      "sha256": "1b2de58bb998466922b44eb039e20eeca2f16be3f004303cc7b91ce4c08ae850"
+    },
+    {
+      "sourceBytes": 15648,
+      "path": "StarterPlayer.StarterPlayerScripts.SeaCaptureClient_Stage2",
+      "name": "SeaCaptureClient_Stage2",
+      "className": "LocalScript",
+      "parent": "StarterPlayer.StarterPlayerScripts",
+      "runContext": "Enum.RunContext.Legacy",
+      "archivable": true,
+      "disabled": false,
+      "file": "src/creature_prototype/StarterPlayer/StarterPlayerScripts/SeaCaptureClient_Stage2.client.luau",
+      "encoding": "UTF-8",
+      "byteOrderMark": false,
+      "sourceLines": 223,
+      "lineEndings": "LF",
+      "endsWithNewline": true,
+      "dependencyLines": [
+        "local shared=game:GetService(\"ReplicatedStorage\"):WaitForChild(\"SeaCapture_Stage2\")",
+        "local resultEvent=shared:WaitForChild(\"CaptureResult\")",
+        "local Catalog=require(game.ReplicatedStorage:WaitForChild(\"SpeciesCatalog_Stage8\"))",
+        "local previews=game.ReplicatedStorage:WaitForChild(\"CreaturePreviews_Stage8\")",
+        "local prompt=workspace:WaitForChild(\"SeaRegion_Stage1\"):WaitForChild(\"Stage2_Collection\"):WaitForChild(\"ActiveBeachSite\"):WaitForChild(\"PromptAnchor\"):WaitForChild(\"FindCreature\")",
+        "gui.Parent=player:WaitForChild(\"PlayerGui\")",
+        "local preview=shared:WaitForChild(\"CoralCrabPreview\"):Clone(); preview.Parent=world",
+        "local sea=workspace:WaitForChild(\"SeaRegion_Stage1\")"
+      ],
+      "serviceNames": [
+        "Players",
+        "UserInputService",
+        "TweenService",
+        "RunService",
+        "ContextActionService",
+        "ReplicatedStorage"
+      ],
+      "sha256": "e029a78975b04f04901a43166ca21e5c997fcbcbc83d95c839b91de5cc0fea49"
+    },
+    {
+      "sourceBytes": 6158,
+      "path": "StarterPlayer.StarterPlayerScripts.SeaInventoryClient_Stage3",
+      "name": "SeaInventoryClient_Stage3",
+      "className": "LocalScript",
+      "parent": "StarterPlayer.StarterPlayerScripts",
+      "runContext": "Enum.RunContext.Legacy",
+      "archivable": true,
+      "disabled": false,
+      "file": "src/creature_prototype/StarterPlayer/StarterPlayerScripts/SeaInventoryClient_Stage3.client.luau",
+      "encoding": "UTF-8",
+      "byteOrderMark": false,
+      "sourceLines": 64,
+      "lineEndings": "LF",
+      "endsWithNewline": true,
+      "dependencyLines": [
+        "local Catalog=require(game.ReplicatedStorage:WaitForChild(\"SpeciesCatalog_Stage8\"))",
+        "local Growth=require(game.ReplicatedStorage:WaitForChild(\"TrainingRules_Stage6\"))",
+        "local folder=player:WaitForChild(\"SeaCreatures_Stage3\")",
+        "local equip=game.ReplicatedStorage.SeaCapture_Stage2:WaitForChild(\"EquipIndividual\")",
+        "local gui=Instance.new(\"ScreenGui\"); gui.Name=\"SeaInventoryHUD\"; gui.ResetOnSpawn=false; gui.DisplayOrder=60; gui.Parent=player:WaitForChild(\"PlayerGui\")"
+      ],
+      "serviceNames": [
+        "Players"
+      ],
+      "sha256": "fda7abd6b2407dfd7bd0a20ef62a8e0a9f4452f4a3b10a37faf1f2405020bf1d"
+    },
+    {
+      "sourceBytes": 7095,
+      "path": "StarterPlayer.StarterPlayerScripts.SeaExhibitionClient_Stage4",
+      "name": "SeaExhibitionClient_Stage4",
+      "className": "LocalScript",
+      "parent": "StarterPlayer.StarterPlayerScripts",
+      "runContext": "Enum.RunContext.Legacy",
+      "archivable": true,
+      "disabled": false,
+      "file": "src/creature_prototype/StarterPlayer/StarterPlayerScripts/SeaExhibitionClient_Stage4.client.luau",
+      "encoding": "UTF-8",
+      "byteOrderMark": false,
+      "sourceLines": 70,
+      "lineEndings": "LF",
+      "endsWithNewline": true,
+      "dependencyLines": [
+        "local Catalog=require(game.ReplicatedStorage:WaitForChild(\"SpeciesCatalog_Stage8\"))",
+        "local Growth=require(game.ReplicatedStorage:WaitForChild(\"TrainingRules_Stage6\"))",
+        "local root=workspace:WaitForChild(\"CentralHub_Stage5\"):WaitForChild(\"Stage4_Exhibition\")",
+        "local prompt=root:WaitForChild(\"ChallengeAnchor\"):WaitForChild(\"Challenge\")",
+        "local event=game.ReplicatedStorage:WaitForChild(\"SeaBattle_Stage4\"):WaitForChild(\"BattleEvent\")",
+        "local gui=Instance.new(\"ScreenGui\"); gui.Name=\"SeaBattleHUD_Stage4\"; gui.ResetOnSpawn=false; gui.DisplayOrder=25; gui.Parent=player:WaitForChild(\"PlayerGui\")"
+      ],
+      "serviceNames": [
+        "Players",
+        "UserInputService",
+        "ContextActionService",
+        "RunService"
+      ],
+      "sha256": "dc7b8f038f9d53299cb051ff2766d642b1b39804fe4e2f5eb4f6c3096430a014"
+    },
+    {
+      "sourceBytes": 933,
+      "path": "StarterPlayer.StarterPlayerScripts.HubWelcomeClient_Stage5",
+      "name": "HubWelcomeClient_Stage5",
+      "className": "LocalScript",
+      "parent": "StarterPlayer.StarterPlayerScripts",
+      "runContext": "Enum.RunContext.Legacy",
+      "archivable": true,
+      "disabled": false,
+      "file": "src/creature_prototype/StarterPlayer/StarterPlayerScripts/HubWelcomeClient_Stage5.client.luau",
+      "encoding": "UTF-8",
+      "byteOrderMark": false,
+      "sourceLines": 18,
+      "lineEndings": "LF",
+      "endsWithNewline": false,
+      "dependencyLines": [
+        "local hub=workspace:WaitForChild(\"CentralHub_Stage5\")",
+        "local header=hub:WaitForChild(\"02_CardinalEntrances\"):WaitForChild(\"East_Sea\"):WaitForChild(\"GatewayHeader\")",
+        "local hrp=character:WaitForChild(\"HumanoidRootPart\")",
+        "local humanoid=character:WaitForChild(\"Humanoid\")"
+      ],
+      "serviceNames": [
+        "Players",
+        "RunService"
+      ],
+      "sha256": "7168bb0ff27e88ad4fdcc4b413d46cbee4908196ead612aabc421114c367ff4c"
+    },
+    {
+      "sourceBytes": 11377,
+      "path": "StarterPlayer.StarterPlayerScripts.TrainingClient_Stage6",
+      "name": "TrainingClient_Stage6",
+      "className": "LocalScript",
+      "parent": "StarterPlayer.StarterPlayerScripts",
+      "runContext": "Enum.RunContext.Legacy",
+      "archivable": true,
+      "disabled": false,
+      "file": "src/creature_prototype/StarterPlayer/StarterPlayerScripts/TrainingClient_Stage6.client.luau",
+      "encoding": "UTF-8",
+      "byteOrderMark": false,
+      "sourceLines": 134,
+      "lineEndings": "LF",
+      "endsWithNewline": true,
+      "dependencyLines": [
+        "local gui=Instance.new(\"ScreenGui\"); gui.Name=\"TrainingHUD_Stage6\"; gui.ResetOnSpawn=false; gui.DisplayOrder=15; gui.Parent=player:WaitForChild(\"PlayerGui\")",
+        "local root=workspace:WaitForChild(\"CentralHub_Stage5\"):WaitForChild(\"Stage6_Training\")",
+        "local speed=root:WaitForChild(\"SpeedTreadmill\"); local strength=root:WaitForChild(\"StrengthMachine\")",
+        "local weight=strength:WaitForChild(\"AnimatedWeight\"); local weightStart=weight.CFrame",
+        "local Equipment=require(game.ReplicatedStorage:WaitForChild(\"TrainingEquipmentRules_Stage11\"))",
+        "local Growth=require(game.ReplicatedStorage:WaitForChild(\"TrainingRules_Stage6\"))",
+        "local upgrades=game.ReplicatedStorage:WaitForChild(\"TrainingUpgrade_Stage11\")"
+      ],
+      "serviceNames": [
+        "Players",
+        "HttpService",
+        "RunService"
+      ],
+      "sha256": "eaf6f4e8e7b7652cabfb1243549f840eb0a263565cd1f679b94e2fdb6a5405c5"
+    },
+    {
+      "sourceBytes": 4553,
+      "path": "StarterPlayer.StarterPlayerScripts.RebirthClient_Stage7",
+      "name": "RebirthClient_Stage7",
+      "className": "LocalScript",
+      "parent": "StarterPlayer.StarterPlayerScripts",
+      "runContext": "Enum.RunContext.Legacy",
+      "archivable": true,
+      "disabled": false,
+      "file": "src/creature_prototype/StarterPlayer/StarterPlayerScripts/RebirthClient_Stage7.client.luau",
+      "encoding": "UTF-8",
+      "byteOrderMark": false,
+      "sourceLines": 50,
+      "lineEndings": "LF",
+      "endsWithNewline": true,
+      "dependencyLines": [
+        "local Growth=require(game.ReplicatedStorage:WaitForChild(\"TrainingRules_Stage6\"))",
+        "local remotes=game.ReplicatedStorage:WaitForChild(\"Rebirth_Stage7\")",
+        "local gui=Instance.new(\"ScreenGui\"); gui.Name=\"RebirthHUD_Stage7\"; gui.ResetOnSpawn=false; gui.DisplayOrder=40; gui.Parent=player:WaitForChild(\"PlayerGui\")"
+      ],
+      "serviceNames": [
+        "RunService"
+      ],
+      "sha256": "e20dfd5089dfd8bd30d708d31366023f6cf854ba92b9a5c65a54e7a45458c68e"
+    },
+    {
+      "sourceBytes": 1139,
+      "path": "StarterPlayer.StarterPlayerScripts.SeaExplorationClient_Stage8",
+      "name": "SeaExplorationClient_Stage8",
+      "className": "LocalScript",
+      "parent": "StarterPlayer.StarterPlayerScripts",
+      "runContext": "Enum.RunContext.Legacy",
+      "archivable": true,
+      "disabled": false,
+      "file": "src/creature_prototype/StarterPlayer/StarterPlayerScripts/SeaExplorationClient_Stage8.client.luau",
+      "encoding": "UTF-8",
+      "byteOrderMark": false,
+      "sourceLines": 18,
+      "lineEndings": "LF",
+      "endsWithNewline": false,
+      "dependencyLines": [
+        "local root=workspace:WaitForChild(\"SeaRegion_Stage1\"):WaitForChild(\"Stage8_Exploration\")",
+        "local Catalog=require(game.ReplicatedStorage:WaitForChild(\"SpeciesCatalog_Stage8\"))",
+        " local gate=root:WaitForChild(id..\"_Gate\")"
+      ],
+      "serviceNames": [],
+      "sha256": "ba35bbd8f4abb1d501293601c17722ef458a5dbf803e1efef0c7da9d62391465"
+    },
+    {
+      "sourceBytes": 4983,
+      "path": "StarterPlayer.StarterPlayerScripts.SeaLegendClient_Stage9",
+      "name": "SeaLegendClient_Stage9",
+      "className": "LocalScript",
+      "parent": "StarterPlayer.StarterPlayerScripts",
+      "runContext": "Enum.RunContext.Legacy",
+      "archivable": true,
+      "disabled": false,
+      "file": "src/creature_prototype/StarterPlayer/StarterPlayerScripts/SeaLegendClient_Stage9.client.luau",
+      "encoding": "UTF-8",
+      "byteOrderMark": false,
+      "sourceLines": 60,
+      "lineEndings": "LF",
+      "endsWithNewline": true,
+      "dependencyLines": [
+        "local root=workspace:WaitForChild(\"SeaRegion_Stage1\"):WaitForChild(\"Stage9_Legend\")",
+        "local Catalog=require(RS:WaitForChild(\"SpeciesCatalog_Stage8\"))",
+        "local gui=Instance.new(\"ScreenGui\"); gui.Name=\"SeaLegendReward_Stage9\"; gui.DisplayOrder=65; gui.ResetOnSpawn=false; gui.Parent=p:WaitForChild(\"PlayerGui\")",
+        " p.PlayerGui:WaitForChild(\"SeaInventoryHUD\"):WaitForChild(\"OpenSeaInventory_Stage9\"):Fire(focusId)"
+      ],
+      "serviceNames": [
+        "Players",
+        "ReplicatedStorage"
+      ],
+      "sha256": "e361437f67ae27525acc55e827694db575f62a375f001ec8dc483e33c6fdf758"
+    },
+    {
+      "sourceBytes": 6217,
+      "path": "StarterPlayer.StarterPlayerScripts.JourneyClient_Stage10",
+      "name": "JourneyClient_Stage10",
+      "className": "LocalScript",
+      "parent": "StarterPlayer.StarterPlayerScripts",
+      "runContext": "Enum.RunContext.Legacy",
+      "archivable": true,
+      "disabled": false,
+      "file": "src/creature_prototype/StarterPlayer/StarterPlayerScripts/JourneyClient_Stage10.client.luau",
+      "encoding": "UTF-8",
+      "byteOrderMark": false,
+      "sourceLines": 69,
+      "lineEndings": "LF",
+      "endsWithNewline": true,
+      "dependencyLines": [
+        "local sea=workspace:WaitForChild(\"SeaRegion_Stage1\")",
+        "local hub=workspace:WaitForChild(\"CentralHub_Stage5\")",
+        "local gui=Instance.new(\"BillboardGui\"); gui.Name=\"JourneyMarker_Stage10\"; gui.ResetOnSpawn=false; gui.Parent=p:WaitForChild(\"PlayerGui\")"
+      ],
+      "serviceNames": [
+        "RunService"
+      ],
+      "sha256": "87e269537e82ec00d327bcc3e12f92cfaf2ea2b9b6771a17bdf105a55789eaee"
+    }
+  ],
+  "dependencyDiscovery": {
+    "method": "Exact source lines containing require or WaitForChild, declared service names, and live Edit inventory; not a complete static analyzer.",
+    "allEditableScriptsOutsideSelectedServices": [],
+    "requiredEditRemotes": [
+      {
+        "className": "RemoteEvent",
+        "path": "ReplicatedStorage.SeaCapture_Stage2.CaptureResult"
+      },
+      {
+        "className": "RemoteEvent",
+        "path": "ReplicatedStorage.SeaCapture_Stage2.EquipIndividual"
+      },
+      {
+        "className": "RemoteEvent",
+        "path": "ReplicatedStorage.SeaBattle_Stage4.BattleEvent"
+      },
+      {
+        "className": "RemoteEvent",
+        "path": "ReplicatedStorage.Rebirth_Stage7.Request"
+      },
+      {
+        "className": "RemoteEvent",
+        "path": "ReplicatedStorage.Rebirth_Stage7.Result"
+      },
+      {
+        "className": "RemoteEvent",
+        "path": "ReplicatedStorage.TrainingUpgrade_Stage11.Request"
+      },
+      {
+        "className": "RemoteEvent",
+        "path": "ReplicatedStorage.TrainingUpgrade_Stage11.Result"
+      }
+    ],
+    "templateInventory": [
+      {
+        "descendantCount": 29,
+        "path": "ServerStorage.SeaCapture_Stage2.SpeciesTools_Stage8.coral_crab",
+        "name": "coral_crab",
+        "className": "Tool"
+      },
+      {
+        "descendantCount": 11,
+        "path": "ServerStorage.SeaCapture_Stage2.SpeciesTools_Stage8.droplet_ray",
+        "name": "droplet_ray",
+        "className": "Tool"
+      },
+      {
+        "descendantCount": 15,
+        "path": "ServerStorage.SeaCapture_Stage2.SpeciesTools_Stage8.glass_jelly",
+        "name": "glass_jelly",
+        "className": "Tool"
+      },
+      {
+        "descendantCount": 55,
+        "path": "ServerStorage.SeaCapture_Stage2.SpeciesTools_Stage8.sea_dragon",
+        "name": "sea_dragon",
+        "className": "Tool"
+      },
+      {
+        "descendantCount": 15,
+        "path": "ReplicatedStorage.CreaturePreviews_Stage8.coral_crab",
+        "name": "coral_crab",
+        "className": "Model"
+      },
+      {
+        "descendantCount": 6,
+        "path": "ReplicatedStorage.CreaturePreviews_Stage8.droplet_ray",
+        "name": "droplet_ray",
+        "className": "Model"
+      },
+      {
+        "descendantCount": 8,
+        "path": "ReplicatedStorage.CreaturePreviews_Stage8.glass_jelly",
+        "name": "glass_jelly",
+        "className": "Model"
+      },
+      {
+        "descendantCount": 28,
+        "path": "ReplicatedStorage.CreaturePreviews_Stage8.sea_dragon",
+        "name": "sea_dragon",
+        "className": "Model"
+      },
+      {
+        "descendantCount": 0,
+        "path": "ReplicatedStorage.SeaCapture_Stage2.CaptureResult",
+        "name": "CaptureResult",
+        "className": "RemoteEvent"
+      },
+      {
+        "descendantCount": 1,
+        "path": "ReplicatedStorage.SeaCapture_Stage2.CoralCrabPreview",
+        "name": "CoralCrabPreview",
+        "className": "Model"
+      },
+      {
+        "descendantCount": 0,
+        "path": "ReplicatedStorage.SeaCapture_Stage2.EquipIndividual",
+        "name": "EquipIndividual",
+        "className": "RemoteEvent"
+      }
+    ],
+    "runtimeCreatedDependencies": [
+      "TrainingServer_Stage6.GetTrainingStats / BeginGrowthAction / EndGrowthAction (BindableFunction)",
+      "SeaCaptureServer_Stage2.GetOwnedIndividual_Stage4 / GetActivity_Stage10 (BindableFunction)",
+      "SeaExplorationServer_Stage8.CheckAccess (BindableFunction)",
+      "JourneyServer_Stage10.ReadJourney (BindableFunction)",
+      "PlayerGui HUDs and local journey pillar are created by LocalScripts; not Edit assets."
+    ]
+  },
+  "configuration": {
+    "services": {
+      "ServerStorage": {
+        "path": "ServerStorage",
+        "tags": [],
+        "parent": "Place1",
+        "descendantCount": 135,
+        "name": "ServerStorage",
+        "className": "ServerStorage",
+        "childCount": 3,
+        "descendantClasses": {
+          "StringValue": 14,
+          "Folder": 5,
+          "Part": 57,
+          "MeshPart": 1,
+          "Tool": 5,
+          "WeldConstraint": 53
+        },
+        "children": [
+          {
+            "className": "Folder",
+            "path": "ServerStorage.SeaCapture_Stage2"
+          },
+          {
+            "className": "Folder",
+            "path": "ServerStorage.Stage6_SourceHistory"
+          },
+          {
+            "className": "Folder",
+            "path": "ServerStorage.Stage7_SourceHistory"
+          }
+        ],
+        "attributes": []
+      },
+      "StarterPlayer": {
+        "path": "StarterPlayer",
+        "tags": [],
+        "parent": "Place1",
+        "descendantCount": 11,
+        "name": "StarterPlayer",
+        "className": "StarterPlayer",
+        "childCount": 2,
+        "descendantClasses": {
+          "LocalScript": 9,
+          "StarterPlayerScripts": 1,
+          "StarterCharacterScripts": 1
+        },
+        "children": [
+          {
+            "className": "StarterPlayerScripts",
+            "path": "StarterPlayer.StarterPlayerScripts"
+          },
+          {
+            "className": "StarterCharacterScripts",
+            "path": "StarterPlayer.StarterCharacterScripts"
+          }
+        ],
+        "attributes": []
+      },
+      "Workspace": {
+        "path": "Workspace",
+        "tags": [],
+        "parent": "Place1",
+        "descendantCount": 314,
+        "children": [
+          {
+            "className": "Part",
+            "path": "Workspace.Baseplate"
+          },
+          {
+            "className": "Terrain",
+            "path": "Workspace.Terrain"
+          },
+          {
+            "className": "SpawnLocation",
+            "path": "Workspace.SpawnLocation"
+          },
+          {
+            "className": "Part",
+            "path": "Workspace.MCP_TestBlock"
+          },
+          {
+            "className": "Model",
+            "path": "Workspace.SeaRegion_Stage1"
+          },
+          {
+            "className": "Model",
+            "path": "Workspace.CentralHub_Stage5"
+          },
+          {
+            "className": "Part",
+            "path": "Workspace.MCP_TestBall"
+          },
+          {
+            "className": "Model",
+            "path": "Workspace.Highly detailed stylized coral crab game creature: a crab with a textured orange-pink coral shell, s"
+          }
+        ],
+        "bounds": {
+          "size": {
+            "value": [
+              2048,
+              252,
+              2048
+            ],
+            "type": "Vector3"
+          },
+          "cframe": {
+            "components": [
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "type": "CFrame"
+          }
+        },
+        "name": "Workspace",
+        "className": "Workspace",
+        "childCount": 9,
+        "descendantClasses": {
+          "Decal": 1,
+          "Terrain": 1,
+          "SurfaceGui": 1,
+          "SpawnLocation": 1,
+          "BillboardGui": 14,
+          "Folder": 2,
+          "Camera": 1,
+          "TextLabel": 15,
+          "Model": 31,
+          "ProximityPrompt": 5,
+          "UICorner": 5,
+          "Part": 236,
+          "Texture": 1
+        },
+        "pivot": {
+          "components": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "type": "CFrame"
+        },
+        "attributes": []
+      },
+      "StarterGui": {
+        "path": "StarterGui",
+        "tags": [],
+        "parent": "Place1",
+        "descendantCount": 0,
+        "name": "StarterGui",
+        "className": "StarterGui",
+        "childCount": 0,
+        "descendantClasses": [],
+        "children": [],
+        "attributes": []
+      },
+      "Lighting": {
+        "path": "Lighting",
+        "tags": [],
+        "parent": "Place1",
+        "descendantCount": 5,
+        "name": "Lighting",
+        "className": "Lighting",
+        "childCount": 5,
+        "descendantClasses": {
+          "SunRaysEffect": 1,
+          "Sky": 1,
+          "Atmosphere": 1,
+          "DepthOfFieldEffect": 1,
+          "BloomEffect": 1
+        },
+        "children": [
+          {
+            "className": "Sky",
+            "path": "Lighting.Sky"
+          },
+          {
+            "className": "SunRaysEffect",
+            "path": "Lighting.SunRays"
+          },
+          {
+            "className": "Atmosphere",
+            "path": "Lighting.Atmosphere"
+          },
+          {
+            "className": "BloomEffect",
+            "path": "Lighting.Bloom"
+          },
+          {
+            "className": "DepthOfFieldEffect",
+            "path": "Lighting.DepthOfField"
+          }
+        ],
+        "attributes": {
+          "RBX_OriginalTechnologyOnFileLoad": {
+            "value": 3,
+            "type": "number"
+          },
+          "RBX_LightingTechnologyUnifiedMigration": {
+            "value": true,
+            "type": "boolean"
+          }
+        }
+      },
+      "ServerScriptService": {
+        "path": "ServerScriptService",
+        "tags": [],
+        "parent": "Place1",
+        "descendantCount": 8,
+        "name": "ServerScriptService",
+        "className": "ServerScriptService",
+        "childCount": 7,
+        "descendantClasses": {
+          "Script": 6,
+          "ModuleScript": 2
+        },
+        "children": [
+          {
+            "className": "Script",
+            "path": "ServerScriptService.SeaCaptureServer_Stage2"
+          },
+          {
+            "className": "Script",
+            "path": "ServerScriptService.SeaExhibitionServer_Stage4"
+          },
+          {
+            "className": "Script",
+            "path": "ServerScriptService.HubSafetyServer_Stage5"
+          },
+          {
+            "className": "Script",
+            "path": "ServerScriptService.TrainingServer_Stage6"
+          },
+          {
+            "className": "Script",
+            "path": "ServerScriptService.SeaExplorationServer_Stage8"
+          },
+          {
+            "className": "Script",
+            "path": "ServerScriptService.JourneyServer_Stage10"
+          },
+          {
+            "className": "ModuleScript",
+            "path": "ServerScriptService.PlayerEconomy_Stage11"
+          }
+        ],
+        "attributes": []
+      },
+      "SoundService": {
+        "path": "SoundService",
+        "tags": [],
+        "parent": "Place1",
+        "descendantCount": 0,
+        "name": "SoundService",
+        "className": "SoundService",
+        "childCount": 0,
+        "descendantClasses": [],
+        "children": [],
+        "attributes": []
+      },
+      "ReplicatedStorage": {
+        "path": "ReplicatedStorage",
+        "tags": [],
+        "parent": "Place1",
+        "descendantCount": 78,
+        "name": "ReplicatedStorage",
+        "className": "ReplicatedStorage",
+        "childCount": 8,
+        "descendantClasses": {
+          "Folder": 5,
+          "RemoteEvent": 7,
+          "Model": 5,
+          "Part": 57,
+          "MeshPart": 1,
+          "ModuleScript": 3
+        },
+        "children": [
+          {
+            "className": "Folder",
+            "path": "ReplicatedStorage.SeaCapture_Stage2"
+          },
+          {
+            "className": "Folder",
+            "path": "ReplicatedStorage.SeaBattle_Stage4"
+          },
+          {
+            "className": "ModuleScript",
+            "path": "ReplicatedStorage.TrainingRules_Stage6"
+          },
+          {
+            "className": "Folder",
+            "path": "ReplicatedStorage.Rebirth_Stage7"
+          },
+          {
+            "className": "ModuleScript",
+            "path": "ReplicatedStorage.SpeciesCatalog_Stage8"
+          },
+          {
+            "className": "Folder",
+            "path": "ReplicatedStorage.CreaturePreviews_Stage8"
+          },
+          {
+            "className": "ModuleScript",
+            "path": "ReplicatedStorage.TrainingEquipmentRules_Stage11"
+          },
+          {
+            "className": "Folder",
+            "path": "ReplicatedStorage.TrainingUpgrade_Stage11"
+          }
+        ],
+        "attributes": []
+      }
+    },
+    "sceneRoots": [
+      {
+        "path": "Workspace.Baseplate",
+        "tags": [],
+        "parent": "Workspace",
+        "properties": {
+          "CanQuery": {
+            "value": true,
+            "type": "boolean"
+          },
+          "CanCollide": {
+            "value": true,
+            "type": "boolean"
+          },
+          "Color": {
+            "value": [
+              0.35686275362968445,
+              0.35686275362968445,
+              0.35686275362968445
+            ],
+            "type": "Color3"
+          },
+          "Anchored": {
+            "value": true,
+            "type": "boolean"
+          },
+          "CanTouch": {
+            "value": true,
+            "type": "boolean"
+          },
+          "Transparency": {
+            "value": 0,
+            "type": "number"
+          },
+          "CollisionGroup": {
+            "value": "Default",
+            "type": "string"
+          },
+          "Material": {
+            "value": 256,
+            "type": "Enum",
+            "name": "Plastic",
+            "enum": "Material"
+          },
+          "CFrame": {
+            "components": [
+              0,
+              -8,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "type": "CFrame"
+          },
+          "Size": {
+            "value": [
+              2048,
+              16,
+              2048
+            ],
+            "type": "Vector3"
+          }
+        },
+        "descendantCount": 1,
+        "name": "Baseplate",
+        "className": "Part",
+        "descendantClasses": {
+          "Texture": 1
+        },
+        "childCount": 1,
+        "attributes": []
+      },
+      {
+        "path": "Workspace.SpawnLocation",
+        "tags": [],
+        "parent": "Workspace",
+        "properties": {
+          "Enabled": {
+            "value": true,
+            "type": "boolean"
+          },
+          "CanQuery": {
+            "value": true,
+            "type": "boolean"
+          },
+          "CanCollide": {
+            "value": true,
+            "type": "boolean"
+          },
+          "Color": {
+            "value": [
+              0.6392157077789307,
+              0.6352941393852234,
+              0.6470588445663452
+            ],
+            "type": "Color3"
+          },
+          "Anchored": {
+            "value": true,
+            "type": "boolean"
+          },
+          "CanTouch": {
+            "value": true,
+            "type": "boolean"
+          },
+          "Transparency": {
+            "value": 0,
+            "type": "number"
+          },
+          "Duration": {
+            "value": 0,
+            "type": "number"
+          },
+          "Neutral": {
+            "value": true,
+            "type": "boolean"
+          },
+          "CollisionGroup": {
+            "value": "Default",
+            "type": "string"
+          },
+          "Material": {
+            "value": 256,
+            "type": "Enum",
+            "name": "Plastic",
+            "enum": "Material"
+          },
+          "CFrame": {
+            "components": [
+              0,
+              0.8999999761581421,
+              -34,
+              -0.5189781785011292,
+              0,
+              -0.8547874689102173,
+              0,
+              1,
+              0,
+              0.8547875881195068,
+              0,
+              -0.5189781188964844
+            ],
+            "type": "CFrame"
+          },
+          "Size": {
+            "value": [
+              12,
+              1,
+              12
+            ],
+            "type": "Vector3"
+          }
+        },
+        "descendantCount": 1,
+        "name": "SpawnLocation",
+        "className": "SpawnLocation",
+        "descendantClasses": {
+          "Decal": 1
+        },
+        "childCount": 1,
+        "attributes": []
+      },
+      {
+        "path": "Workspace.MCP_TestBlock",
+        "tags": [],
+        "parent": "Workspace",
+        "properties": {
+          "CanQuery": {
+            "value": true,
+            "type": "boolean"
+          },
+          "CanCollide": {
+            "value": true,
+            "type": "boolean"
+          },
+          "Color": {
+            "value": [
+              1,
+              0.5490196347236633,
+              0.13725490868091583
+            ],
+            "type": "Color3"
+          },
+          "Anchored": {
+            "value": true,
+            "type": "boolean"
+          },
+          "CanTouch": {
+            "value": true,
+            "type": "boolean"
+          },
+          "Transparency": {
+            "value": 0,
+            "type": "number"
+          },
+          "CollisionGroup": {
+            "value": "Default",
+            "type": "string"
+          },
+          "Material": {
+            "value": 272,
+            "type": "Enum",
+            "name": "SmoothPlastic",
+            "enum": "Material"
+          },
+          "CFrame": {
+            "components": [
+              12,
+              2,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "type": "CFrame"
+          },
+          "Size": {
+            "value": [
+              4,
+              4,
+              4
+            ],
+            "type": "Vector3"
+          }
+        },
+        "descendantCount": 0,
+        "name": "MCP_TestBlock",
+        "className": "Part",
+        "descendantClasses": [],
+        "childCount": 0,
+        "attributes": []
+      },
+      {
+        "path": "Workspace.SeaRegion_Stage1",
+        "tags": [],
+        "parent": "Workspace",
+        "descendantCount": 123,
+        "bounds": {
+          "size": {
+            "value": [
+              440,
+              28.690832138061523,
+              374
+            ],
+            "type": "Vector3"
+          },
+          "cframe": {
+            "components": [
+              243,
+              14.345416069030762,
+              -0.000008436298230662942,
+              -4.371138828673793e-8,
+              0,
+              1,
+              0,
+              1,
+              0,
+              -1,
+              0,
+              -4.371138828673793e-8
+            ],
+            "type": "CFrame"
+          }
+        },
+        "name": "SeaRegion_Stage1",
+        "className": "Model",
+        "childCount": 8,
+        "descendantClasses": {
+          "ProximityPrompt": 4,
+          "TextLabel": 7,
+          "Model": 15,
+          "Part": 85,
+          "UICorner": 5,
+          "BillboardGui": 7
+        },
+        "pivot": {
+          "components": [
+            243,
+            14.345416069030762,
+            -0.000008436298230662942,
+            -4.371138828673793e-8,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            -4.371138828673793e-8
+          ],
+          "type": "CFrame"
+        },
+        "attributes": {
+          "Stage5WorldTransform": {
+            "value": "[50,0,0,-4.371138828673793e-8,0,1,0,1,0,-1,0,-4.371138828673793e-8]",
+            "type": "string"
+          },
+          "UndoRecording": {
+            "value": "Studio MCP active recording",
+            "type": "string"
+          },
+          "LegendCenter": {
+            "value": [
+              320,
+              10,
+              -0.000011802075277955737
+            ],
+            "type": "Vector3"
+          },
+          "PrototypeNote": {
+            "value": "Layout only: part water, no swimming or collection scripts",
+            "type": "string"
+          },
+          "ShorelineZ": {
+            "value": 132,
+            "type": "number"
+          },
+          "SeaLevel": {
+            "value": 10,
+            "type": "number"
+          },
+          "ExistingWorkspaceSnapshot": {
+            "value": "[{\"class\":\"Camera\",\"name\":\"Camera\",\"descendants\":0},{\"color\":[0.35686275362968447,0.35686275362968447,0.35686275362968447],\"class\":\"Part\",\"transparency\":0,\"descendants\":1,\"name\":\"Baseplate\",\"material\":\"Plastic\",\"collide\":true,\"cframe\":[0,-8,0,1,0,0,0,1,0,0,0,1],\"anchored\":true,\"size\":[2048,16,2048]},{\"class\":\"Terrain\",\"name\":\"Terrain\",\"descendants\":0},{\"color\":[0.6392157077789307,0.6352941393852234,0.6470588445663452],\"class\":\"SpawnLocation\",\"transparency\":0,\"descendants\":1,\"name\":\"SpawnLocation\",\"material\":\"Plastic\",\"collide\":true,\"cframe\":[0,0.5,0,1,0,0,0,1,0,0,0,1],\"anchored\":true,\"size\":[12,1,12]},{\"color\":[1,0.5490196347236633,0.13725490868091584],\"class\":\"Part\",\"transparency\":0,\"descendants\":0,\"name\":\"MCP_TestBlock\",\"material\":\"SmoothPlastic\",\"collide\":true,\"cframe\":[12,2,0,1,0,0,0,1,0,0,0,1],\"anchored\":true,\"size\":[4,4,4]}]",
+            "type": "string"
+          },
+          "Stage": {
+            "value": 1,
+            "type": "number"
+          },
+          "ShorelinePoint_Stage5": {
+            "value": [
+              182,
+              10,
+              -0.000005769903054897441
+            ],
+            "type": "Vector3"
+          }
+        }
+      },
+      {
+        "path": "Workspace.CentralHub_Stage5",
+        "tags": [],
+        "parent": "Workspace",
+        "descendantCount": 177,
+        "bounds": {
+          "size": {
+            "value": [
+              18.218427658081055,
+              140.34951782226562,
+              164
+            ],
+            "type": "Vector3"
+          },
+          "cframe": {
+            "components": [
+              -11.825248718261719,
+              8.890783309936523,
+              0,
+              -4.371138828673793e-8,
+              -1,
+              0,
+              1,
+              -4.371138828673793e-8,
+              0,
+              0,
+              0,
+              1
+            ],
+            "type": "CFrame"
+          }
+        },
+        "name": "CentralHub_Stage5",
+        "className": "Model",
+        "childCount": 6,
+        "descendantClasses": {
+          "ProximityPrompt": 1,
+          "TextLabel": 8,
+          "Model": 12,
+          "Part": 148,
+          "SurfaceGui": 1,
+          "BillboardGui": 7
+        },
+        "pivot": {
+          "components": [
+            -11.825244903564453,
+            8.890783309936523,
+            0,
+            -4.371138828673793e-8,
+            -1,
+            0,
+            1,
+            -4.371138828673793e-8,
+            0,
+            0,
+            0,
+            1
+          ],
+          "type": "CFrame"
+        },
+        "attributes": {
+          "SpawnCFrame_Stage5": {
+            "components": [
+              0,
+              0.8999999761581421,
+              -34,
+              -0.5189781785011292,
+              0,
+              -0.8547874689102173,
+              0,
+              1,
+              0,
+              0.8547875881195068,
+              0,
+              -0.5189781188964844
+            ],
+            "type": "CFrame"
+          },
+          "Diameter": {
+            "value": 112,
+            "type": "number"
+          },
+          "Layout": {
+            "value": "East +X sea; West -X forest; South +Z volcano; North -Z snow",
+            "type": "string"
+          },
+          "EntranceRadius": {
+            "value": 56,
+            "type": "number"
+          },
+          "TransformationRecord": {
+            "bytes": 20195,
+            "type": "string",
+            "omitted": true,
+            "reason": "Large historical/editor metadata; not included in minimal configuration export"
+          }
+        }
+      },
+      {
+        "path": "Workspace.MCP_TestBall",
+        "tags": [],
+        "parent": "Workspace",
+        "properties": {
+          "CanQuery": {
+            "value": true,
+            "type": "boolean"
+          },
+          "CanCollide": {
+            "value": true,
+            "type": "boolean"
+          },
+          "Color": {
+            "value": [
+              0.1568627506494522,
+              0.6274510025978088,
+              1
+            ],
+            "type": "Color3"
+          },
+          "Anchored": {
+            "value": true,
+            "type": "boolean"
+          },
+          "CanTouch": {
+            "value": true,
+            "type": "boolean"
+          },
+          "Transparency": {
+            "value": 0,
+            "type": "number"
+          },
+          "CollisionGroup": {
+            "value": "Default",
+            "type": "string"
+          },
+          "Material": {
+            "value": 272,
+            "type": "Enum",
+            "name": "SmoothPlastic",
+            "enum": "Material"
+          },
+          "CFrame": {
+            "components": [
+              12,
+              2.3999974727630615,
+              -34,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "type": "CFrame"
+          },
+          "Size": {
+            "value": [
+              4,
+              4,
+              4
+            ],
+            "type": "Vector3"
+          }
+        },
+        "descendantCount": 0,
+        "name": "MCP_TestBall",
+        "className": "Part",
+        "descendantClasses": [],
+        "childCount": 0,
+        "attributes": []
+      },
+      {
+        "path": "Workspace.Highly detailed stylized coral crab game creature: a crab with a textured orange-pink coral shell, s",
+        "tags": [
+          "Assistant-call_beaad90688dd47cb922822ba",
+          "AssistantAIGeneratedAsset"
+        ],
+        "parent": "Workspace",
+        "descendantCount": 1,
+        "bounds": {
+          "size": {
+            "value": [
+              0,
+              0,
+              0
+            ],
+            "type": "Vector3"
+          },
+          "cframe": {
+            "components": [
+              38.23850631713867,
+              0.553900957107544,
+              44.74083709716797,
+              -0.9168811440467834,
+              0,
+              -0.3991604447364807,
+              0,
+              1,
+              0,
+              0.3991604447364807,
+              0,
+              -0.9168811440467834
+            ],
+            "type": "CFrame"
+          }
+        },
+        "name": "Highly detailed stylized coral crab game creature: a crab with a textured orange-pink coral shell, s",
+        "className": "Model",
+        "childCount": 1,
+        "descendantClasses": {
+          "Model": 1
+        },
+        "pivot": {
+          "components": [
+            38.23850631713867,
+            0.553900957107544,
+            44.74083709716797,
+            -0.9168811440467834,
+            0,
+            -0.3991604447364807,
+            0,
+            1,
+            0,
+            0.3991604447364807,
+            0,
+            -0.9168811440467834
+          ],
+          "type": "CFrame"
+        },
+        "attributes": {
+          "RBX_AI_GENERATION_TYPE": {
+            "value": "GenerateMesh",
+            "type": "string"
+          },
+          "RBX_AI_GENERATED": {
+            "value": true,
+            "type": "boolean"
+          },
+          "RBX_AI_GENERATION_ID": {
+            "value": "35120cb0-f1d8-4ea0-81a1-f3d48e924a6e",
+            "type": "string"
+          },
+          "RBX_AI_MODEL_FLOW": {
+            "value": "mesh",
+            "type": "string"
+          }
+        }
+      }
+    ],
+    "keyInstances": [
+      {
+        "path": "Workspace.CentralHub_Stage5.Stage4_Exhibition",
+        "tags": [],
+        "parent": "Workspace.CentralHub_Stage5",
+        "descendantCount": 24,
+        "bounds": {
+          "size": {
+            "value": [
+              44,
+              8.600000381469727,
+              34
+            ],
+            "type": "Vector3"
+          },
+          "cframe": {
+            "components": [
+              0,
+              4.59999942779541,
+              14,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "type": "CFrame"
+          }
+        },
+        "name": "Stage4_Exhibition",
+        "className": "Model",
+        "childCount": 6,
+        "descendantClasses": {
+          "ProximityPrompt": 1,
+          "TextLabel": 1,
+          "Model": 1,
+          "Part": 20,
+          "SurfaceGui": 1
+        },
+        "pivot": {
+          "components": [
+            0,
+            4.600000381469727,
+            14,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "type": "CFrame"
+        },
+        "attributes": []
+      },
+      {
+        "path": "Workspace.CentralHub_Stage5.Stage6_Training",
+        "tags": [],
+        "parent": "Workspace.CentralHub_Stage5",
+        "descendantCount": 25,
+        "bounds": {
+          "size": {
+            "value": [
+              69.19999694824219,
+              4.25,
+              11
+            ],
+            "type": "Vector3"
+          },
+          "cframe": {
+            "components": [
+              -1,
+              2.7249999046325684,
+              -25.5,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "type": "CFrame"
+          }
+        },
+        "name": "Stage6_Training",
+        "className": "Model",
+        "childCount": 2,
+        "descendantClasses": {
+          "Part": 23,
+          "Model": 2
+        },
+        "pivot": {
+          "components": [
+            -1.0000038146972656,
+            2.7249999046325684,
+            -25.5,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "type": "CFrame"
+        },
+        "attributes": {
+          "PriorGeometry": {
+            "bytes": 42900,
+            "type": "string",
+            "omitted": true,
+            "reason": "Large historical/editor metadata; not included in minimal configuration export"
+          }
+        }
+      },
+      {
+        "path": "Workspace.CentralHub_Stage5.Stage6_Training.SpeedTreadmill.TrainingSurface",
+        "tags": [],
+        "parent": "Workspace.CentralHub_Stage5.Stage6_Training.SpeedTreadmill",
+        "properties": {
+          "CanQuery": {
+            "value": true,
+            "type": "boolean"
+          },
+          "CanCollide": {
+            "value": true,
+            "type": "boolean"
+          },
+          "Color": {
+            "value": [
+              0.16862745583057404,
+              0.25882354378700256,
+              0.29019609093666077
+            ],
+            "type": "Color3"
+          },
+          "Anchored": {
+            "value": true,
+            "type": "boolean"
+          },
+          "CanTouch": {
+            "value": false,
+            "type": "boolean"
+          },
+          "Transparency": {
+            "value": 0,
+            "type": "number"
+          },
+          "CollisionGroup": {
+            "value": "Default",
+            "type": "string"
+          },
+          "Material": {
+            "value": 272,
+            "type": "Enum",
+            "name": "SmoothPlastic",
+            "enum": "Material"
+          },
+          "CFrame": {
+            "components": [
+              29,
+              0.8500000238418579,
+              -27,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "type": "CFrame"
+          },
+          "Size": {
+            "value": [
+              7,
+              0.30000001192092896,
+              8
+            ],
+            "type": "Vector3"
+          }
+        },
+        "descendantCount": 0,
+        "name": "TrainingSurface",
+        "className": "Part",
+        "descendantClasses": [],
+        "childCount": 0,
+        "attributes": []
+      },
+      {
+        "path": "Workspace.CentralHub_Stage5.Stage6_Training.StrengthMachine.TrainingSurface",
+        "tags": [],
+        "parent": "Workspace.CentralHub_Stage5.Stage6_Training.StrengthMachine",
+        "properties": {
+          "CanQuery": {
+            "value": true,
+            "type": "boolean"
+          },
+          "CanCollide": {
+            "value": true,
+            "type": "boolean"
+          },
+          "Color": {
+            "value": [
+              0.3960784375667572,
+              0.3450980484485626,
+              0.4117647111415863
+            ],
+            "type": "Color3"
+          },
+          "Anchored": {
+            "value": true,
+            "type": "boolean"
+          },
+          "CanTouch": {
+            "value": false,
+            "type": "boolean"
+          },
+          "Transparency": {
+            "value": 0,
+            "type": "number"
+          },
+          "CollisionGroup": {
+            "value": "Default",
+            "type": "string"
+          },
+          "Material": {
+            "value": 272,
+            "type": "Enum",
+            "name": "SmoothPlastic",
+            "enum": "Material"
+          },
+          "CFrame": {
+            "components": [
+              -31,
+              0.8500000238418579,
+              -24,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "type": "CFrame"
+          },
+          "Size": {
+            "value": [
+              7,
+              0.30000001192092896,
+              8
+            ],
+            "type": "Vector3"
+          }
+        },
+        "descendantCount": 0,
+        "name": "TrainingSurface",
+        "className": "Part",
+        "descendantClasses": [],
+        "childCount": 0,
+        "attributes": []
+      },
+      {
+        "path": "Workspace.SeaRegion_Stage1.Stage2_Collection",
+        "tags": [],
+        "parent": "Workspace.SeaRegion_Stage1",
+        "descendantCount": 5,
+        "bounds": {
+          "size": {
+            "value": [
+              1.8900002241134644,
+              7,
+              7
+            ],
+            "type": "Vector3"
+          },
+          "cframe": {
+            "components": [
+              170,
+              12.154999732971191,
+              47.999996185302734,
+              1.910685465164705e-15,
+              4.371138828673793e-8,
+              1,
+              1,
+              -4.371138828673793e-8,
+              0,
+              4.371138828673793e-8,
+              1,
+              -4.371138828673793e-8
+            ],
+            "type": "CFrame"
+          }
+        },
+        "name": "Stage2_Collection",
+        "className": "Model",
+        "childCount": 1,
+        "descendantClasses": {
+          "Part": 3,
+          "ProximityPrompt": 1,
+          "Model": 1
+        },
+        "pivot": {
+          "components": [
+            170,
+            12.154999732971191,
+            47.999996185302734,
+            1.910685465164705e-15,
+            4.371138828673793e-8,
+            1,
+            1,
+            -4.371138828673793e-8,
+            0,
+            4.371138828673793e-8,
+            1,
+            -4.371138828673793e-8
+          ],
+          "type": "CFrame"
+        },
+        "attributes": {
+          "CurrentStage": {
+            "value": 3,
+            "type": "number"
+          },
+          "PriorGeometry": {
+            "bytes": 15096,
+            "type": "string",
+            "omitted": true,
+            "reason": "Large historical/editor metadata; not included in minimal configuration export"
+          },
+          "Stage": {
+            "value": 2,
+            "type": "number"
+          },
+          "SessionOnly": {
+            "value": true,
+            "type": "boolean"
+          }
+        }
+      },
+      {
+        "path": "Workspace.SeaRegion_Stage1.Stage8_Exploration",
+        "tags": [],
+        "parent": "Workspace.SeaRegion_Stage1",
+        "descendantCount": 34,
+        "bounds": {
+          "size": {
+            "value": [
+              180,
+              11.450000762939453,
+              24
+            ],
+            "type": "Vector3"
+          },
+          "cframe": {
+            "components": [
+              264,
+              15.725000381469727,
+              48,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "type": "CFrame"
+          }
+        },
+        "name": "Stage8_Exploration",
+        "className": "Model",
+        "childCount": 22,
+        "descendantClasses": {
+          "ProximityPrompt": 2,
+          "TextLabel": 2,
+          "Model": 2,
+          "Part": 26,
+          "BillboardGui": 2
+        },
+        "pivot": {
+          "components": [
+            264,
+            15.725000381469727,
+            48,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "type": "CFrame"
+        },
+        "attributes": {
+          "CoralBoundaryX": {
+            "value": 210,
+            "type": "number"
+          },
+          "FarBoundaryX": {
+            "value": 286,
+            "type": "number"
+          }
+        }
+      },
+      {
+        "path": "Workspace.SeaRegion_Stage1.Stage9_Legend",
+        "tags": [],
+        "parent": "Workspace.SeaRegion_Stage1",
+        "descendantCount": 13,
+        "bounds": {
+          "size": {
+            "value": [
+              3.119999408721924,
+              53,
+              67
+            ],
+            "type": "Vector3"
+          },
+          "cframe": {
+            "components": [
+              327.5,
+              11.739999771118164,
+              14.5,
+              -4.371138828673793e-8,
+              -1,
+              0,
+              1,
+              -4.371138828673793e-8,
+              0,
+              0,
+              0,
+              1
+            ],
+            "type": "CFrame"
+          }
+        },
+        "name": "Stage9_Legend",
+        "className": "Model",
+        "childCount": 11,
+        "descendantClasses": {
+          "Part": 11,
+          "ProximityPrompt": 1,
+          "Model": 1
+        },
+        "pivot": {
+          "components": [
+            327.5,
+            11.74000072479248,
+            14.5,
+            -4.371138828673793e-8,
+            -1,
+            0,
+            1,
+            -4.371138828673793e-8,
+            0,
+            0,
+            0,
+            1
+          ],
+          "type": "CFrame"
+        },
+        "attributes": []
+      },
+      {
+        "path": "ServerStorage.SeaCapture_Stage2",
+        "tags": [],
+        "parent": "ServerStorage",
+        "descendantCount": 120,
+        "name": "SeaCapture_Stage2",
+        "className": "Folder",
+        "descendantClasses": {
+          "StringValue": 2,
+          "Folder": 2,
+          "Part": 57,
+          "MeshPart": 1,
+          "Tool": 5,
+          "WeldConstraint": 53
+        },
+        "childCount": 3,
+        "attributes": []
+      },
+      {
+        "path": "ServerStorage.SeaCapture_Stage2.SpeciesTools_Stage8",
+        "tags": [],
+        "parent": "ServerStorage.SeaCapture_Stage2",
+        "descendantCount": 114,
+        "name": "SpeciesTools_Stage8",
+        "className": "Folder",
+        "descendantClasses": {
+          "Part": 57,
+          "Tool": 4,
+          "WeldConstraint": 53
+        },
+        "childCount": 4,
+        "attributes": []
+      },
+      {
+        "path": "ReplicatedStorage.CreaturePreviews_Stage8",
+        "tags": [],
+        "parent": "ReplicatedStorage",
+        "descendantCount": 61,
+        "name": "CreaturePreviews_Stage8",
+        "className": "Folder",
+        "descendantClasses": {
+          "Part": 57,
+          "Model": 4
+        },
+        "childCount": 4,
+        "attributes": []
+      },
+      {
+        "path": "ReplicatedStorage.SeaCapture_Stage2",
+        "tags": [],
+        "parent": "ReplicatedStorage",
+        "descendantCount": 4,
+        "name": "SeaCapture_Stage2",
+        "className": "Folder",
+        "descendantClasses": {
+          "RemoteEvent": 2,
+          "MeshPart": 1,
+          "Model": 1
+        },
+        "childCount": 3,
+        "attributes": []
+      },
+      {
+        "path": "ReplicatedStorage.Rebirth_Stage7",
+        "tags": [],
+        "parent": "ReplicatedStorage",
+        "descendantCount": 2,
+        "name": "Rebirth_Stage7",
+        "className": "Folder",
+        "descendantClasses": {
+          "RemoteEvent": 2
+        },
+        "childCount": 2,
+        "attributes": []
+      },
+      {
+        "path": "ReplicatedStorage.TrainingUpgrade_Stage11",
+        "tags": [],
+        "parent": "ReplicatedStorage",
+        "descendantCount": 2,
+        "name": "TrainingUpgrade_Stage11",
+        "className": "Folder",
+        "descendantClasses": {
+          "RemoteEvent": 2
+        },
+        "childCount": 2,
+        "attributes": []
+      }
+    ],
+    "settings": {
+      "Lighting": {
+        "ClockTime": {
+          "value": 14.5,
+          "type": "number"
+        },
+        "Ambient": {
+          "value": [
+            0.27450981736183167,
+            0.27450981736183167,
+            0.27450981736183167
+          ],
+          "type": "Color3"
+        },
+        "OutdoorAmbient": {
+          "value": [
+            0.27450981736183167,
+            0.27450981736183167,
+            0.27450981736183167
+          ],
+          "type": "Color3"
+        },
+        "EnvironmentDiffuseScale": {
+          "value": 1,
+          "type": "number"
+        },
+        "Brightness": {
+          "value": 3,
+          "type": "number"
+        },
+        "GlobalShadows": {
+          "value": true,
+          "type": "boolean"
+        },
+        "EnvironmentSpecularScale": {
+          "value": 1,
+          "type": "number"
+        }
+      },
+      "StarterPlayer": {
+        "CharacterJumpHeight": {
+          "value": 7.199999809265137,
+          "type": "number"
+        },
+        "CharacterJumpPower": {
+          "value": 50,
+          "type": "number"
+        },
+        "EnableMouseLockOption": {
+          "value": true,
+          "type": "boolean"
+        },
+        "CameraMinZoomDistance": {
+          "value": 0.5,
+          "type": "number"
+        },
+        "CameraMaxZoomDistance": {
+          "value": 128,
+          "type": "number"
+        },
+        "CharacterWalkSpeed": {
+          "value": 16,
+          "type": "number"
+        },
+        "CharacterUseJumpPower": {
+          "value": false,
+          "type": "boolean"
+        }
+      },
+      "Workspace": {
+        "Gravity": {
+          "value": 196.1999969482422,
+          "type": "number"
+        },
+        "FallenPartsDestroyHeight": {
+          "value": -500,
+          "type": "number"
+        },
+        "StreamingEnabled": {
+          "value": true,
+          "type": "boolean"
+        }
+      },
+      "StarterGui": {
+        "ScreenOrientation": {
+          "value": 4,
+          "type": "Enum",
+          "name": "Sensor",
+          "enum": "ScreenOrientation"
+        }
+      }
+    },
+    "spawn": {
+      "path": "Workspace.SpawnLocation",
+      "tags": [],
+      "parent": "Workspace",
+      "properties": {
+        "Enabled": {
+          "value": true,
+          "type": "boolean"
+        },
+        "CanQuery": {
+          "value": true,
+          "type": "boolean"
+        },
+        "CanCollide": {
+          "value": true,
+          "type": "boolean"
+        },
+        "Color": {
+          "value": [
+            0.6392157077789307,
+            0.6352941393852234,
+            0.6470588445663452
+          ],
+          "type": "Color3"
+        },
+        "Anchored": {
+          "value": true,
+          "type": "boolean"
+        },
+        "CanTouch": {
+          "value": true,
+          "type": "boolean"
+        },
+        "Transparency": {
+          "value": 0,
+          "type": "number"
+        },
+        "Duration": {
+          "value": 0,
+          "type": "number"
+        },
+        "Neutral": {
+          "value": true,
+          "type": "boolean"
+        },
+        "CollisionGroup": {
+          "value": "Default",
+          "type": "string"
+        },
+        "Material": {
+          "value": 256,
+          "type": "Enum",
+          "name": "Plastic",
+          "enum": "Material"
+        },
+        "CFrame": {
+          "components": [
+            0,
+            0.8999999761581421,
+            -34,
+            -0.5189781785011292,
+            0,
+            -0.8547874689102173,
+            0,
+            1,
+            0,
+            0.8547875881195068,
+            0,
+            -0.5189781188964844
+          ],
+          "type": "CFrame"
+        },
+        "Size": {
+          "value": [
+            12,
+            1,
+            12
+          ],
+          "type": "Vector3"
+        }
+      },
+      "descendantCount": 1,
+      "name": "SpawnLocation",
+      "className": "SpawnLocation",
+      "descendantClasses": {
+        "Decal": 1
+      },
+      "childCount": 1,
+      "attributes": []
+    }
+  },
+  "definitions": {
+    "authority": "Exact .luau files are authoritative; this summary was read from the exported current source, not newly playtested in stage12.",
+    "speciesSource": "ReplicatedStorage.SpeciesCatalog_Stage8",
+    "species": [
+      {
+        "id": "coral_crab",
+        "name": "산호게",
+        "basePower": 100
+      },
+      {
+        "id": "droplet_ray",
+        "name": "물방울가오리",
+        "basePower": 120
+      },
+      {
+        "id": "glass_jelly",
+        "name": "유리해파리",
+        "basePower": 150
+      },
+      {
+        "id": "sea_dragon",
+        "name": "해신룡",
+        "basePower": 400,
+        "toolScale": 0.3,
+        "battleScale": 0.4,
+        "revealScale": 3
+      }
+    ],
+    "sizeRange": [
+      0.75,
+      1.5
+    ],
+    "sizeRoundingDigits": 2,
+    "traits": [
+      "돌파",
+      "수호",
+      "기습"
+    ],
+    "traitRoll": "Uniform independent server roll",
+    "traitBeats": {
+      "돌파": "수호",
+      "수호": "기습",
+      "기습": "돌파"
+    },
+    "advantageBonus": 0.15,
+    "momentumRange": [
+      0,
+      0.3
+    ],
+    "battleSource": "ServerScriptService.SeaExhibitionServer_Stage4.BattleRules",
+    "formulas": {
+      "power": "round(species.BasePower * size^2 * (1 + max(0,strength)/1000))",
+      "walkSpeed": "min(40,16+max(0,speed)*0.1)",
+      "rebirthRequirement": "ceil(100 * 1.5^R), for both speed and strength",
+      "rebirthMultiplier": "1 + 0.5 * R",
+      "trainingPerSecond": "1 * rebirthMultiplier * personalEquipmentMultiplier"
+    },
+    "equipment": {
+      "source": "ReplicatedStorage.TrainingEquipmentRules_Stage11",
+      "maxLevel": 3,
+      "multipliers": {
+        "0": 1,
+        "1": 1.25,
+        "2": 1.5,
+        "3": 1.75
+      },
+      "purchaseCosts": {
+        "0->1": 3,
+        "1->2": 6,
+        "2->3": 12
+      },
+      "serverStateSource": "ServerScriptService.PlayerEconomy_Stage11"
+    },
+    "exploration": {
+      "beachRequiredHighestSpeed": 0,
+      "coralRequiredHighestSpeed": 50,
+      "farRequiredHighestSpeed": 150,
+      "beach": [
+        [
+          "coral_crab",
+          1
+        ]
+      ],
+      "coral": [
+        [
+          "droplet_ray",
+          0.8
+        ],
+        [
+          "coral_crab",
+          0.2
+        ]
+      ],
+      "far": [
+        [
+          "glass_jelly",
+          0.8
+        ],
+        [
+          "droplet_ray",
+          0.2
+        ]
+      ],
+      "dragonTraces": 20
+    },
+    "sessionOnly": [
+      "coins",
+      "equipment level/version",
+      "owned creatures/GUIDs/selection",
+      "training/current highest speed",
+      "rebirths",
+      "dragon traces",
+      "journey completed facts"
+    ],
+    "noDataStore": true
+  },
+  "externalAssetReferences": [
+    {
+      "path": "Workspace.Baseplate.Texture",
+      "properties": {
+        "Texture": "rbxassetid://6372755229"
+      },
+      "className": "Texture"
+    },
+    {
+      "path": "Workspace.SpawnLocation.Decal",
+      "properties": {
+        "Texture": "rbxasset://textures/SpawnLocation.png"
+      },
+      "className": "Decal"
+    },
+    {
+      "path": "ReplicatedStorage.SeaCapture_Stage2.CoralCrabPreview.Body",
+      "properties": {
+        "TextureID": "rbxassetid://125853222267325",
+        "MeshId": "rbxassetid://109411852423353"
+      },
+      "className": "MeshPart"
+    },
+    {
+      "path": "ServerStorage.SeaCapture_Stage2.CoralCrab.Handle",
+      "properties": {
+        "TextureID": "rbxassetid://125853222267325",
+        "MeshId": "rbxassetid://109411852423353"
+      },
+      "className": "MeshPart"
+    }
+  ],
+  "limitations": [
+    "No model serialization was performed. No direct model-export MCP tool is exposed; API model serialization was not investigated/implemented in this quick preservation task. No UI/app launch was used.",
+    "No full instance tree, individual part transforms/properties, meshes/textures, Terrain voxels, materials, weld/attachment/reference graph, GUI tree, or all service settings are serialized. Root bounds/pivots and selected properties are configuration records only.",
+    "External mesh/texture IDs are references only; their asset contents were not downloaded or packaged.",
+    "Large historical/editor Attributes are omitted as listed in omittedAttributes. Unlisted instances/properties/attributes/tags are not preserved by this minimal manifest.",
+    "Names/classes/counts of four species Tool/preview templates do not preserve their geometry. Pre-existing auxiliary Workspace roots are listed but their geometry is not exported.",
+    "Script parent/class/Disabled/RunContext mappings are recorded. The directory layout is not an installer or Rojo configuration. Required scene assets/remotes/service placement must be supplied before scripts could run.",
+    "No import, reinstall, deserialization, fresh-place execution, or restoration execution was performed; exact source preservation does not guarantee complete scene restoration.",
+    "Runtime players, QA/test setters and transient battle/awakening copies are not part of the preservation package."
+  ],
+  "omittedAttributes": [
+    {
+      "path": "Workspace.CentralHub_Stage5",
+      "attribute": "TransformationRecord",
+      "bytes": 20195,
+      "type": "string",
+      "omitted": true,
+      "reason": "Large historical/editor metadata; not included in minimal configuration export"
+    },
+    {
+      "path": "Workspace.CentralHub_Stage5.Stage6_Training",
+      "attribute": "PriorGeometry",
+      "bytes": 42900,
+      "type": "string",
+      "omitted": true,
+      "reason": "Large historical/editor metadata; not included in minimal configuration export"
+    },
+    {
+      "path": "Workspace.SeaRegion_Stage1.Stage2_Collection",
+      "attribute": "PriorGeometry",
+      "bytes": 15096,
+      "type": "string",
+      "omitted": true,
+      "reason": "Large historical/editor metadata; not included in minimal configuration export"
+    }
+  ],
+  "qaEditInstanceMatches": [],
+  "verification": {
+    "sourceByteEquality": "20/20 exported files reread and compared exactly with MCP source strings.",
+    "detailsFile": "assets/creature-prototype/validation.json",
+    "restorationExecutionTested": false,
+    "studioSourceRecheck": {"checked":20,"allExactUnchanged":true},
+    "studioInventoryUnchanged": true,
+    "placeHashAndListUnchanged": true
+  },
+  "documentation": "docs/CREATURE_PROTOTYPE.md",
+  "originalBuildEntryPoint": "tools/build_tree_v4.luau",
+  "buildEntryPointChanged": false
+}

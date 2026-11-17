@@ -1,0 +1,106 @@
+{
+  "place": "Ro.rbxlx",
+  "added": true,
+  "existingWorldAndServicesExactlyPreserved": true,
+  "singleNeighborhood": true,
+  "singlePlace": true,
+  "studioOpened": false,
+  "studioPlaytestPerformed": false,
+  "layout": {
+    "Buildings": 4,
+    "Center": [
+      245.79940795898438,
+      0.2286129593849182,
+      80.72172546386719
+    ],
+    "ContextParts": 1614,
+    "Junction": "XJunction_5",
+    "Lamps": 8,
+    "Parts": 1294,
+    "Plots": [
+      {
+        "Apron": 3.563821563720704,
+        "Clearance": 0.02983261108398505,
+        "Depth": 8.6,
+        "Floors": 2,
+        "Id": "SlowCoffee",
+        "Kind": "Cafe",
+        "Look": [
+          -0.9134429097175598,
+          0,
+          0.4069668650627136
+        ],
+        "Position": [
+          262.066162109375,
+          0.657184362411499,
+          3.85260009765625
+        ],
+        "Title": "느린 커피",
+        "Width": 11.4
+      },
+      {
+        "Apron": 6.467040710449221,
+        "Clearance": 0.059997253417969354,
+        "Depth": 9.6,
+        "Floors": 3,
+        "Id": "BoraPharmacy",
+        "Kind": "Pharmacy",
+        "Look": [
+          -0.6879023909568787,
+          0,
+          -0.7258030772209167
+        ],
+        "Position": [
+          315.680419921875,
+          0.657184362411499,
+          95.50969696044922
+        ],
+        "Title": "보라 약국",
+        "Width": 12.6
+      },
+      {
+        "Apron": 3.367180328369142,
+        "Clearance": -0.021726379394531037,
+        "Depth": 9.8,
+        "Floors": 2,
+        "Id": "BoraMarket",
+        "Kind": "Market",
+        "Look": [
+          0.9246195554733276,
+          0,
+          -0.3808917701244354
+        ],
+        "Position": [
+          228.79324340820312,
+          0.657184362411499,
+          161.08489990234375
+        ],
+        "Title": "보라 마트",
+        "Width": 13.2
+      },
+      {
+        "Apron": 6.346767578125003,
+        "Clearance": 0.03357742309570355,
+        "Depth": 9.4,
+        "Floors": 3,
+        "Id": "BoraVilla",
+        "Kind": "Residential",
+        "Look": [
+          0.6609290242195129,
+          0,
+          0.7504484057426453
+        ],
+        "Position": [
+          175.91839599609375,
+          0.657184362411499,
+          65.93375396728516
+        ],
+        "Title": "보라빌라  101",
+        "Width": 10.8
+      }
+    ],
+    "Revision": 1,
+    "StudsPerMeter": 3.571428571428571,
+    "TactileLandings": 8
+  }
+}

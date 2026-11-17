@@ -1,0 +1,696 @@
+00:01.891  blend            | Read blend: "C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\assets\vehicles\BoraS3\BoraS3.blend"
+00:02.500  image.write      | ERROR OpenImageIO write failed: Could not open file "C:\Users\jinug\.thumbnails\large\blender_40768_9cccfcff4c2f9761ec7a53934ad621ff.png.png"
+Info: Saved as "BoraS3.blend"
+INFO Draco is available, use library at C:\Program Files\Blender Foundation\Blender 5.2\5.2\scripts\addons_core\io_scene_gltf2\bf_intern_draco_bridge.dll
+INFO MeshOptimizer is available, use library at C:\Program Files\Blender Foundation\Blender 5.2\5.2\scripts\addons_core\io_scene_gltf2\bf_intern_meshopt_bridge.dll
+15:23:42 | INFO: Starting glTF 2.0 export
+15:23:42 | INFO: Extracting primitive: Body | recessed door and arch backing L
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Body | recessed door and arch backing R
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Cube.026
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Cowl | curved sealed tray
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Fender crown | L
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Fender crown | R
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Front fender | skin L
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Front fender | skin R
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Cube.066
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Front plate | printed face
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Front wheel arch | inward lip L
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Front wheel arch | inward lip R
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Front wheel arch | painted rolled edge L
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Front wheel arch | painted rolled edge R
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Front | continuous bumper and lamp apertures
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Front | lower bumper blade 1
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Front | lower bumper blade -1
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Headlamp L | aperture wall 0
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Headlamp L | aperture wall 1
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Headlamp L | aperture wall 2
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Headlamp L | aperture wall 3
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Headlamp L | clear lens
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Headlamp L | inset frame
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Headlamp L | LED signature 0
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Headlamp L | LED signature 1
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Headlamp L | projector bezel 0
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Headlamp L | projector bezel 1
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Headlamp L | projector bezel 2
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Headlamp L | projector optic 0
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Headlamp L | projector optic 1
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Headlamp L | projector optic 2
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Headlamp L | recessed backing
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Headlamp R | aperture wall 0
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Headlamp R | aperture wall 1
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Headlamp R | aperture wall 2
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Headlamp R | aperture wall 3
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Headlamp R | clear lens
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Headlamp R | inset frame
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Headlamp R | LED signature 0
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Headlamp R | LED signature 1
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Headlamp R | projector bezel 0
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Headlamp R | projector bezel 1
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Headlamp R | projector bezel 2
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Headlamp R | projector optic 0
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Headlamp R | projector optic 1
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Headlamp R | projector optic 2
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Headlamp R | recessed backing
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Hood | centre panel
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Hood | inner gap backing
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Lower intake | aperture wall 0
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Lower intake | aperture wall 1
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Lower intake | aperture wall 2
+15:23:42 | INFO: Primitives created: 1
+15:23:42 | INFO: Extracting primitive: Lower intake | aperture wall 3
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Lower intake | horizontal aero blade 0
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Lower intake | horizontal aero blade 1
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Lower intake | horizontal aero blade 2
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Lower intake | inset frame
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Lower intake | recessed backing
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Lower intake | vertical support 0.0
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Lower intake | vertical support 0.067
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Lower intake | vertical support 0.134
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Lower intake | vertical support 0.201
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Lower intake | vertical support 0.267
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Lower intake | vertical support 0.334
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Lower intake | vertical support 0.401
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Lower intake | vertical support 0.468
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Lower intake | vertical support 0.535
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Lower intake | vertical support -0.067
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Lower intake | vertical support -0.134
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Lower intake | vertical support -0.201
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Lower intake | vertical support -0.268
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Lower intake | vertical support -0.334
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Lower intake | vertical support -0.401
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Lower intake | vertical support -0.468
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Lower intake | vertical support -0.535
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Mirror | mounting stalk L
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Mirror | mounting stalk R
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Mirror | painted cap L
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Mirror | painted cap R
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.017
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.020
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Mirror | signal L
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Mirror | signal R
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear diffuser | aperture wall 0
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear diffuser | aperture wall 1
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear diffuser | aperture wall 2
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear diffuser | aperture wall 3
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear diffuser | inset frame
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear diffuser | recessed backing
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear fender crown L
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear fender crown R
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear light band | aperture wall 0
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear light band | aperture wall 1
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear light band | aperture wall 2
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear light band | aperture wall 3
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear light band | inset frame
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear light band | recessed backing
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.067
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear plate | printed face
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear quarter | skin L
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear quarter | skin R
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear wheel arch | inward lip L
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear wheel arch | inward lip R
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear wheel arch | painted rolled edge L
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear wheel arch | painted rolled edge R
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear window | clear curved glass
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear window | painted frame
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear window | rubber ceramic border
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear | continuous bumper and lamp apertures
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.013
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.014
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.011
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.012
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear | full width LED 0.768
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear | full width LED 0.825
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear | lower bumper blade 1
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear | lower bumper blade -1
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear | optical vertical bars 0.8
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear | optical vertical bars 0.76
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear | optical vertical bars 0.88
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear | optical vertical bars 0.92
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear | optical vertical bars 0.8400000000000001
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear | optical vertical bars -0.8
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear | optical vertical bars -0.76
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear | optical vertical bars -0.88
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear | optical vertical bars -0.92
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear | optical vertical bars -0.8400000000000001
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear | smoked red lamp lens
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Registration recess | aperture wall 0
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Registration recess | aperture wall 1
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Registration recess | aperture wall 2
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Registration recess | aperture wall 3
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Registration recess | inset frame
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Registration recess | recessed backing
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Roof | continuous crown
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Shoulder | window to body bridge Body
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Shoulder | window to body bridge Body.001
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Sill | aluminium blade L
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Sill | aluminium blade R
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.001
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.006
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Trunk lid
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Trunk | inner gap backing
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Upper grille | aperture wall 0
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Upper grille | aperture wall 1
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Upper grille | aperture wall 2
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Upper grille | aperture wall 3
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Upper grille | horizontal aero blade 0
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Upper grille | horizontal aero blade 1
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Upper grille | horizontal aero blade 2
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Upper grille | horizontal aero blade 3
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Upper grille | horizontal aero blade 4
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Upper grille | horizontal aero blade 5
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Upper grille | inset frame
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Upper grille | recessed backing
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Upper grille | vertical support 0.0
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Upper grille | vertical support 0.073
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Upper grille | vertical support 0.146
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Upper grille | vertical support 0.219
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Upper grille | vertical support 0.292
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Upper grille | vertical support 0.366
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Upper grille | vertical support 0.439
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Upper grille | vertical support 0.512
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Upper grille | vertical support 0.585
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Upper grille | vertical support -0.073
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Upper grille | vertical support -0.146
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Upper grille | vertical support -0.219
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Upper grille | vertical support -0.292
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Upper grille | vertical support -0.366
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Upper grille | vertical support -0.439
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Upper grille | vertical support -0.512
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Upper grille | vertical support -0.585
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Windshield | clear curved glass
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Windshield | painted frame
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Windshield | rubber ceramic border
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Wiper | arm 0.23
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Wiper | arm -0.4
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Wiper | blade 0.23
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Wiper | blade -0.4
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: DoorFL | belt brightwork
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: DoorFL | clear curved window
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: DoorFL | contoured inner door card
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: DoorFL | interior armrest
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.015
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: DoorFL | structural window frame
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: DoorFL | window gasket
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.002
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Front door | skin L
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.003
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Shoulder | window to body bridge DoorFL
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: DoorFR | belt brightwork
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: DoorFR | clear curved window
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: DoorFR | contoured inner door card
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: DoorFR | interior armrest
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.018
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: DoorFR | structural window frame
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: DoorFR | window gasket
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.007
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Front door | skin R
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.008
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Shoulder | window to body bridge DoorFR
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: DoorRL | belt brightwork
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: DoorRL | clear curved window
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: DoorRL | contoured inner door card
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: DoorRL | interior armrest
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.016
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: DoorRL | structural window frame
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: DoorRL | window gasket
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.004
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.005
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear door | skin L
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Shoulder | window to body bridge DoorRL
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: DoorRR | belt brightwork
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: DoorRR | clear curved window
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: DoorRR | contoured inner door card
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: DoorRR | interior armrest
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.019
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: DoorRR | structural window frame
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: DoorRR | window gasket
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.009
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.010
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear door | skin R
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Shoulder | window to body bridge DoorRR
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.025
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.062
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cabin | mirror mount
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.063
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Centre console | armrest
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Centre console | cup recess 0.04
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Centre console | cup recess 0.155
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Centre console | cup rim 0.04
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Centre console | cup rim 0.155
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Centre console | drive selector
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.052
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.051
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Centre console | selector top
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Centre navigation | display panel
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.065
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Dashboard | aluminium sweep
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Dashboard | front fascia
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Dashboard | full width sculpted upper
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.050
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.042
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.046
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.038
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.034
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.045
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.043
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.044
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.049
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.047
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.048
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.041
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.039
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.040
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.037
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.035
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.036
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.061
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.060
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Front seat | back insert 1
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Front seat | back insert -1
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.031
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.028
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.032
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.029
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Front seat | cushion 1
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Front seat | cushion -1
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Front seat | cushion insert 1
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Front seat | cushion insert -1
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Front seat | cushion stitch 1 0.14
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Front seat | cushion stitch 1 -0.14
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Front seat | cushion stitch -1 0.14
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Front seat | cushion stitch -1 -0.14
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Front seat | head restraint 1
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Front seat | head restraint -1
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Front seat | headrest post 1 1
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Front seat | headrest post 1 -1
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Front seat | headrest post -1 1
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Front seat | headrest post -1 -1
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.030
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.027
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Front seat | sculpted back 1
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Front seat | sculpted back -1
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Front seat | side bolster 1 1
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Front seat | side bolster 1 -1
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Front seat | side bolster -1 1
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Front seat | side bolster -1 -1
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Instrument cluster | display panel
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.064
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear bench | full cushion
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear bench | headrest 0
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear bench | headrest 0.46
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear bench | headrest -0.46
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear bench | sculpted back
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear bench | seat insert 0
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear bench | seat insert 0.46
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear bench | seat insert -0.46
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear headrest | post 0 0.065
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear headrest | post 0 -0.065
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear headrest | post 0.46 0.065
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear headrest | post 0.46 -0.065
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear headrest | post -0.46 0.065
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Rear headrest | post -0.46 -0.065
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.033
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Roof | inner headliner
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Steering | column
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.053
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.059
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.058
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.056
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.055
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.057
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.054
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Steering | metal spoke 0
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Steering | metal spoke 3.141592653589793
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Steering | metal spoke 4.71238898038469
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Steering | stitched leather rim
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: WheelFL | brake rotor
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: WheelFL | machined rim lip 0.254
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: WheelFL | profiled tyre
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.021
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: WheelFL | tread channel -0.042
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: WheelFL | open rim barrel
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: WheelFR | brake rotor
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: WheelFR | machined rim lip 0.254
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: WheelFR | profiled tyre
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.023
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: WheelFR | tread channel -0.042
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: WheelFR | open rim barrel
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: WheelRL | brake rotor
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: WheelRL | machined rim lip 0.254
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: WheelRL | profiled tyre
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.022
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: WheelRL | tread channel -0.042
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: WheelRL | open rim barrel
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: WheelRR | brake rotor
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: WheelRR | machined rim lip 0.254
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: WheelRR | profiled tyre
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: Cube.024
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: WheelRR | tread channel -0.042
+15:23:43 | INFO: Primitives created: 1
+15:23:43 | INFO: Extracting primitive: WheelRR | open rim barrel
+15:23:43 | INFO: Primitives created: 1
+15:23:44 | INFO: Finished glTF 2.0 export in 1.4300541877746582 s
+
+Graphic orientation updated; geometry hash unchanged: d0a1ef51e15c7c06993501b1237be805a39e56f99beb0c82da3972cdd6919d3c
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

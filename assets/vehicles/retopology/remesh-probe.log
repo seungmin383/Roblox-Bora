@@ -1,0 +1,5 @@
+00:01.625  blend            | Read blend: "C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\assets\vehicles\retopology\BoraS2_Clean.blend"
+QUAD OPTIONS ['rna_type', 'use_mesh_symmetry', 'use_preserve_sharp', 'use_preserve_boundary', 'preserve_attributes', 'smooth_normals', 'mode', 'target_ratio', 'target_edge_length', 'target_faces', 'mesh_area', 'seed']
+VOXEL 2444456 2444964
+Warning: QuadriFlow: The mesh needs to be manifold and have face normals that point in a consistent direction
+QUAD 2444456 2444964

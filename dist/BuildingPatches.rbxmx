@@ -1,0 +1,7 @@
+<roblox version="4">
+  <Item class="Model" referent="0">
+    <Properties>
+      <string name="Name">BuildingPatches</string>
+    </Properties>
+  </Item>
+</roblox>

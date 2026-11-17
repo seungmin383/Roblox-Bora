@@ -1,0 +1,107 @@
+{
+  "source": {
+    "vertices": 8466,
+    "editableFaces": 9343,
+    "components": 51
+  },
+  "regionalRebuild": {
+    "greenhouseRemovedFaces": 1368,
+    "landmarks": "P2 roof crown, windshield/c-pillar endpoints and beltline; no S1 panels appended"
+  },
+  "repairedSmallOpenings": {
+    "Body_paint": 4,
+    "DoorFL_paint": 3,
+    "DoorRL_paint": 0,
+    "DoorFR_paint": 3,
+    "DoorRR_paint": 0
+  },
+  "fittedBodySurfaces": {
+    "Body_paint": {
+      "movedVertices": 1506,
+      "maxMoveSourceUnits": 0.005
+    },
+    "DoorFL_paint": {
+      "movedVertices": 232,
+      "maxMoveSourceUnits": 0.005
+    },
+    "DoorRL_paint": {
+      "movedVertices": 107,
+      "maxMoveSourceUnits": 0.005
+    },
+    "DoorFR_paint": {
+      "movedVertices": 233,
+      "maxMoveSourceUnits": 0.005
+    },
+    "DoorRR_paint": {
+      "movedVertices": 106,
+      "maxMoveSourceUnits": 0.005
+    }
+  },
+  "fittedSurfaceNormalLoops": 7328,
+  "pivotsBlenderMeters": {
+    "Body": [
+      0,
+      0,
+      0
+    ],
+    "Steering": [
+      -0.36104997992515564,
+      -0.5756400227546692,
+      0.9094099402427673
+    ],
+    "WheelFL": [
+      -0.8003999999999999,
+      -1.4361983999999999,
+      0.338
+    ],
+    "WheelRL": [
+      -0.8003999999999999,
+      1.3299623999999999,
+      0.338
+    ],
+    "DoorFL": [
+      -0.7699499999999999,
+      -0.8657999999999999,
+      0.9266499999999999
+    ],
+    "DoorRL": [
+      -0.7699499999999999,
+      0.21996,
+      0.9266499999999999
+    ],
+    "WheelFR": [
+      0.8003999999999999,
+      -1.4361983999999999,
+      0.338
+    ],
+    "WheelRR": [
+      0.8003999999999999,
+      1.3299623999999999,
+      0.338
+    ],
+    "DoorFR": [
+      0.7699499999999999,
+      -0.8657999999999999,
+      0.9266499999999999
+    ],
+    "DoorRR": [
+      0.7699499999999999,
+      0.21996,
+      0.9266499999999999
+    ]
+  },
+  "physicalScale": [
+    4.349999904632568,
+    4.679999828338623,
+    4.309999942779541
+  ],
+  "wheelRadiusMeters": 0.338,
+  "changes": [
+    "Measured new greenhouse and roof crown, real clear glazing",
+    "Same-surface door skins and functional origins",
+    "Flat texture grilles; no generated badge components",
+    "48-sided circular tires, consistent five-spoke rims",
+    "New fitted left-hand-drive modest cabin; no S1 panels"
+  ],
+  "installedInPlace": false
+}

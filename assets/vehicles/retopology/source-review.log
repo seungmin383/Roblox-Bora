@@ -1,0 +1,12 @@
+SOURCE BoraS2_Tripo_Quad_OBJ 8466 9343 [(-0.1618652045726776, -0.3767090141773224, 0.062011778354644775), (-0.1623534858226776, -0.3723144829273224, 0.04833989962935448)]
+C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\tools\prepare_s2_scene.py:21: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  if mat and mat.use_nodes:
+00:01.750  image.write      | ERROR OpenImageIO write failed: Could not open file "C:\Users\jinug\.thumbnails\large\blender_40316_d4175060018d680bf52cd3ce7a53e87c.png.png"
+00:07.391  render           | Saved: 'C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\assets\vehicles\retopology\s2-source-front.png'
+00:12.297  render           | Saved: 'C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\assets\vehicles\retopology\s2-source-side.png'
+00:17.297  render           | Saved: 'C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\assets\vehicles\retopology\s2-source-rear.png'
+Info: Saved as "BoraS2_Source_Review.blend"
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+OBJ import of 'BoraS2_Tripo_Quad_OBJ.obj' took 17.85 ms
+
+Blender quit

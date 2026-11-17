@@ -1,0 +1,4 @@
+interface:
+  display_name: "Tripo 모델 정리"
+  short_description: "Tripo 전체 모델 생성 후 Blender로 형태·면·두께·노멀 정리"
+  default_prompt: "$tripo-mesh-cleanup 스킬로 Tripo 전체 모델을 만들고, 형태를 살리면서 Blender에서 메시를 깔끔하게 정리해줘."

@@ -1,0 +1,11 @@
+C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\tools\render_neighborhood.py:23: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m=bpy.data.materials.new(str(key));m.use_nodes=True;bs=m.node_tree.nodes.get('Principled BSDF')
+C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\tools\render_neighborhood.py:104: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  scene.world.use_nodes=True;scene.world.node_tree.nodes.get('Background').inputs[0].default_value=(.66,.75,.82,1)
+00:25.265  render           | Saved: 'C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\dist\preview\neighborhood-overview.png'
+00:53.187  render           | Saved: 'C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\dist\preview\neighborhood-street.png'
+01:22.859  render           | Saved: 'C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\dist\preview\neighborhood-cafe.png'
+Rendered staged native scene; no Studio or Place serialization.
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

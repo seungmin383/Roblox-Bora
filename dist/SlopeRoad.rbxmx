@@ -1,0 +1,182 @@
+<roblox version="4">
+  <Item class="Model" referent="0">
+    <Properties>
+      <string name="Name">SlopeRoad</string>
+      <BinaryString name="AttributesSerialize">CgAAAAcAAABBc3NldElkAhIAAABCb3JhLlJvYWQuU3RyYWlnaHQJAAAAQXNzZXRLaW5kAgQAAABSb2FkCQAAAEVuZE5vZGVJZAIQAAAAMC4wMCw4LjAwLC02NC4wMAsAAABFbmRQb3NpdGlvbhEAAAAAAAAAQQAAgMIMAAAAR3JhZGVQZXJjZW50BgAAAAAAAClADQAAAFNjaGVtYVZlcnNpb24FAACAPw0AAABTaWRld2Fsa1dpZHRoBQAAQEALAAAAU3RhcnROb2RlSWQCDgAAADAuMDAsMC4wMCwwLjAwDQAAAFN0YXJ0UG9zaXRpb24RAAAAAAAAAAAAAAAABQAAAFdpZHRoBQAAYEE=</BinaryString>
+      <CoordinateFrame name="WorldPivot">
+        <X>0</X>
+        <Y>4</Y>
+        <Z>-32</Z>
+        <R00>1</R00>
+        <R01>0</R01>
+        <R02>0</R02>
+        <R10>0</R10>
+        <R11>0.99227905</R11>
+        <R12>-0.1240387</R12>
+        <R20>0</R20>
+        <R21>0.1240387</R21>
+        <R22>0.99227905</R22>
+      </CoordinateFrame>
+    </Properties>
+    <Item class="Part" referent="1">
+      <Properties>
+        <string name="Name">Asphalt</string>
+        <bool name="Anchored">true</bool>
+        <token name="BottomSurface">0</token>
+        <CoordinateFrame name="CFrame">
+          <X>0</X>
+          <Y>3.7023163</Y>
+          <Z>-32.037216</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>0.99227905</R11>
+          <R12>-0.1240387</R12>
+          <R20>0</R20>
+          <R21>0.1240387</R21>
+          <R22>0.99227905</R22>
+        </CoordinateFrame>
+        <bool name="CanCollide">true</bool>
+        <bool name="CanQuery">true</bool>
+        <bool name="CanTouch">false</bool>
+        <Color3uint8 name="Color3uint8">3816770</Color3uint8>
+        <token name="Material">1376</token>
+        <Vector3 name="size">
+          <X>14</X>
+          <Y>0.6000061</Y>
+          <Z>64.49806</Z>
+        </Vector3>
+        <token name="TopSurface">0</token>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="2">
+      <Properties>
+        <string name="Name">SidewalkLeft</string>
+        <bool name="Anchored">true</bool>
+        <token name="BottomSurface">0</token>
+        <CoordinateFrame name="CFrame">
+          <X>-8.5</X>
+          <Y>3.8759613</Y>
+          <Z>-32.015503</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>0.99227905</R11>
+          <R12>-0.1240387</R12>
+          <R20>0</R20>
+          <R21>0.1240387</R21>
+          <R22>0.99227905</R22>
+        </CoordinateFrame>
+        <bool name="CanCollide">true</bool>
+        <bool name="CanQuery">true</bool>
+        <bool name="CanTouch">false</bool>
+        <Color3uint8 name="Color3uint8">11447975</Color3uint8>
+        <token name="Material">816</token>
+        <Vector3 name="size">
+          <X>3</X>
+          <Y>0.94999695</Y>
+          <Z>64.49806</Z>
+        </Vector3>
+        <token name="TopSurface">0</token>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="3">
+      <Properties>
+        <string name="Name">SidewalkRight</string>
+        <bool name="Anchored">true</bool>
+        <token name="BottomSurface">0</token>
+        <CoordinateFrame name="CFrame">
+          <X>8.5</X>
+          <Y>3.8759613</Y>
+          <Z>-32.015503</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>0.99227905</R11>
+          <R12>-0.1240387</R12>
+          <R20>0</R20>
+          <R21>0.1240387</R21>
+          <R22>0.99227905</R22>
+        </CoordinateFrame>
+        <bool name="CanCollide">true</bool>
+        <bool name="CanQuery">true</bool>
+        <bool name="CanTouch">false</bool>
+        <Color3uint8 name="Color3uint8">11447975</Color3uint8>
+        <token name="Material">816</token>
+        <Vector3 name="size">
+          <X>3</X>
+          <Y>0.94999695</Y>
+          <Z>64.49806</Z>
+        </Vector3>
+        <token name="TopSurface">0</token>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="4">
+      <Properties>
+        <string name="Name">CenterLine</string>
+        <bool name="Anchored">true</bool>
+        <token name="BottomSurface">0</token>
+        <CoordinateFrame name="CFrame">
+          <X>-0.16000366</X>
+          <Y>4.017868</Y>
+          <Z>-31.997772</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>0.99227905</R11>
+          <R12>-0.1240387</R12>
+          <R20>0</R20>
+          <R21>0.1240387</R21>
+          <R22>0.99227905</R22>
+        </CoordinateFrame>
+        <bool name="CanCollide">false</bool>
+        <bool name="CanQuery">false</bool>
+        <bool name="CanTouch">false</bool>
+        <Color3uint8 name="Color3uint8">15186496</Color3uint8>
+        <token name="Material">272</token>
+        <Vector3 name="size">
+          <X>0.1000061</X>
+          <Y>0.024993896</Y>
+          <Z>64.49806</Z>
+        </Vector3>
+        <token name="TopSurface">0</token>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="5">
+      <Properties>
+        <string name="Name">CenterLine</string>
+        <bool name="Anchored">true</bool>
+        <token name="BottomSurface">0</token>
+        <CoordinateFrame name="CFrame">
+          <X>0.16000366</X>
+          <Y>4.017868</Y>
+          <Z>-31.997772</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>0.99227905</R11>
+          <R12>-0.1240387</R12>
+          <R20>0</R20>
+          <R21>0.1240387</R21>
+          <R22>0.99227905</R22>
+        </CoordinateFrame>
+        <bool name="CanCollide">false</bool>
+        <bool name="CanQuery">false</bool>
+        <bool name="CanTouch">false</bool>
+        <Color3uint8 name="Color3uint8">15186496</Color3uint8>
+        <token name="Material">272</token>
+        <Vector3 name="size">
+          <X>0.1000061</X>
+          <Y>0.024993896</Y>
+          <Z>64.49806</Z>
+        </Vector3>
+        <token name="TopSurface">0</token>
+      </Properties>
+    </Item>
+  </Item>
+</roblox>

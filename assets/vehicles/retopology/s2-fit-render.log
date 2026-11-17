@@ -1,0 +1,13 @@
+00:01.843  blend            | Read blend: "C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\assets\vehicles\retopology\BoraS2_FitFix.blend"
+00:12.734  render           | Saved: 'C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\assets\vehicles\retopology\s2-fit-nose.png'
+00:25.687  render           | Saved: 'C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\assets\vehicles\retopology\s2-fit-glass.png'
+00:36.140  render           | Saved: 'C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\assets\vehicles\retopology\s2-fit-front.png'
+00:47.390  render           | Saved: 'C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\assets\vehicles\retopology\s2-fit-nose-high.png'
+C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\tools\render_s2_fit.py:14: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  gray=bpy.data.materials.new('Fit QA solid');gray.use_nodes=True;gray.node_tree.nodes.get('Principled BSDF').inputs['Base Color'].default_value=(.30,.36,.43,1)
+C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\tools\render_s2_fit.py:15: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  black=bpy.data.materials.new('Fit QA wire');black.use_nodes=True;black.node_tree.nodes.get('Principled BSDF').inputs['Base Color'].default_value=(.004,.006,.009,1)
+00:58.328  render           | Saved: 'C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\assets\vehicles\retopology\s2-fit-nose-wire.png'
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

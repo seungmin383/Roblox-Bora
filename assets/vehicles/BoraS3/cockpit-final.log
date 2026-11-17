@@ -1,0 +1,8 @@
+00:01.781  blend            | Read blend: "C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\assets\vehicles\BoraS3\BoraS3.blend"
+S3_AUDIT {"totals": {"vertices": 90932, "faces": 86336, "triangles": 176164, "boundaryEdges": 0, "overusedEdges": 0, "wireEdges": 0, "badTriangles": 0, "badUVs": 0, "badNormals": 0}, "bounds": [[-1.097000002861023, -2.3096535205841064, 0.001168520888313651], [1.097000002861023, 2.318000078201294, 1.5080000162124634]], "dimensions": [2.194000005722046, 4.6276535987854, 1.5068314953241497], "protectedUnchanged": {"Ro.rbxlx": true, "assets\\vehicles\\source\\BoraS2_Quad_OBJ\\BoraS2_Tripo_Quad_OBJ.obj": true, "assets\\example\\Car\\temp.blend": true, "assets\\vehicles\\retopology\\BoraS2_FitFix.blend": true}, "errors": [], "note": "Structural audit only; visual approval and Roblox runtime validation are separate.", "interiorGlassIntersections": [], "intersectionCheckScope": "All Interior/Steering surfaces and inner door cards against all six glazing objects; headliner excluded as roof lining."}
+00:54.672  render           | Saved: 'C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\assets\vehicles\BoraS3\S3_Cockpit.png'
+S3_RENDER S3_Cockpit.png
+REVIEW_FINISHED
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

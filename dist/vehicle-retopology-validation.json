@@ -1,0 +1,12 @@
+{
+  "source": "Tripo sedan surface sampling",
+  "roofSamples": 459,
+  "hoodSamples": 459,
+  "widthSamples": 40,
+  "sourceDetailTriangles": 32100,
+  "doorGapMeters": 0.008,
+  "wheelArchRadiusMeters": 0.37,
+  "wheelRadiusMeters": 0.325,
+  "roofCenterMeters": 1.4540895140639913,
+  "oneSharedCabinDefinition": true
+}

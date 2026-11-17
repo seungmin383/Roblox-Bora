@@ -1,0 +1,6 @@
+/archive/
+/assets/example/
+/assets/vehicles/reference-study/
+*.blend[0-9]
+__pycache__/
+*.py[cod]

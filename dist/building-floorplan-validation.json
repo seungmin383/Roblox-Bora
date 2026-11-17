@@ -1,0 +1,10 @@
+{
+  "DeleteClosesHoles": true,
+  "FloorOpeningsChecked": 4,
+  "FourRotations": true,
+  "InvalidEditAtomic": true,
+  "PlanSaveReload": true,
+  "StudioPlaytestPerformed": false,
+  "UserAdditionsPreserved": true,
+  "WalkableRisers": true
+}

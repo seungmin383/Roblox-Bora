@@ -1,0 +1,129 @@
+{
+  "approvedHousingShadesAndOpticsUnchanged": true,
+  "closedDetailParts": [
+    {
+      "kind": 1,
+      "faces": 37,
+      "closed": true
+    },
+    {
+      "kind": 2,
+      "faces": 62,
+      "closed": true
+    },
+    {
+      "kind": 2,
+      "faces": 62,
+      "closed": true
+    },
+    {
+      "kind": 1,
+      "faces": 37,
+      "closed": true
+    },
+    {
+      "kind": 1,
+      "faces": 37,
+      "closed": true
+    },
+    {
+      "kind": 3,
+      "faces": 59,
+      "closed": true
+    },
+    {
+      "kind": 2,
+      "faces": 62,
+      "closed": true
+    },
+    {
+      "kind": 3,
+      "faces": 26,
+      "closed": true
+    },
+    {
+      "kind": 3,
+      "faces": 26,
+      "closed": true
+    },
+    {
+      "kind": 2,
+      "faces": 62,
+      "closed": true
+    },
+    {
+      "kind": 3,
+      "faces": 26,
+      "closed": true
+    },
+    {
+      "kind": 3,
+      "faces": 26,
+      "closed": true
+    },
+    {
+      "kind": 3,
+      "faces": 26,
+      "closed": true
+    },
+    {
+      "kind": 3,
+      "faces": 59,
+      "closed": true
+    },
+    {
+      "kind": 1,
+      "faces": 37,
+      "closed": true
+    },
+    {
+      "kind": 1,
+      "faces": 37,
+      "closed": true
+    },
+    {
+      "kind": 3,
+      "faces": 26,
+      "closed": true
+    },
+    {
+      "kind": 3,
+      "faces": 26,
+      "closed": true
+    },
+    {
+      "kind": 1,
+      "faces": 37,
+      "closed": true
+    },
+    {
+      "kind": 3,
+      "faces": 26,
+      "closed": true
+    },
+    {
+      "kind": 2,
+      "faces": 62,
+      "closed": true
+    },
+    {
+      "kind": 3,
+      "faces": 26,
+      "closed": true
+    },
+    {
+      "kind": 3,
+      "faces": 26,
+      "closed": true
+    },
+    {
+      "kind": 2,
+      "faces": 62,
+      "closed": true
+    }
+  ],
+  "maximumFacePlanarityErrorMm": 0.00016103329691929957,
+  "maximumSavedNormalError": 9.404965600973168e-05,
+  "nativeTrianglesBefore": 8978,
+  "nativeTrianglesAfter": 7581
+}

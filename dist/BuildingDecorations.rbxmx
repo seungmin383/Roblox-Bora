@@ -1,0 +1,148 @@
+<roblox version="4">
+  <Item class="Model" referent="0">
+    <Properties>
+      <string name="Name">Decorations</string>
+    </Properties>
+    <Item class="Model" referent="1">
+      <Properties>
+        <string name="Name">WallSconce</string>
+        <BinaryString name="AttributesSerialize">AgAAAAoAAABTb3VyY2VUYXNrAiQAAABlYjY1NjRhMy1mNDlkLTQyM2ItYWU1Ni1lZWU0NWU3MjI0NjYJAAAAVHJpYW5nbGVzBQDAtEU=</BinaryString>
+      </Properties>
+      <Item class="Part" referent="2">
+        <Properties>
+          <string name="Name">Sconce_1</string>
+          <bool name="Anchored">true</bool>
+          <CoordinateFrame name="CFrame">
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <bool name="CanCollide">false</bool>
+          <bool name="CanQuery">false</bool>
+          <bool name="CanTouch">false</bool>
+          <Color3uint8 name="Color3uint8">3226173</Color3uint8>
+          <token name="Material">1088</token>
+          <Vector3 name="size">
+            <X>0.72579956</X>
+            <Y>1.3320923</Y>
+            <Z>0.91407776</Z>
+          </Vector3>
+          <float name="Transparency">0</float>
+        </Properties>
+        <Item class="SpecialMesh" referent="3">
+          <Properties>
+            <string name="Name">SpecialMesh</string>
+            <Content name="MeshContent">
+              <uri>rbxasset://BoraBuildingKit/WallSconce_0.mesh</uri>
+            </Content>
+            <token name="MeshType">5</token>
+            <Vector3 name="Scale">
+              <X>3.5714264</X>
+              <Y>3.5714264</Y>
+              <Z>3.5714264</Z>
+            </Vector3>
+          </Properties>
+        </Item>
+      </Item>
+      <Item class="Part" referent="4">
+        <Properties>
+          <string name="Name">Sconce_2</string>
+          <bool name="Anchored">true</bool>
+          <CoordinateFrame name="CFrame">
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <bool name="CanCollide">false</bool>
+          <bool name="CanQuery">false</bool>
+          <bool name="CanTouch">false</bool>
+          <Color3uint8 name="Color3uint8">11848910</Color3uint8>
+          <token name="Material">1568</token>
+          <Vector3 name="size">
+            <X>0.63835144</X>
+            <Y>0.5873413</Y>
+            <Z>0.63835144</Z>
+          </Vector3>
+          <float name="Transparency">0.72</float>
+        </Properties>
+        <Item class="SpecialMesh" referent="5">
+          <Properties>
+            <string name="Name">SpecialMesh</string>
+            <Content name="MeshContent">
+              <uri>rbxasset://BoraBuildingKit/WallSconce_1.mesh</uri>
+            </Content>
+            <token name="MeshType">5</token>
+            <Vector3 name="Scale">
+              <X>3.5714264</X>
+              <Y>3.5714264</Y>
+              <Z>3.5714264</Z>
+            </Vector3>
+          </Properties>
+        </Item>
+      </Item>
+      <Item class="Part" referent="6">
+        <Properties>
+          <string name="Name">Sconce_3</string>
+          <bool name="Anchored">true</bool>
+          <CoordinateFrame name="CFrame">
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <bool name="CanCollide">false</bool>
+          <bool name="CanQuery">false</bool>
+          <bool name="CanTouch">false</bool>
+          <Color3uint8 name="Color3uint8">16114620</Color3uint8>
+          <token name="Material">272</token>
+          <Vector3 name="size">
+            <X>0.26234436</X>
+            <Y>0.43286133</Y>
+            <Z>0.26234436</Z>
+          </Vector3>
+          <float name="Transparency">0</float>
+        </Properties>
+        <Item class="SpecialMesh" referent="7">
+          <Properties>
+            <string name="Name">SpecialMesh</string>
+            <Content name="MeshContent">
+              <uri>rbxasset://BoraBuildingKit/WallSconce_2.mesh</uri>
+            </Content>
+            <token name="MeshType">5</token>
+            <Vector3 name="Scale">
+              <X>3.5714264</X>
+              <Y>3.5714264</Y>
+              <Z>3.5714264</Z>
+            </Vector3>
+          </Properties>
+        </Item>
+      </Item>
+    </Item>
+  </Item>
+</roblox>

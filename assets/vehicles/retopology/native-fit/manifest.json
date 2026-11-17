@@ -1,0 +1,1034 @@
+{
+  "Name": "BORA S2",
+  "SourceTripoTask": "b1e76032-3d84-48ca-98b7-dbf272ea6cab",
+  "Units": "meters",
+  "Axis": "Roblox X right, Y up, Z rear; native meshes are pivot-relative",
+  "Pivots": {
+    "Body": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "Steering": [
+      -0.36104997992515564,
+      0.9094099402427673,
+      -0.5756400227546692
+    ],
+    "WheelFL": [
+      -0.8004000186920166,
+      0.33799999952316284,
+      -1.436198353767395
+    ],
+    "WheelRL": [
+      -0.8004000186920166,
+      0.33799999952316284,
+      1.3299623727798462
+    ],
+    "DoorFL": [
+      -0.7699499726295471,
+      0.9266499876976013,
+      -0.8658000230789185
+    ],
+    "DoorRL": [
+      -0.7699499726295471,
+      0.9266499876976013,
+      0.21996000409126282
+    ],
+    "WheelFR": [
+      0.8004000186920166,
+      0.33799999952316284,
+      -1.436198353767395
+    ],
+    "WheelRR": [
+      0.8004000186920166,
+      0.33799999952316284,
+      1.3299623727798462
+    ],
+    "DoorFR": [
+      0.7699499726295471,
+      0.9266499876976013,
+      -0.8658000230789185
+    ],
+    "DoorRR": [
+      0.7699499726295471,
+      0.9266499876976013,
+      0.21996000409126282
+    ]
+  },
+  "Parts": [
+    {
+      "Group": "Body",
+      "MaterialName": "S2 \u2022 Instrument_display",
+      "Color": [
+        63,
+        69,
+        75
+      ],
+      "Transparency": 0,
+      "Material": "SmoothPlastic",
+      "Texture": "../BoraS2_Instruments.png",
+      "File": "Body_00_00.mesh",
+      "Triangles": 12,
+      "Vertices": 24,
+      "Bounds": [
+        0.29580000042915344,
+        0.08619999885559082,
+        0.0014040470123291016
+      ]
+    },
+    {
+      "Group": "Body",
+      "MaterialName": "S2 \u2022 Navigation_display",
+      "Color": [
+        63,
+        69,
+        75
+      ],
+      "Transparency": 0,
+      "Material": "SmoothPlastic",
+      "Texture": "../BoraS2_Navigation.png",
+      "File": "Body_01_00.mesh",
+      "Triangles": 12,
+      "Vertices": 24,
+      "Bounds": [
+        0.26099997758865356,
+        0.1336100697517395,
+        0.0014040470123291016
+      ]
+    },
+    {
+      "Group": "Body",
+      "MaterialName": "S2 \u2022 actual laminated glass",
+      "Color": [
+        248,
+        252,
+        254
+      ],
+      "Transparency": 0.6,
+      "Material": "Glass",
+      "File": "Body_02_00.mesh",
+      "Triangles": 1088,
+      "Vertices": 804,
+      "Bounds": [
+        1.46486496925354,
+        0.392270565032959,
+        2.9371246099472046
+      ]
+    },
+    {
+      "Group": "Body",
+      "MaterialName": "S2 \u2022 cabin polymer",
+      "Color": [
+        48,
+        56,
+        63
+      ],
+      "Transparency": 0,
+      "Material": "SmoothPlastic",
+      "File": "Body_03_00.mesh",
+      "Triangles": 2344,
+      "Vertices": 2621,
+      "Bounds": [
+        1.5474052429199219,
+        1.1938699781894684,
+        2.690999746322632
+      ]
+    },
+    {
+      "Group": "Body",
+      "MaterialName": "S2 \u2022 clean headlamp optics",
+      "Color": [
+        231,
+        231,
+        231
+      ],
+      "Transparency": 0,
+      "Material": "SmoothPlastic",
+      "Texture": "../BoraS2_FitLampBaked.png",
+      "File": "Body_04_00.mesh",
+      "Triangles": 736,
+      "Vertices": 480,
+      "Bounds": [
+        1.6299999952316284,
+        0.15862208604812622,
+        0.18432724475860596
+      ]
+    },
+    {
+      "Group": "Body",
+      "MaterialName": "S2 \u2022 cloth upholstery",
+      "Color": [
+        63,
+        70,
+        79
+      ],
+      "Transparency": 0,
+      "Material": "SmoothPlastic",
+      "File": "Body_05_00.mesh",
+      "Triangles": 1188,
+      "Vertices": 2376,
+      "Bounds": [
+        1.2005999088287354,
+        0.8145901262760162,
+        1.5069600343704224
+      ]
+    },
+    {
+      "Group": "Body",
+      "MaterialName": "S2 \u2022 grille texture pattern",
+      "Color": [
+        48,
+        56,
+        63
+      ],
+      "Transparency": 0,
+      "Material": "Metal",
+      "Texture": "../BoraS2_Grille.png",
+      "File": "Body_06_00.mesh",
+      "Triangles": 2016,
+      "Vertices": 1276,
+      "Bounds": [
+        1.0099999904632568,
+        0.4500153362751007,
+        0.15867829322814941
+      ]
+    },
+    {
+      "Group": "Body",
+      "MaterialName": "S2 \u2022 lamp graphics only",
+      "Color": [
+        231,
+        231,
+        231
+      ],
+      "Transparency": 0,
+      "Material": "SmoothPlastic",
+      "Texture": "../BoraS2_LampGraphics.png",
+      "File": "Body_07_00.mesh",
+      "Triangles": 700,
+      "Vertices": 908,
+      "Bounds": [
+        1.6121336817741394,
+        0.30371832847595215,
+        0.36905956268310547
+      ]
+    },
+    {
+      "Group": "Body",
+      "MaterialName": "S2 \u2022 pearl silver paint",
+      "Color": [
+        181,
+        191,
+        202
+      ],
+      "Transparency": 0,
+      "Material": "Metal",
+      "File": "Body_08_00.mesh",
+      "Triangles": 8000,
+      "Vertices": 7586,
+      "Bounds": [
+        1.887122392654419,
+        1.2770154476165771,
+        3.964990735054016
+      ]
+    },
+    {
+      "Group": "Body",
+      "MaterialName": "S2 \u2022 pearl silver paint",
+      "Color": [
+        181,
+        191,
+        202
+      ],
+      "Transparency": 0,
+      "Material": "Metal",
+      "File": "Body_08_01.mesh",
+      "Triangles": 5532,
+      "Vertices": 3270,
+      "Bounds": [
+        1.8812198638916016,
+        0.8892860561609268,
+        4.266983509063721
+      ]
+    },
+    {
+      "Group": "Body",
+      "MaterialName": "S2 \u2022 rubber",
+      "Color": [
+        31,
+        36,
+        42
+      ],
+      "Transparency": 0,
+      "Material": "SmoothPlastic",
+      "File": "Body_09_00.mesh",
+      "Triangles": 432,
+      "Vertices": 864,
+      "Bounds": [
+        1.2484499216079712,
+        0.038789987564086914,
+        0.009359955787658691
+      ]
+    },
+    {
+      "Group": "Body",
+      "MaterialName": "S2 \u2022 satin aluminium",
+      "Color": [
+        181,
+        186,
+        194
+      ],
+      "Transparency": 0,
+      "Material": "Metal",
+      "File": "Body_10_00.mesh",
+      "Triangles": 1172,
+      "Vertices": 1536,
+      "Bounds": [
+        1.4783672094345093,
+        0.6520879566669464,
+        4.5607287883758545
+      ]
+    },
+    {
+      "Group": "Body",
+      "MaterialName": "S2 \u2022 satin graphite",
+      "Color": [
+        42,
+        48,
+        55
+      ],
+      "Transparency": 0,
+      "Material": "SmoothPlastic",
+      "File": "Body_11_00.mesh",
+      "Triangles": 3400,
+      "Vertices": 3388,
+      "Bounds": [
+        1.6378165483474731,
+        1.101440042257309,
+        4.195032715797424
+      ]
+    },
+    {
+      "Group": "DoorFL",
+      "MaterialName": "S2 \u2022 actual laminated glass",
+      "Color": [
+        248,
+        252,
+        254
+      ],
+      "Transparency": 0.6,
+      "Material": "Glass",
+      "File": "DoorFL_12_00.mesh",
+      "Triangles": 248,
+      "Vertices": 188,
+      "Bounds": [
+        0.1848108172416687,
+        0.36606061458587646,
+        1.129759669303894
+      ]
+    },
+    {
+      "Group": "DoorFL",
+      "MaterialName": "S2 \u2022 cabin polymer",
+      "Color": [
+        48,
+        56,
+        63
+      ],
+      "Transparency": 0,
+      "Material": "SmoothPlastic",
+      "File": "DoorFL_13_00.mesh",
+      "Triangles": 108,
+      "Vertices": 216,
+      "Bounds": [
+        0.03914999961853027,
+        0.4180699586868286,
+        0.8330399990081787
+      ]
+    },
+    {
+      "Group": "DoorFL",
+      "MaterialName": "S2 \u2022 pearl silver paint",
+      "Color": [
+        181,
+        191,
+        202
+      ],
+      "Transparency": 0,
+      "Material": "Metal",
+      "File": "DoorFL_15_00.mesh",
+      "Triangles": 1306,
+      "Vertices": 1528,
+      "Bounds": [
+        0.4075465202331543,
+        0.7963500618934631,
+        1.15730482339859
+      ]
+    },
+    {
+      "Group": "DoorFL",
+      "MaterialName": "S2 \u2022 satin aluminium",
+      "Color": [
+        181,
+        186,
+        194
+      ],
+      "Transparency": 0,
+      "Material": "Metal",
+      "File": "DoorFL_16_00.mesh",
+      "Triangles": 448,
+      "Vertices": 696,
+      "Bounds": [
+        0.38062500953674316,
+        0.26075488328933716,
+        1.1248723268508911
+      ]
+    },
+    {
+      "Group": "DoorFL",
+      "MaterialName": "S2 \u2022 satin graphite",
+      "Color": [
+        42,
+        48,
+        55
+      ],
+      "Transparency": 0,
+      "Material": "SmoothPlastic",
+      "File": "DoorFL_17_00.mesh",
+      "Triangles": 264,
+      "Vertices": 408,
+      "Bounds": [
+        0.3640907406806946,
+        0.7471442222595215,
+        1.159093201160431
+      ]
+    },
+    {
+      "Group": "DoorFR",
+      "MaterialName": "S2 \u2022 actual laminated glass",
+      "Color": [
+        248,
+        252,
+        254
+      ],
+      "Transparency": 0.6,
+      "Material": "Glass",
+      "File": "DoorFR_18_00.mesh",
+      "Triangles": 248,
+      "Vertices": 188,
+      "Bounds": [
+        0.1848108172416687,
+        0.36606061458587646,
+        1.129759669303894
+      ]
+    },
+    {
+      "Group": "DoorFR",
+      "MaterialName": "S2 \u2022 cabin polymer",
+      "Color": [
+        48,
+        56,
+        63
+      ],
+      "Transparency": 0,
+      "Material": "SmoothPlastic",
+      "File": "DoorFR_19_00.mesh",
+      "Triangles": 108,
+      "Vertices": 216,
+      "Bounds": [
+        0.03914999961853027,
+        0.4180699586868286,
+        0.8330399990081787
+      ]
+    },
+    {
+      "Group": "DoorFR",
+      "MaterialName": "S2 \u2022 pearl silver paint",
+      "Color": [
+        181,
+        191,
+        202
+      ],
+      "Transparency": 0,
+      "Material": "Metal",
+      "File": "DoorFR_21_00.mesh",
+      "Triangles": 1318,
+      "Vertices": 1537,
+      "Bounds": [
+        0.4067249298095703,
+        0.7963500618934631,
+        1.15730482339859
+      ]
+    },
+    {
+      "Group": "DoorFR",
+      "MaterialName": "S2 \u2022 satin aluminium",
+      "Color": [
+        181,
+        186,
+        194
+      ],
+      "Transparency": 0,
+      "Material": "Metal",
+      "File": "DoorFR_22_00.mesh",
+      "Triangles": 448,
+      "Vertices": 693,
+      "Bounds": [
+        0.38062500953674316,
+        0.26075488328933716,
+        1.1248723268508911
+      ]
+    },
+    {
+      "Group": "DoorFR",
+      "MaterialName": "S2 \u2022 satin graphite",
+      "Color": [
+        42,
+        48,
+        55
+      ],
+      "Transparency": 0,
+      "Material": "SmoothPlastic",
+      "File": "DoorFR_23_00.mesh",
+      "Triangles": 264,
+      "Vertices": 408,
+      "Bounds": [
+        0.3640907406806946,
+        0.7471442222595215,
+        1.159093201160431
+      ]
+    },
+    {
+      "Group": "DoorRL",
+      "MaterialName": "S2 \u2022 actual laminated glass",
+      "Color": [
+        248,
+        252,
+        254
+      ],
+      "Transparency": 0.6,
+      "Material": "Glass",
+      "File": "DoorRL_24_00.mesh",
+      "Triangles": 192,
+      "Vertices": 154,
+      "Bounds": [
+        0.1764836311340332,
+        0.32703888416290283,
+        0.7498399019241333
+      ]
+    },
+    {
+      "Group": "DoorRL",
+      "MaterialName": "S2 \u2022 cabin polymer",
+      "Color": [
+        48,
+        56,
+        63
+      ],
+      "Transparency": 0,
+      "Material": "SmoothPlastic",
+      "File": "DoorRL_25_00.mesh",
+      "Triangles": 108,
+      "Vertices": 216,
+      "Bounds": [
+        0.03914999961853027,
+        0.4180699586868286,
+        0.8330400288105011
+      ]
+    },
+    {
+      "Group": "DoorRL",
+      "MaterialName": "S2 \u2022 pearl silver paint",
+      "Color": [
+        181,
+        191,
+        202
+      ],
+      "Transparency": 0,
+      "Material": "Metal",
+      "File": "DoorRL_27_00.mesh",
+      "Triangles": 656,
+      "Vertices": 636,
+      "Bounds": [
+        0.29995524883270264,
+        0.7632744908332825,
+        1.1667476147413254
+      ]
+    },
+    {
+      "Group": "DoorRL",
+      "MaterialName": "S2 \u2022 satin aluminium",
+      "Color": [
+        181,
+        186,
+        194
+      ],
+      "Transparency": 0,
+      "Material": "Metal",
+      "File": "DoorRL_28_00.mesh",
+      "Triangles": 340,
+      "Vertices": 495,
+      "Bounds": [
+        0.2469220757484436,
+        0.24561524391174316,
+        0.9412073343992233
+      ]
+    },
+    {
+      "Group": "DoorRL",
+      "MaterialName": "S2 \u2022 satin graphite",
+      "Color": [
+        42,
+        48,
+        55
+      ],
+      "Transparency": 0,
+      "Material": "SmoothPlastic",
+      "File": "DoorRL_29_00.mesh",
+      "Triangles": 212,
+      "Vertices": 344,
+      "Bounds": [
+        0.19082659482955933,
+        0.7464922666549683,
+        0.7632741928100586
+      ]
+    },
+    {
+      "Group": "DoorRR",
+      "MaterialName": "S2 \u2022 actual laminated glass",
+      "Color": [
+        248,
+        252,
+        254
+      ],
+      "Transparency": 0.6,
+      "Material": "Glass",
+      "File": "DoorRR_30_00.mesh",
+      "Triangles": 192,
+      "Vertices": 154,
+      "Bounds": [
+        0.1764836311340332,
+        0.32703888416290283,
+        0.7498399019241333
+      ]
+    },
+    {
+      "Group": "DoorRR",
+      "MaterialName": "S2 \u2022 cabin polymer",
+      "Color": [
+        48,
+        56,
+        63
+      ],
+      "Transparency": 0,
+      "Material": "SmoothPlastic",
+      "File": "DoorRR_31_00.mesh",
+      "Triangles": 108,
+      "Vertices": 216,
+      "Bounds": [
+        0.03914999961853027,
+        0.4180699586868286,
+        0.8330400288105011
+      ]
+    },
+    {
+      "Group": "DoorRR",
+      "MaterialName": "S2 \u2022 pearl silver paint",
+      "Color": [
+        181,
+        191,
+        202
+      ],
+      "Transparency": 0,
+      "Material": "Metal",
+      "File": "DoorRR_33_00.mesh",
+      "Triangles": 652,
+      "Vertices": 627,
+      "Bounds": [
+        0.30089426040649414,
+        0.7632744908332825,
+        1.1667476147413254
+      ]
+    },
+    {
+      "Group": "DoorRR",
+      "MaterialName": "S2 \u2022 satin aluminium",
+      "Color": [
+        181,
+        186,
+        194
+      ],
+      "Transparency": 0,
+      "Material": "Metal",
+      "File": "DoorRR_34_00.mesh",
+      "Triangles": 340,
+      "Vertices": 497,
+      "Bounds": [
+        0.24479776620864868,
+        0.24561524391174316,
+        0.9412074536085129
+      ]
+    },
+    {
+      "Group": "DoorRR",
+      "MaterialName": "S2 \u2022 satin graphite",
+      "Color": [
+        42,
+        48,
+        55
+      ],
+      "Transparency": 0,
+      "Material": "SmoothPlastic",
+      "File": "DoorRR_35_00.mesh",
+      "Triangles": 212,
+      "Vertices": 344,
+      "Bounds": [
+        0.19082659482955933,
+        0.7464922666549683,
+        0.7632741928100586
+      ]
+    },
+    {
+      "Group": "Steering",
+      "MaterialName": "S2 \u2022 satin graphite",
+      "Color": [
+        42,
+        48,
+        55
+      ],
+      "Transparency": 0,
+      "Material": "SmoothPlastic",
+      "File": "Steering_36_00.mesh",
+      "Triangles": 680,
+      "Vertices": 592,
+      "Bounds": [
+        0.3427799642086029,
+        0.2841144800186157,
+        0.22415095567703247
+      ]
+    },
+    {
+      "Group": "WheelFL",
+      "MaterialName": "S2 \u2022 cabin polymer",
+      "Color": [
+        48,
+        56,
+        63
+      ],
+      "Transparency": 0,
+      "Material": "SmoothPlastic",
+      "File": "WheelFL_37_00.mesh",
+      "Triangles": 124,
+      "Vertices": 128,
+      "Bounds": [
+        0.008000016212463379,
+        0.3919999748468399,
+        0.39200007915496826
+      ]
+    },
+    {
+      "Group": "WheelFL",
+      "MaterialName": "S2 \u2022 rubber",
+      "Color": [
+        31,
+        36,
+        42
+      ],
+      "Transparency": 0,
+      "Material": "SmoothPlastic",
+      "File": "WheelFL_38_00.mesh",
+      "Triangles": 768,
+      "Vertices": 480,
+      "Bounds": [
+        0.2279999852180481,
+        0.6759999990463257,
+        0.6759999990463257
+      ]
+    },
+    {
+      "Group": "WheelFL",
+      "MaterialName": "S2 \u2022 satin aluminium",
+      "Color": [
+        181,
+        186,
+        194
+      ],
+      "Transparency": 0,
+      "Material": "Metal",
+      "File": "WheelFL_39_00.mesh",
+      "Triangles": 940,
+      "Vertices": 1400,
+      "Bounds": [
+        0.02399998903274536,
+        0.49399998784065247,
+        0.49400007724761963
+      ]
+    },
+    {
+      "Group": "WheelFL",
+      "MaterialName": "S2 \u2022 satin graphite",
+      "Color": [
+        42,
+        48,
+        55
+      ],
+      "Transparency": 0,
+      "Material": "SmoothPlastic",
+      "File": "WheelFL_40_00.mesh",
+      "Triangles": 124,
+      "Vertices": 128,
+      "Bounds": [
+        0.027000010013580322,
+        0.11800000071525574,
+        0.11799991130828857
+      ]
+    },
+    {
+      "Group": "WheelFR",
+      "MaterialName": "S2 \u2022 cabin polymer",
+      "Color": [
+        48,
+        56,
+        63
+      ],
+      "Transparency": 0,
+      "Material": "SmoothPlastic",
+      "File": "WheelFR_41_00.mesh",
+      "Triangles": 124,
+      "Vertices": 128,
+      "Bounds": [
+        0.008000016212463379,
+        0.3919999748468399,
+        0.39200007915496826
+      ]
+    },
+    {
+      "Group": "WheelFR",
+      "MaterialName": "S2 \u2022 rubber",
+      "Color": [
+        31,
+        36,
+        42
+      ],
+      "Transparency": 0,
+      "Material": "SmoothPlastic",
+      "File": "WheelFR_42_00.mesh",
+      "Triangles": 768,
+      "Vertices": 480,
+      "Bounds": [
+        0.2279999852180481,
+        0.6759999990463257,
+        0.6759999990463257
+      ]
+    },
+    {
+      "Group": "WheelFR",
+      "MaterialName": "S2 \u2022 satin aluminium",
+      "Color": [
+        181,
+        186,
+        194
+      ],
+      "Transparency": 0,
+      "Material": "Metal",
+      "File": "WheelFR_43_00.mesh",
+      "Triangles": 940,
+      "Vertices": 1400,
+      "Bounds": [
+        0.02399998903274536,
+        0.49399998784065247,
+        0.49400007724761963
+      ]
+    },
+    {
+      "Group": "WheelFR",
+      "MaterialName": "S2 \u2022 satin graphite",
+      "Color": [
+        42,
+        48,
+        55
+      ],
+      "Transparency": 0,
+      "Material": "SmoothPlastic",
+      "File": "WheelFR_44_00.mesh",
+      "Triangles": 124,
+      "Vertices": 128,
+      "Bounds": [
+        0.027000010013580322,
+        0.11800000071525574,
+        0.11799991130828857
+      ]
+    },
+    {
+      "Group": "WheelRL",
+      "MaterialName": "S2 \u2022 cabin polymer",
+      "Color": [
+        48,
+        56,
+        63
+      ],
+      "Transparency": 0,
+      "Material": "SmoothPlastic",
+      "File": "WheelRL_45_00.mesh",
+      "Triangles": 124,
+      "Vertices": 128,
+      "Bounds": [
+        0.008000016212463379,
+        0.3919999748468399,
+        0.3919999599456787
+      ]
+    },
+    {
+      "Group": "WheelRL",
+      "MaterialName": "S2 \u2022 rubber",
+      "Color": [
+        31,
+        36,
+        42
+      ],
+      "Transparency": 0,
+      "Material": "SmoothPlastic",
+      "File": "WheelRL_46_00.mesh",
+      "Triangles": 768,
+      "Vertices": 480,
+      "Bounds": [
+        0.2279999852180481,
+        0.6759999990463257,
+        0.6760000586509705
+      ]
+    },
+    {
+      "Group": "WheelRL",
+      "MaterialName": "S2 \u2022 satin aluminium",
+      "Color": [
+        181,
+        186,
+        194
+      ],
+      "Transparency": 0,
+      "Material": "Metal",
+      "File": "WheelRL_47_00.mesh",
+      "Triangles": 940,
+      "Vertices": 1400,
+      "Bounds": [
+        0.02399998903274536,
+        0.49399998784065247,
+        0.4939999580383301
+      ]
+    },
+    {
+      "Group": "WheelRL",
+      "MaterialName": "S2 \u2022 satin graphite",
+      "Color": [
+        42,
+        48,
+        55
+      ],
+      "Transparency": 0,
+      "Material": "SmoothPlastic",
+      "File": "WheelRL_48_00.mesh",
+      "Triangles": 124,
+      "Vertices": 128,
+      "Bounds": [
+        0.027000010013580322,
+        0.11800000071525574,
+        0.11800003051757812
+      ]
+    },
+    {
+      "Group": "WheelRR",
+      "MaterialName": "S2 \u2022 cabin polymer",
+      "Color": [
+        48,
+        56,
+        63
+      ],
+      "Transparency": 0,
+      "Material": "SmoothPlastic",
+      "File": "WheelRR_49_00.mesh",
+      "Triangles": 124,
+      "Vertices": 128,
+      "Bounds": [
+        0.008000016212463379,
+        0.3919999748468399,
+        0.3919999599456787
+      ]
+    },
+    {
+      "Group": "WheelRR",
+      "MaterialName": "S2 \u2022 rubber",
+      "Color": [
+        31,
+        36,
+        42
+      ],
+      "Transparency": 0,
+      "Material": "SmoothPlastic",
+      "File": "WheelRR_50_00.mesh",
+      "Triangles": 768,
+      "Vertices": 480,
+      "Bounds": [
+        0.2279999852180481,
+        0.6759999990463257,
+        0.6760000586509705
+      ]
+    },
+    {
+      "Group": "WheelRR",
+      "MaterialName": "S2 \u2022 satin aluminium",
+      "Color": [
+        181,
+        186,
+        194
+      ],
+      "Transparency": 0,
+      "Material": "Metal",
+      "File": "WheelRR_51_00.mesh",
+      "Triangles": 940,
+      "Vertices": 1400,
+      "Bounds": [
+        0.02399998903274536,
+        0.49399998784065247,
+        0.4939999580383301
+      ]
+    },
+    {
+      "Group": "WheelRR",
+      "MaterialName": "S2 \u2022 satin graphite",
+      "Color": [
+        42,
+        48,
+        55
+      ],
+      "Transparency": 0,
+      "Material": "SmoothPlastic",
+      "File": "WheelRR_52_00.mesh",
+      "Triangles": 124,
+      "Vertices": 128,
+      "Bounds": [
+        0.027000010013580322,
+        0.11800000071525574,
+        0.11800003051757812
+      ]
+    }
+  ],
+  "InstalledInPlace": false,
+  "TotalTriangles": 42908,
+  "BlenderToRobloxMatrix": [
+    [
+      -1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0
+    ]
+  ]
+}

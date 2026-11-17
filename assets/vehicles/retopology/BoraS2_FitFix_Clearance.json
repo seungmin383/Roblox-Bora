@@ -1,0 +1,133 @@
+{
+  "status": "pass",
+  "frontGlassChecks": [
+    {
+      "name": "Dashboard_lower",
+      "surfaceSamples": 1080,
+      "samplesInFrontGlassProjection": 0,
+      "minimumClearanceMeters": null
+    },
+    {
+      "name": "Center_screen",
+      "surfaceSamples": 1080,
+      "samplesInFrontGlassProjection": 492,
+      "minimumClearanceMeters": 0.2615407705307007
+    },
+    {
+      "name": "Instrument_binnacle",
+      "surfaceSamples": 1080,
+      "samplesInFrontGlassProjection": 576,
+      "minimumClearanceMeters": 0.07173651456832886
+    },
+    {
+      "name": "Navigation_display",
+      "surfaceSamples": 120,
+      "samplesInFrontGlassProjection": 44,
+      "minimumClearanceMeters": 0.3121680021286011
+    },
+    {
+      "name": "Instrument_display",
+      "surfaceSamples": 120,
+      "samplesInFrontGlassProjection": 69,
+      "minimumClearanceMeters": 0.28152185678482056
+    },
+    {
+      "name": "Dash_vent",
+      "surfaceSamples": 1080,
+      "samplesInFrontGlassProjection": 0,
+      "minimumClearanceMeters": null
+    },
+    {
+      "name": "Dash_vent.001",
+      "surfaceSamples": 1080,
+      "samplesInFrontGlassProjection": 0,
+      "minimumClearanceMeters": null
+    },
+    {
+      "name": "Dash_vent.002",
+      "surfaceSamples": 1080,
+      "samplesInFrontGlassProjection": 0,
+      "minimumClearanceMeters": null
+    },
+    {
+      "name": "Dash_vent.003",
+      "surfaceSamples": 1080,
+      "samplesInFrontGlassProjection": 0,
+      "minimumClearanceMeters": null
+    },
+    {
+      "name": "Steering_column",
+      "surfaceSamples": 200,
+      "samplesInFrontGlassProjection": 0,
+      "minimumClearanceMeters": null
+    },
+    {
+      "name": "Dashboard_upper",
+      "surfaceSamples": 9240,
+      "samplesInFrontGlassProjection": 0,
+      "minimumClearanceMeters": null
+    },
+    {
+      "name": "Steering_rim",
+      "surfaceSamples": 5120,
+      "samplesInFrontGlassProjection": 1338,
+      "minimumClearanceMeters": 0.44027233123779297
+    },
+    {
+      "name": "Steering_spoke",
+      "surfaceSamples": 200,
+      "samplesInFrontGlassProjection": 0,
+      "minimumClearanceMeters": null
+    },
+    {
+      "name": "Steering_spoke.001",
+      "surfaceSamples": 200,
+      "samplesInFrontGlassProjection": 0,
+      "minimumClearanceMeters": null
+    },
+    {
+      "name": "Steering_spoke.002",
+      "surfaceSamples": 200,
+      "samplesInFrontGlassProjection": 0,
+      "minimumClearanceMeters": null
+    },
+    {
+      "name": "Steering_hub",
+      "surfaceSamples": 1080,
+      "samplesInFrontGlassProjection": 0,
+      "minimumClearanceMeters": null
+    }
+  ],
+  "frontInsertChecks": [
+    {
+      "name": "Front_grille_shallow_panel",
+      "surfaceSamples": 3185,
+      "minimumOutsideSkinMeters": 0.0002815723419189453
+    },
+    {
+      "name": "Lower_grille_shallow_panel",
+      "surfaceSamples": 2989,
+      "minimumOutsideSkinMeters": 0.00024962425231933594
+    },
+    {
+      "name": "L_Front_lamp_fitted",
+      "surfaceSamples": 1183,
+      "minimumOutsideSkinMeters": 0.0004298686981201172
+    },
+    {
+      "name": "R_Front_lamp_fitted",
+      "surfaceSamples": 1183,
+      "minimumOutsideSkinMeters": 0.00039315223693847656
+    }
+  ],
+  "noseCoverageRays": 3321,
+  "noseCoverageMisses": [],
+  "bodyNoseJoin": {
+    "samples": 39,
+    "maximumSeparationMeters": 0.0032265763729810715,
+    "toleranceMeters": 0.004
+  },
+  "errors": [],
+  "originalBlendUnchanged": true,
+  "installedInPlace": false
+}

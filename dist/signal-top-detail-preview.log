@@ -1,0 +1,7 @@
+00:01.953  blend            | Read blend: "C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\assets\traffic\retopology\TrafficSignal_Clean.blend"
+C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\tools\render_signal_top_details.py:10: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  solid=bpy.data.materials.new('Top fitting solid inspection');solid.use_nodes=True
+00:11.297  render           | Saved: 'C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\dist\preview\trafficsignal-top-ribs-solid.png'
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

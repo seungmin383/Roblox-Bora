@@ -1,0 +1,474 @@
+{
+  "input": "C:\\Users\\jinug\\Desktop\\SEUNGMIN_BAEK\\Ro\\assets\\buildings\\WallSconce_Clean.blend",
+  "blender_version": "5.2.2 LTS",
+  "scene_unit_scale_length": 1.0,
+  "face_tags": [],
+  "area_epsilon_object_units_squared": 1e-12,
+  "objects": [
+    {
+      "object": "Rounded flat back plate",
+      "coordinate_space": "object-local",
+      "object_scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "selected_faces": 30,
+      "selected_vertices": 56,
+      "selected_triangles": 108,
+      "quads": 28,
+      "ngons": 2,
+      "positions_finite": true,
+      "normals_finite": true,
+      "nonunit_or_invalid_corner_normals": 0,
+      "active_uv_layer": "MeasuredSurface",
+      "uv_finite": true,
+      "components": [
+        {
+          "faces": 30,
+          "vertices": 56,
+          "edges": 84,
+          "open_edges": 0,
+          "nonmanifold_edges": 0,
+          "euler": 2,
+          "degenerate_faces": 0,
+          "closed": true
+        }
+      ]
+    },
+    {
+      "object": "Upper stepped cap",
+      "coordinate_space": "object-local",
+      "object_scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "selected_faces": 992,
+      "selected_vertices": 992,
+      "selected_triangles": 1984,
+      "quads": 992,
+      "ngons": 0,
+      "positions_finite": true,
+      "normals_finite": true,
+      "nonunit_or_invalid_corner_normals": 0,
+      "active_uv_layer": "MeasuredSurface",
+      "uv_finite": true,
+      "components": [
+        {
+          "faces": 992,
+          "vertices": 992,
+          "edges": 1984,
+          "open_edges": 0,
+          "nonmanifold_edges": 0,
+          "euler": 0,
+          "degenerate_faces": 0,
+          "closed": true
+        }
+      ]
+    },
+    {
+      "object": "Lower stepped cap",
+      "coordinate_space": "object-local",
+      "object_scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "selected_faces": 1120,
+      "selected_vertices": 1120,
+      "selected_triangles": 2240,
+      "quads": 1120,
+      "ngons": 0,
+      "positions_finite": true,
+      "normals_finite": true,
+      "nonunit_or_invalid_corner_normals": 0,
+      "active_uv_layer": "MeasuredSurface",
+      "uv_finite": true,
+      "components": [
+        {
+          "faces": 1120,
+          "vertices": 1120,
+          "edges": 2240,
+          "open_edges": 0,
+          "nonmanifold_edges": 0,
+          "euler": 0,
+          "degenerate_faces": 0,
+          "closed": true
+        }
+      ]
+    },
+    {
+      "object": "Glass enclosure",
+      "coordinate_space": "object-local",
+      "object_scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "selected_faces": 160,
+      "selected_vertices": 160,
+      "selected_triangles": 320,
+      "quads": 160,
+      "ngons": 0,
+      "positions_finite": true,
+      "normals_finite": true,
+      "nonunit_or_invalid_corner_normals": 0,
+      "active_uv_layer": "MeasuredSurface",
+      "uv_finite": true,
+      "components": [
+        {
+          "faces": 160,
+          "vertices": 160,
+          "edges": 320,
+          "open_edges": 0,
+          "nonmanifold_edges": 0,
+          "euler": 0,
+          "degenerate_faces": 0,
+          "closed": true
+        }
+      ]
+    },
+    {
+      "object": "Lamp bulb",
+      "coordinate_space": "object-local",
+      "object_scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "selected_faces": 216,
+      "selected_vertices": 216,
+      "selected_triangles": 432,
+      "quads": 216,
+      "ngons": 0,
+      "positions_finite": true,
+      "normals_finite": true,
+      "nonunit_or_invalid_corner_normals": 0,
+      "active_uv_layer": "MeasuredSurface",
+      "uv_finite": true,
+      "components": [
+        {
+          "faces": 216,
+          "vertices": 216,
+          "edges": 432,
+          "open_edges": 0,
+          "nonmanifold_edges": 0,
+          "euler": 0,
+          "degenerate_faces": 0,
+          "closed": true
+        }
+      ]
+    },
+    {
+      "object": "Lamp socket",
+      "coordinate_space": "object-local",
+      "object_scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "selected_faces": 96,
+      "selected_vertices": 96,
+      "selected_triangles": 192,
+      "quads": 96,
+      "ngons": 0,
+      "positions_finite": true,
+      "normals_finite": true,
+      "nonunit_or_invalid_corner_normals": 0,
+      "active_uv_layer": "MeasuredSurface",
+      "uv_finite": true,
+      "components": [
+        {
+          "faces": 96,
+          "vertices": 96,
+          "edges": 192,
+          "open_edges": 0,
+          "nonmanifold_edges": 0,
+          "euler": 0,
+          "degenerate_faces": 0,
+          "closed": true
+        }
+      ]
+    },
+    {
+      "object": "Cage bar 0",
+      "coordinate_space": "object-local",
+      "object_scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "selected_faces": 12,
+      "selected_vertices": 20,
+      "selected_triangles": 36,
+      "quads": 10,
+      "ngons": 2,
+      "positions_finite": true,
+      "normals_finite": true,
+      "nonunit_or_invalid_corner_normals": 0,
+      "active_uv_layer": "MeasuredSurface",
+      "uv_finite": true,
+      "components": [
+        {
+          "faces": 12,
+          "vertices": 20,
+          "edges": 30,
+          "open_edges": 0,
+          "nonmanifold_edges": 0,
+          "euler": 2,
+          "degenerate_faces": 0,
+          "closed": true
+        }
+      ]
+    },
+    {
+      "object": "Cage bar 1",
+      "coordinate_space": "object-local",
+      "object_scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "selected_faces": 12,
+      "selected_vertices": 20,
+      "selected_triangles": 36,
+      "quads": 10,
+      "ngons": 2,
+      "positions_finite": true,
+      "normals_finite": true,
+      "nonunit_or_invalid_corner_normals": 0,
+      "active_uv_layer": "MeasuredSurface",
+      "uv_finite": true,
+      "components": [
+        {
+          "faces": 12,
+          "vertices": 20,
+          "edges": 30,
+          "open_edges": 0,
+          "nonmanifold_edges": 0,
+          "euler": 2,
+          "degenerate_faces": 0,
+          "closed": true
+        }
+      ]
+    },
+    {
+      "object": "Cage bar 2",
+      "coordinate_space": "object-local",
+      "object_scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "selected_faces": 12,
+      "selected_vertices": 20,
+      "selected_triangles": 36,
+      "quads": 10,
+      "ngons": 2,
+      "positions_finite": true,
+      "normals_finite": true,
+      "nonunit_or_invalid_corner_normals": 0,
+      "active_uv_layer": "MeasuredSurface",
+      "uv_finite": true,
+      "components": [
+        {
+          "faces": 12,
+          "vertices": 20,
+          "edges": 30,
+          "open_edges": 0,
+          "nonmanifold_edges": 0,
+          "euler": 2,
+          "degenerate_faces": 0,
+          "closed": true
+        }
+      ]
+    },
+    {
+      "object": "Cage bar 3",
+      "coordinate_space": "object-local",
+      "object_scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "selected_faces": 12,
+      "selected_vertices": 20,
+      "selected_triangles": 36,
+      "quads": 10,
+      "ngons": 2,
+      "positions_finite": true,
+      "normals_finite": true,
+      "nonunit_or_invalid_corner_normals": 0,
+      "active_uv_layer": "MeasuredSurface",
+      "uv_finite": true,
+      "components": [
+        {
+          "faces": 12,
+          "vertices": 20,
+          "edges": 30,
+          "open_edges": 0,
+          "nonmanifold_edges": 0,
+          "euler": 2,
+          "degenerate_faces": 0,
+          "closed": true
+        }
+      ]
+    },
+    {
+      "object": "Curved mounting arm",
+      "coordinate_space": "object-local",
+      "object_scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "selected_faces": 86,
+      "selected_vertices": 96,
+      "selected_triangles": 188,
+      "quads": 84,
+      "ngons": 2,
+      "positions_finite": true,
+      "normals_finite": true,
+      "nonunit_or_invalid_corner_normals": 0,
+      "active_uv_layer": "MeasuredSurface",
+      "uv_finite": true,
+      "components": [
+        {
+          "faces": 86,
+          "vertices": 96,
+          "edges": 180,
+          "open_edges": 0,
+          "nonmanifold_edges": 0,
+          "euler": 2,
+          "degenerate_faces": 0,
+          "closed": true
+        }
+      ]
+    },
+    {
+      "object": "Mount screw",
+      "coordinate_space": "object-local",
+      "object_scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "selected_faces": 14,
+      "selected_vertices": 24,
+      "selected_triangles": 44,
+      "quads": 12,
+      "ngons": 2,
+      "positions_finite": true,
+      "normals_finite": true,
+      "nonunit_or_invalid_corner_normals": 0,
+      "active_uv_layer": "MeasuredSurface",
+      "uv_finite": true,
+      "components": [
+        {
+          "faces": 14,
+          "vertices": 24,
+          "edges": 36,
+          "open_edges": 0,
+          "nonmanifold_edges": 0,
+          "euler": 2,
+          "degenerate_faces": 0,
+          "closed": true
+        }
+      ]
+    },
+    {
+      "object": "Mount screw.001",
+      "coordinate_space": "object-local",
+      "object_scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "selected_faces": 14,
+      "selected_vertices": 24,
+      "selected_triangles": 44,
+      "quads": 12,
+      "ngons": 2,
+      "positions_finite": true,
+      "normals_finite": true,
+      "nonunit_or_invalid_corner_normals": 0,
+      "active_uv_layer": "MeasuredSurface",
+      "uv_finite": true,
+      "components": [
+        {
+          "faces": 14,
+          "vertices": 24,
+          "edges": 36,
+          "open_edges": 0,
+          "nonmanifold_edges": 0,
+          "euler": 2,
+          "degenerate_faces": 0,
+          "closed": true
+        }
+      ]
+    },
+    {
+      "object": "Mount screw.002",
+      "coordinate_space": "object-local",
+      "object_scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "selected_faces": 14,
+      "selected_vertices": 24,
+      "selected_triangles": 44,
+      "quads": 12,
+      "ngons": 2,
+      "positions_finite": true,
+      "normals_finite": true,
+      "nonunit_or_invalid_corner_normals": 0,
+      "active_uv_layer": "MeasuredSurface",
+      "uv_finite": true,
+      "components": [
+        {
+          "faces": 14,
+          "vertices": 24,
+          "edges": 36,
+          "open_edges": 0,
+          "nonmanifold_edges": 0,
+          "euler": 2,
+          "degenerate_faces": 0,
+          "closed": true
+        }
+      ]
+    },
+    {
+      "object": "Mount screw.003",
+      "coordinate_space": "object-local",
+      "object_scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "selected_faces": 14,
+      "selected_vertices": 24,
+      "selected_triangles": 44,
+      "quads": 12,
+      "ngons": 2,
+      "positions_finite": true,
+      "normals_finite": true,
+      "nonunit_or_invalid_corner_normals": 0,
+      "active_uv_layer": "MeasuredSurface",
+      "uv_finite": true,
+      "components": [
+        {
+          "faces": 14,
+          "vertices": 24,
+          "edges": 36,
+          "open_edges": 0,
+          "nonmanifold_edges": 0,
+          "euler": 2,
+          "degenerate_faces": 0,
+          "closed": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "approvedHousingAndShadesUnchanged": true,
+  "components": [
+    {
+      "kind": "bezel",
+      "faces": 352,
+      "euler": 0,
+      "closed": true
+    },
+    {
+      "kind": "lens",
+      "faces": 193,
+      "euler": 2,
+      "closed": true
+    },
+    {
+      "kind": "bezel",
+      "faces": 352,
+      "euler": 0,
+      "closed": true
+    },
+    {
+      "kind": "bezel",
+      "faces": 352,
+      "euler": 0,
+      "closed": true
+    },
+    {
+      "kind": "lens",
+      "faces": 193,
+      "euler": 2,
+      "closed": true
+    },
+    {
+      "kind": "lens",
+      "faces": 193,
+      "euler": 2,
+      "closed": true
+    }
+  ],
+  "maximumLoopRadiusErrorMm": 2.9618359043137588e-05,
+  "maximumCustomNormalError": 3.368634161808624e-05,
+  "minimumLensEdgeThicknessMm": 10
+}

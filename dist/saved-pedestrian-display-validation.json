@@ -1,0 +1,40 @@
+{
+  "approvedCaseUnchanged": true,
+  "vehicleSignalCandidateUnchanged": true,
+  "displayShells": [
+    {
+      "kind": 2,
+      "faces": 216,
+      "closed": true
+    },
+    {
+      "kind": 2,
+      "faces": 216,
+      "closed": true
+    },
+    {
+      "kind": 3,
+      "faces": 74,
+      "closed": true
+    },
+    {
+      "kind": 3,
+      "faces": 74,
+      "closed": true
+    },
+    {
+      "kind": 1,
+      "faces": 74,
+      "closed": true
+    },
+    {
+      "kind": 1,
+      "faces": 74,
+      "closed": true
+    }
+  ],
+  "closedFasteners": 11,
+  "maximumLongWallPlanarityErrorMm": 4.6566128730773926e-07,
+  "maximumSavedNormalError": 0.0002970239351707918,
+  "openEdges": 0
+}

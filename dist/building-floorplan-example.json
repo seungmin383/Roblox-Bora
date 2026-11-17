@@ -1,0 +1,69 @@
+{
+  "Config": {
+    "Accent": "47675C",
+    "Apron": 3,
+    "Awning": false,
+    "Balconies": false,
+    "Depth": 12,
+    "Details": false,
+    "FloorHeight": 3.0500000000000003,
+    "Floors": 3,
+    "GroundHeight": 3.45,
+    "Kind": "Shop",
+    "PlanJSON": "{\"Items\":[{\"Floor\":1,\"Id\":1,\"Kind\":\"Wall\",\"Thickness\":0.16,\"X\":0,\"X2\":0,\"Z\":-4.5,\"Z2\":2},{\"Floor\":1,\"Id\":2,\"Kind\":\"Stairs\",\"Rotation\":0,\"X\":-4.5,\"Z\":1},{\"Floor\":2,\"Id\":3,\"Kind\":\"Stairs\",\"Rotation\":0,\"X\":-4.5,\"Z\":1},{\"Floor\":1,\"Id\":4,\"Kind\":\"Elevator\",\"Rotation\":0,\"X\":4.5,\"Z\":2},{\"Depth\":0.5,\"Floor\":1,\"Id\":5,\"Kind\":\"Block\",\"Rotation\":0,\"Width\":1,\"X\":2,\"Z\":-1}],\"Version\":1}",
+    "Sign": true,
+    "Title": "도면 편집 예제",
+    "Trim": "E4DFCF",
+    "Wall": "D2CAB5",
+    "Width": 16,
+    "WindowWidth": 1.6500000000000001
+  },
+  "Plan": {
+    "Items": [
+      {
+        "Floor": 1,
+        "Id": 1,
+        "Kind": "Wall",
+        "Thickness": 0.16,
+        "X": 0,
+        "X2": 0,
+        "Z": -4.5,
+        "Z2": 2
+      },
+      {
+        "Floor": 1,
+        "Id": 2,
+        "Kind": "Stairs",
+        "Rotation": 0,
+        "X": -4.5,
+        "Z": 1
+      },
+      {
+        "Floor": 2,
+        "Id": 3,
+        "Kind": "Stairs",
+        "Rotation": 0,
+        "X": -4.5,
+        "Z": 1
+      },
+      {
+        "Id": 4,
+        "Kind": "Elevator",
+        "Rotation": 0,
+        "X": 4.5,
+        "Z": 2
+      },
+      {
+        "Depth": 0.5,
+        "Floor": 1,
+        "Id": 5,
+        "Kind": "Block",
+        "Rotation": 0,
+        "Width": 1,
+        "X": 2,
+        "Z": -1
+      }
+    ],
+    "Version": 1
+  }
+}

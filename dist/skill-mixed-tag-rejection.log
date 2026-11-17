@@ -1,0 +1,13 @@
+00:02.906  blend            | Read blend: "C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\assets\traffic\retopology\PedestrianSignal_Clean.blend"
+Traceback (most recent call last):
+  File "C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\tools\skills\tripo-mesh-cleanup\scripts\inspect_blend.py", line 167, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\tools\skills\tripo-mesh-cleanup\scripts\inspect_blend.py", line 137, in main
+    raise ValueError('Face tags not found in the selected meshes: ' + ', '.join(missing_tags))
+ValueError: Face tags not found in the selected meshes: NonexistentSkillTestTag
+
+Error: script failed, file: 'tools/skills/tripo-mesh-cleanup/scripts/inspect_blend.py', exiting.
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

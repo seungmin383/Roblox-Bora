@@ -1,0 +1,150 @@
+{
+  "Cases": [
+    {
+      "Floors": 1,
+      "Kind": "Shop",
+      "Parts": 240
+    },
+    {
+      "Floors": 3,
+      "Kind": "Shop",
+      "Parts": 598
+    },
+    {
+      "Floors": 12,
+      "Kind": "Shop",
+      "Parts": 2209
+    },
+    {
+      "Floors": 24,
+      "Kind": "Shop",
+      "Parts": 4357
+    },
+    {
+      "Floors": 1,
+      "Kind": "Cafe",
+      "Parts": 260
+    },
+    {
+      "Floors": 3,
+      "Kind": "Cafe",
+      "Parts": 618
+    },
+    {
+      "Floors": 12,
+      "Kind": "Cafe",
+      "Parts": 2229
+    },
+    {
+      "Floors": 24,
+      "Kind": "Cafe",
+      "Parts": 4377
+    },
+    {
+      "Floors": 1,
+      "Kind": "Pharmacy",
+      "Parts": 241
+    },
+    {
+      "Floors": 3,
+      "Kind": "Pharmacy",
+      "Parts": 599
+    },
+    {
+      "Floors": 12,
+      "Kind": "Pharmacy",
+      "Parts": 2210
+    },
+    {
+      "Floors": 24,
+      "Kind": "Pharmacy",
+      "Parts": 4358
+    },
+    {
+      "Floors": 1,
+      "Kind": "Market",
+      "Parts": 252
+    },
+    {
+      "Floors": 3,
+      "Kind": "Market",
+      "Parts": 610
+    },
+    {
+      "Floors": 12,
+      "Kind": "Market",
+      "Parts": 2221
+    },
+    {
+      "Floors": 24,
+      "Kind": "Market",
+      "Parts": 4369
+    },
+    {
+      "Floors": 1,
+      "Kind": "Residential",
+      "Parts": 226
+    },
+    {
+      "Floors": 3,
+      "Kind": "Residential",
+      "Parts": 640
+    },
+    {
+      "Floors": 12,
+      "Kind": "Residential",
+      "Parts": 2503
+    },
+    {
+      "Floors": 24,
+      "Kind": "Residential",
+      "Parts": 4987
+    },
+    {
+      "Floors": 1,
+      "Kind": "Apartment",
+      "Parts": 226
+    },
+    {
+      "Floors": 3,
+      "Kind": "Apartment",
+      "Parts": 640
+    },
+    {
+      "Floors": 12,
+      "Kind": "Apartment",
+      "Parts": 2503
+    },
+    {
+      "Floors": 24,
+      "Kind": "Apartment",
+      "Parts": 4987
+    },
+    {
+      "Floors": 1,
+      "Kind": "House",
+      "Parts": 226
+    },
+    {
+      "Floors": 3,
+      "Kind": "House",
+      "Parts": 584
+    },
+    {
+      "Floors": 12,
+      "Kind": "House",
+      "Parts": 2195
+    },
+    {
+      "Floors": 24,
+      "Kind": "House",
+      "Parts": 4343
+    }
+  ],
+  "InvalidInputAtomic": true,
+  "MaxParts": 4987,
+  "RecipeRoundTrip": true,
+  "RootAndUserAdditionsPreserved": true,
+  "StudioPlaytestPerformed": false,
+  "WindowsHaveRealOpenings": true
+}

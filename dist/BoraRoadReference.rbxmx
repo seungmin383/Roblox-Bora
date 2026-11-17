@@ -1,0 +1,87 @@
+<roblox version="4">
+  <Item class="Model" referent="0">
+    <Properties>
+      <string name="Name"><![CDATA[BoraMapReference]]></string>
+      <BinaryString name="AttributesSerialize">CQAAAAYAAABBc3BlY3QGBw1bvjxp4D8JAAAAQXNzZXRLaW5kAgwAAABCb3JhTWFwR3VpZGUKAAAAQ2FsaWJyYXRlZAMADgAAAERpc3BsYXlWZXJzaW9uBQAAwEAFAAAASW1hZ2UCJwAAAHJieGFzc2V0Oi8vQm9yYVJvYWRLaXQvTWFwUmVmZXJlbmNlLnBuZwcAAABPcGFjaXR5Bs3MzMzMzOw/CAAAAFJvdGF0aW9uBQAAAAAHAAAAVmlzaWJsZQMBBQAAAFdpZHRoBQAAlkQ=</BinaryString>
+      <Ref name="PrimaryPart">1</Ref>
+    </Properties>
+    <Item class="Part" referent="1">
+      <Properties>
+        <string name="Name"><![CDATA[Root]]></string>
+        <bool name="Anchored">true</bool>
+        <CoordinateFrame name="CFrame">
+          <X>850</X>
+          <Y>0.02999878</Y>
+          <Z>0</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <bool name="CanCollide">false</bool>
+        <bool name="CanQuery">false</bool>
+        <bool name="CanTouch">false</bool>
+        <Vector3 name="size">
+          <X>0.1000061</X>
+          <Y>0.1000061</Y>
+          <Z>0.1000061</Z>
+        </Vector3>
+        <float name="Transparency">1</float>
+      </Properties>
+    </Item>
+    <Item class="Folder" referent="2">
+      <Properties>
+        <string name="Name"><![CDATA[Tiles]]></string>
+      </Properties>
+      <Item class="Part" referent="3">
+        <Properties>
+          <string name="Name"><![CDATA[MapTile]]></string>
+          <bool name="Anchored">true</bool>
+          <BinaryString name="AttributesSerialize">AgAAAAIAAABVMAUAAAAAAgAAAFYwBQAAAAA=</BinaryString>
+          <CoordinateFrame name="CFrame">
+            <X>850</X>
+            <Y>0.02999878</Y>
+            <Z>0</Z>
+            <R00>1</R00>
+            <R01>0</R01>
+            <R02>0</R02>
+            <R10>0</R10>
+            <R11>1</R11>
+            <R12>0</R12>
+            <R20>0</R20>
+            <R21>0</R21>
+            <R22>1</R22>
+          </CoordinateFrame>
+          <bool name="CanCollide">false</bool>
+          <bool name="CanQuery">false</bool>
+          <bool name="CanTouch">false</bool>
+          <Vector3 name="size">
+            <X>1200</X>
+            <Y>0.039993286</Y>
+            <Z>615.4156</Z>
+          </Vector3>
+          <float name="Transparency">1</float>
+        </Properties>
+        <Item class="Texture" referent="4">
+          <Properties>
+            <string name="Name"><![CDATA[ReferenceImage]]></string>
+            <token name="Face">1</token>
+            <float name="OffsetStudsU">0</float>
+            <float name="OffsetStudsV">0</float>
+            <float name="StudsPerTileU">1200</float>
+            <float name="StudsPerTileV">615.4156</float>
+            <Content name="TextureContent">
+              <uri>rbxasset://BoraRoadKit/MapReference.png</uri>
+            </Content>
+            <float name="Transparency">0.1</float>
+          </Properties>
+        </Item>
+      </Item>
+    </Item>
+  </Item>
+</roblox>

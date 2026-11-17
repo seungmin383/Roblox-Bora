@@ -1,0 +1,8 @@
+{
+  "IndependentDoors": 4,
+  "IndependentWheels": 4,
+  "Mode": "Automated; Studio playtest pending",
+  "Parts": 98,
+  "Physics": "ground-following arcade pose, rigid wheel mounts, acceleration/brake/reverse and steering",
+  "Triangles": 176384
+}

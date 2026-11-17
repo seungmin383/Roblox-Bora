@@ -1,0 +1,203 @@
+{
+  "input": "C:\\Users\\jinug\\Desktop\\SEUNGMIN_BAEK\\Ro\\assets\\traffic\\retopology\\PedestrianSignal_Clean.blend",
+  "blender_version": "5.2.2 LTS",
+  "scene_unit_scale_length": 1.0,
+  "face_tags": [
+    "DisplayFace",
+    "DetailFace"
+  ],
+  "area_epsilon_object_units_squared": 1e-12,
+  "objects": [
+    {
+      "object": "PedestrianSignal_Clean",
+      "coordinate_space": "object-local",
+      "object_scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "selected_faces": 948,
+      "selected_vertices": 1080,
+      "selected_triangles": 2100,
+      "quads": 918,
+      "ngons": 30,
+      "positions_finite": true,
+      "normals_finite": true,
+      "nonunit_or_invalid_corner_normals": 0,
+      "active_uv_layer": "UVMap",
+      "uv_finite": true,
+      "components": [
+        {
+          "faces": 216,
+          "vertices": 216,
+          "edges": 432,
+          "open_edges": 0,
+          "nonmanifold_edges": 0,
+          "euler": 0,
+          "degenerate_faces": 0,
+          "closed": true
+        },
+        {
+          "faces": 216,
+          "vertices": 216,
+          "edges": 432,
+          "open_edges": 0,
+          "nonmanifold_edges": 0,
+          "euler": 0,
+          "degenerate_faces": 0,
+          "closed": true
+        },
+        {
+          "faces": 74,
+          "vertices": 96,
+          "edges": 168,
+          "open_edges": 0,
+          "nonmanifold_edges": 0,
+          "euler": 2,
+          "degenerate_faces": 0,
+          "closed": true
+        },
+        {
+          "faces": 74,
+          "vertices": 96,
+          "edges": 168,
+          "open_edges": 0,
+          "nonmanifold_edges": 0,
+          "euler": 2,
+          "degenerate_faces": 0,
+          "closed": true
+        },
+        {
+          "faces": 74,
+          "vertices": 96,
+          "edges": 168,
+          "open_edges": 0,
+          "nonmanifold_edges": 0,
+          "euler": 2,
+          "degenerate_faces": 0,
+          "closed": true
+        },
+        {
+          "faces": 74,
+          "vertices": 96,
+          "edges": 168,
+          "open_edges": 0,
+          "nonmanifold_edges": 0,
+          "euler": 2,
+          "degenerate_faces": 0,
+          "closed": true
+        },
+        {
+          "faces": 20,
+          "vertices": 24,
+          "edges": 42,
+          "open_edges": 0,
+          "nonmanifold_edges": 0,
+          "euler": 2,
+          "degenerate_faces": 0,
+          "closed": true
+        },
+        {
+          "faces": 20,
+          "vertices": 24,
+          "edges": 42,
+          "open_edges": 0,
+          "nonmanifold_edges": 0,
+          "euler": 2,
+          "degenerate_faces": 0,
+          "closed": true
+        },
+        {
+          "faces": 20,
+          "vertices": 24,
+          "edges": 42,
+          "open_edges": 0,
+          "nonmanifold_edges": 0,
+          "euler": 2,
+          "degenerate_faces": 0,
+          "closed": true
+        },
+        {
+          "faces": 20,
+          "vertices": 24,
+          "edges": 42,
+          "open_edges": 0,
+          "nonmanifold_edges": 0,
+          "euler": 2,
+          "degenerate_faces": 0,
+          "closed": true
+        },
+        {
+          "faces": 20,
+          "vertices": 24,
+          "edges": 42,
+          "open_edges": 0,
+          "nonmanifold_edges": 0,
+          "euler": 2,
+          "degenerate_faces": 0,
+          "closed": true
+        },
+        {
+          "faces": 20,
+          "vertices": 24,
+          "edges": 42,
+          "open_edges": 0,
+          "nonmanifold_edges": 0,
+          "euler": 2,
+          "degenerate_faces": 0,
+          "closed": true
+        },
+        {
+          "faces": 20,
+          "vertices": 24,
+          "edges": 42,
+          "open_edges": 0,
+          "nonmanifold_edges": 0,
+          "euler": 2,
+          "degenerate_faces": 0,
+          "closed": true
+        },
+        {
+          "faces": 20,
+          "vertices": 24,
+          "edges": 42,
+          "open_edges": 0,
+          "nonmanifold_edges": 0,
+          "euler": 2,
+          "degenerate_faces": 0,
+          "closed": true
+        },
+        {
+          "faces": 20,
+          "vertices": 24,
+          "edges": 42,
+          "open_edges": 0,
+          "nonmanifold_edges": 0,
+          "euler": 2,
+          "degenerate_faces": 0,
+          "closed": true
+        },
+        {
+          "faces": 20,
+          "vertices": 24,
+          "edges": 42,
+          "open_edges": 0,
+          "nonmanifold_edges": 0,
+          "euler": 2,
+          "degenerate_faces": 0,
+          "closed": true
+        },
+        {
+          "faces": 20,
+          "vertices": 24,
+          "edges": 42,
+          "open_edges": 0,
+          "nonmanifold_edges": 0,
+          "euler": 2,
+          "degenerate_faces": 0,
+          "closed": true
+        }
+      ]
+    }
+  ]
+}

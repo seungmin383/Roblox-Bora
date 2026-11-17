@@ -1,0 +1,18 @@
+{
+  "project": "Ro.rbxlx",
+  "singlePlace": true,
+  "existingTrees": 3,
+  "testRoadsRemoved": true,
+  "mapTextures": 1,
+  "mapSurfaceGuis": 0,
+  "studioChecks": [
+    "2 point calibration",
+    "3 point road creation",
+    "node drag",
+    "width slider 7 to 12.2m",
+    "Undo",
+    "4000 and 6050 stud tiled image",
+    "final 0.05m lift asphalt/markings"
+  ],
+  "sha256": "991f25a1aaf931d8b51ef419a25c7196b09bb494a25fef48970d3d6b701d5fea"
+}

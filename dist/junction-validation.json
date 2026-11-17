@@ -1,0 +1,29 @@
+{
+  "singlePlace": true,
+  "existingRoads": 1,
+  "existingTrees": 3,
+  "userRoadNodesAndConfigPreserved": true,
+  "mapSettingsPreserved": true,
+  "testJunctionRemoved": true,
+  "nativeChecks": [
+    "T branch into saved road",
+    "endpoint drag along host",
+    "width 7m to 10.2m",
+    "three undo operations"
+  ],
+  "finalBuildModules": [
+    "MapGuideFactory",
+    "RoadGuideRuntime",
+    "RoadJunctions",
+    "RoadNetwork",
+    "RoadNetworkFactory",
+    "RoadPath",
+    "RoadPlugin"
+  ],
+  "finalProjectSha256": "db2c2d8b5fe38636a48871be2ff282afaf5127aac4cb3398a18f43e5f34d2ca0",
+  "tests": [
+    "roads.luau PASS",
+    "junctions.luau PASS",
+    "project_update.py PASS"
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "Approaches": [
+    {
+      "Arm": 1,
+      "Junction": "TJunction_1",
+      "Mask": 1,
+      "Signal": "Signal_1"
+    },
+    {
+      "Arm": 2,
+      "Junction": "TJunction_1",
+      "Mask": 6,
+      "Signal": "Signal_2"
+    },
+    {
+      "Arm": 3,
+      "Junction": "TJunction_1",
+      "Mask": 1,
+      "Signal": "Signal_3"
+    },
+    {
+      "Arm": 1,
+      "Junction": "TJunction_2",
+      "Mask": 6,
+      "Signal": "Signal_1"
+    },
+    {
+      "Arm": 2,
+      "Junction": "TJunction_2",
+      "Mask": 1,
+      "Signal": "Signal_2"
+    },
+    {
+      "Arm": 3,
+      "Junction": "TJunction_2",
+      "Mask": 1,
+      "Signal": "Signal_3"
+    },
+    {
+      "Arm": 1,
+      "Junction": "TJunction_3",
+      "Mask": 1,
+      "Signal": "Signal_1"
+    },
+    {
+      "Arm": 2,
+      "Junction": "TJunction_3",
+      "Mask": 6,
+      "Signal": "Signal_2"
+    },
+    {
+      "Arm": 3,
+      "Junction": "TJunction_3",
+      "Mask": 1,
+      "Signal": "Signal_3"
+    },
+    {
+      "Arm": 1,
+      "Junction": "TJunction_4",
+      "Mask": 1,
+      "Signal": "Signal_1"
+    },
+    {
+      "Arm": 2,
+      "Junction": "TJunction_4",
+      "Mask": 1,
+      "Signal": "Signal_2"
+    },
+    {
+      "Arm": 3,
+      "Junction": "TJunction_4",
+      "Mask": 6,
+      "Signal": "Signal_3"
+    },
+    {
+      "Arm": 1,
+      "Junction": "XJunction_5",
+      "Mask": 1,
+      "Signal": "Signal_1"
+    },
+    {
+      "Arm": 2,
+      "Junction": "XJunction_5",
+      "Mask": 1,
+      "Signal": "Signal_2"
+    },
+    {
+      "Arm": 3,
+      "Junction": "XJunction_5",
+      "Mask": 1,
+      "Signal": "Signal_3"
+    },
+    {
+      "Arm": 4,
+      "Junction": "XJunction_5",
+      "Mask": 3,
+      "Signal": "Signal_4"
+    }
+  ],
+  "LeftHeads": 5,
+  "Signals": 16
+}

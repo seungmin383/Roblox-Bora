@@ -1,0 +1,34 @@
+00:02.313  blend            | Read blend: "C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\assets\traffic\local\PedestrianSignal.blend"
+Surface check: [(0.01875857450067997, (0.10920204222202301, 0.05039994418621063, -0.06321371346712112)), (0.018046844750642776, (0.11378596723079681, 0.0498834103345871, -0.06695221364498138)), (0.01784798502922058, (0.10636486858129501, 0.04804059863090515, -0.0625704750418663))]
+Exposed surface check: [(0.018185505643486977, (-0.13720712065696716, 0.33290162682533264, -0.12938404083251953)), (0.018168339505791664, (-0.1380402147769928, 0.33220821619033813, -0.12911830842494965)), (0.01814364269375801, (-0.1355380117893219, 0.3342318534851074, -0.12960195541381836))]
+Original/exposed candidate surface distances: 0.01875857450067997 0.018185505643486977
+Mesh counts {'vertices': 2106, 'faces': 4191, 'triangles': 4208, 'quads': 0, 'ngons': 1} {'vertices': 1297, 'faces': 1175, 'triangles': 2514, 'quads': 1031, 'ngons': 36}
+C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\tools\clean_signal_topology.py:200: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  material=bpy.data.materials.new(name+'_Rebaked');material.use_nodes=True
+C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\tools\clean_signal_topology.py:101: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat=bpy.data.materials.new('Uniform charcoal visor paint');mat.use_nodes=True
+00:12.125  render           | Saved: 'C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\dist\preview\pedestriansignal-clean-shaded.png'
+00:12.156  image.write      | ERROR OpenImageIO write failed: Could not open file "C:\Users\jinug\.thumbnails\large\blender_35108_d7c76ebbd4b240d62d8e4e41fd1825c3.png.png"
+C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\tools\clean_signal_topology.py:256: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  solid=bpy.data.materials.new('Pedestrian solid inspection');solid.use_nodes=True
+00:21.047  render           | Saved: 'C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\dist\preview\pedestriansignal-displays-solid.png'
+C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\tools\clean_signal_topology.py:261: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  black=bpy.data.materials.new('Pedestrian editing edges');black.use_nodes=True
+00:29.922  render           | Saved: 'C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\dist\preview\pedestriansignal-displays-wire.png'
+C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\tools\clean_signal_topology.py:309: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  gray=bpy.data.materials.new('Topology gray');gray.use_nodes=True;gray.node_tree.nodes.get('Principled BSDF').inputs['Base Color'].default_value=(.42,.46,.50,1)
+C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\tools\clean_signal_topology.py:310: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  black=bpy.data.materials.new('Topology edges');black.use_nodes=True;black.node_tree.nodes.get('Principled BSDF').inputs['Base Color'].default_value=(.005,.008,.010,1)
+00:36.719  render           | Saved: 'C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\dist\preview\pedestriansignal-topology-before.png'
+00:43.360  render           | Saved: 'C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\dist\preview\pedestriansignal-topology-after.png'
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Saved as "PedestrianSignal_Clean.blend"
+{"asset": "PedestrianSignal", "before": {"vertices": 2106, "faces": 4191, "triangles": 4208, "quads": 0, "ngons": 1}, "after": {"vertices": 1297, "faces": 1175, "triangles": 2514, "quads": 1031, "ngons": 36, "editingTriangles": 2514, "degenerateExportTrianglesRemoved": 0}, "planePatches": [], "housing": {"method": "Fitted housing with connected uniform bevel strips; original clipped Tripo details", "housingFaces": 82, "housingVertices": 96, "bevelRadiusMeters": 0.007, "bevelSegments": 3, "upperCornerRadiusMeters": 0.055, "housingClosed": true, "longStraightEdges": 24, "maxLongEdgeDeviationDegrees": 0.0, "fittedLowMeters": [-0.21199999749660492, -0.4099999964237213, 0.014000000432133675], "fittedHighMeters": [0.21199999749660492, 0.4090000092983246, 0.12300000339746475], "details": [{"detail": "Rear fasteners", "faces": 178}], "rebuiltHoods": [], "rebuiltOptics": [], "rebuiltDetails": [], "rebuiltDisplays": [{"centerMeters": [0, 0.1815], "outerHalfWidthMeters": 0.151, "outerHalfHeightMeters": 0.159, "cornerRadiusMeters": 0.035, "frontThicknessMm": 7.0, "rootThicknessMm": 27.0, "perimeterVertices": 24, "wallQuads": 216, "closedThickness": true, "planarStraightWalls": true, "frontTopZ": -0.132, "frontBottomZ": -0.056, "plateHalfWidthMeters": 0.16, "plateHalfHeightMeters": 0.17, "screenFrontZ": -0.0185, "screenFlat": true, "plateClosed": true, "screenClosed": true, "plateBolts": 4}, {"centerMeters": [0, -0.2075], "outerHalfWidthMeters": 0.151, "outerHalfHeightMeters": 0.159, "cornerRadiusMeters": 0.035, "frontThicknessMm": 7.0, "rootThicknessMm": 27.0, "perimeterVertices": 24, "wallQuads": 216, "closedThickness": true, "planarStraightWalls": true, "frontTopZ": -0.132, "frontBottomZ": -0.056, "plateHalfWidthMeters": 0.16, "plateHalfHeightMeters": 0.17, "screenFrontZ": -0.0185, "screenFlat": true, "plateClosed": true, "screenClosed": true, "plateBolts": 4}], "straightEdgeRuns": true, "continuousHousing": true}, "maxSurfaceDeviationMm": 18.75857450067997, "sourceSurfaceDistanceMm": 18.75857450067997, "exposedCandidateDistanceMm": 18.185505643486977, "sourceSurfaceDistanceLimitMm": 20.0, "exposedCandidateDistanceLimitMm": 20.0, "surfaceDeviationLimitMm": 20.0, "surfaceDistanceMethod": "Bidirectional original-to-candidate samples and externally visible candidate triangle samples to original, including all new pedestrian parts; buried attachment caps excluded", "originalBoundaryEdges": 0, "cleanBoundaryEdges": 0, "manufacturedBoundaryEdges": 0, "albedoRebaked": true, "sourceAssetUnchanged": true, "gameAssetReplaced": false, "simplifiedSourceDetailDistanceMm": 0, "simplifiedExposedDetailDistanceMm": 0, "simplifiedDetailDistanceLimitMm": 0, "sourceSurfaceDistanceMethod": "All original vertices and triangle centers to the reconstructed pedestrian signal"}
+Signal cleanup candidates complete; original assets and Ro.rbxlx untouched.
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

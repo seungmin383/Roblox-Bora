@@ -1,0 +1,15 @@
+{
+  "source": "Existing optimized Tripo TrafficSignal compartment",
+  "sourceSha256": "fef4affb39b528c8c02aafa9c6ba4145938b6ac9e1ce823db3c33b02c491406b",
+  "triangles": 2845,
+  "vertices": 3891,
+  "lampCenterMeters": [
+    -1.2688803026157367,
+    -0.03715167205844319,
+    -0.41634976915483096
+  ],
+  "cutXMeters": -0.316947301368334,
+  "pitchMeters": 0.6346123668084129,
+  "texture": "TrafficSignal.png",
+  "uvsPreserved": true
+}

@@ -1,0 +1,10 @@
+{
+  "place": "Ro.rbxlx",
+  "controller": "GroundFollowingArcade",
+  "savedSourcesMatch": true,
+  "springForcesRemoved": true,
+  "rigidWheelMounts": true,
+  "entireMapAndNeighborhoodPreserved": true,
+  "singlePlace": true,
+  "studioPlaytestPerformed": false
+}

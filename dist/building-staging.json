@@ -1,0 +1,29 @@
+{
+  "projectHash": "59611bde5c4e2f7a6690bb0235fb5866294395629ba141c95bb586ed7805a200",
+  "protected": "28b5e0f8461ba1f7e1940d7a3c8abe3601a452a551f9f921a558e224bf3def32",
+  "titles": {},
+  "sources": {
+    "src/BuildingParameters.luau": "7bb8903b483f1845df5874b16aba4b7a5fdbe46854d3cb9c9daebb1b9be5c763",
+    "src/BuildingFactory.luau": "744be2c4cfbc3707bfac21a5dab592a954c5efe29ea0084096419ad82703a67b",
+    "src/BuildingEditorPlugin.server.luau": "069354dd826c83cdf198205829fb4f2e87096b48ca8df0c1c0824c4e08269626",
+    "tools/build_buildings.luau": "1f25b8d9f5e7547b4af68ba814b47d292815532877567fbc6d0f1cf31014945f",
+    "tools/update_buildings.py": "815a2795fc278c94884a5bda4f6dc697fcbd4fc2a3b1fbea9fd44c6826dd1715",
+    "tools/build_building_decorations.luau": "b41f32ef236af548b6c3110f108c5ecee9194845e1fe16d65100d5aa45c95400",
+    "src/BuildingPlan.luau": "7522bc96dd69fe9f472194e555ba13e6c3b6109b0a305eb676c1867fc09bc734",
+    "src/BuildingInteriorFactory.luau": "d9fa67d90faa63b881db6e00db672f2c0de23e75c27ab5e74135f5329c7316ed",
+    "src/BuildingPlanEditor.luau": "d34ec6efba9a9c426d9a6c5a58bf9fb0ad2232ddfd8f5cd29ead604f4de97e2b",
+    "src/BuildingElevatorMotion.luau": "f5581f6b6bd522f26f328e9ea5ba2e9b8fb587697b919e05468770dc41d2ac8b",
+    "src/BuildingElevatorActor.luau": "c10b56b425bb323d30a428726684234e846ee0962fa40f74dc92c439095e86fc",
+    "src/BuildingRuntime.server.luau": "bbe3ee467af26ae96f3a22e4fccc2f449f5b9cdb032b80226ccced40f4aebc3e",
+    "src/BuildingClient.client.luau": "3fd8967c86ef9c68527a3fd1366ad7143c71009cda3e8fe2a4c0f27ba26d101e"
+  },
+  "files": {
+    "dist/BoraBuildingKit.rbxmx": "ebcbf942775a8cc966f157705778f5d14b3efabc99fc64d667dba09f13aab11e",
+    "dist/BuildingPatches.rbxmx": "9fa564cf1669d1967bc0926980165a48994ae2fd7c45de02e735ac758c960266",
+    "assets/buildings/local/manifest.json": "94f88658c17b2b8c0d9400bfc347ff94b33d5248371dd32656e75a3295e6b10f",
+    "assets/buildings/local/WallSconce_0.mesh": "cf17078fcffcf3064b5d932e3e6ea0861bc438243b2ed1be4eb8ada010cb110d",
+    "assets/buildings/local/WallSconce_1.mesh": "4507a9c8e5ba3eb5b4f472376decbf6c67e0e95e3f10f926434776dc66d2a2f9",
+    "assets/buildings/local/WallSconce_2.mesh": "89abe975b5fd84a6a1b34a09622126693bd768aa8dd95da255d7eaae0a0d3807",
+    "dist/BoraNeighborhood.rbxmx": "2c88b824da81aa779a1d67b059414c2e6052ecd1945b7a9418d1c97a83796685"
+  }
+}

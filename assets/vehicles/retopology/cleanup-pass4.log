@@ -1,0 +1,12 @@
+00:01.860  blend            | Read blend: "C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\assets\vehicles\retopology\BoraS2_Source_Review.blend"
+C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\tools\clean_s2_sedan.py:21: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m=bpy.data.materials.new(name);m.diffuse_color=(*color,1);m.use_nodes=True;b=m.node_tree.nodes.get('Principled BSDF')
+00:03.969  image.write      | ERROR OpenImageIO write failed: Could not open file "C:\Users\jinug\.thumbnails\large\blender_32716_5129d9f4e0e5c444f0647b6b75d983cd.png.png"
+00:25.531  render           | Saved: 'C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\assets\vehicles\retopology\s2-clean-front.png'
+00:45.828  render           | Saved: 'C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\assets\vehicles\retopology\s2-clean-side.png'
+01:08.172  render           | Saved: 'C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\assets\vehicles\retopology\s2-clean-rear.png'
+Info: Saved as "BoraS2_Clean.blend"
+S2 asset saved and three views rendered
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

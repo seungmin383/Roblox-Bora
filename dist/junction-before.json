@@ -1,0 +1,39 @@
+{
+  "counts": {
+    "BoraTrees": 3,
+    "BoraRoads": 1
+  },
+  "workspaceSha256": "051c15c275c33f0c1cdfdec931af2ffbdbff764879e9ad52147cc7dbb86b8f19",
+  "children": [
+    {
+      "name": "GrassPlain",
+      "referent": "2",
+      "sha256": "8f2ad2ba9ce11beafdc0b4bacf8f84605a56574768f3033607ee3bc2040028ba"
+    },
+    {
+      "name": "CenterSpawn",
+      "referent": "3",
+      "sha256": "bffc590fa7f432863beeb80b98c61acd9337c3abeb76e6b8c85bcbc571447f72"
+    },
+    {
+      "name": "BoraTrees",
+      "referent": "4",
+      "sha256": "948362e482d614253670b733f5f799398f663c336f25c1b4d6a372ec9e520ca7"
+    },
+    {
+      "name": "Terrain",
+      "referent": "RBX0C24C1344D7C4C1CA0FADB12006E9F6F",
+      "sha256": "2b4823033fcb400a3dbb0fa6fd0967a0952838fc19cefd0afaf4774c8c0af5cb"
+    },
+    {
+      "name": "BoraMapReference",
+      "referent": "RoKit_1ce2c43837f74c86a9e5ca49fecd513c",
+      "sha256": "ae9781f9b9a6d64adefd333323e0a072b3cd2f5345730dc331c7596b671b3115"
+    },
+    {
+      "name": "BoraRoads",
+      "referent": "RBX30D8480651C8408A88755BE4085EE137",
+      "sha256": "6579d6e8e0e4e31c64ff34ecca26403e886023cc6f8772221286e84cf819abf1"
+    }
+  ]
+}

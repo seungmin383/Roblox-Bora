@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-18",
+  "virtualBrand": "BORA",
+  "model": "S2",
+  "prompt": "A complete unbranded modern Korean compact four-door sedan, production road car, semi-realistic game asset. Stock factory appearance, elegant silver paint, normal ride height, no spoiler, no body kit. Correct sedan proportions: long wheelbase, four identical circular wheels aligned under the fenders, gently arched roof, sloped windshield, distinct short trunk. Prioritize clean continuous large body surfaces: smooth hood, rounded fenders, crisp restrained shoulder crease, straight sill, symmetric left and right. All four doors CLOSED, perfectly flush with the body, narrow consistent panel gaps. Realistic thin window pillars and continuous smooth window shapes. Simple restrained bumper and headlamp shapes; grille is a shallow dark panel with a flat texture pattern, NOT individual bars or mesh lattice. No badges, logos, text, license plate lettering, tiny screws or ornament. Clean manufactured surfaces, no dents, melted edges or warped panels. Whole car only, no scene, no base.",
+  "selectedTask": "b1e76032-3d84-48ca-98b7-dbf272ea6cab",
+  "candidates": [
+    {
+      "task": "0e991fa2-635f-4565-be8f-8e54275ea804",
+      "mode": "HD H3.1",
+      "trianglesShown": 1897188,
+      "verticesShown": 989884,
+      "credits": 55,
+      "review": "Reviewed on Tripo; not downloaded. Dense, production-like exterior with noisier surfaces."
+    },
+    {
+      "task": "b1e76032-3d84-48ca-98b7-dbf272ea6cab",
+      "mode": "Smart Mesh P2.0",
+      "requestedBudget": 8000,
+      "editableFacesShown": 9343,
+      "verticesShown": 8466,
+      "credits": 100,
+      "textureCredits": 20,
+      "review": "Selected for consistent body proportions and editable broad panel topology."
+    }
+  ],
+  "credits": {
+    "before": 2385,
+    "after": 2210,
+    "used": 175
+  },
+  "sourceFiles": {
+    "BoraS2_Tripo_Quad_Source.glb": {
+      "bytes": 395556,
+      "sha256": "85056abae04962c9013f5938b9cbdebdd5be6cbfa4f91e631a5a32d3850fd13e"
+    },
+    "BoraS2_Tripo_Textured_Source.glb": {
+      "bytes": 3775712,
+      "sha256": "4ed648654c5d27abb6c1fefe8b40be84f351d1af4173a94c066f8fcd57ce7f19"
+    },
+    "BoraS2_Tripo_Quad_OBJ.zip": {
+      "bytes": 3617213,
+      "sha256": "d2de9dbfcf9ab3ca89b3ce322daae21138b4e10534522cab8b7d7de511a9dd83"
+    }
+  },
+  "cleanTriangles": 37942,
+  "dimensionsMetersIncludingMirrors": [
+    2.1184499263763428,
+    4.664522647857666,
+    1.4783300161361694
+  ],
+  "installedInPlace": false
+}

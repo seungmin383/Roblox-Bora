@@ -1,0 +1,36 @@
+{
+  "source": "Tripo Studio",
+  "taskId": "ce30b66d-2fca-4301-81d8-824268179ce4",
+  "url": "https://studio.tripo3d.ai/ko/workspace/generate/ce30b66d-2fca-4301-81d8-824268179ce4",
+  "credits": 55,
+  "originalTriangles": 1954664,
+  "triangles": 7581,
+  "vertices": 10070,
+  "boundsMeters": [
+    2.09954297542572,
+    0.7279999852180481,
+    1.150311827659607
+  ],
+  "lampCentersMeters": [
+    [
+      -0.6342679358073239,
+      -0.03715167205844319,
+      -0.41634976915483096
+    ],
+    [
+      0.0003733330706559077,
+      -0.03728292107112294,
+      -0.41628874158104784
+    ],
+    [
+      0.6349567978095019,
+      -0.03696212351004127,
+      -0.41637285844424515
+    ]
+  ],
+  "localStudioAsset": true,
+  "extensionPitchMeters": 0.6346123668084129,
+  "activeRevision": "Clean approved topology",
+  "approvedMeshSha256": "fef4affb39b528c8c02aafa9c6ba4145938b6ac9e1ce823db3c33b02c491406b",
+  "approvedMesh": "assets\\traffic\\retopology\\TrafficSignal_Clean.mesh"
+}

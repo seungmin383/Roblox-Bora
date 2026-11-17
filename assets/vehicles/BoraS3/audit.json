@@ -1,0 +1,8617 @@
+{
+  "objects": [
+    {
+      "name": "WheelFL | profiled tyre",
+      "group": "WheelFL",
+      "vertices": 640,
+      "faces": 640,
+      "triangles": 1280,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.7099999785423279,
+          -1.7339999675750732,
+          0.003000000026077032
+        ],
+        [
+          0.9399999976158142,
+          -1.0460000038146973,
+          0.6909999847412109
+        ]
+      ]
+    },
+    {
+      "name": "WheelFL | satin graphite",
+      "group": "WheelFL",
+      "vertices": 2688,
+      "faces": 2360,
+      "triangles": 4944,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.7312178611755371,
+          -1.7358314990997314,
+          0.001168520888313651
+        ],
+        [
+          0.918782114982605,
+          -1.0441685914993286,
+          0.6928315162658691
+        ]
+      ]
+    },
+    {
+      "name": "WheelFL | brushed aluminium",
+      "group": "WheelFL",
+      "vertices": 1664,
+      "faces": 1614,
+      "triangles": 3268,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.9160000085830688,
+          -1.6629999876022339,
+          0.07400000095367432
+        ],
+        [
+          0.9520000219345093,
+          -1.1169999837875366,
+          0.6200000047683716
+        ]
+      ]
+    },
+    {
+      "name": "WheelFL | wheel graphite",
+      "group": "WheelFL",
+      "vertices": 336,
+      "faces": 298,
+      "triangles": 668,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.7450000047683716,
+          -1.6369999647140503,
+          0.10000000149011612
+        ],
+        [
+          0.9470000267028809,
+          -1.1430000066757202,
+          0.593999981880188
+        ]
+      ]
+    },
+    {
+      "name": "WheelFL | brake rotor",
+      "group": "WheelFL",
+      "vertices": 128,
+      "faces": 66,
+      "triangles": 252,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.8925000429153442,
+          -1.5959999561309814,
+          0.14100000262260437
+        ],
+        [
+          0.9014999866485596,
+          -1.184000015258789,
+          0.5529999732971191
+        ]
+      ]
+    },
+    {
+      "name": "WheelFL | red brake caliper",
+      "group": "WheelFL",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.9020000100135803,
+          -1.2619999647140503,
+          0.2944999933242798
+        ],
+        [
+          0.9380000233650208,
+          -1.1980000734329224,
+          0.4294999837875366
+        ]
+      ]
+    },
+    {
+      "name": "WheelRL | profiled tyre",
+      "group": "WheelRL",
+      "vertices": 640,
+      "faces": 640,
+      "triangles": 1280,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.7099999785423279,
+          1.0160000324249268,
+          0.003000000026077032
+        ],
+        [
+          0.9399999976158142,
+          1.7039999961853027,
+          0.6909999847412109
+        ]
+      ]
+    },
+    {
+      "name": "WheelRL | satin graphite",
+      "group": "WheelRL",
+      "vertices": 2688,
+      "faces": 2360,
+      "triangles": 4944,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.7312178611755371,
+          1.0141685009002686,
+          0.001168520888313651
+        ],
+        [
+          0.918782114982605,
+          1.7058314085006714,
+          0.6928315162658691
+        ]
+      ]
+    },
+    {
+      "name": "WheelRL | brushed aluminium",
+      "group": "WheelRL",
+      "vertices": 1664,
+      "faces": 1614,
+      "triangles": 3268,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.9160000085830688,
+          1.0870000123977661,
+          0.07400000095367432
+        ],
+        [
+          0.9520000219345093,
+          1.6330000162124634,
+          0.6200000047683716
+        ]
+      ]
+    },
+    {
+      "name": "WheelRL | wheel graphite",
+      "group": "WheelRL",
+      "vertices": 336,
+      "faces": 298,
+      "triangles": 668,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.7450000047683716,
+          1.1130000352859497,
+          0.10000000149011612
+        ],
+        [
+          0.9470000267028809,
+          1.6069999933242798,
+          0.593999981880188
+        ]
+      ]
+    },
+    {
+      "name": "WheelRL | brake rotor",
+      "group": "WheelRL",
+      "vertices": 128,
+      "faces": 66,
+      "triangles": 252,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.8925000429153442,
+          1.1540000438690186,
+          0.14100000262260437
+        ],
+        [
+          0.9014999866485596,
+          1.565999984741211,
+          0.5529999732971191
+        ]
+      ]
+    },
+    {
+      "name": "WheelRL | red brake caliper",
+      "group": "WheelRL",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.9020000100135803,
+          1.4880000352859497,
+          0.2944999933242798
+        ],
+        [
+          0.9380000233650208,
+          1.5519999265670776,
+          0.4294999837875366
+        ]
+      ]
+    },
+    {
+      "name": "WheelFR | profiled tyre",
+      "group": "WheelFR",
+      "vertices": 640,
+      "faces": 640,
+      "triangles": 1280,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.9399999976158142,
+          -1.7339999675750732,
+          0.003000000026077032
+        ],
+        [
+          -0.7099999785423279,
+          -1.0460000038146973,
+          0.6909999847412109
+        ]
+      ]
+    },
+    {
+      "name": "WheelFR | satin graphite",
+      "group": "WheelFR",
+      "vertices": 2688,
+      "faces": 2360,
+      "triangles": 4944,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.918782114982605,
+          -1.7358314990997314,
+          0.001168520888313651
+        ],
+        [
+          -0.7312178611755371,
+          -1.0441685914993286,
+          0.6928315162658691
+        ]
+      ]
+    },
+    {
+      "name": "WheelFR | brushed aluminium",
+      "group": "WheelFR",
+      "vertices": 1664,
+      "faces": 1614,
+      "triangles": 3268,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.9520000219345093,
+          -1.6629999876022339,
+          0.07400000095367432
+        ],
+        [
+          -0.9160000085830688,
+          -1.1169999837875366,
+          0.6200000047683716
+        ]
+      ]
+    },
+    {
+      "name": "WheelFR | wheel graphite",
+      "group": "WheelFR",
+      "vertices": 336,
+      "faces": 298,
+      "triangles": 668,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.9470000267028809,
+          -1.6369999647140503,
+          0.10000000149011612
+        ],
+        [
+          -0.7450000047683716,
+          -1.1430000066757202,
+          0.593999981880188
+        ]
+      ]
+    },
+    {
+      "name": "WheelFR | brake rotor",
+      "group": "WheelFR",
+      "vertices": 128,
+      "faces": 66,
+      "triangles": 252,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.9014999866485596,
+          -1.5959999561309814,
+          0.14100000262260437
+        ],
+        [
+          -0.8925000429153442,
+          -1.184000015258789,
+          0.5529999732971191
+        ]
+      ]
+    },
+    {
+      "name": "WheelFR | red brake caliper",
+      "group": "WheelFR",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.9380000233650208,
+          -1.2619999647140503,
+          0.2944999933242798
+        ],
+        [
+          -0.9020000100135803,
+          -1.1980000734329224,
+          0.4294999837875366
+        ]
+      ]
+    },
+    {
+      "name": "WheelRR | profiled tyre",
+      "group": "WheelRR",
+      "vertices": 640,
+      "faces": 640,
+      "triangles": 1280,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.9399999976158142,
+          1.0160000324249268,
+          0.003000000026077032
+        ],
+        [
+          -0.7099999785423279,
+          1.7039999961853027,
+          0.6909999847412109
+        ]
+      ]
+    },
+    {
+      "name": "WheelRR | satin graphite",
+      "group": "WheelRR",
+      "vertices": 2688,
+      "faces": 2360,
+      "triangles": 4944,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.918782114982605,
+          1.0141685009002686,
+          0.001168520888313651
+        ],
+        [
+          -0.7312178611755371,
+          1.7058314085006714,
+          0.6928315162658691
+        ]
+      ]
+    },
+    {
+      "name": "WheelRR | brushed aluminium",
+      "group": "WheelRR",
+      "vertices": 1664,
+      "faces": 1614,
+      "triangles": 3268,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.9520000219345093,
+          1.0870000123977661,
+          0.07400000095367432
+        ],
+        [
+          -0.9160000085830688,
+          1.6330000162124634,
+          0.6200000047683716
+        ]
+      ]
+    },
+    {
+      "name": "WheelRR | wheel graphite",
+      "group": "WheelRR",
+      "vertices": 336,
+      "faces": 298,
+      "triangles": 668,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.9470000267028809,
+          1.1130000352859497,
+          0.10000000149011612
+        ],
+        [
+          -0.7450000047683716,
+          1.6069999933242798,
+          0.593999981880188
+        ]
+      ]
+    },
+    {
+      "name": "WheelRR | brake rotor",
+      "group": "WheelRR",
+      "vertices": 128,
+      "faces": 66,
+      "triangles": 252,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.9014999866485596,
+          1.1540000438690186,
+          0.14100000262260437
+        ],
+        [
+          -0.8925000429153442,
+          1.565999984741211,
+          0.5529999732971191
+        ]
+      ]
+    },
+    {
+      "name": "WheelRR | red brake caliper",
+      "group": "WheelRR",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.9380000233650208,
+          1.4880000352859497,
+          0.2944999933242798
+        ],
+        [
+          -0.9020000100135803,
+          1.5519999265670776,
+          0.4294999837875366
+        ]
+      ]
+    },
+    {
+      "name": "Steering | stitched leather rim",
+      "group": "Steering",
+      "vertices": 1024,
+      "faces": 1024,
+      "triangles": 2048,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.2200000137090683,
+          -0.47194546461105347,
+          0.800322413444519
+        ],
+        [
+          0.5899999737739563,
+          -0.26805439591407776,
+          1.1256775856018066
+        ]
+      ]
+    },
+    {
+      "name": "Steering | metal spoke 0",
+      "group": "Steering",
+      "vertices": 16,
+      "faces": 10,
+      "triangles": 28,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.4050000011920929,
+          -0.3909200131893158,
+          0.9420799016952515
+        ],
+        [
+          0.5419999957084656,
+          -0.3490798771381378,
+          0.9839200377464294
+        ]
+      ]
+    },
+    {
+      "name": "Steering | metal spoke 3.141592653589793",
+      "group": "Steering",
+      "vertices": 16,
+      "faces": 10,
+      "triangles": 28,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.2680000066757202,
+          -0.3909200131893158,
+          0.9420799016952515
+        ],
+        [
+          0.4050000011920929,
+          -0.3490798771381378,
+          0.9839200377464294
+        ]
+      ]
+    },
+    {
+      "name": "Steering | metal spoke 4.71238898038469",
+      "group": "Steering",
+      "vertices": 16,
+      "faces": 10,
+      "triangles": 28,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.3840000033378601,
+          -0.38818517327308655,
+          0.8338606953620911
+        ],
+        [
+          0.4259999990463257,
+          -0.2833000123500824,
+          0.9735022187232971
+        ]
+      ]
+    },
+    {
+      "name": "Steering | airbag pad",
+      "group": "Steering",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.33250001072883606,
+          -0.4134344160556793,
+          0.9113300442695618
+        ],
+        [
+          0.47749999165534973,
+          -0.32656559348106384,
+          1.0146700143814087
+        ]
+      ]
+    },
+    {
+      "name": "Steering | control pad -1",
+      "group": "Steering",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.2865000069141388,
+          -0.36622852087020874,
+          0.9561567306518555
+        ],
+        [
+          0.3294999897480011,
+          -0.3322022557258606,
+          0.9938433170318604
+        ]
+      ]
+    },
+    {
+      "name": "Steering | button -1 -0.007",
+      "group": "Steering",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.296999990940094,
+          -0.33570703864097595,
+          0.974004864692688
+        ],
+        [
+          0.3190000057220459,
+          -0.33147498965263367,
+          0.9778709411621094
+        ]
+      ]
+    },
+    {
+      "name": "Steering | button -1 0.007",
+      "group": "Steering",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.296999990940094,
+          -0.3427070677280426,
+          0.9861291646957397
+        ],
+        [
+          0.3190000057220459,
+          -0.3384750187397003,
+          0.9899952411651611
+        ]
+      ]
+    },
+    {
+      "name": "Steering | control pad 1",
+      "group": "Steering",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.4804999828338623,
+          -0.36622852087020874,
+          0.9561567306518555
+        ],
+        [
+          0.5234999656677246,
+          -0.3322022557258606,
+          0.9938433170318604
+        ]
+      ]
+    },
+    {
+      "name": "Steering | button 1 -0.007",
+      "group": "Steering",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.4909999668598175,
+          -0.33570703864097595,
+          0.974004864692688
+        ],
+        [
+          0.512999951839447,
+          -0.33147498965263367,
+          0.9778709411621094
+        ]
+      ]
+    },
+    {
+      "name": "Steering | button 1 0.007",
+      "group": "Steering",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.4909999668598175,
+          -0.3427070677280426,
+          0.9861291646957397
+        ],
+        [
+          0.512999951839447,
+          -0.3384750187397003,
+          0.9899952411651611
+        ]
+      ]
+    },
+    {
+      "name": "Front door | skin L",
+      "group": "DoorFL",
+      "vertices": 638,
+      "faces": 636,
+      "triangles": 1272,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.8273537755012512,
+          -0.8081427812576294,
+          0.2199999988079071
+        ],
+        [
+          0.9373872876167297,
+          0.2960631847381592,
+          1.0349458456039429
+        ]
+      ]
+    },
+    {
+      "name": "Flush door handle | DoorFL",
+      "group": "DoorFL",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.9187893271446228,
+          -0.25850000977516174,
+          0.9330000281333923
+        ],
+        [
+          0.9377893805503845,
+          -0.101500004529953,
+          0.9610000252723694
+        ]
+      ]
+    },
+    {
+      "name": "Handle | aluminium touch surface DoorFL",
+      "group": "DoorFL",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.936289370059967,
+          -0.23900002241134644,
+          0.9449999928474426
+        ],
+        [
+          0.942289412021637,
+          -0.12700003385543823,
+          0.9569999575614929
+        ]
+      ]
+    },
+    {
+      "name": "Shoulder | window to body bridge DoorFL",
+      "group": "DoorFL",
+      "vertices": 324,
+      "faces": 322,
+      "triangles": 644,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.7799999713897705,
+          -0.7900000214576721,
+          1.01101553440094
+        ],
+        [
+          0.9202122688293457,
+          0.2960592210292816,
+          1.0387500524520874
+        ]
+      ]
+    },
+    {
+      "name": "DoorFL | structural window frame",
+      "group": "DoorFL",
+      "vertices": 224,
+      "faces": 224,
+      "triangles": 448,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.6685652732849121,
+          -0.7900000214576721,
+          1.014601469039917
+        ],
+        [
+          0.7799999713897705,
+          0.30000489950180054,
+          1.4479999542236328
+        ]
+      ]
+    },
+    {
+      "name": "DoorFL | window gasket",
+      "group": "DoorFL",
+      "vertices": 224,
+      "faces": 224,
+      "triangles": 448,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.6758478879928589,
+          -0.7224187850952148,
+          1.0406259298324585
+        ],
+        [
+          0.7749279737472534,
+          0.28356900811195374,
+          1.4204708337783813
+        ]
+      ]
+    },
+    {
+      "name": "DoorFL | clear curved window",
+      "group": "DoorFL",
+      "vertices": 418,
+      "faces": 416,
+      "triangles": 832,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.6745186448097229,
+          -0.697127103805542,
+          1.0483050346374512
+        ],
+        [
+          0.7713708877563477,
+          0.27544182538986206,
+          1.412719964981079
+        ]
+      ]
+    },
+    {
+      "name": "DoorFL | belt brightwork",
+      "group": "DoorFL",
+      "vertices": 216,
+      "faces": 212,
+      "triangles": 428,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.7742810249328613,
+          -0.753328800201416,
+          1.0303610563278198
+        ],
+        [
+          0.7831156849861145,
+          0.28942862153053284,
+          1.0566740036010742
+        ]
+      ]
+    },
+    {
+      "name": "DoorFL | contoured inner door card",
+      "group": "DoorFL",
+      "vertices": 462,
+      "faces": 460,
+      "triangles": 920,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.7751526236534119,
+          -0.75,
+          0.3087107837200165
+        ],
+        [
+          0.871047854423523,
+          0.2800000011920929,
+          0.9910513758659363
+        ]
+      ]
+    },
+    {
+      "name": "DoorFL | interior armrest",
+      "group": "DoorFL",
+      "vertices": 168,
+      "faces": 162,
+      "triangles": 332,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.7420000433921814,
+          -0.6499999761581421,
+          0.6100000143051147
+        ],
+        [
+          0.7919999957084656,
+          0.20999999344348907,
+          0.6599999666213989
+        ]
+      ]
+    },
+    {
+      "name": "DoorFL | interior release",
+      "group": "DoorFL",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.7740000486373901,
+          -0.5900000333786011,
+          0.8274999856948853
+        ],
+        [
+          0.7960000038146973,
+          -0.49000000953674316,
+          0.8524999618530273
+        ]
+      ]
+    },
+    {
+      "name": "Rear door | skin L",
+      "group": "DoorRL",
+      "vertices": 660,
+      "faces": 658,
+      "triangles": 1316,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.8335784673690796,
+          0.30399999022483826,
+          0.2199999988079071
+        ],
+        [
+          0.9587061405181885,
+          1.2660654783248901,
+          1.047861099243164
+        ]
+      ]
+    },
+    {
+      "name": "Flush door handle | DoorRL",
+      "group": "DoorRL",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.9421561360359192,
+          0.8815000057220459,
+          0.9330000281333923
+        ],
+        [
+          0.9611561894416809,
+          1.0384999513626099,
+          0.9610000252723694
+        ]
+      ]
+    },
+    {
+      "name": "Handle | aluminium touch surface DoorRL",
+      "group": "DoorRL",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.9596561193466187,
+          0.9010000228881836,
+          0.9449999928474426
+        ],
+        [
+          0.9656561613082886,
+          1.0130000114440918,
+          0.9569999575614929
+        ]
+      ]
+    },
+    {
+      "name": "Shoulder | window to body bridge DoorRL",
+      "group": "DoorRL",
+      "vertices": 288,
+      "faces": 286,
+      "triangles": 572,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.7799999713897705,
+          0.30399999022483826,
+          1.0310686826705933
+        ],
+        [
+          0.9422395825386047,
+          1.2660000324249268,
+          1.051669716835022
+        ]
+      ]
+    },
+    {
+      "name": "DoorRL | structural window frame",
+      "group": "DoorRL",
+      "vertices": 224,
+      "faces": 224,
+      "triangles": 448,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.6685804724693298,
+          0.2999859154224396,
+          1.0346784591674805
+        ],
+        [
+          0.7799999713897705,
+          1.4299999475479126,
+          1.4479999542236328
+        ]
+      ]
+    },
+    {
+      "name": "DoorRL | window gasket",
+      "group": "DoorRL",
+      "vertices": 224,
+      "faces": 224,
+      "triangles": 448,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.6758650541305542,
+          0.3156609535217285,
+          1.0605190992355347
+        ],
+        [
+          0.774818480014801,
+          1.3570090532302856,
+          1.4204171895980835
+        ]
+      ]
+    },
+    {
+      "name": "DoorRL | clear curved window",
+      "group": "DoorRL",
+      "vertices": 418,
+      "faces": 416,
+      "triangles": 832,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.6745458245277405,
+          0.32348397374153137,
+          1.0681324005126953
+        ],
+        [
+          0.7712395787239075,
+          1.3299466371536255,
+          1.4126681089401245
+        ]
+      ]
+    },
+    {
+      "name": "DoorRL | belt brightwork",
+      "group": "DoorRL",
+      "vertices": 216,
+      "faces": 212,
+      "triangles": 428,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.7742810249328613,
+          0.31097790598869324,
+          1.050377607345581
+        ],
+        [
+          0.7830368876457214,
+          1.3897727727890015,
+          1.0651273727416992
+        ]
+      ]
+    },
+    {
+      "name": "DoorRL | contoured inner door card",
+      "group": "DoorRL",
+      "vertices": 462,
+      "faces": 460,
+      "triangles": 920,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.7815766334533691,
+          0.3298506736755371,
+          0.30866897106170654
+        ],
+        [
+          0.8916428089141846,
+          1.190000057220459,
+          0.9909759759902954
+        ]
+      ]
+    },
+    {
+      "name": "DoorRL | interior armrest",
+      "group": "DoorRL",
+      "vertices": 168,
+      "faces": 162,
+      "triangles": 332,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.7420000433921814,
+          0.4300000071525574,
+          0.6100000143051147
+        ],
+        [
+          0.7919999957084656,
+          1.1200000047683716,
+          0.6599999666213989
+        ]
+      ]
+    },
+    {
+      "name": "DoorRL | interior release",
+      "group": "DoorRL",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.7740000486373901,
+          0.49000000953674316,
+          0.8274999856948853
+        ],
+        [
+          0.7960000038146973,
+          0.5900000333786011,
+          0.8524999618530273
+        ]
+      ]
+    },
+    {
+      "name": "Front door | skin R",
+      "group": "DoorFR",
+      "vertices": 638,
+      "faces": 636,
+      "triangles": 1272,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.9373872876167297,
+          -0.8081427812576294,
+          0.2199999988079071
+        ],
+        [
+          -0.8273537755012512,
+          0.2960631847381592,
+          1.0349458456039429
+        ]
+      ]
+    },
+    {
+      "name": "Flush door handle | DoorFR",
+      "group": "DoorFR",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.9377893805503845,
+          -0.25850000977516174,
+          0.9330000281333923
+        ],
+        [
+          -0.9187893271446228,
+          -0.101500004529953,
+          0.9610000252723694
+        ]
+      ]
+    },
+    {
+      "name": "Handle | aluminium touch surface DoorFR",
+      "group": "DoorFR",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.942289412021637,
+          -0.23900002241134644,
+          0.9449999928474426
+        ],
+        [
+          -0.936289370059967,
+          -0.12700003385543823,
+          0.9569999575614929
+        ]
+      ]
+    },
+    {
+      "name": "Shoulder | window to body bridge DoorFR",
+      "group": "DoorFR",
+      "vertices": 324,
+      "faces": 322,
+      "triangles": 644,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.9202122688293457,
+          -0.7900000214576721,
+          1.01101553440094
+        ],
+        [
+          -0.7799999713897705,
+          0.2960592210292816,
+          1.0387500524520874
+        ]
+      ]
+    },
+    {
+      "name": "DoorFR | structural window frame",
+      "group": "DoorFR",
+      "vertices": 224,
+      "faces": 224,
+      "triangles": 448,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.7799999713897705,
+          -0.7900000214576721,
+          1.014601469039917
+        ],
+        [
+          -0.6685652732849121,
+          0.30000489950180054,
+          1.4479999542236328
+        ]
+      ]
+    },
+    {
+      "name": "DoorFR | window gasket",
+      "group": "DoorFR",
+      "vertices": 224,
+      "faces": 224,
+      "triangles": 448,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.7749279737472534,
+          -0.7224187850952148,
+          1.0406259298324585
+        ],
+        [
+          -0.6758478879928589,
+          0.28356900811195374,
+          1.4204708337783813
+        ]
+      ]
+    },
+    {
+      "name": "DoorFR | clear curved window",
+      "group": "DoorFR",
+      "vertices": 418,
+      "faces": 416,
+      "triangles": 832,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.7713708877563477,
+          -0.697127103805542,
+          1.0483050346374512
+        ],
+        [
+          -0.6745186448097229,
+          0.27544182538986206,
+          1.412719964981079
+        ]
+      ]
+    },
+    {
+      "name": "DoorFR | belt brightwork",
+      "group": "DoorFR",
+      "vertices": 216,
+      "faces": 212,
+      "triangles": 428,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.7831156849861145,
+          -0.753328800201416,
+          1.0303610563278198
+        ],
+        [
+          -0.7742810249328613,
+          0.28942862153053284,
+          1.0566740036010742
+        ]
+      ]
+    },
+    {
+      "name": "DoorFR | contoured inner door card",
+      "group": "DoorFR",
+      "vertices": 462,
+      "faces": 460,
+      "triangles": 920,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.871047854423523,
+          -0.75,
+          0.3087107837200165
+        ],
+        [
+          -0.7751526236534119,
+          0.2800000011920929,
+          0.9910513758659363
+        ]
+      ]
+    },
+    {
+      "name": "DoorFR | interior armrest",
+      "group": "DoorFR",
+      "vertices": 168,
+      "faces": 162,
+      "triangles": 332,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.7919999957084656,
+          -0.6499999761581421,
+          0.6100000143051147
+        ],
+        [
+          -0.7420000433921814,
+          0.20999999344348907,
+          0.6599999666213989
+        ]
+      ]
+    },
+    {
+      "name": "DoorFR | interior release",
+      "group": "DoorFR",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.7960000038146973,
+          -0.5900000333786011,
+          0.8274999856948853
+        ],
+        [
+          -0.7740000486373901,
+          -0.49000000953674316,
+          0.8524999618530273
+        ]
+      ]
+    },
+    {
+      "name": "Rear door | skin R",
+      "group": "DoorRR",
+      "vertices": 660,
+      "faces": 658,
+      "triangles": 1316,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.9587061405181885,
+          0.30399999022483826,
+          0.2199999988079071
+        ],
+        [
+          -0.8335784673690796,
+          1.2660654783248901,
+          1.047861099243164
+        ]
+      ]
+    },
+    {
+      "name": "Flush door handle | DoorRR",
+      "group": "DoorRR",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.9611561894416809,
+          0.8815000057220459,
+          0.9330000281333923
+        ],
+        [
+          -0.9421561360359192,
+          1.0384999513626099,
+          0.9610000252723694
+        ]
+      ]
+    },
+    {
+      "name": "Handle | aluminium touch surface DoorRR",
+      "group": "DoorRR",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.9656561613082886,
+          0.9010000228881836,
+          0.9449999928474426
+        ],
+        [
+          -0.9596561193466187,
+          1.0130000114440918,
+          0.9569999575614929
+        ]
+      ]
+    },
+    {
+      "name": "Shoulder | window to body bridge DoorRR",
+      "group": "DoorRR",
+      "vertices": 288,
+      "faces": 286,
+      "triangles": 572,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.9422395825386047,
+          0.30399999022483826,
+          1.0310686826705933
+        ],
+        [
+          -0.7799999713897705,
+          1.2660000324249268,
+          1.051669716835022
+        ]
+      ]
+    },
+    {
+      "name": "DoorRR | structural window frame",
+      "group": "DoorRR",
+      "vertices": 224,
+      "faces": 224,
+      "triangles": 448,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.7799999713897705,
+          0.2999859154224396,
+          1.0346784591674805
+        ],
+        [
+          -0.6685804724693298,
+          1.4299999475479126,
+          1.4479999542236328
+        ]
+      ]
+    },
+    {
+      "name": "DoorRR | window gasket",
+      "group": "DoorRR",
+      "vertices": 224,
+      "faces": 224,
+      "triangles": 448,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.774818480014801,
+          0.3156609535217285,
+          1.0605190992355347
+        ],
+        [
+          -0.6758650541305542,
+          1.3570090532302856,
+          1.4204171895980835
+        ]
+      ]
+    },
+    {
+      "name": "DoorRR | clear curved window",
+      "group": "DoorRR",
+      "vertices": 418,
+      "faces": 416,
+      "triangles": 832,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.7712395787239075,
+          0.32348397374153137,
+          1.0681324005126953
+        ],
+        [
+          -0.6745458245277405,
+          1.3299466371536255,
+          1.4126681089401245
+        ]
+      ]
+    },
+    {
+      "name": "DoorRR | belt brightwork",
+      "group": "DoorRR",
+      "vertices": 216,
+      "faces": 212,
+      "triangles": 428,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.7830368876457214,
+          0.31097790598869324,
+          1.050377607345581
+        ],
+        [
+          -0.7742810249328613,
+          1.3897727727890015,
+          1.0651273727416992
+        ]
+      ]
+    },
+    {
+      "name": "DoorRR | contoured inner door card",
+      "group": "DoorRR",
+      "vertices": 462,
+      "faces": 460,
+      "triangles": 920,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.8916428089141846,
+          0.3298506736755371,
+          0.30866897106170654
+        ],
+        [
+          -0.7815766334533691,
+          1.190000057220459,
+          0.9909759759902954
+        ]
+      ]
+    },
+    {
+      "name": "DoorRR | interior armrest",
+      "group": "DoorRR",
+      "vertices": 168,
+      "faces": 162,
+      "triangles": 332,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.7919999957084656,
+          0.4300000071525574,
+          0.6100000143051147
+        ],
+        [
+          -0.7420000433921814,
+          1.1200000047683716,
+          0.6599999666213989
+        ]
+      ]
+    },
+    {
+      "name": "DoorRR | interior release",
+      "group": "DoorRR",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.7960000038146973,
+          0.49000000953674316,
+          0.8274999856948853
+        ],
+        [
+          -0.7740000486373901,
+          0.5900000333786011,
+          0.8524999618530273
+        ]
+      ]
+    },
+    {
+      "name": "Body | recessed door and arch backing L",
+      "group": "Body",
+      "vertices": 1680,
+      "faces": 1678,
+      "triangles": 3356,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.7642126083374023,
+          -2.180000066757202,
+          0.2199999988079071
+        ],
+        [
+          0.9547802209854126,
+          2.180000066757202,
+          1.0478523969650269
+        ]
+      ]
+    },
+    {
+      "name": "Front fender | skin L",
+      "group": "Body",
+      "vertices": 990,
+      "faces": 988,
+      "triangles": 1976,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.7742146849632263,
+          -2.180000066757202,
+          0.2199999988079071
+        ],
+        [
+          0.9529526829719543,
+          -0.8119999766349792,
+          1.0145219564437866
+        ]
+      ]
+    },
+    {
+      "name": "Rear quarter | skin L",
+      "group": "Body",
+      "vertices": 638,
+      "faces": 636,
+      "triangles": 1272,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.78151935338974,
+          1.2699999809265137,
+          0.2199999988079071
+        ],
+        [
+          0.9651230573654175,
+          2.180000066757202,
+          1.0474690198898315
+        ]
+      ]
+    },
+    {
+      "name": "Front wheel arch | inward lip L",
+      "group": "Body",
+      "vertices": 342,
+      "faces": 340,
+      "triangles": 680,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.8296212553977966,
+          -1.7719999551773071,
+          0.3469439148902893
+        ],
+        [
+          0.9379488229751587,
+          -1.0080000162124634,
+          0.7289999723434448
+        ]
+      ]
+    },
+    {
+      "name": "Front wheel arch | painted rolled edge L",
+      "group": "Body",
+      "vertices": 342,
+      "faces": 338,
+      "triangles": 680,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.8579248189926147,
+          -1.7747658491134644,
+          0.3524203598499298
+        ],
+        [
+          0.9419481754302979,
+          -1.0050842761993408,
+          0.7317712306976318
+        ]
+      ]
+    },
+    {
+      "name": "Rear wheel arch | inward lip L",
+      "group": "Body",
+      "vertices": 342,
+      "faces": 340,
+      "triangles": 680,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.847489595413208,
+          0.9779999852180481,
+          0.3469439148902893
+        ],
+        [
+          0.9392192959785461,
+          1.7419999837875366,
+          0.7289999723434448
+        ]
+      ]
+    },
+    {
+      "name": "Rear wheel arch | painted rolled edge L",
+      "group": "Body",
+      "vertices": 342,
+      "faces": 338,
+      "triangles": 680,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.8759779334068298,
+          0.9750392436981201,
+          0.3523883521556854
+        ],
+        [
+          0.9432184100151062,
+          1.7449291944503784,
+          0.7317712306976318
+        ]
+      ]
+    },
+    {
+      "name": "Sill | graphite extrusion L",
+      "group": "Body",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.8334999680519104,
+          -0.9800000190734863,
+          0.19249999523162842
+        ],
+        [
+          0.9085000157356262,
+          1.0199999809265137,
+          0.2574999928474426
+        ]
+      ]
+    },
+    {
+      "name": "Sill | aluminium blade L",
+      "group": "Body",
+      "vertices": 246,
+      "faces": 242,
+      "triangles": 488,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.9070000052452087,
+          -0.9399999976158142,
+          0.25053590536117554
+        ],
+        [
+          0.9150000214576721,
+          0.9300000071525574,
+          0.25746411085128784
+        ]
+      ]
+    },
+    {
+      "name": "Body | recessed door and arch backing R",
+      "group": "Body",
+      "vertices": 1680,
+      "faces": 1678,
+      "triangles": 3356,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.9547802209854126,
+          -2.180000066757202,
+          0.2199999988079071
+        ],
+        [
+          -0.7642126083374023,
+          2.180000066757202,
+          1.0478523969650269
+        ]
+      ]
+    },
+    {
+      "name": "Front fender | skin R",
+      "group": "Body",
+      "vertices": 990,
+      "faces": 988,
+      "triangles": 1976,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.9529526829719543,
+          -2.180000066757202,
+          0.2199999988079071
+        ],
+        [
+          -0.7742146849632263,
+          -0.8119999766349792,
+          1.0145219564437866
+        ]
+      ]
+    },
+    {
+      "name": "Rear quarter | skin R",
+      "group": "Body",
+      "vertices": 638,
+      "faces": 636,
+      "triangles": 1272,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.9651230573654175,
+          1.2699999809265137,
+          0.2199999988079071
+        ],
+        [
+          -0.78151935338974,
+          2.180000066757202,
+          1.0474690198898315
+        ]
+      ]
+    },
+    {
+      "name": "Front wheel arch | inward lip R",
+      "group": "Body",
+      "vertices": 342,
+      "faces": 340,
+      "triangles": 680,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.9379488229751587,
+          -1.7719999551773071,
+          0.3469439148902893
+        ],
+        [
+          -0.8296212553977966,
+          -1.0080000162124634,
+          0.7289999723434448
+        ]
+      ]
+    },
+    {
+      "name": "Front wheel arch | painted rolled edge R",
+      "group": "Body",
+      "vertices": 342,
+      "faces": 338,
+      "triangles": 680,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.9419481754302979,
+          -1.7747658491134644,
+          0.3524203598499298
+        ],
+        [
+          -0.8579248189926147,
+          -1.0050842761993408,
+          0.7317712306976318
+        ]
+      ]
+    },
+    {
+      "name": "Rear wheel arch | inward lip R",
+      "group": "Body",
+      "vertices": 342,
+      "faces": 340,
+      "triangles": 680,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.9392192959785461,
+          0.9779999852180481,
+          0.3469439148902893
+        ],
+        [
+          -0.847489595413208,
+          1.7419999837875366,
+          0.7289999723434448
+        ]
+      ]
+    },
+    {
+      "name": "Rear wheel arch | painted rolled edge R",
+      "group": "Body",
+      "vertices": 342,
+      "faces": 338,
+      "triangles": 680,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.9432184100151062,
+          0.9750392436981201,
+          0.3523883521556854
+        ],
+        [
+          -0.8759779334068298,
+          1.7449291944503784,
+          0.7317712306976318
+        ]
+      ]
+    },
+    {
+      "name": "Sill | graphite extrusion R",
+      "group": "Body",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.9085000157356262,
+          -0.9800000190734863,
+          0.19249999523162842
+        ],
+        [
+          -0.8334999680519104,
+          1.0199999809265137,
+          0.2574999928474426
+        ]
+      ]
+    },
+    {
+      "name": "Sill | aluminium blade R",
+      "group": "Body",
+      "vertices": 246,
+      "faces": 242,
+      "triangles": 488,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.9150000214576721,
+          -0.9399999976158142,
+          0.25053590536117554
+        ],
+        [
+          -0.9070000052452087,
+          0.9300000071525574,
+          0.25746411085128784
+        ]
+      ]
+    },
+    {
+      "name": "Hood | inner gap backing",
+      "group": "Body",
+      "vertices": 1386,
+      "faces": 1384,
+      "triangles": 2768,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.9354282021522522,
+          -2.244999885559082,
+          0.8541405200958252
+        ],
+        [
+          0.9354282021522522,
+          -0.7899327874183655,
+          1.0329999923706055
+        ]
+      ]
+    },
+    {
+      "name": "Hood | centre panel",
+      "group": "Body",
+      "vertices": 1458,
+      "faces": 1456,
+      "triangles": 2912,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.734840989112854,
+          -2.2407848834991455,
+          0.8744524717330933
+        ],
+        [
+          0.734840989112854,
+          -0.801960825920105,
+          1.0399274826049805
+        ]
+      ]
+    },
+    {
+      "name": "Fender crown | L",
+      "group": "Body",
+      "vertices": 486,
+      "faces": 484,
+      "triangles": 968,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.9354659914970398,
+          -2.2154147624969482,
+          0.8619516491889954
+        ],
+        [
+          -0.6767942905426025,
+          -0.7940927743911743,
+          1.0185718536376953
+        ]
+      ]
+    },
+    {
+      "name": "Fender crown | R",
+      "group": "Body",
+      "vertices": 486,
+      "faces": 484,
+      "triangles": 968,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.6767942905426025,
+          -2.2154147624969482,
+          0.8619515895843506
+        ],
+        [
+          0.9354659914970398,
+          -0.7940927743911743,
+          1.0185718536376953
+        ]
+      ]
+    },
+    {
+      "name": "Trunk | inner gap backing",
+      "group": "Body",
+      "vertices": 1122,
+      "faces": 1120,
+      "triangles": 2240,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.9474131464958191,
+          1.4298735857009888,
+          0.8991473913192749
+        ],
+        [
+          0.9474131464958191,
+          2.270190715789795,
+          1.068000078201294
+        ]
+      ]
+    },
+    {
+      "name": "Trunk lid",
+      "group": "Body",
+      "vertices": 1364,
+      "faces": 1362,
+      "triangles": 2724,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.8148293495178223,
+          1.4315814971923828,
+          0.9137967824935913
+        ],
+        [
+          0.8148293495178223,
+          2.268601894378662,
+          1.0749180316925049
+        ]
+      ]
+    },
+    {
+      "name": "Rear fender crown L",
+      "group": "Body",
+      "vertices": 352,
+      "faces": 350,
+      "triangles": 700,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.9474519491195679,
+          1.431362271308899,
+          0.9066771268844604
+        ],
+        [
+          -0.7528917789459229,
+          2.2180352210998535,
+          1.0450224876403809
+        ]
+      ]
+    },
+    {
+      "name": "Rear fender crown R",
+      "group": "Body",
+      "vertices": 352,
+      "faces": 350,
+      "triangles": 700,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.7528917789459229,
+          1.431362271308899,
+          0.9066771268844604
+        ],
+        [
+          0.9474519491195679,
+          2.2180352210998535,
+          1.0450224876403809
+        ]
+      ]
+    },
+    {
+      "name": "Front | continuous bumper and lamp apertures",
+      "group": "Body",
+      "vertices": 2862,
+      "faces": 2228,
+      "triangles": 4456,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.8709579110145569,
+          -2.2908666133880615,
+          0.2199999988079071
+        ],
+        [
+          0.8709579110145569,
+          -2.175248146057129,
+          0.8999999761581421
+        ]
+      ]
+    },
+    {
+      "name": "Upper grille | recessed backing",
+      "group": "Body",
+      "vertices": 300,
+      "faces": 298,
+      "triangles": 596,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.5273681282997131,
+          -2.2658534049987793,
+          0.4334324896335602
+        ],
+        [
+          0.5273681282997131,
+          -2.2355217933654785,
+          0.6891999840736389
+        ]
+      ]
+    },
+    {
+      "name": "Upper grille | inset frame",
+      "group": "Body",
+      "vertices": 224,
+      "faces": 224,
+      "triangles": 448,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.5273681282997131,
+          -2.28613543510437,
+          0.4334324896335602
+        ],
+        [
+          0.5273681282997131,
+          -2.261990785598755,
+          0.6891999840736389
+        ]
+      ]
+    },
+    {
+      "name": "Upper grille | aperture wall 0",
+      "group": "Body",
+      "vertices": 100,
+      "faces": 98,
+      "triangles": 196,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.49113714694976807,
+          -2.2780418395996094,
+          0.432432621717453
+        ],
+        [
+          0.49113714694976807,
+          -2.239467144012451,
+          0.4375999867916107
+        ]
+      ]
+    },
+    {
+      "name": "Upper grille | aperture wall 1",
+      "group": "Body",
+      "vertices": 100,
+      "faces": 98,
+      "triangles": 196,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.4901375472545624,
+          -2.275515556335449,
+          0.4334324896335602
+        ],
+        [
+          0.5273681282997131,
+          -2.239467144012451,
+          0.6803385615348816
+        ]
+      ]
+    },
+    {
+      "name": "Upper grille | aperture wall 2",
+      "group": "Body",
+      "vertices": 100,
+      "faces": 98,
+      "triangles": 196,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.5273681282997131,
+          -2.286609649658203,
+          0.679214358329773
+        ],
+        [
+          0.5273681282997131,
+          -2.2468485832214355,
+          0.6891999840736389
+        ]
+      ]
+    },
+    {
+      "name": "Upper grille | aperture wall 3",
+      "group": "Body",
+      "vertices": 100,
+      "faces": 98,
+      "triangles": 196,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.5273681282997131,
+          -2.275515556335449,
+          0.4334324896335602
+        ],
+        [
+          -0.4901375472545624,
+          -2.239467144012451,
+          0.6803385615348816
+        ]
+      ]
+    },
+    {
+      "name": "Lower intake | recessed backing",
+      "group": "Body",
+      "vertices": 300,
+      "faces": 298,
+      "triangles": 596,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.45114654302597046,
+          -2.2405834197998047,
+          0.27017679810523987
+        ],
+        [
+          0.45114654302597046,
+          -2.193495988845825,
+          0.3808676302433014
+        ]
+      ]
+    },
+    {
+      "name": "Lower intake | inset frame",
+      "group": "Body",
+      "vertices": 224,
+      "faces": 224,
+      "triangles": 448,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.45114654302597046,
+          -2.2645835876464844,
+          0.27017679810523987
+        ],
+        [
+          0.45114654302597046,
+          -2.2198073863983154,
+          0.38018298149108887
+        ]
+      ]
+    },
+    {
+      "name": "Lower intake | aperture wall 0",
+      "group": "Body",
+      "vertices": 100,
+      "faces": 98,
+      "triangles": 196,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.4425974488258362,
+          -2.2267887592315674,
+          0.26917681097984314
+        ],
+        [
+          0.4425974488258362,
+          -2.1971871852874756,
+          0.2709999978542328
+        ]
+      ]
+    },
+    {
+      "name": "Lower intake | aperture wall 1",
+      "group": "Body",
+      "vertices": 100,
+      "faces": 98,
+      "triangles": 196,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.4416070878505707,
+          -2.257166624069214,
+          0.27017679810523987
+        ],
+        [
+          0.4511542320251465,
+          -2.1971871852874756,
+          0.37722063064575195
+        ]
+      ]
+    },
+    {
+      "name": "Lower intake | aperture wall 2",
+      "group": "Body",
+      "vertices": 100,
+      "faces": 98,
+      "triangles": 196,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.45114654302597046,
+          -2.2655835151672363,
+          0.376220703125
+        ],
+        [
+          0.45114654302597046,
+          -2.2321665287017822,
+          0.3797999918460846
+        ]
+      ]
+    },
+    {
+      "name": "Lower intake | aperture wall 3",
+      "group": "Body",
+      "vertices": 100,
+      "faces": 98,
+      "triangles": 196,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.4511542320251465,
+          -2.257166624069214,
+          0.27017679810523987
+        ],
+        [
+          -0.4416070878505707,
+          -2.1971871852874756,
+          0.37722063064575195
+        ]
+      ]
+    },
+    {
+      "name": "Headlamp L | recessed backing",
+      "group": "Body",
+      "vertices": 300,
+      "faces": 298,
+      "triangles": 596,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.8570317029953003,
+          -2.2374582290649414,
+          0.7087923884391785
+        ],
+        [
+          -0.5665818452835083,
+          -2.1619222164154053,
+          0.8348974585533142
+        ]
+      ]
+    },
+    {
+      "name": "Headlamp L | inset frame",
+      "group": "Body",
+      "vertices": 224,
+      "faces": 224,
+      "triangles": 448,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.8568792939186096,
+          -2.261458396911621,
+          0.7087923884391785
+        ],
+        [
+          -0.5668827295303345,
+          -2.18820858001709,
+          0.8348974585533142
+        ]
+      ]
+    },
+    {
+      "name": "Headlamp L | aperture wall 0",
+      "group": "Body",
+      "vertices": 100,
+      "faces": 98,
+      "triangles": 196,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.8553473353385925,
+          -2.262458324432373,
+          0.7077950835227966
+        ],
+        [
+          -0.5747301578521729,
+          -2.1685168743133545,
+          0.7218892574310303
+        ]
+      ]
+    },
+    {
+      "name": "Headlamp L | aperture wall 1",
+      "group": "Body",
+      "vertices": 100,
+      "faces": 98,
+      "triangles": 196,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.5749216079711914,
+          -2.262458324432373,
+          0.7218892574310303
+        ],
+        [
+          -0.5660651922225952,
+          -2.219602584838867,
+          0.8348974585533142
+        ]
+      ]
+    },
+    {
+      "name": "Headlamp L | aperture wall 2",
+      "group": "Body",
+      "vertices": 100,
+      "faces": 98,
+      "triangles": 196,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.8475381731987,
+          -2.244602680206299,
+          0.8178555369377136
+        ],
+        [
+          -0.5670109391212463,
+          -2.1655898094177246,
+          0.8348974585533142
+        ]
+      ]
+    },
+    {
+      "name": "Headlamp L | aperture wall 3",
+      "group": "Body",
+      "vertices": 100,
+      "faces": 98,
+      "triangles": 196,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.8570203185081482,
+          -2.193516969680786,
+          0.7087923884391785
+        ],
+        [
+          -0.8465473651885986,
+          -2.1655898094177246,
+          0.8188515901565552
+        ]
+      ]
+    },
+    {
+      "name": "Headlamp R | recessed backing",
+      "group": "Body",
+      "vertices": 300,
+      "faces": 298,
+      "triangles": 596,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.5665818452835083,
+          -2.2374582290649414,
+          0.7087923884391785
+        ],
+        [
+          0.8570317029953003,
+          -2.1619222164154053,
+          0.8348974585533142
+        ]
+      ]
+    },
+    {
+      "name": "Headlamp R | inset frame",
+      "group": "Body",
+      "vertices": 224,
+      "faces": 224,
+      "triangles": 448,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.5668827295303345,
+          -2.261458396911621,
+          0.7087923884391785
+        ],
+        [
+          0.8568792939186096,
+          -2.18820858001709,
+          0.8348974585533142
+        ]
+      ]
+    },
+    {
+      "name": "Headlamp R | aperture wall 0",
+      "group": "Body",
+      "vertices": 100,
+      "faces": 98,
+      "triangles": 196,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.5747301578521729,
+          -2.262458324432373,
+          0.7077950835227966
+        ],
+        [
+          0.8553473353385925,
+          -2.1685168743133545,
+          0.7218892574310303
+        ]
+      ]
+    },
+    {
+      "name": "Headlamp R | aperture wall 1",
+      "group": "Body",
+      "vertices": 100,
+      "faces": 98,
+      "triangles": 196,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.8465473651885986,
+          -2.193516969680786,
+          0.7087923884391785
+        ],
+        [
+          0.8570203185081482,
+          -2.1655898094177246,
+          0.8188515901565552
+        ]
+      ]
+    },
+    {
+      "name": "Headlamp R | aperture wall 2",
+      "group": "Body",
+      "vertices": 100,
+      "faces": 98,
+      "triangles": 196,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.5670109391212463,
+          -2.244602680206299,
+          0.8178555369377136
+        ],
+        [
+          0.8475381731987,
+          -2.1655898094177246,
+          0.8348974585533142
+        ]
+      ]
+    },
+    {
+      "name": "Headlamp R | aperture wall 3",
+      "group": "Body",
+      "vertices": 100,
+      "faces": 98,
+      "triangles": 196,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.5660651922225952,
+          -2.262458324432373,
+          0.7218892574310303
+        ],
+        [
+          0.5749216079711914,
+          -2.219602584838867,
+          0.8348974585533142
+        ]
+      ]
+    },
+    {
+      "name": "Rear | continuous bumper and lamp apertures",
+      "group": "Body",
+      "vertices": 2754,
+      "faces": 2134,
+      "triangles": 4268,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.8791071772575378,
+          2.1752095222473145,
+          0.2199999988079071
+        ],
+        [
+          0.8791071772575378,
+          2.2935519218444824,
+          0.9399999976158142
+        ]
+      ]
+    },
+    {
+      "name": "Rear light band | recessed backing",
+      "group": "Body",
+      "vertices": 300,
+      "faces": 298,
+      "triangles": 596,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.8617414236068726,
+          2.1666975021362305,
+          0.7254169583320618
+        ],
+        [
+          0.8617414236068726,
+          2.265949010848999,
+          0.8464000225067139
+        ]
+      ]
+    },
+    {
+      "name": "Rear light band | inset frame",
+      "group": "Body",
+      "vertices": 224,
+      "faces": 224,
+      "triangles": 448,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.8617064356803894,
+          2.1930994987487793,
+          0.7254169583320618
+        ],
+        [
+          0.8617064356803894,
+          2.2899491786956787,
+          0.8464000225067139
+        ]
+      ]
+    },
+    {
+      "name": "Rear light band | aperture wall 0",
+      "group": "Body",
+      "vertices": 100,
+      "faces": 98,
+      "triangles": 196,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.8575085997581482,
+          2.1717147827148438,
+          0.7244178056716919
+        ],
+        [
+          0.8575085997581482,
+          2.2909491062164307,
+          0.7455999851226807
+        ]
+      ]
+    },
+    {
+      "name": "Rear light band | aperture wall 1",
+      "group": "Body",
+      "vertices": 100,
+      "faces": 98,
+      "triangles": 196,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.8557587265968323,
+          2.170484781265259,
+          0.7254169583320618
+        ],
+        [
+          0.8617426156997681,
+          2.1967148780822754,
+          0.8223462104797363
+        ]
+      ]
+    },
+    {
+      "name": "Rear light band | aperture wall 2",
+      "group": "Body",
+      "vertices": 100,
+      "faces": 98,
+      "triangles": 196,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.8567534685134888,
+          2.170484781265259,
+          0.8213474154472351
+        ],
+        [
+          0.8567534685134888,
+          2.2827844619750977,
+          0.8464000225067139
+        ]
+      ]
+    },
+    {
+      "name": "Rear light band | aperture wall 3",
+      "group": "Body",
+      "vertices": 100,
+      "faces": 98,
+      "triangles": 196,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.8617426156997681,
+          2.170484781265259,
+          0.7254169583320618
+        ],
+        [
+          -0.8557587265968323,
+          2.1967148780822754,
+          0.8223462104797363
+        ]
+      ]
+    },
+    {
+      "name": "Registration recess | recessed backing",
+      "group": "Body",
+      "vertices": 300,
+      "faces": 298,
+      "triangles": 596,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.24963292479515076,
+          2.2509477138519287,
+          0.46394217014312744
+        ],
+        [
+          0.24963292479515076,
+          2.2685327529907227,
+          0.6592294573783875
+        ]
+      ]
+    },
+    {
+      "name": "Registration recess | inset frame",
+      "group": "Body",
+      "vertices": 224,
+      "faces": 224,
+      "triangles": 448,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.24963292479515076,
+          2.277428150177002,
+          0.46394217014312744
+        ],
+        [
+          0.24963292479515076,
+          2.2925515174865723,
+          0.6592000126838684
+        ]
+      ]
+    },
+    {
+      "name": "Registration recess | aperture wall 0",
+      "group": "Body",
+      "vertices": 100,
+      "faces": 98,
+      "triangles": 196,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.2359098196029663,
+          2.2549126148223877,
+          0.4629421830177307
+        ],
+        [
+          0.2359098196029663,
+          2.2806243896484375,
+          0.46480000019073486
+        ]
+      ]
+    },
+    {
+      "name": "Registration recess | aperture wall 1",
+      "group": "Body",
+      "vertices": 100,
+      "faces": 98,
+      "triangles": 196,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.23491017520427704,
+          2.2549126148223877,
+          0.46394217014312744
+        ],
+        [
+          0.24963292479515076,
+          2.2927489280700684,
+          0.6577290296554565
+        ]
+      ]
+    },
+    {
+      "name": "Registration recess | aperture wall 2",
+      "group": "Body",
+      "vertices": 100,
+      "faces": 98,
+      "triangles": 196,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.24963292479515076,
+          2.2677297592163086,
+          0.6566610336303711
+        ],
+        [
+          0.24963292479515076,
+          2.2935328483581543,
+          0.6592000126838684
+        ]
+      ]
+    },
+    {
+      "name": "Registration recess | aperture wall 3",
+      "group": "Body",
+      "vertices": 100,
+      "faces": 98,
+      "triangles": 196,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.24963292479515076,
+          2.2549126148223877,
+          0.46394217014312744
+        ],
+        [
+          -0.23491017520427704,
+          2.2927489280700684,
+          0.6577290296554565
+        ]
+      ]
+    },
+    {
+      "name": "Rear diffuser | recessed backing",
+      "group": "Body",
+      "vertices": 300,
+      "faces": 298,
+      "triangles": 596,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.552954912185669,
+          2.184220314025879,
+          0.2623676657676697
+        ],
+        [
+          0.552954912185669,
+          2.239763021469116,
+          0.3866402208805084
+        ]
+      ]
+    },
+    {
+      "name": "Rear diffuser | inset frame",
+      "group": "Body",
+      "vertices": 224,
+      "faces": 224,
+      "triangles": 448,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.552954912185669,
+          2.2105612754821777,
+          0.2623676657676697
+        ],
+        [
+          0.552954912185669,
+          2.263763189315796,
+          0.3859723210334778
+        ]
+      ]
+    },
+    {
+      "name": "Rear diffuser | aperture wall 0",
+      "group": "Body",
+      "vertices": 100,
+      "faces": 98,
+      "triangles": 196,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.5406337976455688,
+          2.187960624694824,
+          0.26136767864227295
+        ],
+        [
+          0.5406337976455688,
+          2.2219247817993164,
+          0.2632000148296356
+        ]
+      ]
+    },
+    {
+      "name": "Rear diffuser | aperture wall 1",
+      "group": "Body",
+      "vertices": 100,
+      "faces": 98,
+      "triangles": 196,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.5396468043327332,
+          2.187960624694824,
+          0.2623676657676697
+        ],
+        [
+          0.552954912185669,
+          2.2466394901275635,
+          0.3824142515659332
+        ]
+      ]
+    },
+    {
+      "name": "Rear diffuser | aperture wall 2",
+      "group": "Body",
+      "vertices": 100,
+      "faces": 98,
+      "triangles": 196,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.552954912185669,
+          2.221639394760132,
+          0.38140952587127686
+        ],
+        [
+          0.552954912185669,
+          2.264763116836548,
+          0.3856000006198883
+        ]
+      ]
+    },
+    {
+      "name": "Rear diffuser | aperture wall 3",
+      "group": "Body",
+      "vertices": 100,
+      "faces": 98,
+      "triangles": 196,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.552954912185669,
+          2.187960624694824,
+          0.2623676657676697
+        ],
+        [
+          -0.5396468043327332,
+          2.2466394901275635,
+          0.3824142515659332
+        ]
+      ]
+    },
+    {
+      "name": "Upper grille | horizontal aero blade 0",
+      "group": "Body",
+      "vertices": 234,
+      "faces": 230,
+      "triangles": 464,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.47947385907173157,
+          -2.2763147354125977,
+          0.44471117854118347
+        ],
+        [
+          0.47947385907173157,
+          -2.2507941722869873,
+          0.46022915840148926
+        ]
+      ]
+    },
+    {
+      "name": "Upper grille | horizontal aero blade 1",
+      "group": "Body",
+      "vertices": 234,
+      "faces": 230,
+      "triangles": 464,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.4840295910835266,
+          -2.281761407852173,
+          0.48744112253189087
+        ],
+        [
+          0.4840295910835266,
+          -2.255565643310547,
+          0.5037491917610168
+        ]
+      ]
+    },
+    {
+      "name": "Upper grille | horizontal aero blade 2",
+      "group": "Body",
+      "vertices": 234,
+      "faces": 230,
+      "triangles": 464,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.49131980538368225,
+          -2.285033702850342,
+          0.5301711559295654
+        ],
+        [
+          0.49131980538368225,
+          -2.258431911468506,
+          0.5472691655158997
+        ]
+      ]
+    },
+    {
+      "name": "Upper grille | horizontal aero blade 3",
+      "group": "Body",
+      "vertices": 234,
+      "faces": 230,
+      "triangles": 464,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.49927446246147156,
+          -2.2863311767578125,
+          0.57290118932724
+        ],
+        [
+          0.49927446246147156,
+          -2.2595674991607666,
+          0.5907891988754272
+        ]
+      ]
+    },
+    {
+      "name": "Upper grille | horizontal aero blade 4",
+      "group": "Body",
+      "vertices": 234,
+      "faces": 230,
+      "triangles": 464,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.5060643553733826,
+          -2.285789966583252,
+          0.6156312227249146
+        ],
+        [
+          0.5060643553733826,
+          -2.259092330932617,
+          0.6343091726303101
+        ]
+      ]
+    },
+    {
+      "name": "Upper grille | horizontal aero blade 5",
+      "group": "Body",
+      "vertices": 234,
+      "faces": 230,
+      "triangles": 464,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.5121381878852844,
+          -2.283484697341919,
+          0.6583613157272339
+        ],
+        [
+          0.5121381878852844,
+          -2.2570719718933105,
+          0.6778292059898376
+        ]
+      ]
+    },
+    {
+      "name": "Upper grille | vertical support -0.585",
+      "group": "Body",
+      "vertices": 10,
+      "faces": 7,
+      "triangles": 16,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.5070961713790894,
+          -2.258152961730957,
+          0.44343510270118713
+        ],
+        [
+          -0.46914538741111755,
+          -2.2466187477111816,
+          0.6712672710418701
+        ]
+      ]
+    },
+    {
+      "name": "Upper grille | vertical support -0.512",
+      "group": "Body",
+      "vertices": 10,
+      "faces": 7,
+      "triangles": 16,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.4442358911037445,
+          -2.263399839401245,
+          0.4444156289100647
+        ],
+        [
+          -0.4103091061115265,
+          -2.251474618911743,
+          0.6731221675872803
+        ]
+      ]
+    },
+    {
+      "name": "Upper grille | vertical support -0.439",
+      "group": "Body",
+      "vertices": 10,
+      "faces": 7,
+      "triangles": 16,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.38128796219825745,
+          -2.266836166381836,
+          0.4452710449695587
+        ],
+        [
+          -0.3514750003814697,
+          -2.2546560764312744,
+          0.6747240424156189
+        ]
+      ]
+    },
+    {
+      "name": "Upper grille | vertical support -0.366",
+      "group": "Body",
+      "vertices": 10,
+      "faces": 7,
+      "triangles": 16,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.3182629346847534,
+          -2.2689433097839355,
+          0.4460010230541229
+        ],
+        [
+          -0.2925622761249542,
+          -2.2566146850585938,
+          0.6760733127593994
+        ]
+      ]
+    },
+    {
+      "name": "Upper grille | vertical support -0.292",
+      "group": "Body",
+      "vertices": 10,
+      "faces": 7,
+      "triangles": 16,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.25516554713249207,
+          -2.2701258659362793,
+          0.4466050863265991
+        ],
+        [
+          -0.2335425317287445,
+          -2.257741928100586,
+          0.67717045545578
+        ]
+      ]
+    },
+    {
+      "name": "Upper grille | vertical support -0.219",
+      "group": "Body",
+      "vertices": 10,
+      "faces": 7,
+      "triangles": 16,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.19198578596115112,
+          -2.270707130432129,
+          0.44708237051963806
+        ],
+        [
+          -0.17448924481868744,
+          -2.2583789825439453,
+          0.6780164241790771
+        ]
+      ]
+    },
+    {
+      "name": "Upper grille | vertical support -0.146",
+      "group": "Body",
+      "vertices": 10,
+      "faces": 7,
+      "triangles": 16,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.1286679059267044,
+          -2.270901918411255,
+          0.4474310278892517
+        ],
+        [
+          -0.11541800200939178,
+          -2.2585391998291016,
+          0.6786128878593445
+        ]
+      ]
+    },
+    {
+      "name": "Upper grille | vertical support -0.073",
+      "group": "Body",
+      "vertices": 10,
+      "faces": 7,
+      "triangles": 16,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.0653875470161438,
+          -2.2707273960113525,
+          0.4476466774940491
+        ],
+        [
+          -0.056452151387929916,
+          -2.2582950592041016,
+          0.6789643168449402
+        ]
+      ]
+    },
+    {
+      "name": "Upper grille | vertical support 0.0",
+      "group": "Body",
+      "vertices": 10,
+      "faces": 7,
+      "triangles": 16,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.0024999999441206455,
+          -2.270843029022217,
+          0.4477207064628601
+        ],
+        [
+          0.0020225425250828266,
+          -2.2583746910095215,
+          0.6790792942047119
+        ]
+      ]
+    },
+    {
+      "name": "Upper grille | vertical support 0.073",
+      "group": "Body",
+      "vertices": 10,
+      "faces": 7,
+      "triangles": 16,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.056745003908872604,
+          -2.270916700363159,
+          0.4476466774940491
+        ],
+        [
+          0.06568039953708649,
+          -2.258484363555908,
+          0.6789643168449402
+        ]
+      ]
+    },
+    {
+      "name": "Upper grille | vertical support 0.146",
+      "group": "Body",
+      "vertices": 10,
+      "faces": 7,
+      "triangles": 16,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.11558390408754349,
+          -2.270583391189575,
+          0.4474310278892517
+        ],
+        [
+          0.1288338005542755,
+          -2.258220672607422,
+          0.6786128878593445
+        ]
+      ]
+    },
+    {
+      "name": "Upper grille | vertical support 0.219",
+      "group": "Body",
+      "vertices": 10,
+      "faces": 7,
+      "triangles": 16,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.17435863614082336,
+          -2.2703585624694824,
+          0.44708237051963806
+        ],
+        [
+          0.19185517728328705,
+          -2.258030652999878,
+          0.6780164241790771
+        ]
+      ]
+    },
+    {
+      "name": "Upper grille | vertical support 0.292",
+      "group": "Body",
+      "vertices": 10,
+      "faces": 7,
+      "triangles": 16,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.23323141038417816,
+          -2.269958734512329,
+          0.4466050863265991
+        ],
+        [
+          0.2548544108867645,
+          -2.2575747966766357,
+          0.67717045545578
+        ]
+      ]
+    },
+    {
+      "name": "Upper grille | vertical support 0.366",
+      "group": "Body",
+      "vertices": 10,
+      "faces": 7,
+      "triangles": 16,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.2921329140663147,
+          -2.268899440765381,
+          0.4460010230541229
+        ],
+        [
+          0.3178335726261139,
+          -2.256571054458618,
+          0.6760733127593994
+        ]
+      ]
+    },
+    {
+      "name": "Upper grille | vertical support 0.439",
+      "group": "Body",
+      "vertices": 10,
+      "faces": 7,
+      "triangles": 16,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.3510393500328064,
+          -2.2668826580047607,
+          0.4452710449695587
+        ],
+        [
+          0.3808523118495941,
+          -2.254702568054199,
+          0.6747240424156189
+        ]
+      ]
+    },
+    {
+      "name": "Upper grille | vertical support 0.512",
+      "group": "Body",
+      "vertices": 10,
+      "faces": 7,
+      "triangles": 16,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.4099416434764862,
+          -2.263517141342163,
+          0.4444156289100647
+        ],
+        [
+          0.4438684284687042,
+          -2.251591920852661,
+          0.6731221675872803
+        ]
+      ]
+    },
+    {
+      "name": "Upper grille | vertical support 0.585",
+      "group": "Body",
+      "vertices": 10,
+      "faces": 7,
+      "triangles": 16,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.46883609890937805,
+          -2.2583298683166504,
+          0.44343510270118713
+        ],
+        [
+          0.5067868828773499,
+          -2.246795654296875,
+          0.6712672710418701
+        ]
+      ]
+    },
+    {
+      "name": "Lower intake | horizontal aero blade 0",
+      "group": "Body",
+      "vertices": 234,
+      "faces": 230,
+      "triangles": 464,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.4323491156101227,
+          -2.227384567260742,
+          0.28350016474723816
+        ],
+        [
+          0.4323491156101227,
+          -2.214625120162964,
+          0.29146409034729004
+        ]
+      ]
+    },
+    {
+      "name": "Lower intake | horizontal aero blade 1",
+      "group": "Body",
+      "vertices": 234,
+      "faces": 230,
+      "triangles": 464,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.4364672005176544,
+          -2.2419850826263428,
+          0.32033053040504456
+        ],
+        [
+          0.4364672005176544,
+          -2.2279489040374756,
+          0.32886409759521484
+        ]
+      ]
+    },
+    {
+      "name": "Lower intake | horizontal aero blade 2",
+      "group": "Body",
+      "vertices": 234,
+      "faces": 230,
+      "triangles": 464,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.4384095370769501,
+          -2.2539429664611816,
+          0.35716092586517334
+        ],
+        [
+          0.4384095370769501,
+          -2.238861322402954,
+          0.36626410484313965
+        ]
+      ]
+    },
+    {
+      "name": "Lower intake | vertical support -0.535",
+      "group": "Body",
+      "vertices": 10,
+      "faces": 7,
+      "triangles": 16,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.433428555727005,
+          -2.2390811443328857,
+          0.2795320749282837
+        ],
+        [
+          -0.4218916594982147,
+          -2.205840826034546,
+          0.3681623637676239
+        ]
+      ]
+    },
+    {
+      "name": "Lower intake | vertical support -0.468",
+      "group": "Body",
+      "vertices": 10,
+      "faces": 7,
+      "triangles": 16,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.3795759677886963,
+          -2.2419283390045166,
+          0.27972611784935
+        ],
+        [
+          -0.36892735958099365,
+          -2.207599639892578,
+          0.3686962127685547
+        ]
+      ]
+    },
+    {
+      "name": "Lower intake | vertical support -0.401",
+      "group": "Body",
+      "vertices": 10,
+      "faces": 7,
+      "triangles": 16,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.32571718096733093,
+          -2.24379301071167,
+          0.27989932894706726
+        ],
+        [
+          -0.31595146656036377,
+          -2.2087509632110596,
+          0.36915379762649536
+        ]
+      ]
+    },
+    {
+      "name": "Lower intake | vertical support -0.334",
+      "group": "Body",
+      "vertices": 10,
+      "faces": 7,
+      "triangles": 16,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.27185413241386414,
+          -2.2449355125427246,
+          0.28004953265190125
+        ],
+        [
+          -0.262966513633728,
+          -2.2094552516937256,
+          0.3695373833179474
+        ]
+      ]
+    },
+    {
+      "name": "Lower intake | vertical support -0.268",
+      "group": "Body",
+      "vertices": 10,
+      "faces": 7,
+      "triangles": 16,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.21798786520957947,
+          -2.245575428009033,
+          0.2801749110221863
+        ],
+        [
+          -0.20997479557991028,
+          -2.2098491191864014,
+          0.36984869837760925
+        ]
+      ]
+    },
+    {
+      "name": "Lower intake | vertical support -0.201",
+      "group": "Body",
+      "vertices": 10,
+      "faces": 7,
+      "triangles": 16,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.16411903500556946,
+          -2.24589204788208,
+          0.28027400374412537
+        ],
+        [
+          -0.15697835385799408,
+          -2.2100439071655273,
+          0.3700892925262451
+        ]
+      ]
+    },
+    {
+      "name": "Lower intake | vertical support -0.134",
+      "group": "Body",
+      "vertices": 10,
+      "faces": 7,
+      "triangles": 16,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.11024799197912216,
+          -2.2460248470306396,
+          0.2803455889225006
+        ],
+        [
+          -0.10397893190383911,
+          -2.210127115249634,
+          0.3702602982521057
+        ]
+      ]
+    },
+    {
+      "name": "Lower intake | vertical support -0.067",
+      "group": "Body",
+      "vertices": 10,
+      "faces": 7,
+      "triangles": 16,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.056374941021203995,
+          -2.246073007583618,
+          0.2803889214992523
+        ],
+        [
+          -0.050978150218725204,
+          -2.210160493850708,
+          0.3703625798225403
+        ]
+      ]
+    },
+    {
+      "name": "Lower intake | vertical support 0.0",
+      "group": "Body",
+      "vertices": 10,
+      "faces": 7,
+      "triangles": 16,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.0024999999441206455,
+          -2.246096134185791,
+          0.28040337562561035
+        ],
+        [
+          0.0020225425250828266,
+          -2.21018123626709,
+          0.37039661407470703
+        ]
+      ]
+    },
+    {
+      "name": "Lower intake | vertical support 0.067",
+      "group": "Body",
+      "vertices": 10,
+      "faces": 7,
+      "triangles": 16,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.050537798553705215,
+          -2.2461142539978027,
+          0.2803889214992523
+        ],
+        [
+          0.055934589356184006,
+          -2.2102017402648926,
+          0.3703625798225403
+        ]
+      ]
+    },
+    {
+      "name": "Lower intake | vertical support 0.134",
+      "group": "Body",
+      "vertices": 10,
+      "faces": 7,
+      "triangles": 16,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.10357601195573807,
+          -2.246107339859009,
+          0.2803455889225006
+        ],
+        [
+          0.10984507203102112,
+          -2.210209608078003,
+          0.3702602982521057
+        ]
+      ]
+    },
+    {
+      "name": "Lower intake | vertical support 0.201",
+      "group": "Body",
+      "vertices": 10,
+      "faces": 7,
+      "triangles": 16,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.1566132754087448,
+          -2.246015787124634,
+          0.28027400374412537
+        ],
+        [
+          0.1637539565563202,
+          -2.210167646408081,
+          0.3700892925262451
+        ]
+      ]
+    },
+    {
+      "name": "Lower intake | vertical support 0.267",
+      "group": "Body",
+      "vertices": 10,
+      "faces": 7,
+      "triangles": 16,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.2096482813358307,
+          -2.2457408905029297,
+          0.2801749110221863
+        ],
+        [
+          0.21766135096549988,
+          -2.210014581680298,
+          0.36984869837760925
+        ]
+      ]
+    },
+    {
+      "name": "Lower intake | vertical support 0.334",
+      "group": "Body",
+      "vertices": 10,
+      "faces": 7,
+      "triangles": 16,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.2626798450946808,
+          -2.2451436519622803,
+          0.28004953265190125
+        ],
+        [
+          0.2715674638748169,
+          -2.2096633911132812,
+          0.3695373833179474
+        ]
+      ]
+    },
+    {
+      "name": "Lower intake | vertical support 0.401",
+      "group": "Body",
+      "vertices": 10,
+      "faces": 7,
+      "triangles": 16,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.3157070577144623,
+          -2.2440457344055176,
+          0.27989932894706726
+        ],
+        [
+          0.32547277212142944,
+          -2.2090036869049072,
+          0.36915379762649536
+        ]
+      ]
+    },
+    {
+      "name": "Lower intake | vertical support 0.468",
+      "group": "Body",
+      "vertices": 10,
+      "faces": 7,
+      "triangles": 16,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.36872929334640503,
+          -2.2422292232513428,
+          0.27972611784935
+        ],
+        [
+          0.3793778717517853,
+          -2.2079005241394043,
+          0.3686962127685547
+        ]
+      ]
+    },
+    {
+      "name": "Lower intake | vertical support 0.535",
+      "group": "Body",
+      "vertices": 10,
+      "faces": 7,
+      "triangles": 16,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.42174673080444336,
+          -2.239436149597168,
+          0.2795320749282837
+        ],
+        [
+          0.43328362703323364,
+          -2.206195831298828,
+          0.3681623637676239
+        ]
+      ]
+    },
+    {
+      "name": "Headlamp L | LED signature 0",
+      "group": "Body",
+      "vertices": 232,
+      "faces": 226,
+      "triangles": 460,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.838524341583252,
+          -2.246129274368286,
+          0.7977635860443115
+        ],
+        [
+          -0.5834536552429199,
+          -2.1847236156463623,
+          0.8235126733779907
+        ]
+      ]
+    },
+    {
+      "name": "Headlamp L | LED signature 1",
+      "group": "Body",
+      "vertices": 232,
+      "faces": 226,
+      "triangles": 460,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.8461453318595886,
+          -2.2583394050598145,
+          0.7199265956878662
+        ],
+        [
+          -0.5895857810974121,
+          -2.18786883354187,
+          0.7438452243804932
+        ]
+      ]
+    },
+    {
+      "name": "Headlamp L | projector bezel 0",
+      "group": "Body",
+      "vertices": 48,
+      "faces": 26,
+      "triangles": 92,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.8299570083618164,
+          -2.2040843963623047,
+          0.7428538799285889
+        ],
+        [
+          -0.7819570302963257,
+          -2.192084312438965,
+          0.7908538579940796
+        ]
+      ]
+    },
+    {
+      "name": "Headlamp L | projector optic 0",
+      "group": "Body",
+      "vertices": 48,
+      "faces": 26,
+      "triangles": 92,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.8239570260047913,
+          -2.2070844173431396,
+          0.748853862285614
+        ],
+        [
+          -0.7879570126533508,
+          -2.2030842304229736,
+          0.7848538756370544
+        ]
+      ]
+    },
+    {
+      "name": "Headlamp L | projector bezel 1",
+      "group": "Body",
+      "vertices": 48,
+      "faces": 26,
+      "triangles": 92,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.7286677360534668,
+          -2.227217197418213,
+          0.7477914094924927
+        ],
+        [
+          -0.6806677579879761,
+          -2.215217113494873,
+          0.7957913875579834
+        ]
+      ]
+    },
+    {
+      "name": "Headlamp L | projector optic 1",
+      "group": "Body",
+      "vertices": 48,
+      "faces": 26,
+      "triangles": 92,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.7226677536964417,
+          -2.230217218399048,
+          0.7537913918495178
+        ],
+        [
+          -0.6866677403450012,
+          -2.226217031478882,
+          0.7897914052009583
+        ]
+      ]
+    },
+    {
+      "name": "Headlamp L | projector bezel 2",
+      "group": "Body",
+      "vertices": 48,
+      "faces": 26,
+      "triangles": 92,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.6437734961509705,
+          -2.24336314201355,
+          0.7521699666976929
+        ],
+        [
+          -0.5957735180854797,
+          -2.23136305809021,
+          0.8001699447631836
+        ]
+      ]
+    },
+    {
+      "name": "Headlamp L | projector optic 2",
+      "group": "Body",
+      "vertices": 48,
+      "faces": 26,
+      "triangles": 92,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.6377735137939453,
+          -2.2463631629943848,
+          0.758169949054718
+        ],
+        [
+          -0.6017735004425049,
+          -2.2423629760742188,
+          0.7941699624061584
+        ]
+      ]
+    },
+    {
+      "name": "Headlamp L | clear lens",
+      "group": "Body",
+      "vertices": 322,
+      "faces": 320,
+      "triangles": 640,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.8486634492874146,
+          -2.258565902709961,
+          0.7177945375442505
+        ],
+        [
+          -0.577988862991333,
+          -2.190976619720459,
+          0.8257454633712769
+        ]
+      ]
+    },
+    {
+      "name": "Headlamp R | LED signature 0",
+      "group": "Body",
+      "vertices": 232,
+      "faces": 226,
+      "triangles": 460,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.5834536552429199,
+          -2.246129274368286,
+          0.7977635860443115
+        ],
+        [
+          0.838524341583252,
+          -2.1847236156463623,
+          0.8235126733779907
+        ]
+      ]
+    },
+    {
+      "name": "Headlamp R | LED signature 1",
+      "group": "Body",
+      "vertices": 232,
+      "faces": 226,
+      "triangles": 460,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.5895857810974121,
+          -2.2583394050598145,
+          0.7199265956878662
+        ],
+        [
+          0.8461453318595886,
+          -2.18786883354187,
+          0.7438452243804932
+        ]
+      ]
+    },
+    {
+      "name": "Headlamp R | projector bezel 0",
+      "group": "Body",
+      "vertices": 48,
+      "faces": 26,
+      "triangles": 92,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.5957735180854797,
+          -2.24336314201355,
+          0.7521699666976929
+        ],
+        [
+          0.6437734961509705,
+          -2.23136305809021,
+          0.8001699447631836
+        ]
+      ]
+    },
+    {
+      "name": "Headlamp R | projector optic 0",
+      "group": "Body",
+      "vertices": 48,
+      "faces": 26,
+      "triangles": 92,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.6017735004425049,
+          -2.2463631629943848,
+          0.758169949054718
+        ],
+        [
+          0.6377735137939453,
+          -2.2423629760742188,
+          0.7941699624061584
+        ]
+      ]
+    },
+    {
+      "name": "Headlamp R | projector bezel 1",
+      "group": "Body",
+      "vertices": 48,
+      "faces": 26,
+      "triangles": 92,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.6806677579879761,
+          -2.227217197418213,
+          0.7477914094924927
+        ],
+        [
+          0.7286677360534668,
+          -2.215217113494873,
+          0.7957913875579834
+        ]
+      ]
+    },
+    {
+      "name": "Headlamp R | projector optic 1",
+      "group": "Body",
+      "vertices": 48,
+      "faces": 26,
+      "triangles": 92,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.6866677403450012,
+          -2.230217218399048,
+          0.7537913918495178
+        ],
+        [
+          0.7226677536964417,
+          -2.226217031478882,
+          0.7897914052009583
+        ]
+      ]
+    },
+    {
+      "name": "Headlamp R | projector bezel 2",
+      "group": "Body",
+      "vertices": 48,
+      "faces": 26,
+      "triangles": 92,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.7819570302963257,
+          -2.2040843963623047,
+          0.7428538799285889
+        ],
+        [
+          0.8299570083618164,
+          -2.192084312438965,
+          0.7908538579940796
+        ]
+      ]
+    },
+    {
+      "name": "Headlamp R | projector optic 2",
+      "group": "Body",
+      "vertices": 48,
+      "faces": 26,
+      "triangles": 92,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.7879570126533508,
+          -2.2070844173431396,
+          0.748853862285614
+        ],
+        [
+          0.8239570260047913,
+          -2.2030842304229736,
+          0.7848538756370544
+        ]
+      ]
+    },
+    {
+      "name": "Headlamp R | clear lens",
+      "group": "Body",
+      "vertices": 322,
+      "faces": 320,
+      "triangles": 640,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.577988862991333,
+          -2.258565902709961,
+          0.7177945375442505
+        ],
+        [
+          0.8486634492874146,
+          -2.190976619720459,
+          0.8257454633712769
+        ]
+      ]
+    },
+    {
+      "name": "Rear | full width LED 0.768",
+      "group": "Body",
+      "vertices": 648,
+      "faces": 642,
+      "triangles": 1292,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.8476271033287048,
+          2.191852569580078,
+          0.7461075782775879
+        ],
+        [
+          0.8476271033287048,
+          2.289773464202881,
+          0.7794600129127502
+        ]
+      ]
+    },
+    {
+      "name": "Rear | full width LED 0.825",
+      "group": "Body",
+      "vertices": 648,
+      "faces": 642,
+      "triangles": 1292,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.8463790416717529,
+          2.191110372543335,
+          0.7856374382972717
+        ],
+        [
+          0.8463790416717529,
+          2.286508560180664,
+          0.8205000162124634
+        ]
+      ]
+    },
+    {
+      "name": "Rear | smoked red lamp lens",
+      "group": "Body",
+      "vertices": 854,
+      "faces": 852,
+      "triangles": 1704,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.8542670607566833,
+          2.1953654289245605,
+          0.7341503500938416
+        ],
+        [
+          0.8542670607566833,
+          2.2884631156921387,
+          0.8377599716186523
+        ]
+      ]
+    },
+    {
+      "name": "Rear | optical vertical bars -0.76",
+      "group": "Body",
+      "vertices": 12,
+      "faces": 8,
+      "triangles": 20,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.6698092818260193,
+          2.23850154876709,
+          0.7454315423965454
+        ],
+        [
+          -0.6621361374855042,
+          2.2484331130981445,
+          0.8174383044242859
+        ]
+      ]
+    },
+    {
+      "name": "Rear | optical vertical bars -0.8",
+      "group": "Body",
+      "vertices": 12,
+      "faces": 8,
+      "triangles": 20,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.7048215270042419,
+          2.2305803298950195,
+          0.7440472841262817
+        ],
+        [
+          -0.6972146034240723,
+          2.2400574684143066,
+          0.8158311247825623
+        ]
+      ]
+    },
+    {
+      "name": "Rear | optical vertical bars -0.8400000000000001",
+      "group": "Body",
+      "vertices": 12,
+      "faces": 8,
+      "triangles": 20,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.741256833076477,
+          2.221381187438965,
+          0.7425941824913025
+        ],
+        [
+          -0.7337350249290466,
+          2.23032283782959,
+          0.8141393661499023
+        ]
+      ]
+    },
+    {
+      "name": "Rear | optical vertical bars -0.88",
+      "group": "Body",
+      "vertices": 12,
+      "faces": 8,
+      "triangles": 20,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.7845153212547302,
+          2.2107808589935303,
+          0.7410722374916077
+        ],
+        [
+          -0.7770717144012451,
+          2.2190823554992676,
+          0.8123630285263062
+        ]
+      ]
+    },
+    {
+      "name": "Rear | optical vertical bars -0.92",
+      "group": "Body",
+      "vertices": 12,
+      "faces": 8,
+      "triangles": 20,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.8277608156204224,
+          2.1986608505249023,
+          0.739482045173645
+        ],
+        [
+          -0.8204187750816345,
+          2.2061715126037598,
+          0.8105015754699707
+        ]
+      ]
+    },
+    {
+      "name": "Front | lower bumper blade -1",
+      "group": "Body",
+      "vertices": 328,
+      "faces": 322,
+      "triangles": 652,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.772068440914154,
+          -2.2218663692474365,
+          0.21370606124401093
+        ],
+        [
+          1.889779497332711e-07,
+          -2.1750903129577637,
+          0.23819999396800995
+        ]
+      ]
+    },
+    {
+      "name": "Rear | lower bumper blade -1",
+      "group": "Body",
+      "vertices": 328,
+      "faces": 322,
+      "triangles": 652,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.7790834307670593,
+          2.1750407218933105,
+          0.2136848270893097
+        ],
+        [
+          1.4981606000219472e-07,
+          2.2214834690093994,
+          0.2380799949169159
+        ]
+      ]
+    },
+    {
+      "name": "Rear | diffuser vertical fin -0.31",
+      "group": "Body",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.31700000166893005,
+          2.2279999256134033,
+          0.24700000882148743
+        ],
+        [
+          -0.30300000309944153,
+          2.318000078201294,
+          0.3269999921321869
+        ]
+      ]
+    },
+    {
+      "name": "Rear | diffuser vertical fin -0.54",
+      "group": "Body",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.5470000505447388,
+          2.2279999256134033,
+          0.24700000882148743
+        ],
+        [
+          -0.5329999923706055,
+          2.318000078201294,
+          0.3269999921321869
+        ]
+      ]
+    },
+    {
+      "name": "Rear | optical vertical bars 0.76",
+      "group": "Body",
+      "vertices": 12,
+      "faces": 8,
+      "triangles": 20,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.6621361374855042,
+          2.23850154876709,
+          0.7454315423965454
+        ],
+        [
+          0.6698092818260193,
+          2.2484331130981445,
+          0.8174383044242859
+        ]
+      ]
+    },
+    {
+      "name": "Rear | optical vertical bars 0.8",
+      "group": "Body",
+      "vertices": 12,
+      "faces": 8,
+      "triangles": 20,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.6972146034240723,
+          2.2305803298950195,
+          0.7440472841262817
+        ],
+        [
+          0.7048215270042419,
+          2.2400574684143066,
+          0.8158311247825623
+        ]
+      ]
+    },
+    {
+      "name": "Rear | optical vertical bars 0.8400000000000001",
+      "group": "Body",
+      "vertices": 12,
+      "faces": 8,
+      "triangles": 20,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.7337350249290466,
+          2.221381187438965,
+          0.7425941824913025
+        ],
+        [
+          0.741256833076477,
+          2.23032283782959,
+          0.8141393661499023
+        ]
+      ]
+    },
+    {
+      "name": "Rear | optical vertical bars 0.88",
+      "group": "Body",
+      "vertices": 12,
+      "faces": 8,
+      "triangles": 20,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.7770717144012451,
+          2.2107808589935303,
+          0.7410722374916077
+        ],
+        [
+          0.7845153212547302,
+          2.2190823554992676,
+          0.8123630285263062
+        ]
+      ]
+    },
+    {
+      "name": "Rear | optical vertical bars 0.92",
+      "group": "Body",
+      "vertices": 12,
+      "faces": 8,
+      "triangles": 20,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.8204187750816345,
+          2.1986608505249023,
+          0.739482045173645
+        ],
+        [
+          0.8277608156204224,
+          2.2061715126037598,
+          0.8105015754699707
+        ]
+      ]
+    },
+    {
+      "name": "Front | lower bumper blade 1",
+      "group": "Body",
+      "vertices": 328,
+      "faces": 322,
+      "triangles": 652,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -1.889779497332711e-07,
+          -2.2218663692474365,
+          0.21370606124401093
+        ],
+        [
+          0.772068440914154,
+          -2.1750903129577637,
+          0.23819999396800995
+        ]
+      ]
+    },
+    {
+      "name": "Rear | lower bumper blade 1",
+      "group": "Body",
+      "vertices": 328,
+      "faces": 322,
+      "triangles": 652,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -1.4981606000219472e-07,
+          2.1750407218933105,
+          0.2136848270893097
+        ],
+        [
+          0.7790834307670593,
+          2.2214834690093994,
+          0.2380799949169159
+        ]
+      ]
+    },
+    {
+      "name": "Rear | diffuser vertical fin 0.31",
+      "group": "Body",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.30300000309944153,
+          2.2279999256134033,
+          0.24700000882148743
+        ],
+        [
+          0.31700000166893005,
+          2.318000078201294,
+          0.3269999921321869
+        ]
+      ]
+    },
+    {
+      "name": "Rear | diffuser vertical fin 0.54",
+      "group": "Body",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.5329999923706055,
+          2.2279999256134033,
+          0.24700000882148743
+        ],
+        [
+          0.5470000505447388,
+          2.318000078201294,
+          0.3269999921321869
+        ]
+      ]
+    },
+    {
+      "name": "Windshield | clear curved glass",
+      "group": "Body",
+      "vertices": 1102,
+      "faces": 1100,
+      "triangles": 2200,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.7469737529754639,
+          -0.8196200132369995,
+          1.025661826133728
+        ],
+        [
+          0.7469737529754639,
+          -0.22842608392238617,
+          1.459983229637146
+        ]
+      ]
+    },
+    {
+      "name": "Windshield | painted frame",
+      "group": "Body",
+      "vertices": 224,
+      "faces": 224,
+      "triangles": 448,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.7799999713897705,
+          -0.8399999737739563,
+          1.013771653175354
+        ],
+        [
+          0.7799999713897705,
+          -0.2091829478740692,
+          1.475000023841858
+        ]
+      ]
+    },
+    {
+      "name": "Windshield | rubber ceramic border",
+      "group": "Body",
+      "vertices": 224,
+      "faces": 224,
+      "triangles": 448,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.7599105834960938,
+          -0.8281999826431274,
+          1.023159146308899
+        ],
+        [
+          0.7599105834960938,
+          -0.22260919213294983,
+          1.466865062713623
+        ]
+      ]
+    },
+    {
+      "name": "Rear window | clear curved glass",
+      "group": "Body",
+      "vertices": 1102,
+      "faces": 1100,
+      "triangles": 2200,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.7469737529754639,
+          0.8008384108543396,
+          1.0547844171524048
+        ],
+        [
+          0.7469737529754639,
+          1.4380199909210205,
+          1.4571309089660645
+        ]
+      ]
+    },
+    {
+      "name": "Rear window | painted frame",
+      "group": "Body",
+      "vertices": 224,
+      "faces": 224,
+      "triangles": 448,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.7799999713897705,
+          0.7792937755584717,
+          1.0437005758285522
+        ],
+        [
+          0.7799999713897705,
+          1.4600000381469727,
+          1.4709999561309814
+        ]
+      ]
+    },
+    {
+      "name": "Rear window | rubber ceramic border",
+      "group": "Body",
+      "vertices": 224,
+      "faces": 224,
+      "triangles": 448,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.7599105834960938,
+          0.7941012382507324,
+          1.0526279211044312
+        ],
+        [
+          0.7599105834960938,
+          1.4471999406814575,
+          1.4635822772979736
+        ]
+      ]
+    },
+    {
+      "name": "Roof | continuous crown",
+      "group": "Body",
+      "vertices": 1566,
+      "faces": 1564,
+      "triangles": 3128,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.6880000233650208,
+          -0.25,
+          1.414111614227295
+        ],
+        [
+          0.6880000233650208,
+          0.8199999928474426,
+          1.5080000162124634
+        ]
+      ]
+    },
+    {
+      "name": "Shoulder | window to body bridge Body",
+      "group": "Body",
+      "vertices": 84,
+      "faces": 82,
+      "triangles": 164,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.7799999713897705,
+          1.2699623107910156,
+          1.041010856628418
+        ],
+        [
+          0.9459325075149536,
+          1.4299999475479126,
+          1.0512733459472656
+        ]
+      ]
+    },
+    {
+      "name": "Mirror | mounting stalk L",
+      "group": "Body",
+      "vertices": 24,
+      "faces": 14,
+      "triangles": 44,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.8103894591331482,
+          -0.7235435247421265,
+          0.9854940176010132
+        ],
+        [
+          0.9696105122566223,
+          -0.6264564394950867,
+          1.064505934715271
+        ]
+      ]
+    },
+    {
+      "name": "Mirror | painted cap L",
+      "group": "Body",
+      "vertices": 168,
+      "faces": 146,
+      "triangles": 332,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.9070000052452087,
+          -0.7799999713897705,
+          0.9934999942779541
+        ],
+        [
+          1.097000002861023,
+          -0.6000000238418579,
+          1.096500039100647
+        ]
+      ]
+    },
+    {
+      "name": "Mirror | reflective insert L",
+      "group": "Body",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.9294999837875366,
+          -0.6100000143051147,
+          1.0124999284744263
+        ],
+        [
+          1.0805000066757202,
+          -0.6039999723434448,
+          1.0735000371932983
+        ]
+      ]
+    },
+    {
+      "name": "Mirror | signal L",
+      "group": "Body",
+      "vertices": 78,
+      "faces": 74,
+      "triangles": 152,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.9399999976158142,
+          -0.767799973487854,
+          1.0225751399993896
+        ],
+        [
+          1.0700000524520874,
+          -0.7621999979019165,
+          1.0274248123168945
+        ]
+      ]
+    },
+    {
+      "name": "Shoulder | window to body bridge Body.001",
+      "group": "Body",
+      "vertices": 84,
+      "faces": 82,
+      "triangles": 164,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.9459325075149536,
+          1.2699623107910156,
+          1.041010856628418
+        ],
+        [
+          -0.7799999713897705,
+          1.4299999475479126,
+          1.0512733459472656
+        ]
+      ]
+    },
+    {
+      "name": "Mirror | mounting stalk R",
+      "group": "Body",
+      "vertices": 24,
+      "faces": 14,
+      "triangles": 44,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.9696105122566223,
+          -0.7235435247421265,
+          0.9854940176010132
+        ],
+        [
+          -0.8103894591331482,
+          -0.6264564394950867,
+          1.064505934715271
+        ]
+      ]
+    },
+    {
+      "name": "Mirror | painted cap R",
+      "group": "Body",
+      "vertices": 168,
+      "faces": 146,
+      "triangles": 332,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -1.097000002861023,
+          -0.7799999713897705,
+          0.9934999942779541
+        ],
+        [
+          -0.9070000052452087,
+          -0.6000000238418579,
+          1.096500039100647
+        ]
+      ]
+    },
+    {
+      "name": "Mirror | reflective insert R",
+      "group": "Body",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -1.0805000066757202,
+          -0.6100000143051147,
+          1.0124999284744263
+        ],
+        [
+          -0.9294999837875366,
+          -0.6039999723434448,
+          1.0735000371932983
+        ]
+      ]
+    },
+    {
+      "name": "Mirror | signal R",
+      "group": "Body",
+      "vertices": 78,
+      "faces": 74,
+      "triangles": 152,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -1.0700000524520874,
+          -0.767799973487854,
+          1.0225751399993896
+        ],
+        [
+          -0.9399999976158142,
+          -0.7621999979019165,
+          1.0274248123168945
+        ]
+      ]
+    },
+    {
+      "name": "Cowl | curved sealed tray",
+      "group": "Body",
+      "vertices": 492,
+      "faces": 490,
+      "triangles": 980,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.7799999713897705,
+          -0.8849999904632568,
+          0.9990249872207642
+        ],
+        [
+          0.7799999713897705,
+          -0.7876617312431335,
+          1.031999945640564
+        ]
+      ]
+    },
+    {
+      "name": "Wiper | arm -0.4",
+      "group": "Body",
+      "vertices": 18,
+      "faces": 14,
+      "triangles": 32,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.40128761529922485,
+          -0.8227871060371399,
+          1.0515658855438232
+        ],
+        [
+          -0.20888462662696838,
+          -0.7551571726799011,
+          1.0884146690368652
+        ]
+      ]
+    },
+    {
+      "name": "Wiper | blade -0.4",
+      "group": "Body",
+      "vertices": 16,
+      "faces": 10,
+      "triangles": 28,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.6004043221473694,
+          -0.7859883904457092,
+          1.0690033435821533
+        ],
+        [
+          -0.1495957374572754,
+          -0.7460115551948547,
+          1.0959967374801636
+        ]
+      ]
+    },
+    {
+      "name": "Wiper | arm 0.23",
+      "group": "Body",
+      "vertices": 18,
+      "faces": 14,
+      "triangles": 32,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.22871239483356476,
+          -0.8227871060371399,
+          1.0515658855438232
+        ],
+        [
+          0.42111536860466003,
+          -0.7551571726799011,
+          1.0884146690368652
+        ]
+      ]
+    },
+    {
+      "name": "Wiper | blade 0.23",
+      "group": "Body",
+      "vertices": 16,
+      "faces": 10,
+      "triangles": 28,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.02959572523832321,
+          -0.7859883904457092,
+          1.0690033435821533
+        ],
+        [
+          0.480404257774353,
+          -0.7460115551948547,
+          1.0959967374801636
+        ]
+      ]
+    },
+    {
+      "name": "Cabin | lower undertray",
+      "group": "Body",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.8199999928474426,
+          -1.7799999713897705,
+          0.17499999701976776
+        ],
+        [
+          0.8199999928474426,
+          1.8199999332427979,
+          0.2149999886751175
+        ]
+      ]
+    },
+    {
+      "name": "Front plate | mount",
+      "group": "Body",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.19499999284744263,
+          -2.3076534271240234,
+          0.43299999833106995
+        ],
+        [
+          0.19499999284744263,
+          -2.291653633117676,
+          0.5170000195503235
+        ]
+      ]
+    },
+    {
+      "name": "Front plate | printed face",
+      "group": "Body",
+      "vertices": 8,
+      "faces": 6,
+      "triangles": 12,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.18400000035762787,
+          -2.3096535205841064,
+          0.4399999976158142
+        ],
+        [
+          0.18400000035762787,
+          -2.3086535930633545,
+          0.5099999904632568
+        ]
+      ]
+    },
+    {
+      "name": "Rear plate | mount",
+      "group": "Body",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.19499999284744263,
+          2.2986457347869873,
+          0.5163999795913696
+        ],
+        [
+          0.19499999284744263,
+          2.314645528793335,
+          0.6003999710083008
+        ]
+      ]
+    },
+    {
+      "name": "Rear plate | printed face",
+      "group": "Body",
+      "vertices": 8,
+      "faces": 6,
+      "triangles": 12,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.18400000035762787,
+          2.314645767211914,
+          0.5233999490737915
+        ],
+        [
+          0.18400000035762787,
+          2.315645694732666,
+          0.5934000015258789
+        ]
+      ]
+    },
+    {
+      "name": "Roof | inner headliner",
+      "group": "Interior",
+      "vertices": 882,
+      "faces": 880,
+      "triangles": 1760,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.6678396463394165,
+          -0.2235415279865265,
+          1.3980259895324707
+        ],
+        [
+          0.6678396463394165,
+          0.7935636639595032,
+          1.4830000400543213
+        ]
+      ]
+    },
+    {
+      "name": "Cabin | floor pan",
+      "group": "Interior",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.7950000166893005,
+          -0.9000000357627869,
+          0.2874999940395355
+        ],
+        [
+          0.7950000166893005,
+          1.2799999713897705,
+          0.3225000202655792
+        ]
+      ]
+    },
+    {
+      "name": "Front seat | cushion -1",
+      "group": "Interior",
+      "vertices": 168,
+      "faces": 146,
+      "triangles": 332,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.6449999809265137,
+          -0.23499999940395355,
+          0.41499999165534973
+        ],
+        [
+          -0.16500000655651093,
+          0.3149999976158142,
+          0.5849999785423279
+        ]
+      ]
+    },
+    {
+      "name": "Front seat | cushion insert -1",
+      "group": "Interior",
+      "vertices": 168,
+      "faces": 146,
+      "triangles": 332,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.5674999952316284,
+          -0.19499999284744263,
+          0.559499979019165
+        ],
+        [
+          -0.24250000715255737,
+          0.20499999821186066,
+          0.5945000052452087
+        ]
+      ]
+    },
+    {
+      "name": "Front seat | sculpted back -1",
+      "group": "Interior",
+      "vertices": 168,
+      "faces": 146,
+      "triangles": 332,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.6399999856948853,
+          0.19259999692440033,
+          0.550000011920929
+        ],
+        [
+          -0.17000000178813934,
+          0.4374000132083893,
+          1.1699999570846558
+        ]
+      ]
+    },
+    {
+      "name": "Front seat | back insert -1",
+      "group": "Interior",
+      "vertices": 168,
+      "faces": 146,
+      "triangles": 332,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.5600000023841858,
+          0.17560000717639923,
+          0.6299999952316284
+        ],
+        [
+          -0.25,
+          0.27639999985694885,
+          1.090000033378601
+        ]
+      ]
+    },
+    {
+      "name": "Front seat | side bolster -1 -1",
+      "group": "Interior",
+      "vertices": 168,
+      "faces": 146,
+      "triangles": 332,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.6460000276565552,
+          -0.19499999284744263,
+          0.5070000290870667
+        ],
+        [
+          -0.5559999942779541,
+          0.29499998688697815,
+          0.6370000243186951
+        ]
+      ]
+    },
+    {
+      "name": "Front seat | headrest post -1 -1",
+      "group": "Interior",
+      "vertices": 16,
+      "faces": 10,
+      "triangles": 28,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.47999998927116394,
+          0.3570000231266022,
+          1.0800000429153442
+        ],
+        [
+          -0.46400001645088196,
+          0.37299999594688416,
+          1.184999942779541
+        ]
+      ]
+    },
+    {
+      "name": "Front seat | side bolster -1 1",
+      "group": "Interior",
+      "vertices": 168,
+      "faces": 146,
+      "triangles": 332,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.2540000081062317,
+          -0.19499999284744263,
+          0.5070000290870667
+        ],
+        [
+          -0.164000004529953,
+          0.29499998688697815,
+          0.6370000243186951
+        ]
+      ]
+    },
+    {
+      "name": "Front seat | headrest post -1 1",
+      "group": "Interior",
+      "vertices": 16,
+      "faces": 10,
+      "triangles": 28,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.34599998593330383,
+          0.3570000231266022,
+          1.0800000429153442
+        ],
+        [
+          -0.33000001311302185,
+          0.37299999594688416,
+          1.184999942779541
+        ]
+      ]
+    },
+    {
+      "name": "Front seat | head restraint -1",
+      "group": "Interior",
+      "vertices": 168,
+      "faces": 146,
+      "triangles": 332,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.5350000262260437,
+          0.3050000071525574,
+          1.1375000476837158
+        ],
+        [
+          -0.2750000059604645,
+          0.4350000023841858,
+          1.3224999904632568
+        ]
+      ]
+    },
+    {
+      "name": "Front seat | cushion stitch -1 -0.14",
+      "group": "Interior",
+      "vertices": 76,
+      "faces": 74,
+      "triangles": 148,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.5458000302314758,
+          -0.15000000596046448,
+          0.5942000150680542
+        ],
+        [
+          -0.5442000031471252,
+          0.1599999964237213,
+          0.5958000421524048
+        ]
+      ]
+    },
+    {
+      "name": "Front seat | cushion stitch -1 0.14",
+      "group": "Interior",
+      "vertices": 76,
+      "faces": 74,
+      "triangles": 148,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.26579999923706055,
+          -0.15000000596046448,
+          0.5942000150680542
+        ],
+        [
+          -0.26419997215270996,
+          0.1599999964237213,
+          0.5958000421524048
+        ]
+      ]
+    },
+    {
+      "name": "Front seat | rail -1",
+      "group": "Interior",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.5850000381469727,
+          -0.125,
+          0.359499990940094
+        ],
+        [
+          -0.22499999403953552,
+          0.3050000071525574,
+          0.3945000171661377
+        ]
+      ]
+    },
+    {
+      "name": "Front seat | belt buckle -1",
+      "group": "Interior",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.1665000021457672,
+          0.1824999898672104,
+          0.5
+        ],
+        [
+          -0.13350000977516174,
+          0.23749999701976776,
+          0.5800000429153442
+        ]
+      ]
+    },
+    {
+      "name": "Front seat | belt release -1",
+      "group": "Interior",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.16250000894069672,
+          0.1835000067949295,
+          0.57750004529953
+        ],
+        [
+          -0.13750000298023224,
+          0.21649999916553497,
+          0.5864999890327454
+        ]
+      ]
+    },
+    {
+      "name": "Front seat | cushion 1",
+      "group": "Interior",
+      "vertices": 168,
+      "faces": 146,
+      "triangles": 332,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.16500000655651093,
+          -0.23499999940395355,
+          0.41499999165534973
+        ],
+        [
+          0.6449999809265137,
+          0.3149999976158142,
+          0.5849999785423279
+        ]
+      ]
+    },
+    {
+      "name": "Front seat | cushion insert 1",
+      "group": "Interior",
+      "vertices": 168,
+      "faces": 146,
+      "triangles": 332,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.24250000715255737,
+          -0.19499999284744263,
+          0.559499979019165
+        ],
+        [
+          0.5674999952316284,
+          0.20499999821186066,
+          0.5945000052452087
+        ]
+      ]
+    },
+    {
+      "name": "Front seat | sculpted back 1",
+      "group": "Interior",
+      "vertices": 168,
+      "faces": 146,
+      "triangles": 332,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.17000000178813934,
+          0.19259999692440033,
+          0.550000011920929
+        ],
+        [
+          0.6399999856948853,
+          0.4374000132083893,
+          1.1699999570846558
+        ]
+      ]
+    },
+    {
+      "name": "Front seat | back insert 1",
+      "group": "Interior",
+      "vertices": 168,
+      "faces": 146,
+      "triangles": 332,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.25,
+          0.17560000717639923,
+          0.6299999952316284
+        ],
+        [
+          0.5600000023841858,
+          0.27639999985694885,
+          1.090000033378601
+        ]
+      ]
+    },
+    {
+      "name": "Front seat | side bolster 1 -1",
+      "group": "Interior",
+      "vertices": 168,
+      "faces": 146,
+      "triangles": 332,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.164000004529953,
+          -0.19499999284744263,
+          0.5070000290870667
+        ],
+        [
+          0.2540000081062317,
+          0.29499998688697815,
+          0.6370000243186951
+        ]
+      ]
+    },
+    {
+      "name": "Front seat | headrest post 1 -1",
+      "group": "Interior",
+      "vertices": 16,
+      "faces": 10,
+      "triangles": 28,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.33000001311302185,
+          0.3570000231266022,
+          1.0800000429153442
+        ],
+        [
+          0.34599998593330383,
+          0.37299999594688416,
+          1.184999942779541
+        ]
+      ]
+    },
+    {
+      "name": "Front seat | side bolster 1 1",
+      "group": "Interior",
+      "vertices": 168,
+      "faces": 146,
+      "triangles": 332,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.5559999942779541,
+          -0.19499999284744263,
+          0.5070000290870667
+        ],
+        [
+          0.6460000276565552,
+          0.29499998688697815,
+          0.6370000243186951
+        ]
+      ]
+    },
+    {
+      "name": "Front seat | headrest post 1 1",
+      "group": "Interior",
+      "vertices": 16,
+      "faces": 10,
+      "triangles": 28,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.46400001645088196,
+          0.3570000231266022,
+          1.0800000429153442
+        ],
+        [
+          0.47999998927116394,
+          0.37299999594688416,
+          1.184999942779541
+        ]
+      ]
+    },
+    {
+      "name": "Front seat | head restraint 1",
+      "group": "Interior",
+      "vertices": 168,
+      "faces": 146,
+      "triangles": 332,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.2750000059604645,
+          0.3050000071525574,
+          1.1375000476837158
+        ],
+        [
+          0.5350000262260437,
+          0.4350000023841858,
+          1.3224999904632568
+        ]
+      ]
+    },
+    {
+      "name": "Front seat | cushion stitch 1 -0.14",
+      "group": "Interior",
+      "vertices": 76,
+      "faces": 74,
+      "triangles": 148,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.26419997215270996,
+          -0.15000000596046448,
+          0.5942000150680542
+        ],
+        [
+          0.26579999923706055,
+          0.1599999964237213,
+          0.5958000421524048
+        ]
+      ]
+    },
+    {
+      "name": "Front seat | cushion stitch 1 0.14",
+      "group": "Interior",
+      "vertices": 76,
+      "faces": 74,
+      "triangles": 148,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.5442000031471252,
+          -0.15000000596046448,
+          0.5942000150680542
+        ],
+        [
+          0.5458000302314758,
+          0.1599999964237213,
+          0.5958000421524048
+        ]
+      ]
+    },
+    {
+      "name": "Front seat | rail 1",
+      "group": "Interior",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.22499999403953552,
+          -0.125,
+          0.359499990940094
+        ],
+        [
+          0.5850000381469727,
+          0.3050000071525574,
+          0.3945000171661377
+        ]
+      ]
+    },
+    {
+      "name": "Front seat | belt buckle 1",
+      "group": "Interior",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.13350000977516174,
+          0.1824999898672104,
+          0.5
+        ],
+        [
+          0.1665000021457672,
+          0.23749999701976776,
+          0.5800000429153442
+        ]
+      ]
+    },
+    {
+      "name": "Front seat | belt release 1",
+      "group": "Interior",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.13750000298023224,
+          0.1835000067949295,
+          0.57750004529953
+        ],
+        [
+          0.16250000894069672,
+          0.21649999916553497,
+          0.5864999890327454
+        ]
+      ]
+    },
+    {
+      "name": "Rear bench | full cushion",
+      "group": "Interior",
+      "vertices": 168,
+      "faces": 146,
+      "triangles": 332,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.7149999737739563,
+          0.7400000095367432,
+          0.42500001192092896
+        ],
+        [
+          0.7149999737739563,
+          1.2200000286102295,
+          0.6150000095367432
+        ]
+      ]
+    },
+    {
+      "name": "Rear bench | sculpted back",
+      "group": "Interior",
+      "vertices": 168,
+      "faces": 146,
+      "triangles": 332,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.7149999737739563,
+          0.9843999743461609,
+          0.5600000023841858
+        ],
+        [
+          0.7149999737739563,
+          1.2156000137329102,
+          1.1399999856948853
+        ]
+      ]
+    },
+    {
+      "name": "Rear bench | headrest -0.46",
+      "group": "Interior",
+      "vertices": 168,
+      "faces": 146,
+      "triangles": 332,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.5874999761581421,
+          0.9950000047683716,
+          1.0700000524520874
+        ],
+        [
+          -0.33250001072883606,
+          1.1150000095367432,
+          1.2300000190734863
+        ]
+      ]
+    },
+    {
+      "name": "Rear headrest | post -0.46 -0.065",
+      "group": "Interior",
+      "vertices": 16,
+      "faces": 10,
+      "triangles": 28,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.5309999585151672,
+          1.093999981880188,
+          1.0950000286102295
+        ],
+        [
+          -0.5189999938011169,
+          1.1060000658035278,
+          1.1449999809265137
+        ]
+      ]
+    },
+    {
+      "name": "Rear headrest | post -0.46 0.065",
+      "group": "Interior",
+      "vertices": 16,
+      "faces": 10,
+      "triangles": 28,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.4010000228881836,
+          1.093999981880188,
+          1.0950000286102295
+        ],
+        [
+          -0.3889999985694885,
+          1.1060000658035278,
+          1.1449999809265137
+        ]
+      ]
+    },
+    {
+      "name": "Rear bench | seat insert -0.46",
+      "group": "Interior",
+      "vertices": 168,
+      "faces": 146,
+      "triangles": 332,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.6299999952316284,
+          0.7900000214576721,
+          0.5964999794960022
+        ],
+        [
+          -0.28999999165534973,
+          1.149999976158142,
+          0.6234999895095825
+        ]
+      ]
+    },
+    {
+      "name": "Rear bench | headrest 0",
+      "group": "Interior",
+      "vertices": 168,
+      "faces": 146,
+      "triangles": 332,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.1274999976158142,
+          0.9950000047683716,
+          1.0700000524520874
+        ],
+        [
+          0.1274999976158142,
+          1.1150000095367432,
+          1.2300000190734863
+        ]
+      ]
+    },
+    {
+      "name": "Rear headrest | post 0 -0.065",
+      "group": "Interior",
+      "vertices": 16,
+      "faces": 10,
+      "triangles": 28,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.07099999487400055,
+          1.093999981880188,
+          1.0950000286102295
+        ],
+        [
+          -0.05899999663233757,
+          1.1060000658035278,
+          1.1449999809265137
+        ]
+      ]
+    },
+    {
+      "name": "Rear headrest | post 0 0.065",
+      "group": "Interior",
+      "vertices": 16,
+      "faces": 10,
+      "triangles": 28,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.05899999663233757,
+          1.093999981880188,
+          1.0950000286102295
+        ],
+        [
+          0.07099999487400055,
+          1.1060000658035278,
+          1.1449999809265137
+        ]
+      ]
+    },
+    {
+      "name": "Rear bench | seat insert 0",
+      "group": "Interior",
+      "vertices": 168,
+      "faces": 146,
+      "triangles": 332,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.17000000178813934,
+          0.7900000214576721,
+          0.5964999794960022
+        ],
+        [
+          0.17000000178813934,
+          1.149999976158142,
+          0.6234999895095825
+        ]
+      ]
+    },
+    {
+      "name": "Rear bench | headrest 0.46",
+      "group": "Interior",
+      "vertices": 168,
+      "faces": 146,
+      "triangles": 332,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.33250001072883606,
+          0.9950000047683716,
+          1.0700000524520874
+        ],
+        [
+          0.5874999761581421,
+          1.1150000095367432,
+          1.2300000190734863
+        ]
+      ]
+    },
+    {
+      "name": "Rear headrest | post 0.46 -0.065",
+      "group": "Interior",
+      "vertices": 16,
+      "faces": 10,
+      "triangles": 28,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.3889999985694885,
+          1.093999981880188,
+          1.0950000286102295
+        ],
+        [
+          0.4010000228881836,
+          1.1060000658035278,
+          1.1449999809265137
+        ]
+      ]
+    },
+    {
+      "name": "Rear headrest | post 0.46 0.065",
+      "group": "Interior",
+      "vertices": 16,
+      "faces": 10,
+      "triangles": 28,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.5189999938011169,
+          1.093999981880188,
+          1.0950000286102295
+        ],
+        [
+          0.5309999585151672,
+          1.1060000658035278,
+          1.1449999809265137
+        ]
+      ]
+    },
+    {
+      "name": "Rear bench | seat insert 0.46",
+      "group": "Interior",
+      "vertices": 168,
+      "faces": 146,
+      "triangles": 332,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.28999999165534973,
+          0.7900000214576721,
+          0.5964999794960022
+        ],
+        [
+          0.6299999952316284,
+          1.149999976158142,
+          0.6234999895095825
+        ]
+      ]
+    },
+    {
+      "name": "Rear parcel shelf",
+      "group": "Interior",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.7400000095367432,
+          1.2450000047683716,
+          0.9925000071525574
+        ],
+        [
+          0.7400000095367432,
+          1.4950000047683716,
+          1.0175000429153442
+        ]
+      ]
+    },
+    {
+      "name": "Dashboard | full width sculpted upper",
+      "group": "Interior",
+      "vertices": 858,
+      "faces": 856,
+      "triangles": 1712,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.7239999771118164,
+          -0.7720000147819519,
+          0.8068046569824219
+        ],
+        [
+          0.7239999771118164,
+          -0.38999998569488525,
+          0.9326538443565369
+        ]
+      ]
+    },
+    {
+      "name": "Dashboard | front fascia",
+      "group": "Interior",
+      "vertices": 738,
+      "faces": 736,
+      "triangles": 1472,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.72452312707901,
+          -0.42398005723953247,
+          0.6894023418426514
+        ],
+        [
+          0.72452312707901,
+          -0.3799999952316284,
+          0.8899999856948853
+        ]
+      ]
+    },
+    {
+      "name": "Dashboard | aluminium sweep",
+      "group": "Interior",
+      "vertices": 366,
+      "faces": 362,
+      "triangles": 728,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.7153642773628235,
+          -0.406000018119812,
+          0.841543436050415
+        ],
+        [
+          0.7153642773628235,
+          -0.37300941348075867,
+          0.872464120388031
+        ]
+      ]
+    },
+    {
+      "name": "Dashboard | vent surround -0.61",
+      "group": "Interior",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.6850000023841858,
+          -0.40049999952316284,
+          0.8004999756813049
+        ],
+        [
+          -0.5350000262260437,
+          -0.37949997186660767,
+          0.8475000262260437
+        ]
+      ]
+    },
+    {
+      "name": "Dashboard | vent vane -0.61 0.812",
+      "group": "Interior",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.6730000376701355,
+          -0.37950000166893005,
+          0.8107499480247498
+        ],
+        [
+          -0.546999990940094,
+          -0.37450000643730164,
+          0.8132500052452087
+        ]
+      ]
+    },
+    {
+      "name": "Dashboard | vent vane -0.61 0.826",
+      "group": "Interior",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.6730000376701355,
+          -0.37950000166893005,
+          0.8247499465942383
+        ],
+        [
+          -0.546999990940094,
+          -0.37450000643730164,
+          0.8272500038146973
+        ]
+      ]
+    },
+    {
+      "name": "Dashboard | vent vane -0.61 0.84",
+      "group": "Interior",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.6730000376701355,
+          -0.37950000166893005,
+          0.8387499451637268
+        ],
+        [
+          -0.546999990940094,
+          -0.37450000643730164,
+          0.8412500023841858
+        ]
+      ]
+    },
+    {
+      "name": "Dashboard | vent surround -0.1",
+      "group": "Interior",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.17500001192092896,
+          -0.40049999952316284,
+          0.8004999756813049
+        ],
+        [
+          -0.02499999850988388,
+          -0.37949997186660767,
+          0.8475000262260437
+        ]
+      ]
+    },
+    {
+      "name": "Dashboard | vent vane -0.1 0.812",
+      "group": "Interior",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.16300000250339508,
+          -0.37950000166893005,
+          0.8107499480247498
+        ],
+        [
+          -0.03700000047683716,
+          -0.37450000643730164,
+          0.8132500052452087
+        ]
+      ]
+    },
+    {
+      "name": "Dashboard | vent vane -0.1 0.826",
+      "group": "Interior",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.16300000250339508,
+          -0.37950000166893005,
+          0.8247499465942383
+        ],
+        [
+          -0.03700000047683716,
+          -0.37450000643730164,
+          0.8272500038146973
+        ]
+      ]
+    },
+    {
+      "name": "Dashboard | vent vane -0.1 0.84",
+      "group": "Interior",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.16300000250339508,
+          -0.37950000166893005,
+          0.8387499451637268
+        ],
+        [
+          -0.03700000047683716,
+          -0.37450000643730164,
+          0.8412500023841858
+        ]
+      ]
+    },
+    {
+      "name": "Dashboard | vent surround 0.15",
+      "group": "Interior",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.07500000298023224,
+          -0.40049999952316284,
+          0.8004999756813049
+        ],
+        [
+          0.22500000894069672,
+          -0.37949997186660767,
+          0.8475000262260437
+        ]
+      ]
+    },
+    {
+      "name": "Dashboard | vent vane 0.15 0.812",
+      "group": "Interior",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.08700000494718552,
+          -0.37950000166893005,
+          0.8107499480247498
+        ],
+        [
+          0.21299999952316284,
+          -0.37450000643730164,
+          0.8132500052452087
+        ]
+      ]
+    },
+    {
+      "name": "Dashboard | vent vane 0.15 0.826",
+      "group": "Interior",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.08700000494718552,
+          -0.37950000166893005,
+          0.8247499465942383
+        ],
+        [
+          0.21299999952316284,
+          -0.37450000643730164,
+          0.8272500038146973
+        ]
+      ]
+    },
+    {
+      "name": "Dashboard | vent vane 0.15 0.84",
+      "group": "Interior",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.08700000494718552,
+          -0.37950000166893005,
+          0.8387499451637268
+        ],
+        [
+          0.21299999952316284,
+          -0.37450000643730164,
+          0.8412500023841858
+        ]
+      ]
+    },
+    {
+      "name": "Dashboard | vent surround 0.61",
+      "group": "Interior",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.5350000262260437,
+          -0.40049999952316284,
+          0.8004999756813049
+        ],
+        [
+          0.6850000023841858,
+          -0.37949997186660767,
+          0.8475000262260437
+        ]
+      ]
+    },
+    {
+      "name": "Dashboard | vent vane 0.61 0.812",
+      "group": "Interior",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.546999990940094,
+          -0.37950000166893005,
+          0.8107499480247498
+        ],
+        [
+          0.6730000376701355,
+          -0.37450000643730164,
+          0.8132500052452087
+        ]
+      ]
+    },
+    {
+      "name": "Dashboard | vent vane 0.61 0.826",
+      "group": "Interior",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.546999990940094,
+          -0.37950000166893005,
+          0.8247499465942383
+        ],
+        [
+          0.6730000376701355,
+          -0.37450000643730164,
+          0.8272500038146973
+        ]
+      ]
+    },
+    {
+      "name": "Dashboard | vent vane 0.61 0.84",
+      "group": "Interior",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.546999990940094,
+          -0.37950000166893005,
+          0.8387499451637268
+        ],
+        [
+          0.6730000376701355,
+          -0.37450000643730164,
+          0.8412500023841858
+        ]
+      ]
+    },
+    {
+      "name": "Dashboard | glovebox",
+      "group": "Interior",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.6200000047683716,
+          -0.39500001072883606,
+          0.6850000023841858
+        ],
+        [
+          -0.1899999976158142,
+          -0.382999986410141,
+          0.7850000262260437
+        ]
+      ]
+    },
+    {
+      "name": "Centre console | sculpted tunnel",
+      "group": "Interior",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.12250000238418579,
+          -0.4399999976158142,
+          0.37300002574920654
+        ],
+        [
+          0.12250000238418579,
+          0.5400000214576721,
+          0.6330000162124634
+        ]
+      ]
+    },
+    {
+      "name": "Centre console | satin top",
+      "group": "Interior",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.1080000028014183,
+          -0.32499998807907104,
+          0.6319999694824219
+        ],
+        [
+          0.1080000028014183,
+          0.20499998331069946,
+          0.6499999761581421
+        ]
+      ]
+    },
+    {
+      "name": "Centre console | armrest",
+      "group": "Interior",
+      "vertices": 168,
+      "faces": 146,
+      "triangles": 332,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.10999999940395355,
+          0.18000000715255737,
+          0.621999979019165
+        ],
+        [
+          0.10999999940395355,
+          0.5,
+          0.7419999837875366
+        ]
+      ]
+    },
+    {
+      "name": "Centre console | drive selector",
+      "group": "Interior",
+      "vertices": 64,
+      "faces": 34,
+      "triangles": 124,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.03500000014901161,
+          -0.13500000536441803,
+          0.6565000414848328
+        ],
+        [
+          0.03500000014901161,
+          -0.06499999761581421,
+          0.6815000176429749
+        ]
+      ]
+    },
+    {
+      "name": "Centre console | selector top",
+      "group": "Interior",
+      "vertices": 64,
+      "faces": 34,
+      "triangles": 124,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.02800000086426735,
+          -0.12800000607967377,
+          0.6820000410079956
+        ],
+        [
+          0.02800000086426735,
+          -0.07199999690055847,
+          0.6859999895095825
+        ]
+      ]
+    },
+    {
+      "name": "Centre console | cup recess 0.04",
+      "group": "Interior",
+      "vertices": 64,
+      "faces": 34,
+      "triangles": 124,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.039000000804662704,
+          0.000999998301267624,
+          0.6509999632835388
+        ],
+        [
+          0.039000000804662704,
+          0.07899999618530273,
+          0.6570000052452087
+        ]
+      ]
+    },
+    {
+      "name": "Centre console | cup rim 0.04",
+      "group": "Interior",
+      "vertices": 192,
+      "faces": 192,
+      "triangles": 384,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.04450000077486038,
+          -0.0044999998062849045,
+          0.6558349132537842
+        ],
+        [
+          0.04450000077486038,
+          0.08449999988079071,
+          0.6601650714874268
+        ]
+      ]
+    },
+    {
+      "name": "Centre console | cup recess 0.155",
+      "group": "Interior",
+      "vertices": 64,
+      "faces": 34,
+      "triangles": 124,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.039000000804662704,
+          0.11599999666213989,
+          0.6509999632835388
+        ],
+        [
+          0.039000000804662704,
+          0.1940000057220459,
+          0.6570000052452087
+        ]
+      ]
+    },
+    {
+      "name": "Centre console | cup rim 0.155",
+      "group": "Interior",
+      "vertices": 192,
+      "faces": 192,
+      "triangles": 384,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.04450000077486038,
+          0.11050000041723251,
+          0.6558349132537842
+        ],
+        [
+          0.04450000077486038,
+          0.19949999451637268,
+          0.6601650714874268
+        ]
+      ]
+    },
+    {
+      "name": "Steering | column",
+      "group": "Interior",
+      "vertices": 48,
+      "faces": 34,
+      "triangles": 92,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.3889999985694885,
+          -0.4174079895019531,
+          0.7272692322731018
+        ],
+        [
+          0.42100000381469727,
+          -0.36004704236984253,
+          0.9540387988090515
+        ]
+      ]
+    },
+    {
+      "name": "Driver | pedal 0.55",
+      "group": "Interior",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.5225000381469727,
+          -0.6924999952316284,
+          0.35500001907348633
+        ],
+        [
+          0.5774999856948853,
+          -0.6675000190734863,
+          0.4449999928474426
+        ]
+      ]
+    },
+    {
+      "name": "Driver | pedal 0.48",
+      "group": "Interior",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.45249998569488525,
+          -0.6924999952316284,
+          0.35500001907348633
+        ],
+        [
+          0.5074999928474426,
+          -0.6675000190734863,
+          0.4449999928474426
+        ]
+      ]
+    },
+    {
+      "name": "Cabin | interior mirror",
+      "group": "Interior",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.10000000149011612,
+          -0.36250001192092896,
+          1.2940000295639038
+        ],
+        [
+          0.10000000149011612,
+          -0.32749998569488525,
+          1.3560000658035278
+        ]
+      ]
+    },
+    {
+      "name": "Cabin | mirror reflective face",
+      "group": "Interior",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.0885000005364418,
+          -0.32500001788139343,
+          1.3020000457763672
+        ],
+        [
+          0.0885000005364418,
+          -0.32100000977516174,
+          1.3480000495910645
+        ]
+      ]
+    },
+    {
+      "name": "Cabin | mirror mount",
+      "group": "Interior",
+      "vertices": 16,
+      "faces": 10,
+      "triangles": 28,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.008999999612569809,
+          -0.367717444896698,
+          1.3473695516586304
+        ],
+        [
+          0.008999999612569809,
+          -0.3222825825214386,
+          1.4066303968429565
+        ]
+      ]
+    },
+    {
+      "name": "Instrument cluster | housing",
+      "group": "Interior",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.23649999499320984,
+          -0.6396939158439636,
+          0.9517263174057007
+        ],
+        [
+          0.5735000371932983,
+          -0.5895630717277527,
+          1.0912045240402222
+        ]
+      ]
+    },
+    {
+      "name": "Instrument cluster | display panel",
+      "group": "Interior",
+      "vertices": 8,
+      "faces": 6,
+      "triangles": 12,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.2475000023841858,
+          -0.6116607785224915,
+          0.9651250839233398
+        ],
+        [
+          0.5625,
+          -0.5853173732757568,
+          1.0846669673919678
+        ]
+      ]
+    },
+    {
+      "name": "Centre navigation | housing",
+      "group": "Interior",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.29100000858306885,
+          -0.5254758596420288,
+          0.9122290015220642
+        ],
+        [
+          0.05100000649690628,
+          -0.46578115224838257,
+          1.096701979637146
+        ]
+      ]
+    },
+    {
+      "name": "Centre navigation | display panel",
+      "group": "Interior",
+      "vertices": 8,
+      "faces": 6,
+      "triangles": 12,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          -0.2800000011920929,
+          -0.4964645802974701,
+          0.9258356094360352
+        ],
+        [
+          0.03999999910593033,
+          -0.4605572819709778,
+          1.0903723239898682
+        ]
+      ]
+    },
+    {
+      "name": "Steering | lower dashboard mount",
+      "group": "Interior",
+      "vertices": 96,
+      "faces": 98,
+      "triangles": 188,
+      "boundaryEdges": 0,
+      "overusedEdges": 0,
+      "wireEdges": 0,
+      "badTriangles": 0,
+      "badUVs": 0,
+      "badNormals": 0,
+      "bounds": [
+        [
+          0.36250001192092896,
+          -0.4020000100135803,
+          0.7150000333786011
+        ],
+        [
+          0.44749999046325684,
+          -0.37599998712539673,
+          0.7730000019073486
+        ]
+      ]
+    }
+  ],
+  "totals": {
+    "vertices": 91044,
+    "faces": 86450,
+    "triangles": 176384,
+    "boundaryEdges": 0,
+    "overusedEdges": 0,
+    "wireEdges": 0,
+    "badTriangles": 0,
+    "badUVs": 0,
+    "badNormals": 0
+  },
+  "bounds": [
+    [
+      -1.097000002861023,
+      -2.3096535205841064,
+      0.001168520888313651
+    ],
+    [
+      1.097000002861023,
+      2.318000078201294,
+      1.5080000162124634
+    ]
+  ],
+  "dimensions": [
+    2.194000005722046,
+    4.6276535987854,
+    1.5068314953241497
+  ],
+  "protectedUnchanged": {
+    "Ro.rbxlx": true,
+    "assets\\vehicles\\source\\BoraS2_Quad_OBJ\\BoraS2_Tripo_Quad_OBJ.obj": true,
+    "assets\\example\\Car\\temp.blend": true,
+    "assets\\vehicles\\retopology\\BoraS2_FitFix.blend": true
+  },
+  "errors": [],
+  "note": "Structural audit only; visual approval and Roblox runtime validation are separate.",
+  "interiorGlassIntersections": [],
+  "intersectionCheckScope": "All Interior/Steering surfaces and inner door cards against all six glazing objects; headliner excluded as roof lining."
+}

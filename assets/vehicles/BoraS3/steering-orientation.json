@@ -1,0 +1,17 @@
+{
+  "driverFacingNormal": [
+    0.0,
+    0.8660253882408142,
+    0.5000001192092896
+  ],
+  "alignmentWithDriver": 0.9982236623764038,
+  "topY": -0.44971248507499695,
+  "bottomY": -0.2902873158454895,
+  "preservedOtherMeshCount": 332,
+  "wheelCentre": [
+    0.4050000011920929,
+    -0.3700000047683716,
+    0.9629999995231628
+  ],
+  "baseUnchanged": true
+}

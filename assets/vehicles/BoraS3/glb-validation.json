@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "triangles": 176384,
+  "primitives": 343,
+  "embeddedImages": 3,
+  "groups": [
+    "Body",
+    "DoorFL",
+    "DoorFR",
+    "DoorRL",
+    "DoorRR",
+    "Interior",
+    "Steering",
+    "WheelFL",
+    "WheelFR",
+    "WheelRL",
+    "WheelRR"
+  ],
+  "presentationExcluded": true,
+  "errors": []
+}

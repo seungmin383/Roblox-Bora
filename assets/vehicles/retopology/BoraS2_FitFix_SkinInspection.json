@@ -1,0 +1,40 @@
+{
+  "input": "C:\\Users\\jinug\\Desktop\\SEUNGMIN_BAEK\\Ro\\assets\\vehicles\\retopology\\BoraS2_FitFix.blend",
+  "blender_version": "5.2.2 LTS",
+  "scene_unit_scale_length": 1.0,
+  "face_tags": [],
+  "area_epsilon_object_units_squared": 1e-12,
+  "objects": [
+    {
+      "object": "Front_continuous_fitted_skin",
+      "coordinate_space": "object-local",
+      "object_scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "selected_faces": 2634,
+      "selected_vertices": 2702,
+      "selected_triangles": 5400,
+      "quads": 2294,
+      "ngons": 204,
+      "positions_finite": true,
+      "normals_finite": true,
+      "nonunit_or_invalid_corner_normals": 0,
+      "active_uv_layer": null,
+      "uv_finite": null,
+      "components": [
+        {
+          "faces": 2634,
+          "vertices": 2702,
+          "edges": 5334,
+          "open_edges": 0,
+          "nonmanifold_edges": 0,
+          "euler": 2,
+          "degenerate_faces": 0,
+          "closed": true
+        }
+      ]
+    }
+  ]
+}

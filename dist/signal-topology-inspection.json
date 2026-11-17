@@ -1,0 +1,72 @@
+[
+  {
+    "asset": "TrafficSignal",
+    "vertices": 3253,
+    "faces": 6500,
+    "variants": [
+      {
+        "degrees": 0.1,
+        "afterPlanar": 6344,
+        "afterQuads": 5509,
+        "quads": 929,
+        "ngons": 24
+      },
+      {
+        "degrees": 0.5,
+        "afterPlanar": 6009,
+        "afterQuads": 5255,
+        "quads": 973,
+        "ngons": 73
+      },
+      {
+        "degrees": 1,
+        "afterPlanar": 5800,
+        "afterQuads": 5127,
+        "quads": 1012,
+        "ngons": 94
+      },
+      {
+        "degrees": 2,
+        "afterPlanar": 5505,
+        "afterQuads": 4956,
+        "quads": 1035,
+        "ngons": 146
+      }
+    ]
+  },
+  {
+    "asset": "PedestrianSignal",
+    "vertices": 2106,
+    "faces": 4191,
+    "variants": [
+      {
+        "degrees": 0.1,
+        "afterPlanar": 4102,
+        "afterQuads": 3500,
+        "quads": 661,
+        "ngons": 12
+      },
+      {
+        "degrees": 0.5,
+        "afterPlanar": 3868,
+        "afterQuads": 3338,
+        "quads": 713,
+        "ngons": 48
+      },
+      {
+        "degrees": 1,
+        "afterPlanar": 3657,
+        "afterQuads": 3204,
+        "quads": 714,
+        "ngons": 86
+      },
+      {
+        "degrees": 2,
+        "afterPlanar": 3308,
+        "afterQuads": 2977,
+        "quads": 728,
+        "ngons": 136
+      }
+    ]
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "place": "Ro.rbxlx",
+  "savedRuntimeAndFactorySourcesMatch": true,
+  "workspacePreserved": true,
+  "studioByteEntityEncodingNormalized": true,
+  "singlePlace": true,
+  "handlingReport": "dist/vehicle-handling-validation.json",
+  "studioPlaytestPerformed": false,
+  "Active": false,
+  "UserAccepted": false,
+  "Disposition": "Tire-grip/steering experiment rejected by user; restored previous physics, retaining only faster input delivery."
+}

@@ -1,0 +1,253 @@
+{
+  "schemaVersion": 1,
+  "sourceCount": 20,
+  "totalSourceBytes": 105823,
+  "sourceExactEquality": {
+    "checked": 20,
+    "passed": 20,
+    "method": "MCP source strings transferred as UTF-8, files reread and compared as complete strings; second MCP source read remained identical."
+  },
+  "sourceFileListExact": true,
+  "jsonSyntaxValid": true,
+  "definitionSourceReferencesResolve": true,
+  "speciesCatalogSummaryMatches": true,
+  "configurationInventoryUnchanged": true,
+  "sceneSerializationComplete": false,
+  "modelFiles": 0,
+  "restorationExecutionTested": false,
+  "playStartedForStage12": false,
+  "placeBefore": [
+    {
+      "path": "C:\\Users\\jinug\\Desktop\\SEUNGMIN_BAEK\\Ro\\Ro.rbxlx",
+      "bytes": 54746429,
+      "sha256": "56C098CDB2C3CDA83CA303D50B08D15A3F1CEB830B75F0A636AEB8735587E516"
+    }
+  ],
+  "placeAfter": [
+    {
+      "path": "C:\\Users\\jinug\\Desktop\\SEUNGMIN_BAEK\\Ro\\Ro.rbxlx",
+      "bytes": 54746429,
+      "sha256": "56C098CDB2C3CDA83CA303D50B08D15A3F1CEB830B75F0A636AEB8735587E516"
+    }
+  ],
+  "placeHashAndListUnchanged": true,
+  "studio": {
+    "name": "Place1",
+    "device": "default",
+    "placeId": 0,
+    "mode": "Edit",
+    "orientation": "Enum.ScreenOrientation.LandscapeRight"
+  },
+  "qaEditInstanceMatches": [],
+  "files": [
+    {
+      "file": "src/creature_prototype/ServerScriptService/SeaCaptureServer_Stage2.server.luau",
+      "bytes": 16957,
+      "sha256": "4a83addaf47fea703e5bac9ca15884aee607892c94f412cd9a6a2ea0a53d4dae",
+      "utf8": true,
+      "sourceExactMatch": true,
+      "studioSourceUnchanged": true
+    },
+    {
+      "file": "src/creature_prototype/ServerScriptService/SeaExhibitionServer_Stage4.server.luau",
+      "bytes": 9662,
+      "sha256": "c6780d8fe9f029f50170f774a2283322184f4bd64ec7dbb01a4df4f3a0aba67d",
+      "utf8": true,
+      "sourceExactMatch": true,
+      "studioSourceUnchanged": true
+    },
+    {
+      "file": "src/creature_prototype/ServerScriptService/SeaExhibitionServer_Stage4/BattleRules.luau",
+      "bytes": 614,
+      "sha256": "2ec19b2222e94139bc7bc3849a1b50eba85903a45c052c52d0cc7c834220afeb",
+      "utf8": true,
+      "sourceExactMatch": true,
+      "studioSourceUnchanged": true
+    },
+    {
+      "file": "src/creature_prototype/ServerScriptService/HubSafetyServer_Stage5.server.luau",
+      "bytes": 864,
+      "sha256": "36c647a1ba2a700d04a2eefa90cbf827df46c6320a1ba102c56dadac8a4395d1",
+      "utf8": true,
+      "sourceExactMatch": true,
+      "studioSourceUnchanged": true
+    },
+    {
+      "file": "src/creature_prototype/ServerScriptService/TrainingServer_Stage6.server.luau",
+      "bytes": 9158,
+      "sha256": "65480ca02c4ca4bab406acfa1df9f347018e55fd0ae393d43a731b27ce8c3541",
+      "utf8": true,
+      "sourceExactMatch": true,
+      "studioSourceUnchanged": true
+    },
+    {
+      "file": "src/creature_prototype/ServerScriptService/SeaExplorationServer_Stage8.server.luau",
+      "bytes": 1921,
+      "sha256": "beb00479e29ffa62cc645d691e2a5fe4f6365c1033ea25fbc3c5d0fa160d8968",
+      "utf8": true,
+      "sourceExactMatch": true,
+      "studioSourceUnchanged": true
+    },
+    {
+      "file": "src/creature_prototype/ServerScriptService/JourneyServer_Stage10.server.luau",
+      "bytes": 4456,
+      "sha256": "54dbf6d6a5529d071e5334774c46da9223d1ef0e489226f1ad25ecb66297448d",
+      "utf8": true,
+      "sourceExactMatch": true,
+      "studioSourceUnchanged": true
+    },
+    {
+      "file": "src/creature_prototype/ServerScriptService/PlayerEconomy_Stage11.luau",
+      "bytes": 2523,
+      "sha256": "2b04071ef7c4d997ebab704be6ac57752147696216b448116d2752d7b7292b59",
+      "utf8": true,
+      "sourceExactMatch": true,
+      "studioSourceUnchanged": true
+    },
+    {
+      "file": "src/creature_prototype/ReplicatedStorage/TrainingRules_Stage6.luau",
+      "bytes": 448,
+      "sha256": "92d0224e84919da3967ae818e3154770ebb61a8af105e2a4d00b3f308e248dc3",
+      "utf8": true,
+      "sourceExactMatch": true,
+      "studioSourceUnchanged": true
+    },
+    {
+      "file": "src/creature_prototype/ReplicatedStorage/SpeciesCatalog_Stage8.luau",
+      "bytes": 878,
+      "sha256": "1ea1a49ea9506a17dc489c3c6da5d5651649bffc2366da71a0b3e958f298008e",
+      "utf8": true,
+      "sourceExactMatch": true,
+      "studioSourceUnchanged": true
+    },
+    {
+      "file": "src/creature_prototype/ReplicatedStorage/TrainingEquipmentRules_Stage11.luau",
+      "bytes": 239,
+      "sha256": "1b2de58bb998466922b44eb039e20eeca2f16be3f004303cc7b91ce4c08ae850",
+      "utf8": true,
+      "sourceExactMatch": true,
+      "studioSourceUnchanged": true
+    },
+    {
+      "file": "src/creature_prototype/StarterPlayer/StarterPlayerScripts/SeaCaptureClient_Stage2.client.luau",
+      "bytes": 15648,
+      "sha256": "e029a78975b04f04901a43166ca21e5c997fcbcbc83d95c839b91de5cc0fea49",
+      "utf8": true,
+      "sourceExactMatch": true,
+      "studioSourceUnchanged": true
+    },
+    {
+      "file": "src/creature_prototype/StarterPlayer/StarterPlayerScripts/SeaInventoryClient_Stage3.client.luau",
+      "bytes": 6158,
+      "sha256": "fda7abd6b2407dfd7bd0a20ef62a8e0a9f4452f4a3b10a37faf1f2405020bf1d",
+      "utf8": true,
+      "sourceExactMatch": true,
+      "studioSourceUnchanged": true
+    },
+    {
+      "file": "src/creature_prototype/StarterPlayer/StarterPlayerScripts/SeaExhibitionClient_Stage4.client.luau",
+      "bytes": 7095,
+      "sha256": "dc7b8f038f9d53299cb051ff2766d642b1b39804fe4e2f5eb4f6c3096430a014",
+      "utf8": true,
+      "sourceExactMatch": true,
+      "studioSourceUnchanged": true
+    },
+    {
+      "file": "src/creature_prototype/StarterPlayer/StarterPlayerScripts/HubWelcomeClient_Stage5.client.luau",
+      "bytes": 933,
+      "sha256": "7168bb0ff27e88ad4fdcc4b413d46cbee4908196ead612aabc421114c367ff4c",
+      "utf8": true,
+      "sourceExactMatch": true,
+      "studioSourceUnchanged": true
+    },
+    {
+      "file": "src/creature_prototype/StarterPlayer/StarterPlayerScripts/TrainingClient_Stage6.client.luau",
+      "bytes": 11377,
+      "sha256": "eaf6f4e8e7b7652cabfb1243549f840eb0a263565cd1f679b94e2fdb6a5405c5",
+      "utf8": true,
+      "sourceExactMatch": true,
+      "studioSourceUnchanged": true
+    },
+    {
+      "file": "src/creature_prototype/StarterPlayer/StarterPlayerScripts/RebirthClient_Stage7.client.luau",
+      "bytes": 4553,
+      "sha256": "e20dfd5089dfd8bd30d708d31366023f6cf854ba92b9a5c65a54e7a45458c68e",
+      "utf8": true,
+      "sourceExactMatch": true,
+      "studioSourceUnchanged": true
+    },
+    {
+      "file": "src/creature_prototype/StarterPlayer/StarterPlayerScripts/SeaExplorationClient_Stage8.client.luau",
+      "bytes": 1139,
+      "sha256": "ba35bbd8f4abb1d501293601c17722ef458a5dbf803e1efef0c7da9d62391465",
+      "utf8": true,
+      "sourceExactMatch": true,
+      "studioSourceUnchanged": true
+    },
+    {
+      "file": "src/creature_prototype/StarterPlayer/StarterPlayerScripts/SeaLegendClient_Stage9.client.luau",
+      "bytes": 4983,
+      "sha256": "e361437f67ae27525acc55e827694db575f62a375f001ec8dc483e33c6fdf758",
+      "utf8": true,
+      "sourceExactMatch": true,
+      "studioSourceUnchanged": true
+    },
+    {
+      "file": "src/creature_prototype/StarterPlayer/StarterPlayerScripts/JourneyClient_Stage10.client.luau",
+      "bytes": 6217,
+      "sha256": "87e269537e82ec00d327bcc3e12f92cfaf2ea2b9b6771a17bdf105a55789eaee",
+      "utf8": true,
+      "sourceExactMatch": true,
+      "studioSourceUnchanged": true
+    },
+    {
+      "file": "assets/creature-prototype/manifest.json",
+      "bytes": 76412,
+      "sha256": "c4a219c948e8645d37f6bfb0b790aed2fce7f5779c9acb336dda30ecd951b541",
+      "utf8": true
+    },
+    {
+      "file": "docs/CREATURE_PROTOTYPE.md",
+      "bytes": 4702,
+      "sha256": "2fd5a9acca6c196aab6fcdfa2d7d293347e7c31887a6a6a1a923b63fea350f81",
+      "utf8": true
+    }
+  ],
+  "validationFileSelfHash": "Not embedded to avoid a recursive self hash.",
+  "limitations": [
+    "No model serialization was performed. No direct model-export MCP tool is exposed; API model serialization was not investigated/implemented in this quick preservation task. No UI/app launch was used.",
+    "No full instance tree, individual part transforms/properties, meshes/textures, Terrain voxels, materials, weld/attachment/reference graph, GUI tree, or all service settings are serialized. Root bounds/pivots and selected properties are configuration records only.",
+    "External mesh/texture IDs are references only; their asset contents were not downloaded or packaged.",
+    "Large historical/editor Attributes are omitted as listed in omittedAttributes. Unlisted instances/properties/attributes/tags are not preserved by this minimal manifest.",
+    "Names/classes/counts of four species Tool/preview templates do not preserve their geometry. Pre-existing auxiliary Workspace roots are listed but their geometry is not exported.",
+    "Script parent/class/Disabled/RunContext mappings are recorded. The directory layout is not an installer or Rojo configuration. Required scene assets/remotes/service placement must be supplied before scripts could run.",
+    "No import, reinstall, deserialization, fresh-place execution, or restoration execution was performed; exact source preservation does not guarantee complete scene restoration.",
+    "Runtime players, QA/test setters and transient battle/awakening copies are not part of the preservation package."
+  ],
+  "omittedAttributes": [
+    {
+      "path": "Workspace.CentralHub_Stage5",
+      "attribute": "TransformationRecord",
+      "bytes": 20195,
+      "type": "string",
+      "omitted": true,
+      "reason": "Large historical/editor metadata; not included in minimal configuration export"
+    },
+    {
+      "path": "Workspace.CentralHub_Stage5.Stage6_Training",
+      "attribute": "PriorGeometry",
+      "bytes": 42900,
+      "type": "string",
+      "omitted": true,
+      "reason": "Large historical/editor metadata; not included in minimal configuration export"
+    },
+    {
+      "path": "Workspace.SeaRegion_Stage1.Stage2_Collection",
+      "attribute": "PriorGeometry",
+      "bytes": 15096,
+      "type": "string",
+      "omitted": true,
+      "reason": "Large historical/editor metadata; not included in minimal configuration export"
+    }
+  ]
+}

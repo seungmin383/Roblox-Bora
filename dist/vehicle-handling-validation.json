@@ -1,0 +1,47 @@
+{
+  "AirborneDriveDisabled": true,
+  "AntiRollLoadConserved": true,
+  "BrakingFromKmh": 86.56590673828127,
+  "CombinedGripBounded": true,
+  "Mode": "Planar adapter of actual physics; Studio Play pending",
+  "NeutralYawRecovery": true,
+  "PartialContactDriveReduced": true,
+  "SlideRecovery": true,
+  "SpeedsMps": [
+    16.897244415283204,
+    16.887053527832034,
+    16.881973571777344
+  ],
+  "StoppedSpeedKmh": 9.204008511733265e-05,
+  "StraightSpeedKmh": 89.44612646484376,
+  "TurnDirections": [
+    {
+      "Input": -1,
+      "Travel": 1,
+      "Yaw": 0.5252626824099903
+    },
+    {
+      "Input": 1,
+      "Travel": 1,
+      "Yaw": -0.5252626825734674
+    },
+    {
+      "Input": -1,
+      "Travel": -1,
+      "Yaw": -0.6053113221373875
+    },
+    {
+      "Input": 1,
+      "Travel": -1,
+      "Yaw": 0.6053113220284027
+    }
+  ],
+  "UpdateRates": [
+    30,
+    60,
+    120
+  ],
+  "Active": false,
+  "UserAccepted": false,
+  "Disposition": "Tire-grip/steering experiment rejected by user; restored previous physics, retaining only faster input delivery."
+}

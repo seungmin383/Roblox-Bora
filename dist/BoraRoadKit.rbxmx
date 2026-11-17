@@ -1,0 +1,2122 @@
+<roblox version="4">
+  <Item class="Model" referent="0">
+    <Properties>
+      <string name="Name"><![CDATA[BoraRoadKit]]></string>
+      <BinaryString name="AttributesSerialize">AQAAAAcAAABWZXJzaW9uAgUAAAAwLjcuMA==</BinaryString>
+    </Properties>
+    <Item class="ModuleScript" referent="1">
+      <Properties>
+        <string name="Name"><![CDATA[RoadPath]]></string>
+        <string name="Source"><![CDATA[-- Persistent centerlines are shared by hand tracing and a future image importer.
+return function(Vector3)
+	local Path={StudsPerMeter=1/.28}
+	Path.Defaults={Width=7,Lanes=2,Sidewalk=1.5,Curve=75,Lift=.05}
+	Path.Limits={Width={2.5,24},Lanes={1,6},Sidewalk={0,5},Curve={0,100},Lift={0,2}}
+	-- Odd totals allocate the extra lane toward the road's end control point.
+	-- Incoming lanes are numbered from the center divider to the driver's right.
+	function Path.lanes(config,sign)
+		local total=config.Lanes
+		local width=config.Width*Path.StudsPerMeter
+		local laneWidth=width/total
+		local split=math.floor(total/2)
+		local divider=-width*.5+split*laneWidth
+		local count=if total==1 then 1 elseif sign==1 then split else total-split
+		local centers={}
+		for i=1,count do centers[i]=if total==1 then 0 else sign*divider-(i-.5)*laneWidth end
+		return {Count=count,Width=laneWidth,Centers=centers,Divider=if total==1 then 0 else divider,Split=split}
+	end
+	function Path.normalize(input)
+		local out={}
+		for key,default in Path.Defaults do
+			local value=if input[key]==nil then default else input[key]
+			local bounds=Path.Limits[key]
+			assert(type(value)=='number' and value==value and value>=bounds[1] and value<=bounds[2],key..' 범위를 확인하세요.')
+			if key=='Lanes' then assert(value%1==0,'차선 수는 정수여야 합니다.') end
+			out[key]=value
+		end
+		assert(out.Width/out.Lanes>=1.8,'차선 하나의 폭을 1.8m 이상으로 설정하세요.')
+		return out
+	end
+	function Path.validatePoints(points)
+		assert(#points>=2 and #points<=128,'도로 점은 2~128개가 필요합니다.')
+		for i,p in points do
+			assert(typeof(p)=='Vector3' and p.X==p.X and p.Y==p.Y and p.Z==p.Z and p.Magnitude<1e6,'잘못된 도로 점입니다.')
+			if i>1 then
+				local d=p-points[i-1]
+				assert(Vector3.new(d.X,0,d.Z).Magnitude>=1,'점 사이 간격을 1 stud 이상 띄우세요.')
+			end
+		end
+	end
+	function Path.sample(points,input)
+		Path.validatePoints(points)
+		local config=Path.normalize(input)
+		local samples={}; local total=0
+		for i=1,#points-1 do
+			local a,b=points[i],points[i+1]
+			local before,after=points[math.max(1,i-1)],points[math.min(#points,i+2)]
+			local straight=b-a
+			local smooth=config.Curve/100
+			local t0=straight:Lerp((b-before)*.5,smooth)
+			local t1=straight:Lerp((after-a)*.5,smooth)
+			local count=math.max(1,math.ceil(straight.Magnitude/10))
+			assert(#samples+count<=1024,'도로 한 개가 너무 깁니다. 나눠서 그리세요.')
+			for j=if i==1 then 0 else 1,count do
+				local t=j/count; local t2,t3=t*t,t*t*t
+				local p=a*(2*t3-3*t2+1)+t0*(t3-2*t2+t)+b*(-2*t3+3*t2)+t1*(t3-t2)
+				p=Vector3.new(p.X,math.clamp(p.Y,math.min(a.Y,b.Y),math.max(a.Y,b.Y)),p.Z)
+				if #samples>0 then
+					local delta=p-samples[#samples].P
+					local horizontal=Vector3.new(delta.X,0,delta.Z).Magnitude
+					assert(horizontal>.001,'도로가 되접힙니다. 점을 더 멀리 배치하세요.')
+					assert(math.abs(delta.Y)/horizontal<=.25,'경사가 25%를 넘습니다. 높이를 낮추거나 점 간격을 늘리세요.')
+					total+=delta.Magnitude
+				end
+				table.insert(samples,{P=p,Distance=total,Segment=i})
+			end
+		end
+		for i,s in samples do
+			local incoming=s.P-samples[math.max(1,i-1)].P
+			local outgoing=samples[math.min(#samples,i+1)].P-s.P
+			incoming=Vector3.new(incoming.X,0,incoming.Z)
+			outgoing=Vector3.new(outgoing.X,0,outgoing.Z)
+			if incoming.Magnitude<.001 then incoming=outgoing end
+			if outgoing.Magnitude<.001 then outgoing=incoming end
+			incoming,outgoing=incoming.Unit,outgoing.Unit
+			assert(incoming:Dot(outgoing)>-.6,'너무 급한 코너입니다. 중간 점으로 완만하게 연결하세요.')
+			local tangent=(incoming+outgoing).Unit
+			s.Side=Vector3.new(-tangent.Z,0,tangent.X)
+			s.Miter=math.min(2,1/math.max(.5,tangent:Dot(incoming)))
+		end
+		return {Samples=samples,Length=total,Config=config}
+	end
+	function Path.offset(sample,offset)
+		return sample.P+sample.Side*(offset*sample.Miter)
+	end
+	function Path.at(data,distance)
+		distance=math.clamp(distance,0,data.Length)
+		for i=1,#data.Samples-1 do
+			local a,b=data.Samples[i],data.Samples[i+1]
+			if distance<=b.Distance+.00001 then
+				local t=math.clamp((distance-a.Distance)/(b.Distance-a.Distance),0,1)
+				return {P=a.P:Lerp(b.P,t),Side=a.Side:Lerp(b.Side,t).Unit,Miter=a.Miter+(b.Miter-a.Miter)*t,Distance=distance}
+			end
+		end
+		return data.Samples[#data.Samples]
+	end
+	function Path.project(data,p)
+		local best,at,position=math.huge,0,data.Samples[1].P
+		for i=1,#data.Samples-1 do
+			local a,b=data.Samples[i],data.Samples[i+1]
+			local d=Vector3.new(b.P.X-a.P.X,0,b.P.Z-a.P.Z)
+			local t=math.clamp(Vector3.new(p.X-a.P.X,0,p.Z-a.P.Z):Dot(d)/d:Dot(d),0,1)
+			local q=a.P:Lerp(b.P,t)
+			local distance=Vector3.new(p.X-q.X,0,p.Z-q.Z).Magnitude
+			if distance<best then best,at,position=distance,a.Distance+(b.Distance-a.Distance)*t,q end
+		end
+		return position,at,best
+	end
+	-- Intersections of sampled centerlines. A grid avoids scanning every pair
+	-- of short segments; arc-distance deduplication handles shared sample vertices.
+	function Path.crossings(a,b)
+		local function bounds(data)
+			if data.Bounds then return data.Bounds end
+			local box={math.huge,math.huge,-math.huge,-math.huge}
+			for _,s in data.Samples do box[1]=math.min(box[1],s.P.X); box[2]=math.min(box[2],s.P.Z); box[3]=math.max(box[3],s.P.X); box[4]=math.max(box[4],s.P.Z) end
+			data.Bounds=box; return box
+		end
+		local aa,bb=bounds(a),bounds(b)
+		if aa[1]>bb[3] or aa[3]<bb[1] or aa[2]>bb[4] or aa[4]<bb[2] then return {} end
+		local function cells(p,q,visit)
+			for x=math.floor(math.min(p.X,q.X)/64),math.floor(math.max(p.X,q.X)/64) do
+				for z=math.floor(math.min(p.Z,q.Z)/64),math.floor(math.max(p.Z,q.Z)/64) do visit(x..':'..z) end
+			end
+		end
+		if not b.Grid then
+			b.Grid={}
+			for j=1,#b.Samples-1 do cells(b.Samples[j].P,b.Samples[j+1].P,function(key)
+				if not b.Grid[key] then b.Grid[key]={} end; table.insert(b.Grid[key],j)
+			end) end
+		end
+		local result={}
+		local function cross(u,v) return u.X*v.Z-u.Z*v.X end
+		for i=1,#a.Samples-1 do
+			local p,q=a.Samples[i],a.Samples[i+1]; local u=q.P-p.P; local seen={}
+			cells(p.P,q.P,function(key)
+				for _,j in b.Grid[key] or {} do if not seen[j] then
+					seen[j]=true
+					local r,s=b.Samples[j],b.Samples[j+1]; local v=s.P-r.P
+					local denominator=cross(u,v)
+					if math.abs(denominator)>.00001 then
+						local t,k=cross(r.P-p.P,v)/denominator,cross(r.P-p.P,u)/denominator
+						if t>=-.00001 and t<=1.00001 and k>=-.00001 and k<=1.00001 then
+							t,k=math.clamp(t,0,1),math.clamp(k,0,1)
+							local da,db=p.Distance+(q.Distance-p.Distance)*t,r.Distance+(s.Distance-r.Distance)*k
+							local pa,pb=p.P:Lerp(q.P,t),r.P:Lerp(s.P,k)
+							local height=pa.Y-pb.Y+(a.Config.Lift-b.Config.Lift)*Path.StudsPerMeter
+							if da>1 and da<a.Length-1 and db>1 and db<b.Length-1 and math.abs(height)<=.35 then
+								local duplicate=false
+								for _,hit in result do if math.abs(hit.A-da)<.05 and math.abs(hit.B-db)<.05 then duplicate=true; break end end
+								if not duplicate then table.insert(result,{A=da,B=db,P=pa}) end
+							end
+						end
+					end
+				end end
+			end)
+		end
+		return result
+	end
+	-- Split at exact cut boundaries so asphalt, curbs and lane lines meet portals.
+	function Path.segments(data,cuts)
+		local segments={}
+		for i=1,#data.Samples-1 do
+			local a,b=data.Samples[i],data.Samples[i+1]
+			local cursor=a.Distance
+			for _,cut in cuts or {} do
+				if cut[2]>cursor and cut[1]<b.Distance then
+					if cut[1]>cursor+.0001 then table.insert(segments,{Path.at(data,cursor),Path.at(data,cut[1])}) end
+					cursor=math.max(cursor,cut[2])
+				end
+			end
+			if cursor<b.Distance-.0001 then table.insert(segments,{Path.at(data,cursor),b}) end
+		end
+		return segments
+	end
+	function Path.closest(points,point)
+		local best,index=math.huge,1
+		for i=1,#points-1 do
+			local a,b=points[i],points[i+1]
+			local t=math.clamp((point-a):Dot(b-a)/(b-a):Dot(b-a),0,1)
+			local distance=(point-a:Lerp(b,t)).Magnitude
+			if distance<best then best,index=distance,i end
+		end
+		return index,best
+	end
+	return Path
+end
+]]></string>
+      </Properties>
+    </Item>
+    <Item class="ModuleScript" referent="2">
+      <Properties>
+        <string name="Name"><![CDATA[RoadNetworkFactory]]></string>
+        <string name="Source"><![CDATA[return function(api,Path,Traffic)
+	local Instance,Vector3,CFrame,Color3,Enum=api.Instance,api.Vector3,api.CFrame,api.Color3,api.Enum
+	local Factory={}
+	local function part(parent,class,name,size,frame,color,material,preview)
+		local p=Instance.new(class)
+		p.Name,p.Size,p.CFrame,p.Color,p.Material=name,size,frame,color,material
+		p.Anchored,p.CanCollide,p.CanTouch,p.CanQuery=true,not preview,false,not preview
+		p.TopSurface,p.BottomSurface=Enum.SurfaceType.Smooth,Enum.SurfaceType.Smooth
+		if preview then p.Transparency=.4; p.Color=Color3.fromRGB(70,190,171) end
+		p.Parent=parent
+		return p
+	end
+	local function triangle(parent,a,b,c,thickness,color,material,preview)
+		local ab,ac,bc=b-a,c-a,c-b
+		local abd,acd,bcd=ab:Dot(ab),ac:Dot(ac),bc:Dot(bc)
+		if abd>acd and abd>bcd then c,a=a,c elseif acd>abd and acd>bcd then a,b=b,a end
+		ab,ac,bc=b-a,c-a,c-b
+		local normal=ac:Cross(ab)
+		assert(normal.Magnitude>1e-7,'도로 표면이 겹칩니다. 코너를 완만하게 바꾸세요.')
+		if normal.Y<0 then b,c=c,b; ab,ac,bc=b-a,c-a,c-b; normal=ac:Cross(ab) end
+		local right=normal.Unit
+		local up=bc:Cross(right).Unit
+		local back=bc.Unit
+		local height=math.abs(ab:Dot(up))
+		for _,piece in {{(a+b)*.5,right,up,back,math.abs(ab:Dot(back))},{(a+c)*.5,-right,up,-back,math.abs(ac:Dot(back))}} do
+			if piece[5]>.001 and height>.001 then
+				part(parent,'WedgePart','Surface',Vector3.new(thickness,height,piece[5]),
+					CFrame.fromMatrix(piece[1]-right*thickness*.5,piece[2],piece[3],piece[4]),color,material,preview)
+			end
+		end
+	end
+	local function strip(parent,a,b,left,right,height,thickness,color,material,preview)
+		local lift=Vector3.new(0,height,0)
+		local p,q,r,s=Path.offset(a,left)+lift,Path.offset(a,right)+lift,Path.offset(b,right)+lift,Path.offset(b,left)+lift
+		triangle(parent,p,q,r,thickness,color,material,preview)
+		triangle(parent,p,r,s,thickness,color,material,preview)
+	end
+	function Factory.isRoad(model)
+		return model and model:IsA('Model') and model:GetAttribute('AssetKind')=='BoraRoadPath'
+	end
+	function Factory.points(model)
+		assert(Factory.isRoad(model),'도로를 선택하세요.')
+		local folder=assert(model:FindFirstChild('Nodes'),'도로 점이 없습니다.')
+		local nodes=folder:GetChildren()
+		table.sort(nodes,function(a,b) return a:GetAttribute('Index')<b:GetAttribute('Index') end)
+		local points={}; for _,node in nodes do table.insert(points,node.Value) end
+		return points
+	end
+	function Factory.config(model)
+		local values={}; for key in Path.Defaults do values[key]=model:GetAttribute(key) end
+		return Path.normalize(values)
+	end
+	local function stage(points,input,preview,cuts,markingCuts)
+		local data=Path.sample(points,input)
+		local config=data.Config
+		local geometry=Instance.new('Folder'); geometry.Name='Geometry'
+		local nodes=Instance.new('Folder'); nodes.Name='Nodes'
+		local ok,err=pcall(function()
+			for i,p in points do
+				local node=Instance.new('Vector3Value'); node.Name=string.format('Point%03d',i)
+				node.Value,node.Parent=p,nodes; node:SetAttribute('Index',i)
+			end
+			local asphalt=Instance.new('Folder'); asphalt.Name,asphalt.Parent='Asphalt',geometry
+			local sidewalks=Instance.new('Folder'); sidewalks.Name,sidewalks.Parent='Sidewalks',geometry
+			local markings=Instance.new('Folder'); markings.Name,markings.Parent='Markings',geometry
+			local width,walk,lift=config.Width*Path.StudsPerMeter,config.Sidewalk*Path.StudsPerMeter,config.Lift*Path.StudsPerMeter
+			for _,segment in Path.segments(data,cuts) do
+				local a,b=segment[1],segment[2]
+				strip(asphalt,a,b,-width*.5,width*.5,lift,.6,Color3.fromRGB(57,60,65),Enum.Material.Asphalt,preview)
+				if walk>0 then
+					for _,side in {-1,1} do
+						strip(sidewalks,a,b,side*width*.5,side*(width*.5+walk),lift+.12*Path.StudsPerMeter,.7,Color3.fromRGB(170,172,166),Enum.Material.Concrete,preview)
+					end
+				end
+			end
+			local allCuts={}
+			for _,set in {cuts or {},markingCuts or {}} do for _,cut in set do table.insert(allCuts,{cut[1],cut[2]}) end end
+			table.sort(allCuts,function(a,b) return a[1]<b[1] end)
+			local merged={}
+			for _,cut in allCuts do
+				local last=merged[#merged]
+				if last and cut[1]<=last[2] then last[2]=math.max(last[2],cut[2]) else table.insert(merged,cut) end
+			end
+			if not preview then
+				for _,segment in Path.segments(data,merged) do
+					local a,b=segment[1],segment[2]
+					for lane=1,config.Lanes-1 do
+						local isCenter=lane==math.floor(config.Lanes/2)
+						if isCenter or math.floor((a.Distance+b.Distance)*.5/14)%2==0 then
+							local offset=-width*.5+width*lane/config.Lanes
+							local p,q=Path.offset(a,offset),Path.offset(b,offset)
+							local delta=q-p
+							local mark=part(markings,'Part',if isCenter then 'CenterLine' else 'LaneLine',Vector3.new(.12*Path.StudsPerMeter,.025,delta.Magnitude+.025),
+								CFrame.lookAt((p+q)*.5+Vector3.new(0,lift+.025,0),q+Vector3.new(0,lift+.025,0)),
+								if isCenter then Color3.fromRGB(239,189,60) else Color3.fromRGB(236,237,224),Enum.Material.SmoothPlastic,false)
+							mark.CanCollide,mark.CanQuery=false,false
+						end
+					end
+				end
+			end
+		end)
+		if not ok then geometry:Destroy(); nodes:Destroy(); error(err) end
+		return geometry,nodes,data
+	end
+	function Factory.prepare(points,config,cuts,markingCuts)
+		local geometry,nodes,data=stage(points,config,false,cuts,markingCuts)
+		return {Geometry=geometry,Nodes=nodes,Data=data,PointCount=#points}
+	end
+	function Factory.commit(model,prepared)
+		assert(Factory.isRoad(model),'도로를 선택하세요.')
+		local geometry,nodes,data=prepared.Geometry,prepared.Nodes,prepared.Data
+		for _,name in {'Geometry','Nodes'} do
+			local old=model:FindFirstChild(name)
+			if old then old.Name='Previous'..name; if api.Retire then api.Retire(old) else old:Destroy() end end
+		end
+		geometry.Parent,nodes.Parent=model,model
+		for key,value in data.Config do model:SetAttribute(key,value) end
+		model:SetAttribute('LengthMeters',data.Length/Path.StudsPerMeter)
+		model:SetAttribute('NodeCount',prepared.PointCount)
+		model:SetAttribute('RoadSchemaVersion',1)
+		return model
+	end
+	function Factory.rebuild(model,points,config)
+		return Factory.commit(model,Factory.prepare(points,config))
+	end
+	function Factory.junction(plan)
+		local model=Instance.new('Model'); model.Name='TJunction'
+		model:SetAttribute('AssetKind','BoraRoadJunction')
+		local asphalt=Instance.new('Folder'); asphalt.Name,asphalt.Parent='Asphalt',model
+		local walks=Instance.new('Folder'); walks.Name,walks.Parent='Sidewalks',model
+		local ok,err=pcall(function()
+			for i,p in plan.Perimeter do
+				local q=plan.Perimeter[i%#plan.Perimeter+1]
+				if (p-plan.Center):Cross(q-plan.Center).Magnitude>.00001 then
+					triangle(asphalt,plan.Center,p,q,.6,Color3.fromRGB(57,60,65),Enum.Material.Asphalt,false)
+				end
+			end
+			local lift=Vector3.yAxis*(.12*Path.StudsPerMeter)
+			for _,band in plan.Bands do
+				local a,b,c,d=band[1]+lift,band[2]+lift,band[3]+lift,band[4]+lift
+				if (b-a):Cross(c-a).Magnitude>.00001 then triangle(walks,a,b,c,.7,Color3.fromRGB(170,172,166),Enum.Material.Concrete,false) end
+				if (c-a):Cross(d-a).Magnitude>.00001 then triangle(walks,a,c,d,.7,Color3.fromRGB(170,172,166),Enum.Material.Concrete,false) end
+			end
+			if plan.Traffic then
+				local marks=Instance.new('Folder'); marks.Name,marks.Parent='Markings',model
+				for _,mark in plan.Traffic.Markings do
+					local group=Instance.new('Folder'); group.Name,group.Parent=mark.Kind,marks; group:SetAttribute('Arm',mark.Arm)
+					if mark.Lane then group:SetAttribute('Lane',mark.Lane); group:SetAttribute('Directions',mark.Mask) end
+					local p=mark.Corners
+					triangle(group,p[1],p[2],p[3],.025,Color3.fromRGB(241,241,228),Enum.Material.SmoothPlastic,false)
+					if p[4] then triangle(group,p[1],p[3],p[4],.025,Color3.fromRGB(241,241,228),Enum.Material.SmoothPlastic,false) end
+					for _,piece in group:GetChildren() do piece.CanCollide,piece.CanQuery=false,false end
+				end
+				if Traffic then Traffic.buildSignals(model,plan) end
+			end
+		end)
+		if not ok then model:Destroy(); error(err) end
+		return model
+	end
+	function Factory.create(points,config,id)
+		local model=Instance.new('Model'); model.Name=utf8.char(0xB3C4,0xB85C)
+		model:SetAttribute('AssetKind','BoraRoadPath'); model:SetAttribute('ObjectId',id)
+		local ok,err=pcall(Factory.rebuild,model,points,config)
+		if not ok then model:Destroy(); error(err) end
+		return model
+	end
+	function Factory.preview(points,config)
+		local geometry,nodes=stage(points,config,true)
+		nodes:Destroy(); return geometry
+	end
+	return Factory
+end
+]]></string>
+      </Properties>
+    </Item>
+    <Item class="ModuleScript" referent="3">
+      <Properties>
+        <string name="Name"><![CDATA[RoadJunctions]]></string>
+        <string name="Source"><![CDATA[-- Geometry planning only. Persistent host references are managed by RoadNetwork.
+return function(Vector3,Path)
+	local J={}
+	local function flat(v) return Vector3.new(v.X,0,v.Z) end
+	local function cross(a,b) return a.X*b.Z-a.Z*b.X end
+	local function side(d) return Vector3.new(-d.Z,0,d.X) end
+	local function tangent(s) return Vector3.new(s.Side.Z,0,-s.Side.X) end
+	local function intersect(a,u,b,v)
+		local denominator=cross(u,v)
+		if math.abs(denominator)<.00001 then return nil end
+		local t=cross(b-a,v)/denominator
+		local k=cross(b-a,u)/denominator
+		return a+u*t,t,k
+	end
+	local function bezier(a,b,c,t) return a*(1-t)^2+b*(2*t*(1-t))+c*t*t end
+	-- Each through road supplies two arms; an attached endpoint supplies one.
+	function J.planApproaches(approaches)
+		local first=approaches[1]
+		local hub=Path.at(first.Data,first.At*first.Data.Length)
+		local center=hub.P+Vector3.yAxis*(first.Data.Config.Lift*Path.StudsPerMeter)
+		local arms,cuts={},{}
+		local radius=math.huge
+		for index,approach in approaches do
+			assert(approach.End==nil or approach.End=='Start' or approach.End=='End','Invalid junction endpoint')
+			local data=approach.Data
+			local distance=if approach.End=='Start' then 0 elseif approach.End=='End' then data.Length else approach.At*data.Length
+			local p=Path.at(data,distance)
+			local half=data.Config.Width*Path.StudsPerMeter*.5
+			radius=math.min(radius,half*.5)
+			cuts[index]={distance,distance}
+			for _,sign in (if approach.End=='Start' then {1} elseif approach.End=='End' then {-1} else {1,-1}) do
+				table.insert(arms,{Direction=tangent(p)*sign,Half=half,Walk=data.Config.Sidewalk*Path.StudsPerMeter,Data=data,Sign=sign,Anchor=distance,Approach=index})
+			end
+		end
+		assert(#arms==3 or #arms==4,'교차로에는 세 방향 또는 네 방향만 연결할 수 있습니다.')
+		for _,arm in arms do arm.Angle=math.atan2(arm.Direction.Z,arm.Direction.X); arm.Trim=radius+2 end
+		table.sort(arms,function(a,b) return a.Angle<b.Angle end)
+		for i,a in arms do
+			local b=arms[i%#arms+1]
+			local gap=(b.Angle-a.Angle)%(math.pi*2)
+			assert(gap>=math.acos(.72) and gap<=math.pi+.01,'교차로 진입 각도는 약 45~135도로 만드세요.')
+			a.Back=gap>math.pi-.01
+			if not a.Back then
+				local _,u,v=intersect(center+side(a.Direction)*a.Half,a.Direction,center-side(b.Direction)*b.Half,b.Direction)
+				assert(u and u>=0 and v>=0,'교차로 모서리를 구성할 수 없습니다. 폭 또는 진입 각도를 조절하세요.')
+				a.Trim=math.max(a.Trim,u+radius+2); b.Trim=math.max(b.Trim,v+radius+2)
+			end
+		end
+		for _,arm in arms do
+			local endDistance=arm.Anchor+arm.Sign*arm.Trim
+			assert(endDistance>1 and endDistance<arm.Data.Length-1,'교차로가 도로 끝에 너무 가깝습니다. 도로를 더 길게 그리세요.')
+			local s=Path.at(arm.Data,endDistance)
+			local p=s.P+Vector3.yAxis*(arm.Data.Config.Lift*Path.StudsPerMeter)
+			local left=s.Side*(arm.Sign*s.Miter)
+			arm.Left,arm.Right=p+left*arm.Half,p-left*arm.Half
+			arm.OuterLeft,arm.OuterRight=p+left*(arm.Half+arm.Walk),p-left*(arm.Half+arm.Walk)
+			arm.PortalDirection=tangent(s)*arm.Sign
+			local cut=cuts[arm.Approach]
+			cut[1],cut[2]=math.min(cut[1],endDistance),math.max(cut[2],endDistance)
+		end
+		local perimeter,bands={},{}
+		for i,a in arms do
+			local b=arms[i%#arms+1]
+			table.insert(perimeter,a.Right); table.insert(perimeter,a.Left)
+			local control,outerControl
+			if not a.Back then
+				control=intersect(a.Left,a.PortalDirection,b.Right,b.PortalDirection)
+				outerControl=intersect(a.OuterLeft,a.PortalDirection,b.OuterRight,b.PortalDirection)
+				assert(control and outerControl and flat(control-center).Magnitude<math.max(a.Trim,b.Trim)*3,'교차로 근처의 곡선을 더 완만하게 만드세요.')
+				control=Vector3.new(control.X,(a.Left.Y+b.Right.Y)*.5,control.Z)
+				outerControl=Vector3.new(outerControl.X,(a.OuterLeft.Y+b.OuterRight.Y)*.5,outerControl.Z)
+			end
+			local count=if a.Back then 1 else 10
+			local lastInner,lastOuter=a.Left,a.OuterLeft
+			for k=1,count do
+				local t=k/count
+				local inner=if a.Back then a.Left:Lerp(b.Right,t) else bezier(a.Left,control,b.Right,t)
+				local outer=if a.Back then a.OuterLeft:Lerp(b.OuterRight,t) else bezier(a.OuterLeft,outerControl,b.OuterRight,t)
+				if k<count then table.insert(perimeter,inner) end
+				if a.Walk>0 or b.Walk>0 then table.insert(bands,{lastInner,lastOuter,outer,inner}) end
+				lastInner,lastOuter=inner,outer
+			end
+		end
+		for i,p in perimeter do
+			assert(cross(flat(p-center),flat(perimeter[i%#perimeter+1]-center))>=-.001,'교차로 코너가 겹칩니다. 진입부를 곧게 펴세요.')
+		end
+		return {Center=center,Perimeter=perimeter,Bands=bands,Cuts=cuts,Arms=arms,Approaches=approaches}
+	end
+	function J.plan(host,branch,at,endpoint)
+		local plan=J.planApproaches({{Data=host,At=at},{Data=branch,End=endpoint}})
+		plan.HostCut,plan.BranchCut=plan.Cuts[1],plan.Cuts[2]
+		return plan
+	end
+	function J.checkCuts(cuts)
+		table.sort(cuts,function(a,b) return a[1]<b[1] end)
+		for i=2,#cuts do assert(cuts[i][1]>=cuts[i-1][2]+1,'교차로가 너무 가깝습니다. 연결점을 더 멀리 띄우세요.') end
+	end
+	return J
+end
+]]></string>
+      </Properties>
+    </Item>
+    <Item class="ModuleScript" referent="4">
+      <Properties>
+        <string name="Name"><![CDATA[RoadNetwork]]></string>
+        <string name="Source"><![CDATA[return function(api,Path,Roads,Junctions,Traffic,LaneDirections)
+	local Instance,Vector3=api.Instance,api.Vector3
+	local Network={}
+	local function retire(item)
+		if api.Retire then api.Retire(item) else item:Destroy() end
+	end
+	function Network.links(road)
+		local links={}; local folder=road:FindFirstChild('JunctionLinks')
+		if folder then
+			for _,ref in folder:GetChildren() do
+				if ref:IsA('ObjectValue') and Roads.isRoad(ref.Value) and ref.Value.Parent then
+					table.insert(links,{Host=ref.Value,At=ref:GetAttribute('At'),End=ref.Name})
+				end
+			end
+		end
+		return links
+	end
+	function Network.snap(folder,p,current,limit)
+		local best,target,link=limit or 8,p,nil
+		if not folder then return target end
+		-- Reuse the host of a saved hub when adding the opposite T arm. A
+		-- branch-to-branch attachment would otherwise produce overlapping patches.
+		local junctions=folder:FindFirstChild('Junctions')
+		if junctions then for _,junction in junctions:GetChildren() do
+			local ref=junction:FindFirstChild('Host'); local at=junction:GetAttribute('At')
+			local host=if ref and ref:IsA('ObjectValue') then ref.Value else nil
+			if Roads.isRoad(host) and host.Parent==folder and host~=current and type(at)=='number' then
+				local data=Path.sample(Roads.points(host),Roads.config(host))
+				local q=Path.at(data,data.Length*at).P
+				local delta=Vector3.new(p.X-q.X,0,p.Z-q.Z).Magnitude
+				if delta<best and math.abs(q.Y-p.Y)<3 then best,target,link=delta,q,{Host=host,At=at} end
+			end
+		end end
+		if link then return target,link end
+		for _,road in folder:GetChildren() do if Roads.isRoad(road) and road~=current then
+			local data=Path.sample(Roads.points(road),Roads.config(road))
+			local q,distance,delta=Path.project(data,p)
+			if distance<8 or distance>data.Length-8 then
+				distance=if distance<8 then 0 else data.Length
+				q=Path.at(data,distance).P
+				delta=Vector3.new(p.X-q.X,0,p.Z-q.Z).Magnitude
+			end
+			if delta<best and math.abs(q.Y-p.Y)<3 then
+				best,target=delta,q
+				link=if distance>1 and distance<data.Length-1 then {Host=road,At=distance/data.Length} else nil
+			end
+		end end
+		return target,link
+	end
+	function Network.attachEnds(folder,points,current)
+		local list,links=table.clone(points),{}
+		for _,index in {1,#points} do
+			local p,link=Network.snap(folder,points[index],current)
+			list[index]=p
+			if link then link.End=if index==1 then 'Start' else 'End'; table.insert(links,link) end
+		end
+		return list,links
+	end
+	local function samePoints(a,b)
+		if #a~=#b then return false end
+		for i,p in a do if (p-b[i]).Magnitude>.00001 then return false end end
+		return true
+	end
+	-- Plan/stage everything before touching saved objects, then commit in the
+	-- caller's single ChangeHistory recording. A rejected junction changes nothing.
+	function Network.apply(folder,changed,points,config,links,trafficInput,laneInput)
+		local previous=folder:FindFirstChild('Junctions')
+		assert(not previous or previous:GetAttribute('AssetKind')=='BoraRoadJunctions','Junctions 이름의 사용자 폴더가 있습니다.')
+		local states,order={},{ }
+		for _,road in folder:GetChildren() do if Roads.isRoad(road) then
+			local state={Road=road,Original=Roads.points(road),Config=Roads.config(road),Links=Network.links(road),Cuts={},MarkingCuts={},ReservedCuts={}}
+			state.Points=table.clone(state.Original); states[road]=state; table.insert(order,state)
+		end end
+		assert(#order<=256,'도로가 256개를 넘습니다. 구역 분리 지원이 필요합니다.')
+		if changed then
+			local state=assert(states[changed],'도로가 도로 폴더 밖에 있습니다.')
+			state.Points,state.Config=table.clone(points),Path.normalize(config)
+			if links then state.Links=links end
+		end
+		local function resolve(state)
+			if state.Data then return end
+			assert(not state.Resolving,'순환 연결은 아직 지원하지 않습니다. 한쪽 연결을 분리하세요.')
+			state.Resolving=true
+			local occupied={}
+			for _,link in state.Links do
+				assert(link.End=='Start' or link.End=='End','잘못된 연결 끝점입니다.')
+				assert(not occupied[link.End],'한 끝점에는 연결 하나만 가능합니다.'); occupied[link.End]=true
+				assert(type(link.At)=='number' and link.At>0 and link.At<1,'잘못된 교차로 위치입니다.')
+				local host=assert(states[link.Host],'연결 대상 도로가 없습니다.')
+				resolve(host)
+				local p=Path.at(host.Data,host.Data.Length*link.At).P
+				state.Points[if link.End=='Start' then 1 else #state.Points]=p+Vector3.yAxis*((host.Config.Lift-state.Config.Lift)*Path.StudsPerMeter)
+			end
+			state.Data=Path.sample(state.Points,state.Config); state.Resolving=false
+		end
+		for _,state in order do resolve(state) end
+		local groups={}
+		local function anchor(approach)
+			return if approach.End=='Start' then 0 elseif approach.End=='End' then approach.Data.Length else approach.At*approach.Data.Length
+		end
+		local function findGroup(state,distance)
+			for _,group in groups do for _,approach in group do
+				if approach.State==state and math.abs(anchor(approach)-distance)<.05 then return group end
+			end end
+		end
+		local function add(group,state,at,endpoint)
+			for _,approach in group do
+				if approach.State==state then
+					assert(approach.End==endpoint,'한 도로가 같은 교차로에 중복 진입합니다.')
+					return
+				end
+			end
+			table.insert(group,{State=state,Data=state.Data,At=at,End=endpoint})
+		end
+		for _,state in order do for _,link in state.Links do
+			local host=states[link.Host]
+			local group=findGroup(host,link.At*host.Data.Length)
+			if not group then group={}; table.insert(groups,group); add(group,host,link.At) end
+			add(group,state,nil,link.End)
+		end end
+		-- Interior crossings are derived from the sampled centerlines. Both
+		-- roads retain their editable nodes and are rebuilt together after edits.
+		for i,a in order do for j=i+1,#order do
+			local b=order[j]
+			for _,hit in Path.crossings(a.Data,b.Data) do
+				local ga,gb=findGroup(a,hit.A),findGroup(b,hit.B)
+				local group=ga or gb
+				if ga and gb and ga~=gb then
+					for _,approach in gb do add(ga,approach.State,approach.At,approach.End) end
+					for k,candidate in groups do if candidate==gb then table.remove(groups,k); break end end
+				end
+				if not group then group={}; table.insert(groups,group) end
+				add(group,a,hit.A/a.Data.Length); add(group,b,hit.B/b.Data.Length)
+			end
+		end end
+		local planned,stats={},{T=0,Cross=0,Limited=0,LimitedArrows=0}
+		local trafficSettings=if Traffic then (if trafficInput then Traffic.normalize(trafficInput) else Traffic.config(folder)) else nil
+		for _,group in groups do
+			local plan=Junctions.planApproaches(group)
+			plan.Host,plan.Branch=group[1].State.Road,group[2].State.Road
+			plan.End,plan.At=group[2].End or 'Cross',group[1].At
+			for i,approach in group do table.insert(approach.State.Cuts,plan.Cuts[i]) end
+			local kind=if #plan.Arms==4 then 'Cross' else 'T'; stats[kind]+=1
+			table.insert(planned,plan)
+		end
+		for _,state in order do Junctions.checkCuts(state.Cuts) end
+		local laneSerial=folder:GetAttribute('LaneSerial') or 0
+		if LaneDirections then laneSerial=LaneDirections.bind(planned,previous,laneSerial,laneInput) end
+		if Traffic then
+			for _,plan in planned do
+				local group=plan.Approaches
+				for _,arm in plan.Arms do
+					local portal=arm.Anchor+arm.Sign*arm.Trim
+					local room=math.huge
+					for _,cut in group[arm.Approach].State.Cuts do
+						if cut~=plan.Cuts[arm.Approach] then
+							local gap=if arm.Sign==1 then cut[1]-portal else portal-cut[2]
+							if gap>0 then room=math.min(room,gap*.5-1) end
+						end
+					end
+					arm.TrafficRoom=room
+				end
+				local decoration=Traffic.plan(plan,trafficSettings)
+				stats.Limited+=decoration.Limited
+				stats.LimitedArrows+=decoration.LimitedArrows or 0
+				local reserved={}; for i,cut in plan.Cuts do reserved[i]={cut[1],cut[2]} end
+				for _,cut in decoration.Cuts do
+					table.insert(group[cut.Approach].State.MarkingCuts,cut.Range)
+					local range=reserved[cut.Approach]; range[1],range[2]=math.min(range[1],cut.Range[1]),math.max(range[2],cut.Range[2])
+				end
+				for i,approach in group do table.insert(approach.State.ReservedCuts,reserved[i]) end
+			end
+		end
+		for _,state in order do Junctions.checkCuts(state.Cuts); Junctions.checkCuts(state.ReservedCuts) end
+		local staged={}; local junctionFolder=Instance.new('Folder'); junctionFolder.Name='Junctions'
+		junctionFolder:SetAttribute('AssetKind','BoraRoadJunctions')
+		local ok,err=pcall(function()
+			for _,state in order do
+				if state.Road==changed or #state.Cuts>0 or state.Road:GetAttribute('JunctionCut') or not samePoints(state.Points,state.Original) then
+					state.Prepared=Roads.prepare(state.Points,state.Config,state.Cuts,state.MarkingCuts); table.insert(staged,state)
+				end
+			end
+			for i,plan in planned do
+				local model=Roads.junction(plan); model.Name=(if #plan.Arms==4 then 'XJunction_' else 'TJunction_')..i
+				model.Parent=junctionFolder
+				model:SetAttribute('Endpoint',plan.End); model:SetAttribute('At',plan.At)
+				model:SetAttribute('ArmCount',#plan.Arms); model:SetAttribute('Center',plan.Center)
+				if plan.Traffic then model:SetAttribute('LimitedApproaches',plan.Traffic.Limited) end
+				if LaneDirections then LaneDirections.write(model,plan) end
+				for key,road in {Host=plan.Host,Branch=plan.Branch} do local ref=Instance.new('ObjectValue'); ref.Name,ref.Value,ref.Parent=key,road,model end
+				local members=Instance.new('Folder'); members.Name='Members'; members.Parent=model
+				for n,approach in plan.Approaches do
+					local ref=Instance.new('ObjectValue'); ref.Name,ref.Value='Road'..n,approach.State.Road
+					ref:SetAttribute('At',approach.At); ref:SetAttribute('Endpoint',approach.End); ref.Parent=members
+				end
+				model.Parent=junctionFolder
+			end
+		end)
+		if not ok then
+			for _,state in staged do state.Prepared.Geometry:Destroy(); state.Prepared.Nodes:Destroy() end
+			junctionFolder:Destroy(); error(err)
+		end
+		for _,state in staged do
+			Roads.commit(state.Road,state.Prepared)
+			state.Road:SetAttribute('JunctionCut',if #state.Cuts>0 then true else nil)
+		end
+		if changed and links then
+			local old=changed:FindFirstChild('JunctionLinks'); if old then retire(old) end
+			local saved=Instance.new('Folder'); saved.Name='JunctionLinks'
+			for _,link in links do
+				local ref=Instance.new('ObjectValue'); ref.Name,ref.Value=link.End,link.Host
+				ref:SetAttribute('At',link.At); ref.Parent=saved
+			end
+			saved.Parent=changed
+		end
+		local old=folder:FindFirstChild('Junctions'); if old then retire(old) end
+		junctionFolder.Parent=folder; folder:SetAttribute('JunctionVersion',2)
+		if LaneDirections then folder:SetAttribute('LaneSerial',laneSerial) end
+		if trafficSettings then for key,value in trafficSettings do folder:SetAttribute(key,value) end end
+		return #planned,stats
+	end
+	function Network.edit(folder,road,points,config,reconnect)
+		local links
+		if reconnect then points,links=Network.attachEnds(folder,points,road) end
+		return Network.apply(folder,road,points,config,links)
+	end
+	function Network.setLane(folder,junction,road,sign,lane,mask)
+		assert(LaneDirections,'차로 편집 모듈이 없습니다.')
+		return Network.apply(folder,nil,nil,nil,nil,nil,{Junction=junction,Road=road,Sign=sign,Lane=lane,Mask=mask})
+	end
+	return Network
+end
+]]></string>
+      </Properties>
+    </Item>
+    <Item class="ModuleScript" referent="5">
+      <Properties>
+        <string name="Name"><![CDATA[RoadTraffic]]></string>
+        <string name="Source"><![CDATA[-- Distances in the inspector are meters. Markings follow the actual road
+-- samples beyond each junction portal, including slopes and curved approaches.
+return function(api,Path,LaneDirections,Assets)
+	local V,Instance,CFrame,Color3,Enum=api.Vector3,api.Instance,api.CFrame,api.Color3,api.Enum
+	local T={}
+	assert(Assets and Assets.Vehicle and Assets.Pedestrian,'Missing measured signal asset layout')
+	T.AssetLayout=Assets
+	T.Defaults={Crosswalks=true,StopLines=true,Signals=true,PedestrianSignals=true,CrosswalkWidth=3,CrosswalkOffset=.6,StopGap=1,GreenSeconds=12,LeftSeconds=8,WalkSeconds=10,FlashSeconds=4}
+	T.Limits={CrosswalkWidth={2,6},CrosswalkOffset={0,5},StopGap={.5,4},GreenSeconds={5,60},LeftSeconds={4,40},WalkSeconds={6,60},FlashSeconds={2,10}}
+	function T.normalize(input)
+		local out={}
+		for key,value in T.Defaults do
+			local x=if input[key]==nil then value else input[key]
+			if type(value)=='boolean' then assert(type(x)=='boolean',key..' 설정을 확인하세요.')
+			else local bounds=T.Limits[key]; assert(type(x)=='number' and x==x and x>=bounds[1] and x<=bounds[2],key..' 범위를 확인하세요.') end
+			out[key]=x
+		end
+		return out
+	end
+	function T.config(folder)
+		local input={}; for key in T.Defaults do input[key]=folder:GetAttribute(key) end
+		return T.normalize(input)
+	end
+	function T.savedMask(junction,index)
+		local rules=junction:FindFirstChild('LaneDirections')
+		if rules then for _,rule in rules:GetChildren() do if rule:GetAttribute('Arm')==index then
+			local mask=0
+			for lane=1,rule:GetAttribute('Count') or 0 do mask=bit32.bor(mask,rule:GetAttribute('Lane'..lane) or 0) end
+			if mask>0 then return mask end
+		end end end
+	end
+	local function section(arm,outward)
+		local s=Path.at(arm.Data,arm.Anchor+arm.Sign*(arm.Trim+outward))
+		local p=s.P+V.yAxis*(arm.Data.Config.Lift*Path.StudsPerMeter+.045)
+		return p,s.Side*(arm.Sign*s.Miter)
+	end
+	function T.plan(plan,input)
+		local settings=T.normalize(input); local scale=Path.StudsPerMeter
+		local result={Settings=settings,Markings={},Signals={},Pedestrians={},Cuts={},Limited=0}
+		local offset=settings.CrosswalkOffset*scale
+		local depth=if settings.Crosswalks then settings.CrosswalkWidth*scale else 0
+		local stopStart=offset+depth+settings.StopGap*scale
+		local reach=if settings.StopLines then stopStart+.4*scale elseif settings.Crosswalks then offset+depth else 0
+		for index,arm in plan.Arms do
+			local remaining=if arm.Sign==1 then arm.Data.Length-arm.Anchor-arm.Trim else arm.Anchor-arm.Trim
+			remaining=math.min(remaining,arm.TrafficRoom or math.huge)
+			local paint=reach==0 or remaining>reach+1
+			if not paint then result.Limited+=1 end
+			local function quad(kind,a,b,left,right)
+				local p,u=section(arm,a); local q,v=section(arm,b)
+				table.insert(result.Markings,{Kind=kind,Corners={p+u*left,p+u*right,q+v*right,q+v*left},Arm=index})
+			end
+			if settings.Crosswalks and paint then
+				local edge=.2*scale
+				local width=2*arm.Half-2*edge
+				local n=math.max(2,math.floor(width/scale))
+				local pitch=width/n; local stripe=math.min(.5*scale,pitch*.55)
+				for i=1,n do
+					local lateral=-arm.Half+edge+pitch*(i-.5)
+					-- Slice long stripes so they stay on a bend or slope.
+					for s=1,3 do quad('Crosswalk',offset+depth*(s-1)/3,offset+depth*s/3,lateral-stripe*.5,lateral+stripe*.5) end
+				end
+				if settings.PedestrianSignals then
+					local p,u=section(arm,offset+depth*.5)
+					local lateral=arm.Half+math.max(arm.Walk*.5,.45*scale)
+					for _,sign in {-1,1} do
+						table.insert(result.Pedestrians,{Position=p+u*(sign*lateral),Direction=-u.Unit*sign,Arm=index,Side=sign})
+					end
+				end
+			end
+			if settings.StopLines and paint then
+				-- Path.Side is outward-right. Approaching cars use its negative
+				-- half in right-hand traffic; a one-lane alley uses its full width.
+				local lanes=Path.lanes(arm.Data.Config,arm.Sign)
+				local right=if arm.Data.Config.Lanes==1 then arm.Half-.15*scale else arm.Sign*lanes.Divider-.15*scale
+				quad('StopLine',stopStart,stopStart+.4*scale,-arm.Half+.15*scale,right)
+			end
+			if reach>0 and paint then
+				local a,b=arm.Anchor+arm.Sign*arm.Trim,arm.Anchor+arm.Sign*(arm.Trim+reach+.15*scale)
+				table.insert(result.Cuts,{Approach=arm.Approach,Range={math.min(a,b),math.max(a,b)}})
+			end
+			if settings.Signals then
+				local p,left=section(arm,offset*.5)
+				local direction=V.new(left.Z,0,-left.X).Unit
+				local phase=if math.abs(arm.Direction:Dot(plan.Arms[1].Direction))>.72 then 1 else 2
+				local mask=0
+				if plan.LaneRules then for _,value in plan.LaneRules[index].Masks do mask=bit32.bor(mask,value) end
+				else
+					-- Older callers without lane rules retain straight phases when
+					-- there is an opposing exit, turns at a terminating approach.
+					for _,other in plan.Arms do if other~=arm then
+						local incoming=-arm.Direction
+						local cross=incoming.X*other.Direction.Z-incoming.Z*other.Direction.X
+						mask=bit32.bor(mask,if incoming:Dot(other.Direction)>.72 then 1 elseif cross<0 then 2 else 4)
+					end end
+					if bit32.band(mask,1)~=0 then mask=1 end
+				end
+				table.insert(result.Signals,{Position=p-left*(arm.Half+math.max(arm.Walk*.5,.45*scale)),Direction=direction,Side=left.Unit,Half=arm.Half,Phase=phase,Arm=index,Mask=mask})
+			end
+		end
+		if LaneDirections and plan.LaneRules then LaneDirections.decorate(plan,settings,result,section) end
+		plan.Traffic=result
+		return result
+	end
+	local function part(parent,name,size,frame,color,collide)
+		local item=Instance.new('Part'); item.Name,item.Size,item.CFrame,item.Color=name,size,frame,color
+		item.Anchored,item.CanCollide,item.CanTouch,item.CanQuery=true,collide,false,collide
+		item.Material=Enum.Material.SmoothPlastic; item.TopSurface,item.BottomSurface=Enum.SurfaceType.Smooth,Enum.SurfaceType.Smooth
+		item.Parent=parent; return item
+	end
+	function T.configureSignal(model,arm,mask)
+		assert(mask and mask>=1 and mask<=7,'Missing lane directions for signal')
+		model:SetAttribute('Arm',arm);model:SetAttribute('MovementMask',mask)
+		model:SetAttribute('SignalProgramVersion',2);model:SetAttribute('RightTurnPolicy','StopAndYield')
+		model:SetAttribute('StraightAllowed',false);model:SetAttribute('LeftAllowed',false)
+		model:SetAttribute('RightTurnAllowed',false);model:SetAttribute('RightTurnMustYield',bit32.band(mask,4)~=0)
+		model:SetAttribute('LightState',nil)
+		local scale=Path.StudsPerMeter;local frame=model.TripoHead.CFrame
+		for i,name in {'Red','Amber','Green'} do
+			local center=if name=='Green' and bit32.band(mask,2)~=0 then Assets.Vehicle.ExtensionCenter else Assets.Vehicle.Centers[i]
+			model[name].CFrame=frame*CFrame.new(V.new(table.unpack(center))*scale)
+		end
+		if bit32.band(mask,2)==0 then return end
+		-- Use the third Tripo cup for the arrow, adding a fourth matching
+		-- housing for straight green. Keep the existing pole/mount/head intact.
+		local housing=model:FindFirstChild('GreenHousing')
+		if not housing then housing=part(model,'GreenHousing',V.new(.74,.73,1.15)*scale,frame,Color3.new(1,1,1),false) end
+		housing.Size,housing.CFrame,housing.Color=V.new(.74,.73,1.15)*scale,frame,Color3.new(1,1,1)
+		local mesh=housing:FindFirstChildOfClass('SpecialMesh')
+		if not mesh then mesh=Instance.new('SpecialMesh');mesh.Parent=housing end
+		mesh.MeshType=Enum.MeshType.FileMesh;mesh.MeshId='rbxasset://BoraRoadKit/TrafficSignalExtension.mesh'
+		mesh.TextureId='rbxasset://BoraRoadKit/TrafficSignal.png';mesh.Scale=V.one*scale
+		local center=V.new(table.unpack(Assets.Vehicle.Centers[3]))
+		local backing=model:FindFirstChild('LeftBacking') or part(model,'LeftBacking',V.new(.33,.33,.025)*scale,frame,Color3.fromRGB(12,16,14),false)
+		backing.CFrame=frame*CFrame.new((center-V.zAxis*.005)*scale)
+		local arrow=model:FindFirstChild('Left')
+		if not arrow then arrow=Instance.new('Folder');arrow.Name,arrow.Parent='Left',model end
+		arrow:SetAttribute('SignalLamp','Left')
+		for i,line in {{-.11,0,.10,0},{.10,0,.015,.085},{.10,0,.015,-.085}} do
+			local a,b=V.new(line[1],line[2],0),V.new(line[3],line[4],0)
+			local delta=b-a
+			local segment=arrow:FindFirstChild('Segment'..i) or part(arrow,'Segment'..i,V.new(delta.Magnitude,.035,.015)*scale,frame,Color3.fromRGB(21,25,24),false)
+			segment.CFrame=frame*CFrame.new((center-V.zAxis*.032+(a+b)*.5)*scale)*CFrame.Angles(0,0,math.atan2(delta.Y,delta.X))
+		end
+	end
+	local function glyph(parent,frame,center,walking,scale)
+		local group=Instance.new('Folder'); group.Name=if walking then 'WalkIcon' else 'StopIcon'; group.Parent=parent
+		local color=if walking then Color3.fromRGB(45,245,119) else Color3.fromRGB(255,52,39)
+		local points=if walking then {
+			{0,.055,-.008,-.005},{-.008,-.005,-.042,-.04},{-.042,-.04,-.065,-.075},
+			{-.008,-.005,.026,-.032},{.026,-.032,.06,-.045},
+			{0,.05,-.027,.025},{-.027,.025,-.052,.043},{0,.05,.028,.07},{.028,.07,.057,.048},
+		} else {
+			{0,.06,0,-.015},{-.006,-.015,-.023,-.095},{.006,-.015,.023,-.095},
+			{0,.055,-.035,.012},{0,.055,.035,.012},
+		}
+		local function point(x,y) return center+V.new(x,y,0)*scale end
+		for i,line in points do
+			local a,b=point(line[1],line[2]),point(line[3],line[4]); local delta=b-a
+			local angle=math.atan2(delta.Y,delta.X)
+			local item=part(group,'Segment'..i,V.new(delta.Magnitude,.018*scale,.009*scale),frame*CFrame.new((a+b)*.5)*CFrame.Angles(0,0,angle),color,false)
+			item.Material=Enum.Material.Neon; item.Transparency=if walking then 1 else 0
+		end
+		local head=part(group,'Head',V.new(.044,.044,.009)*scale,frame*CFrame.new(point(0,.105)),color,false)
+		local sphere=Instance.new('SpecialMesh'); sphere.MeshType=Enum.MeshType.Sphere; sphere.Parent=head
+		head.Material=Enum.Material.Neon; head.Transparency=if walking then 1 else 0
+	end
+	function T.buildPedestrians(parent,plan)
+		local folder=Instance.new('Folder'); folder.Name,folder.Parent='PedestrianSignals',parent
+		local scale=Path.StudsPerMeter
+		for _,signal in plan.Traffic.Pedestrians do
+			local model=Instance.new('Model'); model.Name='Pedestrian_'..signal.Arm..'_'..(if signal.Side>0 then 'Right' else 'Left'); model.Parent=folder
+			local layout=Instance.new('StringValue');layout.Name='BoraDisplayLayout';layout.Value=Assets.Pedestrian.LayoutJson;layout.Parent=model
+			model:SetAttribute('CrosswalkArm',signal.Arm); model:SetAttribute('SignalKind','Pedestrian'); model:SetAttribute('AssetSource','Tripo Studio')
+			local pole=signal.Position+V.yAxis*(.12*scale-.045)
+			part(model,'Base',V.new(.3,.12,.3)*scale,CFrame.new(pole+V.yAxis*(.06*scale)),Color3.fromRGB(98,103,105),true)
+			part(model,'Pole',V.new(.10,2.6,.10)*scale,CFrame.new(pole+V.yAxis*(1.3*scale)),Color3.fromRGB(131,139,139),true)
+			local position=pole+V.yAxis*(2.1*scale)+signal.Direction*(.12*scale)
+			local frame=CFrame.lookAt(position,position+signal.Direction)
+			local head=part(model,'TripoPedestrianHead',V.new(table.unpack(Assets.Pedestrian.Bounds))*scale,frame,Color3.new(1,1,1),false)
+			local mesh=Instance.new('SpecialMesh'); mesh.MeshType=Enum.MeshType.FileMesh
+			mesh.MeshId='rbxasset://BoraRoadKit/PedestrianSignal.mesh'; mesh.TextureId='rbxasset://BoraRoadKit/PedestrianSignal.png'; mesh.Scale=V.one*scale; mesh.Parent=head
+			-- Display centers are calibrated against the generated Tripo mesh.
+			glyph(model,frame,V.new(table.unpack(Assets.Pedestrian.Centers[1]))*scale,false,scale)
+			glyph(model,frame,V.new(table.unpack(Assets.Pedestrian.Centers[2]))*scale,true,scale)
+		end
+	end
+	function T.buildSignals(parent,plan)
+		local folder=Instance.new('Folder'); folder.Name,folder.Parent='Signals',parent
+		for _,signal in plan.Traffic.Signals do
+			local scale=Path.StudsPerMeter
+			local model=Instance.new('Model'); model.Name='Signal_'..signal.Arm
+			model:SetAttribute('Phase',signal.Phase); model:SetAttribute('AssetSource','Tripo Studio'); model.Parent=folder
+			local poleHeight=5.5*scale
+			local pole=signal.Position-V.yAxis*.045
+			part(model,'Base',V.new(.48,.18,.48)*scale,CFrame.new(pole+V.yAxis*(.09*scale)),Color3.fromRGB(98,103,105),true)
+			part(model,'Pole',V.new(.16*scale,poleHeight,.16*scale),CFrame.new(pole+V.yAxis*(poleHeight*.5)),Color3.fromRGB(131,139,139),true)
+			-- The head faces outward toward approaching traffic. Its long local X
+			-- axis runs across the lane; its front is local -Z.
+			local headPosition=pole+V.yAxis*(poleHeight-.35*scale)+signal.Side*(signal.Half*.7)
+			local frame=CFrame.lookAt(headPosition,headPosition+signal.Direction)
+			local mount=(pole+V.yAxis*(poleHeight-.35*scale)+headPosition)*.5
+			part(model,'Arm',V.new(.13*scale,.13*scale,(headPosition-(pole+V.yAxis*(poleHeight-.35*scale))).Magnitude),CFrame.lookAt(mount,headPosition),Color3.fromRGB(131,139,139),false)
+			local head=part(model,'TripoHead',V.new(table.unpack(Assets.Vehicle.Bounds))*scale,frame,Color3.new(1,1,1),false)
+			local mesh=Instance.new('SpecialMesh'); mesh.MeshType=Enum.MeshType.FileMesh
+			mesh.MeshId='rbxasset://BoraRoadKit/TrafficSignal.mesh'; mesh.TextureId='rbxasset://BoraRoadKit/TrafficSignal.png'
+			mesh.Scale=V.one*scale; mesh.Parent=head
+			-- Lens positions are calibrated against the generated mesh asset.
+			for i,name in {'Red','Amber','Green'} do
+				local lens=part(model,name,V.new(.30,.30,.035)*scale,frame*CFrame.new((2-i)*.66*scale,-.03*scale,-.418*scale),if name=='Red' then Color3.fromRGB(255,52,39) else Color3.fromRGB(25,29,28),false)
+				if name=='Red' then lens.Material=Enum.Material.Neon end
+				local sphere=Instance.new('SpecialMesh'); sphere.MeshType=Enum.MeshType.Sphere; sphere.Parent=lens
+				lens:SetAttribute('SignalLamp',name)
+			end
+			T.configureSignal(model,signal.Arm,signal.Mask)
+		end
+		T.buildPedestrians(parent,plan)
+	end
+	return T
+end
+]]></string>
+      </Properties>
+    </Item>
+    <Item class="ModuleScript" referent="6">
+      <Properties>
+        <string name="Name"><![CDATA[TrafficAssetLayout]]></string>
+        <string name="Source"><![CDATA[-- Measured from the approved Clean signal meshes; generated by activate_clean_signals.py.
+return {Vehicle={Bounds={2.09954297542572,0.7279999852180481,1.150311827659607},Centers={{0.6349567978095019,-0.03696212351004127,-0.41637285844424515},{0.0003733330706559077,-0.03728292107112294,-0.41628874158104784},{-0.6342679358073239,-0.03715167205844319,-0.41634976915483096}},ExtensionCenter={-1.2688803026157367,-0.03715167205844319,-0.41634976915483096},Pitch=0.6346123668084129,CutX=-0.316947301368334},Pedestrian={Bounds={0.42399999499320984,0.8190000057220459,0.2662130296230316},Centers={{0,0.1815,-0.0305},{0,-0.2075,-0.0305}},LayoutJson='[[0,0.1815,-0.0305],[0,-0.2075,-0.0305]]'}}
+]]></string>
+      </Properties>
+    </Item>
+    <Item class="ModuleScript" referent="7">
+      <Properties>
+        <string name="Name"><![CDATA[LaneDirections]]></string>
+        <string name="Source"><![CDATA[-- Direction masks: straight=1, left=2, right=4. Persisted on each junction,
+-- keyed by the actual road reference and outward arc sign, never screen order.
+return function(api,Path)
+	local V,Instance=api.Vector3,api.Instance
+	local L={Straight=1,Left=2,Right=4}
+	function L.label(mask)
+		local names={};for _,item in {{2,'좌회전'},{1,'직진'},{4,'우회전'}} do if bit32.band(mask,item[1])~=0 then table.insert(names,item[2]) end end
+		return table.concat(names,'·')
+	end
+	local function signature(roads)
+		local ids={};for road in roads do table.insert(ids,tostring(road:GetAttribute('ObjectId'))) end;table.sort(ids)
+		return table.concat(ids,'|'),ids[1]
+	end
+	local function oldInfo(model)
+		local roads,anchors={},{}
+		local members=model:FindFirstChild('Members')
+		if members then for _,ref in members:GetChildren() do if ref:IsA('ObjectValue') and ref.Value then
+			roads[ref.Value]=true;anchors[ref.Value]=ref:GetAttribute('At') or (if ref:GetAttribute('Endpoint')=='End' then 1 else 0)
+		end end end
+		local key,canonical=signature(roads)
+		local distance=0;for road,at in anchors do if tostring(road:GetAttribute('ObjectId'))==canonical then distance=at end end
+		return {Model=model,Roads=roads,Anchors=anchors,Signature=key,Distance=distance,Center=model:GetAttribute('Center')}
+	end
+	function L.available(plan,arm)
+		local incoming=-arm.Direction;local mask=0
+		for _,other in plan.Arms do if other~=arm then
+			local dot=incoming:Dot(other.Direction)
+			local cross=incoming.X*other.Direction.Z-incoming.Z*other.Direction.X
+			local bit=if dot>.72 then 1 elseif cross<0 then 2 else 4
+			mask=bit32.bor(mask,bit)
+		end end
+		return mask
+	end
+	local function defaultMask(available,lane,count)
+		if bit32.band(available,1)~=0 then return 1 end
+		if count>1 then
+			local bit=if lane==1 then 2 else 4
+			if bit32.band(available,bit)~=0 then return bit end
+		end
+		return available
+	end
+	-- Pair equal-topology junctions by their longitudinal order. If a new
+	-- junction is inserted, only unchanged anchors are reused. T <-> X merges
+	-- also reuse the unique nearby junction sharing the original road pair.
+	function L.bind(plans,previous,serial,input)
+		local old,oldGroups,newGroups={},{},{}
+		if previous then for _,model in previous:GetChildren() do
+			serial=math.max(serial,tonumber(model:GetAttribute('LaneKey')) or 0)
+			local info=oldInfo(model);table.insert(old,info)
+			oldGroups[info.Signature]=oldGroups[info.Signature] or {};table.insert(oldGroups[info.Signature],info)
+		end end
+		for _,plan in plans do
+			plan.Roads,plan.Anchors={},{}
+			for _,a in plan.Approaches do
+				local road=a.State.Road;plan.Roads[road]=true
+				plan.Anchors[road]=a.At or (if a.End=='End' then 1 else 0)
+			end
+			local key,canonical=signature(plan.Roads);plan.Signature=key
+			for road,at in plan.Anchors do if tostring(road:GetAttribute('ObjectId'))==canonical then plan.Distance=at end end
+			newGroups[key]=newGroups[key] or {};table.insert(newGroups[key],plan)
+		end
+		for key,list in newGroups do
+			local candidates=oldGroups[key] or {}
+			table.sort(list,function(a,b) return a.Distance<b.Distance end)
+			table.sort(candidates,function(a,b) return a.Distance<b.Distance end)
+			if #list==#candidates then for i,plan in list do plan.Previous=candidates[i];candidates[i].Used=true end
+			else
+				for _,plan in list do
+					local closest,delta=nil,.0001
+					for _,candidate in candidates do
+						local d=math.abs(plan.Distance-candidate.Distance)
+						if not candidate.Used and d<delta then closest,delta=candidate,d end
+					end
+					if closest then plan.Previous=closest;closest.Used=true end
+				end
+			end
+		end
+		for _,plan in plans do if not plan.Previous then
+			local candidates={}
+			for _,candidate in old do if not candidate.Used then
+				local common=0;for road in plan.Roads do if candidate.Roads[road] then common+=1 end end
+				if common>=2 and candidate.Center and (candidate.Center-plan.Center).Magnitude<8 then table.insert(candidates,candidate) end
+			end end
+			if #candidates==1 then plan.Previous=candidates[1];candidates[1].Used=true end
+		end end
+		local applied=false
+		for _,plan in plans do
+			local oldModel=plan.Previous and plan.Previous.Model
+			plan.LaneKey=oldModel and oldModel:GetAttribute('LaneKey')
+			if not plan.LaneKey then serial+=1;plan.LaneKey=tostring(serial) end
+			plan.LaneRules={}
+			for index,arm in plan.Arms do
+				local road=plan.Approaches[arm.Approach].State.Road
+				local layout=Path.lanes(arm.Data.Config,arm.Sign)
+				local available=L.available(plan,arm)
+				local rule={Road=road,Sign=arm.Sign,Count=layout.Count,Available=available,Masks={},At=arm.Anchor/arm.Data.Length,Arm=index,Position=(arm.Left+arm.Right)*.5,ArrowVisible=false}
+				local saved=oldModel and oldModel:FindFirstChild('LaneDirections')
+				local prior
+				if saved then
+					assert(saved:GetAttribute('AssetKind')=='BoraLaneDirections','LaneDirections 이름의 사용자 폴더가 있습니다.')
+					for _,ref in saved:GetChildren() do if ref:IsA('ObjectValue') and ref.Value==road and ref:GetAttribute('Sign')==arm.Sign then prior=ref;break end end
+				end
+				for lane=1,layout.Count do
+					local mask=prior and prior:GetAttribute('Lane'..lane)
+					mask=if type(mask)=='number' then bit32.band(mask,available) else 0
+					rule.Masks[lane]=if mask>0 then mask else defaultMask(available,lane,layout.Count)
+				end
+				if input and oldModel==input.Junction and road==input.Road and arm.Sign==input.Sign then
+					assert(type(input.Lane)=='number' and input.Lane%1==0 and input.Lane>=1 and input.Lane<=layout.Count,'차로를 다시 선택하세요.')
+					assert(type(input.Mask)=='number' and input.Mask%1==0 and input.Mask>=1 and input.Mask<=7,'진행 방향을 하나 이상 선택하세요.')
+					assert(bit32.band(input.Mask,available)==input.Mask,'그 방향으로 연결되는 도로가 없습니다.')
+					rule.Masks[input.Lane]=input.Mask;applied=true
+				end
+				table.insert(plan.LaneRules,rule)
+			end
+		end
+		assert(not input or applied,'편집 대상 교차로가 바뀌었습니다. 진입로를 다시 선택하세요.')
+		return serial
+	end
+	function L.decorate(plan,settings,result,section)
+		local scale=Path.StudsPerMeter
+		local depth=if settings.Crosswalks then settings.CrosswalkWidth else 0
+		local base=settings.CrosswalkOffset+depth+(if settings.StopLines then settings.StopGap+.4 else 0)+1
+		local length=2.8;local finish=(base+length)*scale
+		for index,arm in plan.Arms do
+			local rule=plan.LaneRules[index];local layout=Path.lanes(arm.Data.Config,arm.Sign)
+			local room=if arm.Sign==1 then arm.Data.Length-arm.Anchor-arm.Trim else arm.Anchor-arm.Trim
+			room=math.min(room,arm.TrafficRoom or math.huge)
+			if room>finish+1 then
+				rule.ArrowVisible=true;rule.Position=section(arm,(base+length*.5)*scale)
+				for lane=1,layout.Count do
+					local mask=rule.Masks[lane];local width=layout.Width/scale*.55;local stem=.14
+					local function emit(points)
+						local corners={}
+						for _,p in points do
+							local center,u=section(arm,(base+length*.5-p[2])*scale)
+							table.insert(corners,center+u*(layout.Centers[lane]-p[1]*scale))
+						end
+						table.insert(result.Markings,{Kind='LaneArrow',Corners=corners,Arm=index,Lane=lane,Mask=mask})
+					end
+					local straight=bit32.band(mask,1)~=0
+					local top=if straight then .65 else .2+stem*.5
+					emit({{-stem*.5,-1.4},{stem*.5,-1.4},{stem*.5,top},{-stem*.5,top}})
+					if straight then emit({{-width*.24,.65},{width*.24,.65},{0,1.4}}) end
+					for _,turn in {{2,-1},{4,1}} do if bit32.band(mask,turn[1])~=0 then
+						local sign=turn[2]
+						emit({{sign*stem*.5,.2-stem*.5},{sign*width*.34,.2-stem*.5},{sign*width*.34,.2+stem*.5},{sign*stem*.5,.2+stem*.5}})
+						emit({{sign*width*.34,-.13},{sign*width*.34,.53},{sign*width*.5,.2}})
+					end end
+				end
+				local a,b=arm.Anchor+arm.Sign*arm.Trim,arm.Anchor+arm.Sign*(arm.Trim+finish+.15*scale)
+				table.insert(result.Cuts,{Approach=arm.Approach,Range={math.min(a,b),math.max(a,b)}})
+			else result.LimitedArrows=(result.LimitedArrows or 0)+1 end
+		end
+	end
+	function L.write(model,plan)
+		model:SetAttribute('LaneKey',plan.LaneKey)
+		local folder=Instance.new('Folder');folder.Name='LaneDirections';folder:SetAttribute('AssetKind','BoraLaneDirections');folder.Parent=model
+		for _,rule in plan.LaneRules do
+			local ref=Instance.new('ObjectValue');ref.Name,ref.Value='Approach'..rule.Arm,rule.Road
+			for key,value in {Sign=rule.Sign,Count=rule.Count,Available=rule.Available,At=rule.At,Arm=rule.Arm,Position=rule.Position,ArrowVisible=rule.ArrowVisible} do ref:SetAttribute(key,value) end
+			for lane,mask in rule.Masks do ref:SetAttribute('Lane'..lane,mask) end
+			ref.Parent=folder
+		end
+	end
+	function L.entries(folder,road)
+		local list={};local junctions=folder and folder:FindFirstChild('Junctions')
+		if junctions then for _,model in junctions:GetChildren() do
+			local rules=model:FindFirstChild('LaneDirections')
+			if rules and rules:GetAttribute('AssetKind')=='BoraLaneDirections' then for _,ref in rules:GetChildren() do
+				if ref:IsA('ObjectValue') and ref.Value and (not road or ref.Value==road) then
+					local item={Junction=model,Key=model:GetAttribute('LaneKey'),Road=ref.Value,Masks={}}
+					for _,key in {'Sign','Count','Available','At','Arm','Position','ArrowVisible'} do item[key]=ref:GetAttribute(key) end
+					for i=1,item.Count do item.Masks[i]=ref:GetAttribute('Lane'..i) end
+					table.insert(list,item)
+				end
+			end end
+		end end
+		table.sort(list,function(a,b) if a.At==b.At then return a.Sign<b.Sign end;return a.At<b.At end)
+		return list
+	end
+	return L
+end
+]]></string>
+      </Properties>
+    </Item>
+    <Item class="ModuleScript" referent="8">
+      <Properties>
+        <string name="Name"><![CDATA[TrafficTiming]]></string>
+        <string name="Source"><![CDATA[local Timing={}
+-- One protected movement runs at a time, including at skewed T/X junctions.
+function Timing.program(approaches)
+	local sorted=table.clone(approaches)
+	table.sort(sorted,function(a,b) return a.Arm<b.Arm end)
+	local phases,seen={},{}
+	for _,approach in sorted do
+		assert(type(approach.Arm)=='number' and approach.Arm%1==0 and approach.Arm>0 and not seen[approach.Arm],'Invalid signal arm')
+		assert(type(approach.Mask)=='number' and approach.Mask%1==0 and approach.Mask>=1 and approach.Mask<=7,'Invalid signal mask')
+		seen[approach.Arm]=true
+		for _,movement in {{1,'Straight'},{2,'Left'}} do
+			if bit32.band(approach.Mask,movement[1])~=0 then table.insert(phases,{Arm=approach.Arm,Movement=movement[2]}) end
+		end
+	end
+	-- An all-right-turn layout still needs a vehicle interval between walks;
+	-- it adds no right-turn lamp or protected right-turn movement.
+	if #phases==0 and #approaches>0 then table.insert(phases,{Arm=0,Movement='Yield'}) end
+	return phases
+end
+function Timing.duration(program,green,left,amber,clearance,walk,flash)
+	local total=0
+	for _,phase in program do total+=(if phase.Movement=='Left' then left else green)+amber+clearance end
+	if walk>0 then total+=walk+flash+clearance end
+	return total
+end
+function Timing.snapshot(time,program,green,left,amber,clearance,walk,flash)
+	local total=Timing.duration(program,green,left,amber,clearance,walk,flash)
+	local result={Movement='None',Stage='Clearance',Pedestrian='Red',WalkLit=false,PedestrianBlocked=false,CycleSeconds=total}
+	if total<=0 then return result end
+	local elapsed=time%total
+	for _,phase in program do
+		local duration=if phase.Movement=='Left' then left else green
+		local span=duration+amber+clearance
+		if elapsed<span then
+			result.Arm=phase.Arm;result.Movement=phase.Movement
+			result.Stage=if elapsed<duration then 'Green' elseif elapsed<duration+amber then 'Amber' else 'Clearance'
+			return result
+		end
+		elapsed-=span
+	end
+	if walk>0 then
+		result.PedestrianBlocked=true
+		if elapsed<walk then result.Pedestrian='Walk';result.WalkLit=true
+		elseif elapsed<walk+flash then result.Pedestrian='Flash';result.WalkLit=math.floor((elapsed-walk)*2)%2==0 end
+	end
+	return result
+end
+function Timing.lamps(snapshot,arm,mask)
+	local active=snapshot.Arm==arm
+	local straight=active and snapshot.Movement=='Straight' and bit32.band(mask,1)~=0
+	local left=active and snapshot.Movement=='Left' and bit32.band(mask,2)~=0
+	local green=straight and snapshot.Stage=='Green'
+	local arrow=left and snapshot.Stage=='Green'
+	local amber=(straight or left) and snapshot.Stage=='Amber'
+	return {Red=not green and not amber,Amber=amber,Green=green,Left=arrow,
+		StraightAllowed=green,LeftAllowed=arrow,
+		RightTurnAllowed=bit32.band(mask,4)~=0 and not snapshot.PedestrianBlocked and snapshot.Stage~='Clearance',
+		RightTurnMustYield=bit32.band(mask,4)~=0}
+end
+-- Compatibility helpers for previously generated two-phase models.
+function Timing.state(time,phase,green,amber,clearance,walk,flash)
+	local span=green+amber+clearance
+	local pedestrian=if walk and walk>0 then walk+(flash or 0)+clearance else 0
+	local cycle=time%(span*2+pedestrian)
+	if cycle>=span*2 then return 'Red' end
+	local active=if cycle<span then 1 else 2
+	local elapsed=cycle%span
+	if phase~=active or elapsed>=green+amber then return 'Red' end
+	return if elapsed<green then 'Green' else 'Amber'
+end
+function Timing.pedestrian(time,green,amber,clearance,walk,flash)
+	if walk<=0 then return 'Red',false end
+	local start=(green+amber+clearance)*2
+	local elapsed=time%(start+walk+flash+clearance)-start
+	if elapsed<0 or elapsed>=walk+flash then return 'Red',false end
+	if elapsed<walk then return 'Walk',true end
+	return 'Flash',math.floor((elapsed-walk)*2)%2==0
+end
+return Timing
+]]></string>
+      </Properties>
+    </Item>
+    <Item class="ModuleScript" referent="9">
+      <Properties>
+        <string name="Name"><![CDATA[MapGuideFactory]]></string>
+        <string name="Source"><![CDATA[return function(api)
+	local Instance,Vector3,CFrame,Vector2,UDim2,Enum=api.Instance,api.Vector3,api.CFrame,api.Vector2,api.UDim2,api.Enum
+	local Guide={DefaultImage='rbxasset://BoraRoadKit/MapReference.png',Aspect=2036/3970,StudsPerMeter=1/.28}
+	function Guide.isGuide(model)
+		return model and model:IsA('Model') and model:GetAttribute('AssetKind')=='BoraMapGuide'
+	end
+	function Guide.update(model,width,rotation,opacity)
+		assert(Guide.isGuide(model),'지도가 없습니다.')
+		assert(width==width and width>=100 and width<=16000,'지도 폭은 100~16000 studs입니다.')
+		assert(rotation==rotation and math.abs(rotation)<=180,'회전 범위를 확인하세요.')
+		assert(opacity==opacity and opacity>=0 and opacity<=1,'지도 진하기 범위를 확인하세요.')
+		local aspect=model:GetAttribute('Aspect') or Guide.Aspect
+		local widthChanged=model:GetAttribute('Width')~=width
+		local height=width*aspect
+		local base=CFrame.new(model.Root.CFrame.Position)*CFrame.Angles(0,math.rad(rotation),0)
+		local tiles=Instance.new('Folder'); tiles.Name='Tiles'
+		local columns,rows=math.ceil(width/2000),math.ceil(height/2000)
+		for row=0,rows-1 do for column=0,columns-1 do
+			local u0,v0,du,dv=column/columns,row/rows,1/columns,1/rows
+			local part=Instance.new('Part'); part.Name='MapTile'
+			-- Texture top-face U/V axes are -X/-Z. Image right/down follow
+			-- map -X/-Z, matching Studio's standard top view.
+			part.Size=Vector3.new(width*du,.04,height*dv)
+			part.CFrame=base*CFrame.new((.5-u0-du*.5)*width,0,(.5-v0-dv*.5)*height)
+			part:SetAttribute('U0',u0); part:SetAttribute('V0',v0)
+			part.Transparency,part.Anchored,part.CanCollide,part.CanTouch,part.CanQuery=1,true,false,false,false
+			part.Parent=tiles
+			-- SurfaceGui depth bias hides nearby roads at map-editing zoom.
+			-- A physical surface texture keeps the road at its real height.
+			local image=Instance.new('Texture'); image.Name='ReferenceImage'
+			image.Face,image.Texture=Enum.NormalId.Top,model:GetAttribute('Image') or Guide.DefaultImage
+			image.StudsPerTileU,image.StudsPerTileV=width,height
+			image.OffsetStudsU,image.OffsetStudsV=u0*width,v0*height
+			image.Transparency=if model:GetAttribute('Visible')~=false then 1-opacity else 1
+			image.Parent=part
+		end end
+		local old=model:FindFirstChild('Tiles')
+		if old then old.Name='PreviousTiles'; if api.Retire then api.Retire(old) else old:Destroy() end end
+		model.Root.CFrame,tiles.Parent=base,model
+		model:SetAttribute('Width',width); model:SetAttribute('Rotation',rotation); model:SetAttribute('Opacity',opacity)
+		model:SetAttribute('DisplayVersion',6)
+		if widthChanged then model:SetAttribute('Calibrated',false) end
+	end
+	function Guide.create()
+		local model=Instance.new('Model'); model.Name='BoraMapReference'
+		model:SetAttribute('AssetKind','BoraMapGuide'); model:SetAttribute('Aspect',Guide.Aspect)
+		model:SetAttribute('Image',Guide.DefaultImage); model:SetAttribute('Visible',true)
+		local root=Instance.new('Part'); root.Name,root.Size,root.CFrame='Root',Vector3.one*.1,CFrame.new(850,.03,0)
+		root.Transparency,root.Anchored,root.CanCollide,root.CanTouch,root.CanQuery=1,true,false,false,false
+		root.Parent=model; model.PrimaryPart=root
+		Guide.update(model,1200,0,.9)
+		return model
+	end
+	function Guide.visible(model,value)
+		model:SetAttribute('Visible',value)
+		for _,item in model.Tiles:GetDescendants() do
+			if item:IsA('Texture') then item.Transparency=if value then 1-model:GetAttribute('Opacity') else 1 end
+		end
+	end
+	function Guide.calibrate(model,a,b,meters)
+		assert(type(meters)=='number' and meters==meters and meters>0 and meters<=10000,'실제 거리를 m 단위로 입력하세요.')
+		local delta=Vector3.new(b.X-a.X,0,b.Z-a.Z)
+		assert(delta.Magnitude>=1,'기준점 두 개를 더 멀리 찍으세요.')
+		local factor=meters*Guide.StudsPerMeter/delta.Magnitude
+		local oldPosition=model.Root.CFrame.Position
+		local width=model:GetAttribute('Width')*factor
+		assert(width>=100 and width<=16000,'축척 결과가 너무 크거나 작습니다. 거리와 기준점을 확인하세요.')
+		Guide.update(model,width,model:GetAttribute('Rotation'),model:GetAttribute('Opacity'))
+		local position=Vector3.new(a.X+(oldPosition.X-a.X)*factor,oldPosition.Y,a.Z+(oldPosition.Z-a.Z)*factor)
+		local move=position-model.Root.CFrame.Position
+		for _,part in model.Tiles:GetChildren() do part.CFrame+=move end
+		model.Root.CFrame+=move
+		model:SetAttribute('Calibrated',true); model:SetAttribute('CalibrationMeters',meters)
+		return factor
+	end
+	return Guide
+end
+]]></string>
+      </Properties>
+    </Item>
+    <Item class="Script" referent="10">
+      <Properties>
+        <string name="Name"><![CDATA[RoadPlugin]]></string>
+        <string name="Source"><![CDATA[if not plugin then return end
+local RunService=game:GetService('RunService')
+if RunService:IsRunning() then return end
+local Selection=game:GetService('Selection')
+local History=game:GetService('ChangeHistoryService')
+local Input=game:GetService('UserInputService')
+local Http=game:GetService('HttpService')
+local snapshots={}
+local api={Instance=Instance,Vector3=Vector3,Vector2=Vector2,CFrame=CFrame,Color3=Color3,Enum=Enum,UDim2=UDim2}
+api.Retire=function(item) item.Parent=nil; table.insert(snapshots,item) end
+local Path=require(script.Parent.RoadPath)(Vector3)
+local Lanes=require(script.Parent.LaneDirections)(api,Path)
+local Traffic=require(script.Parent.RoadTraffic)(api,Path,Lanes,require(script.Parent.TrafficAssetLayout))
+local Roads=require(script.Parent.RoadNetworkFactory)(api,Path,Traffic)
+local Junctions=require(script.Parent.RoadJunctions)(Vector3,Path)
+local Network=require(script.Parent.RoadNetwork)(api,Path,Roads,Junctions,Traffic,Lanes)
+local Guides=require(script.Parent.MapGuideFactory)(api)
+local toolbar=plugin:CreateToolbar('보라동 도로')
+local openButton=toolbar:CreateButton('BoraRoadEditor','지도 위에 점을 찍어 도로를 그립니다.','','지도 · 도로')
+local widget=plugin:CreateDockWidgetPluginGuiAsync('BoraRoadInspector_v1_float',DockWidgetPluginGuiInfo.new(Enum.InitialDockState.Float,false,true,360,820,330,500))
+widget.Title='지도 · 도로 편집'
+local background=Instance.new('Frame')
+background.Size,background.BackgroundColor3,background.BorderSizePixel,background.Parent=UDim2.fromScale(1,1),Color3.fromRGB(30,34,40),0,widget
+local scroll=Instance.new('ScrollingFrame')
+scroll.Name,scroll.Position,scroll.Size='Controls',UDim2.fromOffset(0,48),UDim2.new(1,0,1,-132)
+scroll.CanvasSize,scroll.ScrollBarThickness,scroll.BackgroundTransparency,scroll.BorderSizePixel=UDim2.fromOffset(0,665),5,1,0
+scroll.Parent=background
+local mapPage=Instance.new('Frame'); mapPage.Name='MapControls'
+mapPage.Size,mapPage.BackgroundTransparency,mapPage.Parent=UDim2.new(1,0,0,660),1,scroll
+local roadPage=mapPage:Clone(); roadPage.Name,roadPage.Visible,roadPage.Parent='RoadControls',false,scroll
+local lanePage=mapPage:Clone(); lanePage.Name,lanePage.Visible,lanePage.Parent='LaneControls',false,scroll
+local refreshLanes,leaveLaneMode
+local function text(parent,name,value,x,y,width,height,size)
+	local item=Instance.new('TextLabel')
+	item.Name,item.Text,item.Position,item.Size=name,value,UDim2.fromOffset(x,y),width or UDim2.new(1,-24,0,height or 26)
+	item.BackgroundTransparency,item.TextColor3,item.TextSize=1,Color3.fromRGB(230,235,237),size or 15
+	item.Font,item.TextXAlignment,item.TextWrapped=Enum.Font.SourceSans,Enum.TextXAlignment.Left,true
+	item.Parent=parent; return item
+end
+local function button(parent,name,value,x,y,size)
+	local item=Instance.new('TextButton')
+	item.Name,item.Text,item.Position,item.Size=name,value,UDim2.fromOffset(x,y),size or UDim2.new(1,-24,0,34)
+	item.BackgroundColor3,item.TextColor3,item.Font,item.TextSize=Color3.fromRGB(65,111,99),Color3.new(1,1,1),Enum.Font.SourceSansSemibold,16
+	item.Parent=parent; return item
+end
+local function box(parent,name,value,x,y,size)
+	local item=Instance.new('TextBox')
+	item.Name,item.Text,item.ClearTextOnFocus=name,tostring(value),false
+	item.Position,item.Size=UDim2.fromOffset(x,y),size or UDim2.fromOffset(80,29)
+	item.BackgroundColor3,item.TextColor3,item.Font,item.TextSize=Color3.fromRGB(47,54,63),Color3.fromRGB(243,241,227),Enum.Font.SourceSans,17
+	item.Parent=parent; return item
+end
+local mapTab=button(background,'MapTab','지도 · 축척',12,7,UDim2.new(1/3,-16,0,33))
+local roadTab=button(background,'RoadTab','도로 그리기',0,7,UDim2.new(1/3,-16,0,33))
+roadTab.Position=UDim2.new(1/3,6,0,7)
+local laneTab=button(background,'LaneTab','차로 방향',0,7,UDim2.new(1/3,-16,0,33)); laneTab.Position=UDim2.new(2/3,0,0,7)
+local status=text(background,'Status','지도 축척을 먼저 맞추고 도로를 그리세요.',12,0,nil,72,15)
+status.Position,status.Size=UDim2.new(0,12,1,-77),UDim2.new(1,-24,0,72)
+local function showTab(road)
+	if leaveLaneMode then leaveLaneMode() end
+	lanePage.Visible=false; laneTab.BackgroundColor3=Color3.fromRGB(49,57,65)
+	mapPage.Visible,roadPage.Visible=not road,road
+	mapTab.BackgroundColor3=if road then Color3.fromRGB(49,57,65) else Color3.fromRGB(65,111,99)
+	roadTab.BackgroundColor3=if road then Color3.fromRGB(65,111,99) else Color3.fromRGB(49,57,65)
+	scroll.CanvasPosition=Vector2.zero
+	scroll.CanvasSize=UDim2.fromOffset(0,if road then 1435 else 665)
+end
+mapTab.Activated:Connect(function() showTab(false) end)
+roadTab.Activated:Connect(function() showTab(true) end)
+local function showLaneTab()
+	mapPage.Visible,roadPage.Visible,lanePage.Visible=false,false,true
+	mapTab.BackgroundColor3,roadTab.BackgroundColor3,laneTab.BackgroundColor3=Color3.fromRGB(49,57,65),Color3.fromRGB(49,57,65),Color3.fromRGB(65,111,99)
+	scroll.CanvasPosition=Vector2.zero;scroll.CanvasSize=UDim2.fromOffset(0,700)
+	if refreshLanes then refreshLanes() end
+end
+laneTab.Activated:Connect(showLaneTab)
+local mapFields,roadFields,trafficFields,sliders={},{},{},{}
+local activeSlider=nil
+local function paint(control)
+	local value=tonumber(control.Input.Text)
+	if not value or value~=value then return end
+	local ratio=math.clamp((value-control.Min)/(control.Max-control.Min),0,1)
+	control.Fill.Size,control.Handle.Position=UDim2.fromScale(ratio,1),UDim2.fromScale(ratio,.5)
+end
+local function slider(parent,fields,name,title,value,minimum,maximum,step,y)
+	text(parent,name..'Label',title,12,y,UDim2.new(1,-112,0,28))
+	local input=box(parent,name..'Input',value,0,y)
+	input.Position=UDim2.new(1,-92,0,y)
+	fields[name]=input
+	local bar=button(parent,name..'Slider','',12,y+34,UDim2.new(1,-24,0,15)); bar.AutoButtonColor=false
+	bar.BackgroundColor3=Color3.fromRGB(65,73,80)
+	local fill=Instance.new('Frame'); fill.BackgroundColor3,fill.BorderSizePixel,fill.Parent=Color3.fromRGB(97,159,132),0,bar
+	local handle=Instance.new('Frame'); handle.Name='Handle'
+	handle.Size,handle.AnchorPoint,handle.BackgroundColor3,handle.BorderSizePixel,handle.Parent=UDim2.fromOffset(7,23),Vector2.new(.5,.5),Color3.fromRGB(220,239,221),0,bar
+	local control={Input=input,Track=bar,Fill=fill,Handle=handle,Min=minimum,Max=maximum,Step=step,Page=parent,Name=name}
+	table.insert(sliders,control); paint(control)
+	input:GetPropertyChangedSignal('Text'):Connect(function() paint(control) end)
+	return control
+end
+local topButton=button(mapPage,'MapTopView','지도 위에서 보기',12,0,UDim2.new(.5,-18,0,34))
+local visibility=button(mapPage,'MapVisibility','지도 숨기기',0,0,UDim2.new(.5,-18,0,34)); visibility.Position=UDim2.new(.5,6,0,0)
+text(mapPage,'MapImageLabel','지도 이미지 주소 / Roblox 이미지 ID',12,42)
+mapFields.Image=box(mapPage,'MapImage',Guides.DefaultImage,12,66,UDim2.new(1,-24,0,29))
+slider(mapPage,mapFields,'Width','지도 가로 폭 · studs',1200,100,16000,10,105)
+slider(mapPage,mapFields,'Rotation','지도 회전 · °',0,-180,180,1,165)
+slider(mapPage,mapFields,'Opacity','지도 진하기 · %',90,0,100,1,225)
+text(mapPage,'DistanceLabel','기준점 사이 실제 거리 · m',12,289,UDim2.new(1,-112,0,28))
+mapFields.Distance=box(mapPage,'CalibrationMeters',100,0,289); mapFields.Distance.Position=UDim2.new(1,-92,0,289)
+local calibrate=button(mapPage,'StartCalibration','축척 맞추기 · 지도에서 두 점 찍기',12,329)
+local calibrationLabel=text(mapPage,'CalibrationState','현재 축척 미확정 · 실제 거리를 먼저 입력하세요.',12,373,UDim2.new(1,-24,0,43))
+text(mapPage,'MapPositionLabel','지도 중심 위치 · X / Z (studs)',12,424)
+mapFields.X=box(mapPage,'MapCenterX',850,12,451,UDim2.new(.5,-18,0,29))
+mapFields.Z=box(mapPage,'MapCenterZ',0,0,451,UDim2.new(.5,-18,0,29)); mapFields.Z.Position=UDim2.new(.5,6,0,451)
+local applyMap=button(mapPage,'ApplyMap','지도 설정 적용',12,492)
+text(mapPage,'MapPixelsLabel','이미지 가로 / 세로 픽셀',12,536)
+mapFields.PixelWidth=box(mapPage,'MapPixelWidth',3970,12,564,UDim2.new(.5,-18,0,29))
+mapFields.PixelHeight=box(mapPage,'MapPixelHeight',2036,0,564,UDim2.new(.5,-18,0,29)); mapFields.PixelHeight.Position=UDim2.new(.5,6,0,564)
+text(mapPage,'MapHint','축척 변경은 지도에만 적용됩니다. 도로를 그리기 전에 맞추세요. 지도는 Play에서 숨겨집니다.',12,607,UDim2.new(1,-24,0,48),48,14)
+local drawButton=button(roadPage,'DrawRoad','새 도로 그리기',12,0,UDim2.new(.5,-18,0,34))
+local finishButton=button(roadPage,'FinishRoad','도로 확정 · Enter',0,0,UDim2.new(.5,-18,0,34)); finishButton.Position=UDim2.new(.5,6,0,0)
+local editButton=button(roadPage,'EditRoad','선택 도로 · 점 편집',12,43,UDim2.new(.5,-18,0,34))
+local cancelButton=button(roadPage,'CancelRoad','작업 취소 · Esc',0,43,UDim2.new(.5,-18,0,34)); cancelButton.Position=UDim2.new(.5,6,0,43)
+text(roadPage,'RoadHint','클릭: 점 추가 · Enter: 확정 · Backspace: 마지막 점 취소',12,84,UDim2.new(1,-24,0,30),30,14)
+local presets={}
+for i,title in {'골목','왕복 2차선','왕복 4차선'} do
+	local b=button(roadPage,'Preset'..i,title,12,118,UDim2.new(1/3,-16,0,29))
+	b.Position=UDim2.new((i-1)/3,12,0,118); presets[i]=b
+end
+for _,spec in {{'Width','도로 폭 · m',7,2.5,24,.1},{'Lanes','전체 차선 수',2,1,6,1},{'Sidewalk','양쪽 인도 폭 · m',1.5,0,5,.1},{'Curve','곡선의 완만함 · %',75,0,100,1},{'Lift','노면 높이 보정 · m',.05,0,2,.01}} do
+	local i=#sliders-2
+	slider(roadPage,roadFields,spec[1],spec[2],spec[3],spec[4],spec[5],spec[6],158+(i-1)*58)
+end
+local applyRoad=button(roadPage,'ApplyRoad','도로 설정 적용',12,452)
+text(roadPage,'NodeHeightLabel','선택한 점의 높이 · m',12,496,UDim2.new(1,-112,0,28))
+roadFields.NodeHeight=box(roadPage,'NodeHeight',0,0,496); roadFields.NodeHeight.Position=UDim2.new(1,-92,0,496)
+local heightButton=button(roadPage,'ApplyNodeHeight','선택한 점 높이 적용',12,535)
+local insertButton=button(roadPage,'InsertNode','도로 위를 클릭해 점 추가',12,578,UDim2.new(.6,-18,0,34))
+local removeButton=button(roadPage,'RemoveNode','선택 점 삭제',0,578,UDim2.new(.4,-18,0,34)); removeButton.Position=UDim2.new(.6,6,0,578)
+text(roadPage,'ConnectionHint','도로를 가로질러 그리거나 T자 반대편에 붙이면 십자로 연결됩니다. 확정할 때 인도·차선을 정리합니다.',12,624,UDim2.new(1,-24,0,45),45,14)
+local refreshNetwork=button(roadPage,'RefreshJunctions','교차로 다시 계산',12,680)
+text(roadPage,'TrafficTitle','교차로 시설 · 전체 도로에 적용',12,725)
+local trafficToggles,trafficValues={},table.clone(Traffic.Defaults)
+for i,spec in {{'Crosswalks','횡단보도'},{'StopLines','정지선'},{'Signals','차량 신호'}} do
+	local b=button(roadPage,spec[1],spec[2]..' 켜짐',12,756,UDim2.new(1/3,-16,0,31))
+	b.Position=UDim2.new((i-1)/3,12,0,756); trafficToggles[spec[1]]={Button=b,Label=spec[2]}
+end
+local pedestrianToggle=button(roadPage,'PedestrianSignals','보행 신호 켜짐',12,795)
+trafficToggles.PedestrianSignals={Button=pedestrianToggle,Label='보행 신호'}
+for i,spec in {{'CrosswalkWidth','횡단보도 깊이 · m',3,2,6,.1},{'CrosswalkOffset','교차로에서 띄우기 · m',.6,0,5,.1},{'StopGap','횡단보도 → 정지선 · m',1,.5,4,.1},{'GreenSeconds','직진 초록불 유지 · 초',12,5,60,1},{'LeftSeconds','좌회전 화살표 유지 · 초',8,4,40,1},{'WalkSeconds','보행 초록불 유지 · 초',10,6,60,1},{'FlashSeconds','보행 초록불 점멸 · 초',4,2,10,1}} do
+	local c=slider(roadPage,trafficFields,spec[1],spec[2],spec[3],spec[4],spec[5],spec[6],840+(i-1)*62)
+	c.Traffic=true
+end
+local applyTraffic=button(roadPage,'ApplyTraffic','교차로 시설 적용',12,1280)
+text(roadPage,'SignalOrderHint','진입로별 직진 → 좌회전 순환 · 황색 3초 · 전체 적색 1.5초. 없는 진행 방향은 건너뜁니다. 마지막은 보행 신호입니다.',12,1323,UDim2.new(1,-24,0,83),83,14)
+roadPage.Size=UDim2.new(1,0,0,1430)
+text(lanePage,'LaneHelp','도로를 선택하고 진입로를 고르세요. 차로 번호는 운전자 기준 중앙선 쪽부터입니다.',12,0,UDim2.new(1,-24,0,54),54,15)
+local pickApproach=button(lanePage,'PickApproach','진입로 표시 · 번호 클릭',12,64)
+local focusApproach=button(lanePage,'FocusApproach','선택 진입로 위에서 보기',12,105)
+local previousApproach=button(lanePage,'PreviousApproach','◀ 이전 진입로',12,147,UDim2.new(.5,-18,0,33))
+local nextApproach=button(lanePage,'NextApproach','다음 진입로 ▶',0,147,UDim2.new(.5,-18,0,33));nextApproach.Position=UDim2.new(.5,6,0,147)
+local laneContext=text(lanePage,'LaneContext','교차로 다시 계산 후 진입로를 선택하세요.',12,190,UDim2.new(1,-24,0,68),68,15)
+local laneRows={}
+for lane=1,3 do
+	local title=text(lanePage,'LaneTitle'..lane,lane..'차로',12,273+(lane-1)*100)
+	local controls={Title=title,Buttons={}}
+	for i,spec in {{2,'좌회전'},{1,'직진'},{4,'우회전'}} do
+		local b=button(lanePage,'Lane'..lane..'Direction'..spec[1],spec[2],12,305+(lane-1)*100,UDim2.new(1/3,-16,0,35))
+		b.Position=UDim2.new((i-1)/3,12,0,305+(lane-1)*100);controls.Buttons[spec[1]]=b
+	end
+	laneRows[lane]=controls
+end
+local laneInfo=text(lanePage,'LaneInfo','직진·좌회전·우회전을 조합합니다. 설정은 즉시 저장되며 차량 주행·좌회전 신호 연결은 이후 단계입니다.',12,585,UDim2.new(1,-24,0,92),92,14)
+lanePage.Size=UDim2.new(1,0,0,700)
+local laneEntries,laneIndex={},1
+local mouse=plugin:GetMouse()
+local current,mode,points,calibrationPoints,selectedIndex=nil,nil,{},{},nil
+local dragPoint,busy,preview,working,handles,hover,lastPreview=nil,false,nil,nil,nil,nil,0
+local function guide() return workspace:FindFirstChild('BoraMapReference') end
+local function numeric(field,label)
+	local value=tonumber(field.Text)
+	assert(value and value==value and math.abs(value)<1e6,label..' 숫자를 확인하세요.')
+	return value
+end
+local function refreshTraffic()
+	local folder=workspace:FindFirstChild('BoraRoads')
+	local values=if folder then Traffic.config(folder) else Traffic.Defaults
+	for key,entry in trafficToggles do
+		trafficValues[key]=values[key]; entry.Button.Text=entry.Label..(if values[key] then ' 켜짐' else ' 꺼짐')
+	end
+	for key,field in trafficFields do field.Text=tostring(values[key]) end
+end
+local function roadConfig()
+	local config={}; for name in Path.Defaults do config[name]=numeric(roadFields[name],name) end
+	return Path.normalize(config)
+end
+local function refreshMap()
+	local map=guide(); if not Guides.isGuide(map) then status.Text='설치된 지도가 없습니다.'; return end
+	for _,name in {'Width','Rotation'} do mapFields[name].Text=string.format('%.1f',map:GetAttribute(name)) end
+	mapFields.Opacity.Text=tostring(math.floor((map:GetAttribute('Opacity') or .9)*100+.5))
+	mapFields.Image.Text=map:GetAttribute('Image')
+	mapFields.X.Text=string.format('%.1f',map.Root.Position.X); mapFields.Z.Text=string.format('%.1f',map.Root.Position.Z)
+	visibility.Text=if map:GetAttribute('Visible') then '지도 숨기기' else '지도 표시'
+	calibrationLabel.Text=if map:GetAttribute('Calibrated') then string.format('축척 설정됨 · 기준 거리 %.1fm',map:GetAttribute('CalibrationMeters')) else '현재 축척 미확정 · 실제 거리를 먼저 입력하세요.'
+	local aspect=map:GetAttribute('Aspect')
+	mapFields.PixelHeight.Text=tostring(math.floor(tonumber(mapFields.PixelWidth.Text)*aspect+.5))
+end
+local function refreshRoad()
+	if not Roads.isRoad(current) or not current.Parent then return end
+	for key in Path.Defaults do roadFields[key].Text=tostring(current:GetAttribute(key)) end
+	if selectedIndex then
+		local list=Roads.points(current); selectedIndex=math.clamp(selectedIndex,1,#list)
+		roadFields.NodeHeight.Text=string.format('%.2f',list[selectedIndex].Y/Path.StudsPerMeter)
+	end
+end
+local function transaction(label,action)
+	if busy or RunService:IsRunning() then return false end
+	local id=History:TryBeginRecording('BoraRoadEdit',label)
+	if not id then status.Text='다른 편집이 끝난 뒤 시도하세요.'; return false end
+	busy=true
+	local ok,result=pcall(action)
+	History:FinishRecording(id,if ok then Enum.FinishRecordingOperation.Commit else Enum.FinishRecordingOperation.Cancel)
+	busy=false
+	if not ok then status.Text=tostring(result):match('[^\n]+$') or tostring(result); warn('[BoraRoad] '..tostring(result)) end
+	return ok,result
+end
+local function clearPreview()
+	if preview then preview:Destroy(); preview=nil end
+end
+local function editorFolder()
+	if not working then
+		working=Instance.new('Folder'); working.Name,working.Archivable,working.Parent='_BoraRoadEditor',false,workspace
+	end
+	return working
+end
+local function marker(position,index,color)
+	local p=Instance.new('Part'); p.Name='Point'..index
+	p.Shape,p.Size,p.CFrame=Enum.PartType.Ball,Vector3.one*2,CFrame.new(position+Vector3.new(0,.4,0))
+	p.Anchored,p.CanCollide,p.CanTouch,p.CanQuery=true,false,false,true
+	p.Material,p.Color,p.Parent=Enum.Material.Neon,color,handles
+	p:SetAttribute('PointIndex',index)
+	return p
+end
+local function renderHandles(list)
+	if handles then handles:Destroy() end
+	handles=Instance.new('Folder'); handles.Name,handles.Parent='Handles',editorFolder()
+	for i,p in list do marker(p,i,if i==selectedIndex then Color3.fromRGB(255,199,77) else Color3.fromRGB(75,223,211)) end
+end
+local function planePoint(y,withinMap)
+	local ray=mouse.UnitRay
+	if math.abs(ray.Direction.Y)<.00001 then return nil end
+	local t=(y-ray.Origin.Y)/ray.Direction.Y
+	if t<0 then return nil end
+	local p=ray.Origin+ray.Direction*t
+	if withinMap then
+		local map=guide(); local q=map.Root.CFrame:PointToObjectSpace(p)
+		if math.abs(q.X)>map:GetAttribute('Width')*.5 or math.abs(q.Z)>map:GetAttribute('Width')*map:GetAttribute('Aspect')*.5 then return nil end
+	end
+	return p
+end
+local function snap(p)
+	return Network.snap(workspace:FindFirstChild('BoraRoads'),p,current)
+end
+local function showPreview(list)
+	clearPreview()
+	if #list<2 then return end
+	local ok,geometry=pcall(function() return Roads.preview(list,roadConfig()) end)
+	if ok then preview=geometry; preview.Parent=editorFolder() end
+end
+local function stop()
+	dragPoint=nil; mode=nil; points={}; calibrationPoints={}; hover=nil
+	clearPreview(); if working then working:Destroy(); working,handles=nil,nil end
+	plugin:Deactivate()
+end
+leaveLaneMode=function() if mode=='lanes' then stop() end end
+local function editCurrent()
+	if RunService:IsRunning() then return end
+	if not current or not current.Parent then status.Text='편집할 도로를 먼저 선택하세요.'; return end
+	mode='edit'; plugin:Activate(true); showTab(true)
+	selectedIndex=math.clamp(selectedIndex or 1,1,#Roads.points(current))
+	renderHandles(Roads.points(current)); refreshRoad()
+	status.Text='빛나는 점을 드래그하세요. 높이는 선택 점 높이에서 바꿉니다.'
+end
+local function selectedRoad()
+	local items=Selection:Get(); if #items~=1 then return nil end
+	local item=items[1]
+	while item and item~=workspace do
+		if Roads.isRoad(item) then return item end
+		if item:GetAttribute('AssetKind')=='BoraRoadJunction' then
+			local ref=item:FindFirstChild('Branch'); if ref and Roads.isRoad(ref.Value) then return ref.Value end
+		end
+		item=item.Parent
+	end
+	return nil
+end
+local function renderLaneMarkers()
+	if handles then handles:Destroy() end
+	handles=Instance.new('Folder');handles.Name,handles.Parent='LaneApproaches',editorFolder()
+	for i,entry in laneEntries do
+		local p=marker(entry.Position,i,if i==laneIndex then Color3.fromRGB(255,199,77) else Color3.fromRGB(75,223,211))
+		p:SetAttribute('ApproachIndex',i)
+		local gui=Instance.new('BillboardGui');gui.Size,gui.StudsOffset,gui.AlwaysOnTop,gui.Parent=UDim2.fromOffset(72,32),Vector3.new(0,3,0),true,p
+		local label=text(gui,'Number',tostring(i),0,0,UDim2.fromScale(1,1),32,23);label.TextXAlignment=Enum.TextXAlignment.Center
+	end
+end
+refreshLanes=function()
+	local selected=laneEntries[laneIndex]
+	laneEntries=Lanes.entries(workspace:FindFirstChild('BoraRoads'),if current and current.Parent then current else nil)
+	laneIndex=math.clamp(laneIndex,1,math.max(1,#laneEntries))
+	if selected then for i,entry in laneEntries do if entry.Key==selected.Key and entry.Road==selected.Road and entry.Sign==selected.Sign then laneIndex=i;break end end end
+	local entry=laneEntries[laneIndex]
+	laneContext.Text=if entry then string.format('진입로 %d / %d · %s\n교차로 %s · %s에서 진입 · %d차로',laneIndex,#laneEntries,entry.Road.Name,entry.Key,if entry.Sign==-1 then '도로 시작점 쪽' else '도로 끝점 쪽',entry.Count) else '도로를 선택한 뒤 교차로 다시 계산을 눌러주세요.'
+	for lane,row in laneRows do
+		local visible=entry~=nil and lane<=entry.Count
+		row.Title.Visible=visible
+		if visible then row.Title.Text=lane..'차로 · '..Lanes.label(entry.Masks[lane]) end
+		for bit,b in row.Buttons do
+			b.Visible=visible
+			local available=visible and bit32.band(entry.Available,bit)~=0
+			b.Active,b.AutoButtonColor=available,available
+			b.TextColor3=if available then Color3.fromRGB(240,244,238) else Color3.fromRGB(125,131,135)
+			b.BackgroundColor3=if not available then Color3.fromRGB(49,53,59) elseif bit32.band(entry.Masks[lane],bit)~=0 then Color3.fromRGB(65,140,106) else Color3.fromRGB(65,73,80)
+		end
+	end
+	laneInfo.Text=if entry and not entry.ArrowVisible then '이 진입로는 공간이 좁아 화살표를 생략했습니다. 방향 설정은 저장됩니다. 회색 버튼 방향에는 연결 도로가 없습니다.' else '초록 버튼이 허용 방향입니다. 복수 선택 가능 · 회색 버튼 방향에는 연결 도로가 없습니다. 차량 주행·좌회전 신호 연결은 이후 단계입니다.'
+	if mode=='lanes' then renderLaneMarkers() end
+end
+local function finishRoad()
+	if mode~='draw' then return end
+	local junctionStats
+	local ok,road=transaction('도로 그리기',function()
+		local created=Roads.create(points,roadConfig(),Http:GenerateGUID(false))
+		local folder=workspace:FindFirstChild('BoraRoads')
+		if folder then assert(folder:IsA('Folder'),'BoraRoads 이름이 이미 사용 중입니다.')
+		else folder=Instance.new('Folder'); folder.Name,folder.Parent='BoraRoads',workspace end
+		created.Parent=folder
+		local ok,err=pcall(function() local _,stats=Network.edit(folder,created,points,roadConfig(),true); junctionStats=stats end)
+		if not ok then created:Destroy(); error(err) end
+		return created
+	end)
+	if ok then
+		clearPreview(); points={}; current=road; selectedIndex=1
+		Selection:Set({road}); editCurrent()
+		status.Text=string.format('도로 생성 완료 · %.1fm · T자 %d / 십자 %d%s',road:GetAttribute('LengthMeters'),junctionStats.T,junctionStats.Cross,if junctionStats.Limited>0 then ' · 표시 공간 부족 '..junctionStats.Limited..'방향' else '')
+		print('[BoraRoad] created '..road:GetAttribute('ObjectId'))
+	end
+end
+local function applyRoadSettings()
+	if mode=='draw' then showPreview(points); return end
+	if not current or not current.Parent then status.Text='새 도로에 사용할 설정입니다. 새 도로 그리기를 누르세요.'; return end
+	local ok=transaction('도로 설정 변경',function() Network.edit(current.Parent,current,Roads.points(current),roadConfig(),false) end)
+	if ok then refreshRoad(); if mode=='edit' then renderHandles(Roads.points(current)) end; status.Text='도로 설정을 적용했습니다.' end
+end
+local function applyMapSettings()
+	local ok=transaction('지도 설정 변경',function()
+		local map=assert(guide(),'지도가 없습니다.')
+		local width,rotation,opacity=numeric(mapFields.Width,'지도 폭'),numeric(mapFields.Rotation,'회전'),numeric(mapFields.Opacity,'진하기')/100
+		local x,z=numeric(mapFields.X,'X'),numeric(mapFields.Z,'Z')
+		local pw,ph=numeric(mapFields.PixelWidth,'가로 픽셀'),numeric(mapFields.PixelHeight,'세로 픽셀')
+		assert(pw>0 and ph>0 and ph/pw>=.1 and ph/pw<=10,'이미지 크기를 확인하세요.')
+		local image=mapFields.Image.Text
+		if tonumber(image) then image='rbxassetid://'..image end
+		assert(image:match('^rbxasset') and #image<500,'Roblox 이미지 ID 또는 설치된 로컬 에셋 주소를 입력하세요.')
+		map:SetAttribute('Image',image); map:SetAttribute('Aspect',ph/pw)
+		local move=Vector3.new(x,map.Root.Position.Y,z)-map.Root.Position
+		map.Root.CFrame+=move
+		Guides.update(map,width,rotation,opacity)
+	end)
+	if ok then refreshMap(); status.Text='지도 설정 완료. 실제 거리 두 점으로 축척을 맞추세요.' end
+end
+local function applyTrafficSettings()
+	local folder=workspace:FindFirstChild('BoraRoads')
+	if not folder then status.Text='도로를 먼저 그리세요.'; return end
+	local ok=transaction('교차로 시설 변경',function()
+		local settings=table.clone(trafficValues)
+		for key,field in trafficFields do settings[key]=numeric(field,key) end
+		local _,stats=Network.apply(folder,nil,nil,nil,nil,settings); return stats
+	end)
+	refreshTraffic()
+	if ok then
+		local limited=0; for _,junction in folder.Junctions:GetChildren() do limited+=junction:GetAttribute('LimitedApproaches') or 0 end
+		status.Text=if limited>0 then '시설 갱신 완료 · '..limited..'방향은 공간 부족으로 노면 표시 생략. 간격을 줄이거나 도로를 늘리세요.' else '교차로의 횡단보도·정지선·신호등을 갱신했습니다.'
+	end
+end
+local function updateSlider()
+	if not activeSlider then return end
+	local c=activeSlider
+	local position=widget:GetRelativeMousePosition()
+	local ratio=math.clamp((position.X-c.Track.AbsolutePosition.X)/c.Track.AbsoluteSize.X,0,1)
+	local value=math.floor((c.Min+(c.Max-c.Min)*ratio)/c.Step+.5)*c.Step
+	c.Input.Text=string.format(if c.Step<.1 then '%.2f' elseif c.Step<1 then '%.1f' else '%.0f',math.clamp(value,c.Min,c.Max))
+end
+local function finishSlider(commit)
+	local control=activeSlider; activeSlider=nil
+	if not control then return end
+	if not commit then control.Input.Text=control.Original; return end
+	if control.Input.Text~=control.Original then
+		if control.Traffic then applyTrafficSettings() elseif control.Page==mapPage then applyMapSettings() else applyRoadSettings() end
+	end
+end
+for _,control in sliders do
+	control.Track.InputBegan:Connect(function(input)
+		if busy or RunService:IsRunning() or input.UserInputType~=Enum.UserInputType.MouseButton1 then return end
+		control.Original,control.InputObject=control.Input.Text,input; activeSlider=control; updateSlider()
+	end)
+end
+local function finishPoint(commit)
+	local drag=dragPoint; dragPoint=nil
+	if not drag then return end
+	clearPreview()
+	if commit and drag.Moved then
+		local ok=transaction('도로 점 이동',function() Network.edit(current.Parent,current,drag.Points,Roads.config(current),true) end)
+		if ok then status.Text='도로 점을 이동했습니다.' end
+	end
+	if current and current.Parent then renderHandles(Roads.points(current)); refreshRoad() end
+end
+topButton.Activated:Connect(function()
+	local map=guide(); if not map then return end
+	local camera=workspace.CurrentCamera
+	local center=map.Root.Position
+	camera.CFrame=CFrame.fromMatrix(center+Vector3.new(0,map:GetAttribute('Width')*.7,0),-Vector3.xAxis,Vector3.zAxis,Vector3.yAxis)
+	camera.Focus=CFrame.new(center)
+end)
+visibility.Activated:Connect(function()
+	local ok=transaction('지도 표시 변경',function() local map=assert(guide()); Guides.visible(map,not map:GetAttribute('Visible')) end)
+	if ok then refreshMap() end
+end)
+applyMap.Activated:Connect(applyMapSettings)
+applyRoad.Activated:Connect(applyRoadSettings)
+pickApproach.Activated:Connect(function()
+	if busy or RunService:IsRunning() then return end
+	current=selectedRoad() or current;stop();showLaneTab()
+	local folder=workspace:FindFirstChild('BoraRoads');if not folder then status.Text='도로와 교차로를 먼저 만드세요.';return end
+	if #laneEntries==0 then
+		local ok=transaction('차로 편집 준비',function() Network.apply(folder) end)
+		if not ok then return end;refreshLanes()
+	end
+	if #laneEntries==0 then status.Text='선택한 도로에는 연결된 교차로가 없습니다.';return end
+	mode='lanes';plugin:Activate(true);renderLaneMarkers()
+	status.Text='빛나는 진입로 번호를 클릭하거나 이전·다음 버튼으로 고르세요.'
+end)
+for delta,b in {[-1]=previousApproach,[1]=nextApproach} do b.Activated:Connect(function()
+	if #laneEntries==0 then refreshLanes();return end
+	laneIndex=((laneIndex-1+delta)%#laneEntries)+1;refreshLanes()
+end) end
+focusApproach.Activated:Connect(function()
+	local entry=laneEntries[laneIndex];if not entry then status.Text='진입로를 먼저 선택하세요.';return end
+	local p=entry.Position;local camera=workspace.CurrentCamera
+	local height=math.clamp((entry.Road:GetAttribute('Width') or 7)*Path.StudsPerMeter*4,80,180)
+	camera.CFrame=CFrame.fromMatrix(p+Vector3.yAxis*height,-Vector3.xAxis,Vector3.zAxis,Vector3.yAxis);camera.Focus=CFrame.new(p)
+end)
+for lane,row in laneRows do for bit,b in row.Buttons do b.Activated:Connect(function()
+	local entry=laneEntries[laneIndex];if not entry or lane>entry.Count then return end
+	local mask=bit32.bxor(entry.Masks[lane],bit)
+	local ok=transaction('차로 진행 방향 변경',function() Network.setLane(entry.Road.Parent,entry.Junction,entry.Road,entry.Sign,lane,mask) end)
+	refreshLanes()
+	if ok then status.Text=lane..'차로 · '..Lanes.label(mask)..' 방향을 저장했습니다.' end
+end) end end
+applyTraffic.Activated:Connect(applyTrafficSettings)
+for key,entry in trafficToggles do entry.Button.Activated:Connect(function()
+	trafficValues[key]=not trafficValues[key]; applyTrafficSettings()
+end) end
+calibrate.Activated:Connect(function()
+	if busy or RunService:IsRunning() then return end
+	stop(); widget.Enabled=true; mode='calibrate'; calibrationPoints={}; plugin:Activate(true)
+	status.Text='지도에서 실제 거리를 아는 첫 번째 기준점을 클릭하세요.'
+end)
+drawButton.Activated:Connect(function()
+	if busy or RunService:IsRunning() then return end
+	stop(); current=nil; selectedIndex=nil; mode='draw'; points={}; plugin:Activate(true)
+	status.Text='시작점을 클릭하세요. 이어서 점을 찍고 Enter로 확정합니다.'
+end)
+finishButton.Activated:Connect(finishRoad)
+editButton.Activated:Connect(function() current=selectedRoad() or current; editCurrent() end)
+cancelButton.Activated:Connect(function() finishSlider(false); finishPoint(false); stop(); status.Text='작업을 취소했습니다.' end)
+for i,preset in presets do preset.Activated:Connect(function()
+	local config=({{Width=4,Lanes=1,Sidewalk=0},{Width=7,Lanes=2,Sidewalk=1.5},{Width=14,Lanes=4,Sidewalk=2}})[i]
+	for key,value in config do roadFields[key].Text=tostring(value) end
+	applyRoadSettings()
+end) end
+heightButton.Activated:Connect(function()
+	if not current or not selectedIndex then status.Text='점 편집에서 점 하나를 선택하세요.'; return end
+	local ok=transaction('도로 점 높이 변경',function()
+		local list=Roads.points(current); local p=list[selectedIndex]
+		list[selectedIndex]=Vector3.new(p.X,numeric(roadFields.NodeHeight,'높이')*Path.StudsPerMeter,p.Z)
+		Network.edit(current.Parent,current,list,roadConfig(),false)
+	end)
+	if ok then editCurrent() end
+end)
+insertButton.Activated:Connect(function()
+	if not current then status.Text='도로를 먼저 선택하세요.'; return end
+	mode='insert'; plugin:Activate(true); status.Text='점이 필요한 도로 구간 위를 클릭하세요.'
+end)
+removeButton.Activated:Connect(function()
+	if not current or not selectedIndex then status.Text='점 하나를 선택하세요.'; return end
+	local ok=transaction('도로 점 삭제',function()
+		local list=Roads.points(current); assert(#list>2,'도로에는 최소 두 점이 필요합니다.')
+		table.remove(list,selectedIndex); Network.edit(current.Parent,current,list,Roads.config(current),false)
+	end)
+	if ok then selectedIndex=1; editCurrent() end
+end)
+mouse.Button1Down:Connect(function()
+	if busy or not mode then return end
+	if mode=='lanes' then
+		if not handles then return end
+		local params=RaycastParams.new();params.FilterType=Enum.RaycastFilterType.Include;params.FilterDescendantsInstances={handles}
+		local ray=mouse.UnitRay;local hit=workspace:Raycast(ray.Origin,ray.Direction*30000,params)
+		local index=hit and hit.Instance:GetAttribute('ApproachIndex')
+		if index then laneIndex=index;refreshLanes() end
+		return
+	end
+	if mode=='edit' and handles then
+		local params=RaycastParams.new(); params.FilterType=Enum.RaycastFilterType.Include; params.FilterDescendantsInstances={handles}
+		local ray=mouse.UnitRay; local hit=workspace:Raycast(ray.Origin,ray.Direction*30000,params)
+		if hit then
+			selectedIndex=hit.Instance:GetAttribute('PointIndex')
+			dragPoint={Points=Roads.points(current),Moved=false}
+			dragPoint.Y=dragPoint.Points[selectedIndex].Y
+			refreshRoad()
+		end
+		return
+	end
+	local map=guide(); local p=planePoint(if map then map.Root.Position.Y else 0,mode=='calibrate')
+	if not p then return end
+	if mode=='draw' then
+		p=snap(p)
+		if #points>0 and (p-points[#points]).Magnitude<1 then return end
+		table.insert(points,p); selectedIndex=nil; renderHandles(points); showPreview(points)
+		status.Text=string.format('점 %d개 · 계속 클릭하거나 Enter로 확정하세요.',#points)
+	elseif mode=='calibrate' then
+		table.insert(calibrationPoints,p); renderHandles(calibrationPoints)
+		if #calibrationPoints==1 then status.Text='두 번째 기준점을 클릭하세요.'
+		else
+			local ok=transaction('지도 실제 거리 축척',function() Guides.calibrate(map,calibrationPoints[1],calibrationPoints[2],numeric(mapFields.Distance,'실제 거리')) end)
+			stop(); refreshMap()
+			if ok then status.Text='지도 축척을 맞췄습니다. 도로 그리기를 시작하세요.' end
+		end
+	elseif mode=='insert' then
+		local ok=transaction('도로 점 추가',function()
+			local list=Roads.points(current); local index,distance=Path.closest(list,p)
+			assert(distance<100,'선택한 도로 가까이를 클릭하세요.')
+			local a,b=list[index],list[index+1]; local t=math.clamp((p-a):Dot(b-a)/(b-a):Dot(b-a),.02,.98)
+			p=Vector3.new(p.X,a.Y+(b.Y-a.Y)*t,p.Z)
+			table.insert(list,index+1,p); Network.edit(current.Parent,current,list,Roads.config(current),false); selectedIndex=index+1
+		end)
+		if ok then editCurrent() end
+	end
+end)
+mouse.Move:Connect(function()
+	if not mode or busy then return end
+	local map=guide()
+	local p=planePoint(if dragPoint then dragPoint.Y elseif map then map.Root.Position.Y else 0,false)
+	if not p then return end
+	if dragPoint then
+		dragPoint.Points[selectedIndex]=snap(p); dragPoint.Moved=true
+		local handle=handles and handles:FindFirstChild('Point'..selectedIndex)
+		if handle then handle.CFrame=CFrame.new(dragPoint.Points[selectedIndex]+Vector3.new(0,.4,0)) end
+	elseif mode=='draw' then hover=snap(p) end
+	if os.clock()-lastPreview>.12 then
+		lastPreview=os.clock()
+		if dragPoint then showPreview(dragPoint.Points)
+		elseif mode=='draw' and #points>0 and (p-points[#points]).Magnitude>1 then local list=table.clone(points); table.insert(list,hover); showPreview(list) end
+	end
+end)
+mouse.Button1Up:Connect(function() finishPoint(true) end)
+Input.InputEnded:Connect(function(input)
+	if input.UserInputType==Enum.UserInputType.MouseButton1 then finishSlider(true); finishPoint(true) end
+end)
+Input.InputBegan:Connect(function(input)
+	if Input:GetFocusedTextBox() or busy or not widget.Enabled then return end
+	if input.KeyCode==Enum.KeyCode.Return then finishRoad()
+	elseif input.KeyCode==Enum.KeyCode.Escape then finishSlider(false); finishPoint(false); stop()
+	elseif input.KeyCode==Enum.KeyCode.Backspace and mode=='draw' then table.remove(points); renderHandles(points); showPreview(points) end
+end)
+RunService.Heartbeat:Connect(function()
+	if RunService:IsRunning() then if mode or working then finishPoint(false); stop() end; return end
+	if activeSlider then
+		if activeSlider.InputObject.UserInputState==Enum.UserInputState.End then finishSlider(true) else updateSlider() end
+	end
+	if dragPoint and not Input:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) then finishPoint(true) end
+	if handles then
+		for _,part in handles:GetChildren() do
+			local size=math.clamp((workspace.CurrentCamera.CFrame.Position-part.Position).Magnitude*.013,1,16)
+			part.Size=Vector3.one*size
+		end
+	end
+end)
+local function inspect()
+	if busy or dragPoint then return end
+	local road=selectedRoad()
+	if road then
+		current=road;widget.Enabled=true
+		if lanePage.Visible then refreshLanes() else showTab(true);refreshRoad();if mode=='edit' then editCurrent() end end
+	elseif current and not current.Parent then current=nil; stop() end
+end
+Selection.SelectionChanged:Connect(inspect)
+for _,event in {History.OnUndo,History.OnRedo} do event:Connect(function()
+	refreshMap(); inspect(); refreshRoad(); refreshTraffic();refreshLanes()
+	if mode=='edit' and current and current.Parent then renderHandles(Roads.points(current)) end
+end) end
+widget.WindowFocusReleased:Connect(function() finishSlider(true) end)
+widget:BindToClose(function() finishSlider(false); finishPoint(false); stop(); widget.Enabled=false end)
+plugin.Deactivation:Connect(function()
+	dragPoint=nil; mode=nil; clearPreview(); if working then working:Destroy(); working,handles=nil,nil end
+end)
+plugin.Unloading:Connect(function() activeSlider=nil; stop(); widget:Destroy() end)
+openButton.Click:Connect(function() widget.Enabled=not widget.Enabled; if widget.Enabled then refreshMap(); inspect() else stop() end end)
+refreshNetwork.Activated:Connect(function()
+	local folder=workspace:FindFirstChild('BoraRoads'); if not folder then status.Text='도로를 먼저 그리세요.'; return end
+	local ok,stats=transaction('교차로 다시 계산',function() local _,result=Network.apply(folder); return result end)
+	if ok then status.Text=string.format('교차로 갱신 완료 · T자 %d / 십자 %d%s',stats.T,stats.Cross,if stats.LimitedArrows>0 then ' · 화살표 공간 부족 '..stats.LimitedArrows..'방향' elseif stats.Limited>0 then ' · 표시 공간 부족 '..stats.Limited..'방향' else '');refreshLanes();if mode=='edit' then editCurrent() end end
+end)
+local existingMap=guide()
+if Guides.isGuide(existingMap) and existingMap:GetAttribute('DisplayVersion')~=6 then
+	transaction('지도 표시 방식 갱신',function()
+		Guides.update(existingMap,existingMap:GetAttribute('Width'),existingMap:GetAttribute('Rotation'),existingMap:GetAttribute('Opacity'))
+	end)
+end
+refreshMap()
+refreshTraffic()
+print('[BoraRoad] v0.7 ready: protected straight / left arrows / pedestrian clearance')
+]]></string>
+      </Properties>
+    </Item>
+    <Item class="Script" referent="11">
+      <Properties>
+        <string name="Name"><![CDATA[RoadGuideRuntime]]></string>
+        <bool name="Disabled">true</bool>
+        <string name="Source"><![CDATA[-- The map is a drafting reference. Playable roads are ordinary saved Parts.
+local guide=workspace:FindFirstChild('BoraMapReference')
+if guide and guide:GetAttribute('AssetKind')=='BoraMapGuide' then
+	for _,item in guide:GetDescendants() do
+		if item:IsA('SurfaceGui') then item.Enabled=false end
+		if item:IsA('Texture') then item.Transparency=1 end
+	end
+end
+]]></string>
+      </Properties>
+    </Item>
+    <Item class="Script" referent="12">
+      <Properties>
+        <string name="Name"><![CDATA[RoadTrafficRuntime]]></string>
+        <bool name="Disabled">true</bool>
+        <string name="Source"><![CDATA[-- [BoraRoad] traffic lamps: lane-driven protected movements and pedestrian clearance.
+local Timing=require(script:WaitForChild('TrafficTiming'))
+local colors={Red=Color3.fromRGB(255,52,39),Amber=Color3.fromRGB(255,184,35),Green=Color3.fromRGB(45,245,119),Left=Color3.fromRGB(45,245,119)}
+local dark=Color3.fromRGB(21,25,24)
+local function paintLamp(lamp,on,color)
+	if not lamp then return end
+	if lamp:IsA('BasePart') then
+		lamp.Color=if on then color else dark
+		lamp.Material=if on then Enum.Material.Neon else Enum.Material.SmoothPlastic
+	else
+		for _,piece in lamp:GetChildren() do if piece:IsA('BasePart') then
+			piece.Color=if on then color else dark
+			piece.Material=if on then Enum.Material.Neon else Enum.Material.SmoothPlastic
+		end end
+	end
+end
+local function refresh()
+	local roads=workspace:FindFirstChild('BoraRoads')
+	local junctions=roads and roads:FindFirstChild('Junctions')
+	if not junctions then return end
+	local green=math.clamp(roads:GetAttribute('GreenSeconds') or 12,5,60)
+	local left=math.clamp(roads:GetAttribute('LeftSeconds') or 8,4,40)
+	local now=workspace:GetServerTimeNow()
+	for _,junction in junctions:GetChildren() do
+		local signals=junction:FindFirstChild('Signals')
+		local pedestrians=junction:FindFirstChild('PedestrianSignals')
+		local enabled=roads:GetAttribute('PedestrianSignals')~=false and roads:GetAttribute('Crosswalks')~=false
+		local walk=if enabled and pedestrians and #pedestrians:GetChildren()>0 then math.clamp(roads:GetAttribute('WalkSeconds') or 10,6,60) else 0
+		local flash=math.clamp(roads:GetAttribute('FlashSeconds') or 4,2,10)
+		local approaches={}
+		if signals then for _,signal in signals:GetChildren() do
+			local arm,mask=signal:GetAttribute('Arm'),signal:GetAttribute('MovementMask')
+			if arm and mask then table.insert(approaches,{Arm=arm,Mask=mask}) end
+		end end
+		local modern=#approaches>0
+		local snapshot=Timing.snapshot(now,Timing.program(approaches),green,left,3,1.5,walk,flash)
+		if modern then
+			junction:SetAttribute('ActiveArm',snapshot.Arm or 0)
+			junction:SetAttribute('ActiveMovement',snapshot.Movement)
+			junction:SetAttribute('SignalStage',snapshot.Stage)
+			junction:SetAttribute('CycleSeconds',snapshot.CycleSeconds)
+		end
+		if signals then for _,signal in signals:GetChildren() do
+			local lamps
+			if modern then
+				lamps=Timing.lamps(snapshot,signal:GetAttribute('Arm') or 0,signal:GetAttribute('MovementMask') or 0)
+			else
+				local state=Timing.state(now,signal:GetAttribute('Phase') or 1,green,3,1.5,walk,flash)
+				lamps={Red=state=='Red',Amber=state=='Amber',Green=state=='Green',Left=false}
+			end
+			local state=if lamps.Left then 'Left' elseif lamps.Green then 'Green' elseif lamps.Amber then 'Amber' else 'Red'
+			if signal:GetAttribute('LightState')~=state then
+				signal:SetAttribute('LightState',state)
+				for name,color in colors do paintLamp(signal:FindFirstChild(name),lamps[name],color) end
+			end
+			for _,key in {'StraightAllowed','LeftAllowed','RightTurnAllowed','RightTurnMustYield'} do
+				if signal:GetAttribute(key)~=lamps[key] then signal:SetAttribute(key,lamps[key]) end
+			end
+		end end
+		if pedestrians then
+			local state,lit
+			if modern then state,lit=snapshot.Pedestrian,snapshot.WalkLit
+			else state,lit=Timing.pedestrian(now,green,3,1.5,walk,flash) end
+			local key=state..tostring(lit)
+			for _,signal in pedestrians:GetChildren() do
+				if signal:GetAttribute('DisplayState')~=key then
+					signal:SetAttribute('DisplayState',key); signal:SetAttribute('LightState',state)
+					for name,show in {StopIcon=state=='Red',WalkIcon=lit} do
+						local icon=signal:FindFirstChild(name)
+						if icon then for _,piece in icon:GetChildren() do if piece:IsA('BasePart') then piece.Transparency=if show then 0 else 1 end end end
+					end
+				end
+			end
+		end
+	end
+end
+while true do refresh(); task.wait(.1) end
+]]></string>
+      </Properties>
+      <Item class="ModuleScript" referent="13">
+        <Properties>
+          <string name="Name"><![CDATA[TrafficTiming]]></string>
+          <string name="Source"><![CDATA[local Timing={}
+-- One protected movement runs at a time, including at skewed T/X junctions.
+function Timing.program(approaches)
+	local sorted=table.clone(approaches)
+	table.sort(sorted,function(a,b) return a.Arm<b.Arm end)
+	local phases,seen={},{}
+	for _,approach in sorted do
+		assert(type(approach.Arm)=='number' and approach.Arm%1==0 and approach.Arm>0 and not seen[approach.Arm],'Invalid signal arm')
+		assert(type(approach.Mask)=='number' and approach.Mask%1==0 and approach.Mask>=1 and approach.Mask<=7,'Invalid signal mask')
+		seen[approach.Arm]=true
+		for _,movement in {{1,'Straight'},{2,'Left'}} do
+			if bit32.band(approach.Mask,movement[1])~=0 then table.insert(phases,{Arm=approach.Arm,Movement=movement[2]}) end
+		end
+	end
+	-- An all-right-turn layout still needs a vehicle interval between walks;
+	-- it adds no right-turn lamp or protected right-turn movement.
+	if #phases==0 and #approaches>0 then table.insert(phases,{Arm=0,Movement='Yield'}) end
+	return phases
+end
+function Timing.duration(program,green,left,amber,clearance,walk,flash)
+	local total=0
+	for _,phase in program do total+=(if phase.Movement=='Left' then left else green)+amber+clearance end
+	if walk>0 then total+=walk+flash+clearance end
+	return total
+end
+function Timing.snapshot(time,program,green,left,amber,clearance,walk,flash)
+	local total=Timing.duration(program,green,left,amber,clearance,walk,flash)
+	local result={Movement='None',Stage='Clearance',Pedestrian='Red',WalkLit=false,PedestrianBlocked=false,CycleSeconds=total}
+	if total<=0 then return result end
+	local elapsed=time%total
+	for _,phase in program do
+		local duration=if phase.Movement=='Left' then left else green
+		local span=duration+amber+clearance
+		if elapsed<span then
+			result.Arm=phase.Arm;result.Movement=phase.Movement
+			result.Stage=if elapsed<duration then 'Green' elseif elapsed<duration+amber then 'Amber' else 'Clearance'
+			return result
+		end
+		elapsed-=span
+	end
+	if walk>0 then
+		result.PedestrianBlocked=true
+		if elapsed<walk then result.Pedestrian='Walk';result.WalkLit=true
+		elseif elapsed<walk+flash then result.Pedestrian='Flash';result.WalkLit=math.floor((elapsed-walk)*2)%2==0 end
+	end
+	return result
+end
+function Timing.lamps(snapshot,arm,mask)
+	local active=snapshot.Arm==arm
+	local straight=active and snapshot.Movement=='Straight' and bit32.band(mask,1)~=0
+	local left=active and snapshot.Movement=='Left' and bit32.band(mask,2)~=0
+	local green=straight and snapshot.Stage=='Green'
+	local arrow=left and snapshot.Stage=='Green'
+	local amber=(straight or left) and snapshot.Stage=='Amber'
+	return {Red=not green and not amber,Amber=amber,Green=green,Left=arrow,
+		StraightAllowed=green,LeftAllowed=arrow,
+		RightTurnAllowed=bit32.band(mask,4)~=0 and not snapshot.PedestrianBlocked and snapshot.Stage~='Clearance',
+		RightTurnMustYield=bit32.band(mask,4)~=0}
+end
+-- Compatibility helpers for previously generated two-phase models.
+function Timing.state(time,phase,green,amber,clearance,walk,flash)
+	local span=green+amber+clearance
+	local pedestrian=if walk and walk>0 then walk+(flash or 0)+clearance else 0
+	local cycle=time%(span*2+pedestrian)
+	if cycle>=span*2 then return 'Red' end
+	local active=if cycle<span then 1 else 2
+	local elapsed=cycle%span
+	if phase~=active or elapsed>=green+amber then return 'Red' end
+	return if elapsed<green then 'Green' else 'Amber'
+end
+function Timing.pedestrian(time,green,amber,clearance,walk,flash)
+	if walk<=0 then return 'Red',false end
+	local start=(green+amber+clearance)*2
+	local elapsed=time%(start+walk+flash+clearance)-start
+	if elapsed<0 or elapsed>=walk+flash then return 'Red',false end
+	if elapsed<walk then return 'Walk',true end
+	return 'Flash',math.floor((elapsed-walk)*2)%2==0
+end
+return Timing
+]]></string>
+        </Properties>
+      </Item>
+    </Item>
+  </Item>
+</roblox>

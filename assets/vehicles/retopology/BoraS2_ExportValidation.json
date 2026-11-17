@@ -1,0 +1,361 @@
+{
+  "status": "pass",
+  "totalTriangles": 37942,
+  "nativePartCount": 49,
+  "nativeParts": [
+    {
+      "file": "Body_00_00.mesh",
+      "vertices": 24,
+      "triangles": 12,
+      "normalMaxError": 0.0,
+      "minTriangleArea": 6.0514426877489313e-05
+    },
+    {
+      "file": "Body_01_00.mesh",
+      "vertices": 24,
+      "triangles": 12,
+      "normalMaxError": 0.0,
+      "minTriangleArea": 9.379741095472127e-05
+    },
+    {
+      "file": "Body_02_00.mesh",
+      "vertices": 804,
+      "triangles": 1088,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 6.406979082385078e-05
+    },
+    {
+      "file": "Body_03_00.mesh",
+      "vertices": 2627,
+      "triangles": 2344,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 5.510571554623311e-06
+    },
+    {
+      "file": "Body_04_00.mesh",
+      "vertices": 2376,
+      "triangles": 1188,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 0.0001581506076036021
+    },
+    {
+      "file": "Body_05_00.mesh",
+      "vertices": 96,
+      "triangles": 56,
+      "normalMaxError": 5.960464477539063e-08,
+      "minTriangleArea": 0.0001772225514287129
+    },
+    {
+      "file": "Body_06_00.mesh",
+      "vertices": 3480,
+      "triangles": 3200,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 6.210883474189188e-10
+    },
+    {
+      "file": "Body_07_00.mesh",
+      "vertices": 8784,
+      "triangles": 8000,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 4.990380331193478e-10
+    },
+    {
+      "file": "Body_07_01.mesh",
+      "vertices": 3097,
+      "triangles": 2988,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 5.977103256782357e-08
+    },
+    {
+      "file": "Body_08_00.mesh",
+      "vertices": 864,
+      "triangles": 432,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 1.377608896291349e-06
+    },
+    {
+      "file": "Body_09_00.mesh",
+      "vertices": 1148,
+      "triangles": 772,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 1.1158729193994077e-06
+    },
+    {
+      "file": "Body_10_00.mesh",
+      "vertices": 2300,
+      "triangles": 1574,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 1.0672180472681703e-08
+    },
+    {
+      "file": "DoorFL_11_00.mesh",
+      "vertices": 188,
+      "triangles": 248,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 6.432319059967995e-05
+    },
+    {
+      "file": "DoorFL_12_00.mesh",
+      "vertices": 216,
+      "triangles": 108,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 2.7897713152924553e-05
+    },
+    {
+      "file": "DoorFL_14_00.mesh",
+      "vertices": 1528,
+      "triangles": 1306,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 1.1954902623401154e-09
+    },
+    {
+      "file": "DoorFL_15_00.mesh",
+      "vertices": 696,
+      "triangles": 448,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 7.749315500404919e-07
+    },
+    {
+      "file": "DoorFL_16_00.mesh",
+      "vertices": 408,
+      "triangles": 264,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 3.94689996028319e-05
+    },
+    {
+      "file": "DoorFR_17_00.mesh",
+      "vertices": 188,
+      "triangles": 248,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 6.432296504499391e-05
+    },
+    {
+      "file": "DoorFR_18_00.mesh",
+      "vertices": 216,
+      "triangles": 108,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 2.7897713152924553e-05
+    },
+    {
+      "file": "DoorFR_20_00.mesh",
+      "vertices": 1537,
+      "triangles": 1318,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 1.2660095194405585e-10
+    },
+    {
+      "file": "DoorFR_21_00.mesh",
+      "vertices": 693,
+      "triangles": 448,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 7.749315500404919e-07
+    },
+    {
+      "file": "DoorFR_22_00.mesh",
+      "vertices": 408,
+      "triangles": 264,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 3.946902506868355e-05
+    },
+    {
+      "file": "DoorRL_23_00.mesh",
+      "vertices": 154,
+      "triangles": 192,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 6.110872345743701e-05
+    },
+    {
+      "file": "DoorRL_24_00.mesh",
+      "vertices": 216,
+      "triangles": 108,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 2.789766040223185e-05
+    },
+    {
+      "file": "DoorRL_26_00.mesh",
+      "vertices": 636,
+      "triangles": 656,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 2.959361289356366e-08
+    },
+    {
+      "file": "DoorRL_27_00.mesh",
+      "vertices": 495,
+      "triangles": 340,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 3.43039573635906e-06
+    },
+    {
+      "file": "DoorRL_28_00.mesh",
+      "vertices": 344,
+      "triangles": 212,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 3.765529618249275e-05
+    },
+    {
+      "file": "DoorRR_29_00.mesh",
+      "vertices": 154,
+      "triangles": 192,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 6.110870890552178e-05
+    },
+    {
+      "file": "DoorRR_30_00.mesh",
+      "vertices": 216,
+      "triangles": 108,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 2.789766040223185e-05
+    },
+    {
+      "file": "DoorRR_32_00.mesh",
+      "vertices": 627,
+      "triangles": 652,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 2.390636577587202e-09
+    },
+    {
+      "file": "DoorRR_33_00.mesh",
+      "vertices": 497,
+      "triangles": 340,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 3.4304678138141753e-06
+    },
+    {
+      "file": "DoorRR_34_00.mesh",
+      "vertices": 344,
+      "triangles": 212,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 3.765507790376432e-05
+    },
+    {
+      "file": "Steering_35_00.mesh",
+      "vertices": 592,
+      "triangles": 680,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 6.750585453119129e-05
+    },
+    {
+      "file": "WheelFL_36_00.mesh",
+      "vertices": 128,
+      "triangles": 124,
+      "normalMaxError": 5.960464477539063e-08,
+      "minTriangleArea": 0.00014400333748199046
+    },
+    {
+      "file": "WheelFL_37_00.mesh",
+      "vertices": 480,
+      "triangles": 768,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 0.0007496274774894118
+    },
+    {
+      "file": "WheelFL_38_00.mesh",
+      "vertices": 1400,
+      "triangles": 940,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 2.0614222648873692e-06
+    },
+    {
+      "file": "WheelFL_39_00.mesh",
+      "vertices": 128,
+      "triangles": 124,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 1.0135509910469409e-05
+    },
+    {
+      "file": "WheelFR_40_00.mesh",
+      "vertices": 128,
+      "triangles": 124,
+      "normalMaxError": 5.960464477539063e-08,
+      "minTriangleArea": 0.00014400333748199046
+    },
+    {
+      "file": "WheelFR_41_00.mesh",
+      "vertices": 480,
+      "triangles": 768,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 0.0007496274192817509
+    },
+    {
+      "file": "WheelFR_42_00.mesh",
+      "vertices": 1400,
+      "triangles": 940,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 2.061434543065843e-06
+    },
+    {
+      "file": "WheelFR_43_00.mesh",
+      "vertices": 128,
+      "triangles": 124,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 1.0135509910469409e-05
+    },
+    {
+      "file": "WheelRL_44_00.mesh",
+      "vertices": 128,
+      "triangles": 124,
+      "normalMaxError": 5.960464477539063e-08,
+      "minTriangleArea": 0.0001440045889467001
+    },
+    {
+      "file": "WheelRL_45_00.mesh",
+      "vertices": 480,
+      "triangles": 768,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 0.0007496272446587682
+    },
+    {
+      "file": "WheelRL_46_00.mesh",
+      "vertices": 1400,
+      "triangles": 940,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 2.0614079403458163e-06
+    },
+    {
+      "file": "WheelRL_47_00.mesh",
+      "vertices": 128,
+      "triangles": 124,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 1.0135509910469409e-05
+    },
+    {
+      "file": "WheelRR_48_00.mesh",
+      "vertices": 128,
+      "triangles": 124,
+      "normalMaxError": 5.960464477539063e-08,
+      "minTriangleArea": 0.00014400453073903918
+    },
+    {
+      "file": "WheelRR_49_00.mesh",
+      "vertices": 480,
+      "triangles": 768,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 0.0007496272446587682
+    },
+    {
+      "file": "WheelRR_50_00.mesh",
+      "vertices": 1400,
+      "triangles": 940,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 2.0613895230781054e-06
+    },
+    {
+      "file": "WheelRR_51_00.mesh",
+      "vertices": 128,
+      "triangles": 124,
+      "normalMaxError": 1.1920928955078125e-07,
+      "minTriangleArea": 1.0135509910469409e-05
+    }
+  ],
+  "glbExtensions": [
+    "KHR_materials_clearcoat",
+    "KHR_materials_transmission",
+    "KHR_materials_specular",
+    "KHR_materials_ior"
+  ],
+  "preservedFilesChanged": [],
+  "placeFiles": [
+    "Ro.rbxlx"
+  ],
+  "installedInPlace": false
+}

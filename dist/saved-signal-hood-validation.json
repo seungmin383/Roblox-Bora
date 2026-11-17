@@ -1,0 +1,36 @@
+{
+  "closedManufacturedComponents": [
+    {
+      "faces": 146,
+      "vertices": 150,
+      "depthMeters": 0.33952273428440094
+    },
+    {
+      "faces": 146,
+      "vertices": 150,
+      "depthMeters": 0.3378595858812332
+    },
+    {
+      "faces": 146,
+      "vertices": 150,
+      "depthMeters": 0.3387235552072525
+    },
+    {
+      "faces": 128,
+      "vertices": 128,
+      "depthMeters": 0.034000009298324585
+    },
+    {
+      "faces": 128,
+      "vertices": 128,
+      "depthMeters": 0.034000009298324585
+    },
+    {
+      "faces": 128,
+      "vertices": 128,
+      "depthMeters": 0.034000009298324585
+    }
+  ],
+  "maximumStoredNormalError": 0.00010199189475256079,
+  "sourceNormalsExcluded": true
+}

@@ -1,0 +1,1195 @@
+<roblox version="4">
+  <Item class="Model" referent="0">
+    <Properties>
+      <string name="Name"><![CDATA[BoraTreeKit]]></string>
+      <BinaryString name="AttributesSerialize">AQAAAAcAAABWZXJzaW9uAgUAAAAwLjQuMg==</BinaryString>
+    </Properties>
+    <Item class="ModuleScript" referent="1">
+      <Properties>
+        <string name="Name"><![CDATA[TreeAssetCatalog]]></string>
+        <string name="Source"><![CDATA[local Vector3=Vector3
+local prefix="rbxasset://BoraTreeKitV3/"
+return {
+Wood={Mesh=prefix.."ConnectedWood.mesh",Texture=prefix.."ConnectedBark.png",Bounds=Vector3.new(0.643164039,0.999999940,0.584760070)},
+Leaf={Texture=prefix.."GinkgoCluster.png"},
+ProceduralBark=prefix.."ProceduralBark.png",
+WoodHeight=18.08158405125141,
+CrownAnchors={
+Vector3.new(0.277560209,0.500133679,-0.093239513),
+Vector3.new(0.267999935,0.499185679,0.015700166),
+Vector3.new(0.273223349,0.546036785,-0.174735263),
+Vector3.new(-0.283576402,0.554332445,-0.064064607),
+Vector3.new(-0.187001220,0.553384445,-0.127591289),
+Vector3.new(-0.323257619,0.600235551,0.000128564),
+Vector3.new(0.170201211,0.608531263,0.292210789),
+Vector3.new(0.061061475,0.607583263,0.276263882),
+Vector3.new(0.239701390,0.654434317,0.273416876),
+Vector3.new(0.091279365,0.662730029,-0.266948756),
+Vector3.new(0.155516862,0.661782029,-0.175661441),
+Vector3.new(0.029022677,0.708633136,-0.293509978),
+Vector3.new(-0.199309964,0.716928848,0.193854283),
+Vector3.new(-0.189502484,0.715980795,0.089769844),
+Vector3.new(-0.174639838,0.762831955,0.253284349),
+Vector3.new(0.301114376,0.771127667,0.059086029),
+Vector3.new(0.228547951,0.770179667,0.126743250),
+Vector3.new(0.322546223,0.817030773,0.002133010),
+Vector3.new(-0.114699709,0.825326433,-0.148281031),
+Vector3.new(-0.025783917,0.824378433,-0.157750746),
+Vector3.new(-0.168778630,0.871229539,-0.126680710),
+Vector3.new(0.042114629,0.879525252,0.227123644),
+Vector3.new(-0.028063971,0.878577199,0.187339064),
+Vector3.new(0.092439813,0.925428358,0.251957761),
+Vector3.new(0.140839054,0.933724070,-0.093105981),
+Vector3.new(0.177777484,0.932775965,-0.031077704),
+Vector3.new(0.128702409,0.979627124,-0.147658995),
+Vector3.new(0.045247492,0.972990491,0.031944906),
+}}]]></string>
+      </Properties>
+    </Item>
+    <Item class="ModuleScript" referent="2">
+      <Properties>
+        <string name="Name"><![CDATA[GrowthMath]]></string>
+        <string name="Source"><![CDATA[-- 성장 값으로 치수를 계산해 슬라이더를 되돌리면 같은 모습으로 돌아오게 합니다.
+local GrowthMath = {}
+function GrowthMath.normalize(value)
+	assert(type(value) == "number" and value == value and math.abs(value) < math.huge, "Growth must be finite")
+	return math.clamp(value, 0, 1)
+end
+function GrowthMath.smooth(value)
+	local t = math.clamp(value, 0, 1)
+	return t * t * (3 - 2 * t)
+end
+function GrowthMath.dimensions(value)
+	local growth = GrowthMath.normalize(value)
+	return {
+		Growth = growth,
+		Height = 3 + 15 * growth ^ 0.72,
+		Diameter = 0.22 + 1.98 * growth ^ 0.90,
+		LeafSize = 0.38 + 3.92 * growth ^ 0.75,
+	}
+end
+return GrowthMath
+]]></string>
+      </Properties>
+    </Item>
+    <Item class="ModuleScript" referent="3">
+      <Properties>
+        <string name="Name"><![CDATA[GrowthTreeFactory]]></string>
+        <string name="Source"><![CDATA[-- 하나로 이어진 목재 + 여러 각도로 고정된 잎 뭉치 카드. 카메라 추적 없음.
+return function(api, rules, catalog)
+	local Instance, Vector3, CFrame, Color3, Enum = api.Instance, api.Vector3, api.CFrame, api.Color3, api.Enum
+	local UDim2 = api.UDim2
+	local Factory = {}
+	local cardCount = #catalog.CrownAnchors * 3
+	local function part(parent, name)
+		local p = Instance.new("Part")
+		p.Name, p.Anchored = name, true
+		p.CanCollide, p.CanTouch, p.CanQuery = false, false, false
+		p.TopSurface, p.BottomSurface = Enum.SurfaceType.Smooth, Enum.SurfaceType.Smooth
+		p.Material, p.Color, p.Parent = Enum.Material.SmoothPlastic, Color3.new(1, 1, 1), parent
+		return p
+	end
+	local function leafCard(parent, name)
+		local p = part(parent, name)
+		p.Transparency, p.CastShadow = 1, false
+		for _, face in { Enum.NormalId.Front, Enum.NormalId.Back } do
+			local surface = Instance.new("SurfaceGui")
+			surface.Name, surface.Face = face.Name, face
+			surface.AlwaysOnTop, surface.LightInfluence, surface.Active = false, 1, false
+			surface.SizingMode, surface.PixelsPerStud, surface.MaxDistance = Enum.SurfaceGuiSizingMode.PixelsPerStud, 96, 300
+			surface.Parent = p
+			local image = Instance.new("ImageLabel")
+			image.Name, image.Image = "Foliage", catalog.Leaf.Texture
+			image.BackgroundTransparency, image.Size, image.Parent = 1, UDim2.fromScale(1, 1), surface
+		end
+		return p
+	end
+	function Factory.layout(value, seed)
+		local d = rules.dimensions(value)
+		assert(type(seed) == "number" and seed % 1 == 0 and seed >= 0 and seed <= 2147483646, "Invalid seed")
+		local state = seed + 1
+		local function random()
+			state = state * 48271 % 2147483647
+			return state / 2147483647
+		end
+		-- One transform keeps every welded branch collar connected.
+		local width = catalog.WoodHeight * d.Diameter / 2.2
+		local scale = Vector3.new(width, d.Height, width)
+		local out = { Dimensions = d, Leaves = {}, Trunk = {
+			Frame = CFrame.new(0, d.Height / 2, 0), Size = catalog.Wood.Bounds * scale, Scale = scale,
+		} }
+		for _, anchor in catalog.CrownAnchors do
+			local center = anchor * scale
+			local yaw = random() * math.pi * 2
+			local size = d.LeafSize * (.88 + random() * .26)
+			for k = 1, 3 do
+				local offset = Vector3.new((random()-.5)*size*.75, (random()-.5)*size*.48, (random()-.5)*size*.75)
+				-- Disperse the planes in depth. Inner caps bridge gaps between outer sprigs.
+				local cardCenter = if k == 3 then center * Vector3.new(.78,1,.78) else center
+				local tilt = if k == 3 then math.rad(48 + random()*25) else math.rad(-42 + random()*84)
+				local roll = math.rad(-17+random()*34)
+				table.insert(out.Leaves, { Frame = CFrame.new(cardCenter+offset) * CFrame.Angles(0,yaw+(k-1)*math.pi/2,0) * CFrame.Angles(tilt,0,roll),
+					Size = Vector3.new(size, size*(.83+random()*.13), .02), Scale = Vector3.one,
+					Tint = .91 + random()*.09 })
+			end
+		end
+		return out
+	end
+	function Factory.isTree(model)
+		return model and model:IsA("Model") and model:GetAttribute("AssetKind") == "BoraGrowthTree"
+	end
+	function Factory.validate(model)
+		assert(Factory.isTree(model), "Select a Bora growth tree")
+		assert(model:GetAttribute("SchemaVersion") == 3, "This is a v2 tree. Place a new v3 tree to use the connected wood mesh.")
+		assert(model:FindFirstChild("Root") and model.Root:IsA("BasePart"), "Tree root is missing")
+		local g = model:FindFirstChild("Geometry")
+		assert(g and g:FindFirstChild("Trunk") and g.Trunk:FindFirstChild("Geometry"), "Tree wood is missing")
+		assert(g:FindFirstChild("Leaves") and #g.Leaves:GetChildren() == cardCount, "Generated foliage was modified")
+	end
+	function Factory.setGrowth(model, value)
+		Factory.validate(model)
+		local layout = Factory.layout(value, model:GetAttribute("Seed") or 42)
+		local base = model.Root.CFrame
+		local function update(p, item)
+			p.CFrame = base * item.Frame
+			p.Size = Vector3.new(math.max(.05, item.Size.X), math.max(.05, item.Size.Y), math.max(.02, item.Size.Z))
+			if p:FindFirstChild("Geometry") then p.Geometry.Scale = item.Scale end
+		end
+		update(model.Geometry.Trunk, layout.Trunk)
+		for i, item in layout.Leaves do
+			local p = model.Geometry.Leaves:FindFirstChild("Leaves" .. i)
+			assert(p, "Generated leaf card is missing")
+			update(p, item)
+			for _, face in { "Front", "Back" } do
+				p[face].Foliage.ImageColor3 = Color3.new(item.Tint,item.Tint,item.Tint)
+			end
+		end
+		-- Collision covers the lower trunk; crown limbs remain decorative.
+		model.Collision.Size = Vector3.new(layout.Dimensions.Diameter, layout.Dimensions.Height*.42, layout.Dimensions.Diameter)
+		model.Collision.CFrame = base * CFrame.new(0, model.Collision.Size.Y/2, 0)
+		model:SetAttribute("Growth", layout.Dimensions.Growth)
+	end
+	function Factory.create(config, transform)
+		local model = Instance.new("Model")
+		model.Name = "은행나무"
+		model:SetAttribute("AssetKind", "BoraGrowthTree")
+		model:SetAttribute("SchemaVersion", 3)
+		model:SetAttribute("Species", "Ginkgo")
+		model:SetAttribute("Seed", config.Seed or 42)
+		model:SetAttribute("ObjectId", config.ObjectId)
+		model:SetAttribute("AssetSource", "Blender connected skeleton / OpenAI foliage")
+		local root = part(model, "Root")
+		root.Size, root.Transparency, root.CFrame = Vector3.new(.1,.1,.1), 1, transform or CFrame.new()
+		model.PrimaryPart = root
+		local collision = part(model,"Collision")
+		collision.Transparency, collision.CanCollide = 1, true
+		local geometry = Instance.new("Folder")
+		geometry.Name, geometry.Parent = "Geometry", model
+		local wood = part(geometry,"Trunk")
+		wood.CanQuery = true
+		local mesh = Instance.new("SpecialMesh")
+		mesh.Name, mesh.MeshType = "Geometry", Enum.MeshType.FileMesh
+		mesh.MeshId, mesh.TextureId, mesh.Parent = catalog.Wood.Mesh, catalog.Wood.Texture, wood
+		local leaves = Instance.new("Folder")
+		leaves.Name, leaves.Parent = "Leaves", geometry
+		for i = 1, cardCount do leafCard(leaves,"Leaves"..i) end
+		Factory.setGrowth(model, config.Growth or 0)
+		return model
+	end
+	return Factory
+end
+]]></string>
+      </Properties>
+    </Item>
+    <Item class="ModuleScript" referent="4">
+      <Properties>
+        <string name="Name"><![CDATA[TreeParameters]]></string>
+        <string name="Source"><![CDATA[-- Versioned, saved recipe. Percent controls are converted to ratios by the UI.
+local Parameters = {}
+Parameters.Version = 1
+Parameters.Defaults = { BranchCount = 9, Spread = 1, Thickness = 1, LeafDensity = 1, Seed = 42 }
+Parameters.Limits = { BranchCount = {4,14}, Spread = {.65,1.4}, Thickness = {.65,1.5}, LeafDensity = {0,1.5}, Seed = {0,2147483646} }
+function Parameters.normalize(input)
+	local out = {}
+	for name, default in Parameters.Defaults do
+		local value = if input[name] == nil then default else input[name]
+		assert(type(value) == "number" and value == value and math.abs(value) < math.huge, name .. " must be finite")
+		local limits = Parameters.Limits[name]
+		assert(value >= limits[1] and value <= limits[2], name .. " is out of range")
+		if name == "BranchCount" or name == "Seed" then assert(value % 1 == 0, name .. " must be an integer") end
+		out[name] = value
+	end
+	return out
+end
+function Parameters.fromModel(model)
+	local version=model:GetAttribute("RecipeVersion")
+	assert(version==nil or version==Parameters.Version,"Unsupported tree recipe version")
+	local values = {}
+	for name in Parameters.Defaults do values[name] = model:GetAttribute(name) end
+	return Parameters.normalize(values)
+end
+return Parameters
+]]></string>
+      </Properties>
+    </Item>
+    <Item class="ModuleScript" referent="5">
+      <Properties>
+        <string name="Name"><![CDATA[TreeSkeleton]]></string>
+        <string name="Source"><![CDATA[-- Pure geometry recipe, shared by Lune tests and Studio. Y is up.
+return function(Vector3, Parameters)
+	local Skeleton = {}
+	function Skeleton.build(input)
+		local config = Parameters.normalize(input)
+		local state = config.Seed + 1
+		local function random()
+			state = state * 48271 % 2147483647
+			return state / 2147483647
+		end
+		local out = { Config = config, Segments = {}, Anchors = {}, Branches = {} }
+		local function path(id, parent, points, radii)
+			local length = 0
+			for i = 1, #points-1 do
+				local p0,p1=points[math.max(1,i-1)],points[i]
+				local p2,p3=points[i+1],points[math.min(#points,i+2)]
+				local tangent0=(p2-p0)*.5
+				local tangent1=(p3-p1)*.5
+				local count=math.max(1,math.ceil((p2-p1).Magnitude/.65))
+				local a,r0=p1,radii[i]*config.Thickness
+				for j=1,count do
+					local t=j/count; local t2,t3=t*t,t*t*t
+					local b=p1*(2*t3-3*t2+1)+tangent0*(t3-2*t2+t)+p2*(-2*t3+3*t2)+tangent1*(t3-t2)
+					local r1=(radii[i]+(radii[i+1]-radii[i])*t)*config.Thickness
+					table.insert(out.Segments,{A=a,B=b,R0=r0,R1=r1,PathId=id,StartLength=length})
+					length+=(b-a).Magnitude
+					a,r0=b,r1
+				end
+			end
+			table.insert(out.Branches,{ Id=id, ParentId=parent, Points=points, Radii=radii })
+		end
+		local trunk = {
+			Vector3.new(0,0,0),Vector3.new(.02,.65,.03),Vector3.new(-.08,3,.1),
+			Vector3.new(-.15,5.5,.08),Vector3.new(-.08,8,0),Vector3.new(.15,10.5,.1),
+			Vector3.new(.28,13,.15),Vector3.new(.23,15.5,.08),Vector3.new(.4,18,0),
+		}
+		path("trunk",nil,trunk,{1.4,1.08,.9,.74,.6,.45,.32,.19,.09})
+		local function center(y)
+			for i = 1,#trunk-1 do
+				if y >= trunk[i].Y and y <= trunk[i+1].Y then
+					return trunk[i]:Lerp(trunk[i+1],(y-trunk[i].Y)/(trunk[i+1].Y-trunk[i].Y))
+				end
+			end
+			return trunk[#trunk]
+		end
+		local phase = random()*math.pi*2
+		for i = 1,config.BranchCount do
+			local t = (i-1)/math.max(1,config.BranchCount-1)
+			local y = 5.8 + t*8.0 + (random()-.5)*.35
+			local theta = phase + (i-1)*2.399963 + (random()-.5)*.25
+			local dir = Vector3.new(math.cos(theta),0,math.sin(theta))
+			local side = Vector3.new(-dir.Z,0,dir.X)
+			local reach = (5.5-2.8*t)*config.Spread*(.92+random()*.16)
+			local a = center(y)
+			local points = { a, a+dir*.7+Vector3.new(0,.4,0),
+				a+dir*reach*.36+side*.12+Vector3.new(0,1.15,0),
+				a+dir*reach*.72+side*.3+Vector3.new(0,2.05,0),
+				a+dir*reach+side*.45+Vector3.new(0,2.9,0) }
+			local radius = .48-.23*t
+			local id = "branch-"..i
+			path(id,"trunk",points,{radius,radius*.9,radius*.63,radius*.35,.1})
+			table.insert(out.Anchors,points[5]+Vector3.new(0,.15,0))
+			for j = 1,2 do
+				local start = points[3]:Lerp(points[4],if j==1 then .16 else .85)
+				local angle = theta+(if j==1 then -.7 else .7)
+				local offset = Vector3.new(math.cos(angle),0,math.sin(angle))*(2.2-.55*t)*config.Spread
+				local tip = start+offset+Vector3.new(0,1.5,0)
+				path(id.."-twig-"..j,id,{start,start+offset*.4+Vector3.new(0,.7,0),tip},
+					{radius*.45,radius*.32,.075})
+				table.insert(out.Anchors,tip)
+			end
+		end
+		table.insert(out.Anchors,Vector3.new(.4,17.5,0))
+		return out
+	end
+	return Skeleton
+end
+]]></string>
+      </Properties>
+    </Item>
+    <Item class="ModuleScript" referent="6">
+      <Properties>
+        <string name="Name"><![CDATA[TreeMesher]]></string>
+        <string name="Source"><![CDATA[-- Sparse smooth-union signed distance field -> welded marching tetrahedra.
+-- A single surface is extracted for trunk and limbs; no intersecting tube shells.
+return function(Vector3)
+	local Mesher = {}
+	local cube = {{0,0,0},{1,0,0},{1,1,0},{0,1,0},{0,0,1},{1,0,1},{1,1,1},{0,1,1}}
+	local tetrahedra = {{1,2,3,7},{1,3,4,7},{1,4,8,7},{1,8,5,7},{1,5,6,7},{1,6,2,7}}
+	local function smoothMin(a,b,k)
+		local h = math.max(k-math.abs(a-b),0)/k
+		return math.min(a,b)-h*h*k*.25
+	end
+	function Mesher.build(skeleton, options)
+		options = options or {}
+		local step = options.Step or math.clamp(.22*math.sqrt(skeleton.Config.Thickness),.18,.25)
+		local blend = .22*skeleton.Config.Thickness
+		local minimum,maximum = Vector3.new(math.huge,math.huge,math.huge),Vector3.new(-math.huge,-math.huge,-math.huge)
+		for _, s in skeleton.Segments do
+			local margin = math.max(s.R0,s.R1)+blend+step*2
+			local extent = Vector3.new(margin,margin,margin)
+			minimum = minimum:Min(s.A:Min(s.B)-extent)
+			maximum = maximum:Max(s.A:Max(s.B)+extent)
+		end
+		minimum = Vector3.new(math.floor(minimum.X/step)*step-.037, -step*1.37, math.floor(minimum.Z/step)*step-.019)
+		local nx,ny,nz = math.ceil((maximum.X-minimum.X)/step)+1,math.ceil((maximum.Y-minimum.Y)/step)+1,math.ceil((maximum.Z-minimum.Z)/step)+1
+		local layer = nx*ny
+		local function key(x,y,z) return x+y*nx+z*layer end
+		local function position(x,y,z) return minimum+Vector3.new(x*step,y*step,z*step) end
+		local values = {}
+		local progress = options.Progress or function() end
+		local paths,pathOrder={},{}
+		for _,s in skeleton.Segments do
+			if not paths[s.PathId] then paths[s.PathId]={}; table.insert(pathOrder,s.PathId) end
+			table.insert(paths[s.PathId],s)
+		end
+		local prepared={}
+		for _,pathId in pathOrder do
+			local segments={}
+			local lo,hi=Vector3.one*math.huge,Vector3.one*-math.huge
+			for _,s in paths[pathId] do
+				local padding=math.max(s.R0,s.R1,step*.8)+blend+step*2
+				local ab=s.B-s.A
+				table.insert(segments,{A=s.A,AB=ab,Length2=ab:Dot(ab),R0=s.R0,DR=s.R1-s.R0,
+					Lo=s.A:Min(s.B)-Vector3.one*padding,Hi=s.A:Max(s.B)+Vector3.one*padding})
+				lo=lo:Min(segments[#segments].Lo); hi=hi:Max(segments[#segments].Hi)
+			end
+			table.insert(prepared,{Segments=segments,Lo=lo,Hi=hi})
+		end
+		-- Only nearby segment groups participate in a surface query. This keeps
+		-- the projection affordable when sliders generate many main branches.
+		local spatial={}
+		local function binKey(x,y,z) return x..':'..y..':'..z end
+		for pi,path in prepared do
+			for _,s in path.Segments do
+				for z=math.floor(s.Lo.Z),math.floor(s.Hi.Z) do
+					for y=math.floor(s.Lo.Y),math.floor(s.Hi.Y) do
+						for x=math.floor(s.Lo.X),math.floor(s.Hi.X) do
+							local id=binKey(x,y,z)
+							local cell=spatial[id]
+							if not cell then cell={}; spatial[id]=cell end
+							if not cell[#cell] or cell[#cell].Id~=pi then table.insert(cell,{Id=pi,Segments={}}) end
+							table.insert(cell[#cell].Segments,s)
+						end
+					end
+				end
+			end
+		end
+		-- Exact field and derivative, used to remove grid-sized scallops after
+		-- extracting topology. Increasing resolution alone leaves thin tips wavy.
+		local function surface(p)
+			local distance,gradient=100,Vector3.zero
+			for _,path in spatial[binKey(math.floor(p.X),math.floor(p.Y),math.floor(p.Z))] or {} do
+				local best,normal=100,Vector3.zero
+				for _,s in path.Segments do
+					if p.X<s.Lo.X or p.Y<s.Lo.Y or p.Z<s.Lo.Z or p.X>s.Hi.X or p.Y>s.Hi.Y or p.Z>s.Hi.Z then continue end
+					local raw=(p-s.A):Dot(s.AB)/s.Length2
+					local t=math.clamp(raw,0,1)
+					local offset=p-(s.A+s.AB*t)
+					local magnitude=offset.Magnitude
+					local radius=s.R0+s.DR*t
+					local d=magnitude-math.max(radius,step*.8)
+					if d<best then
+						best=d; normal=if magnitude>1e-8 then offset/magnitude else Vector3.yAxis
+						if raw>0 and raw<1 and radius>step*.8 then normal-=s.AB*(s.DR/s.Length2) end
+					end
+				end
+				if best<100 then
+					local weight=math.clamp(.5+(best-distance)/(2*blend),0,1)
+					gradient=gradient*weight+normal*(1-weight)
+					distance=smoothMin(distance,best,blend)
+				end
+			end
+			if -p.Y>distance then return -p.Y,-Vector3.yAxis end
+			return distance,gradient
+		end
+		for pi,pathId in pathOrder do
+			local pathValues={}
+			for _,s in paths[pathId] do
+			local radius = math.max(s.R0,s.R1,step*.8)+blend+step*1.75
+			local lo,hi = s.A:Min(s.B)-Vector3.one*radius,s.A:Max(s.B)+Vector3.one*radius
+			local ab = s.B-s.A
+			local length2 = ab:Dot(ab)
+			for z=math.max(0,math.floor((lo.Z-minimum.Z)/step)),math.min(nz-1,math.ceil((hi.Z-minimum.Z)/step)) do
+				for y=math.max(0,math.floor((lo.Y-minimum.Y)/step)),math.min(ny-1,math.ceil((hi.Y-minimum.Y)/step)) do
+					for x=math.max(0,math.floor((lo.X-minimum.X)/step)),math.min(nx-1,math.ceil((hi.X-minimum.X)/step)) do
+						local p = position(x,y,z)
+						local t = math.clamp((p-s.A):Dot(ab)/length2,0,1)
+						-- A minimum sampled radius prevents broken sub-voxel twigs.
+						local d = (p-(s.A+ab*t)).Magnitude-math.max(s.R0+(s.R1-s.R0)*t,step*.8)
+						if d < blend+step*1.75 then
+							local id = key(x,y,z)
+							-- Adjacent segments describe ONE limb. Smooth-unioning them
+							-- individually adds a swelling at every sample joint.
+							pathValues[id] = math.min(pathValues[id] or 100,d)
+						end
+					end
+				end
+			end
+			end
+			-- Blend only distinct limbs, where a rounded branch collar is wanted.
+			for id,d in pathValues do values[id]=smoothMin(values[id] or 100,d,blend) end
+			if pi%4==0 then progress(.4*pi/#pathOrder) end
+		end
+		-- Flat ground cut; caps are part of the same extracted closed surface.
+		local cells = {}
+		for id,d in values do
+			local z=math.floor(id/layer); local y=math.floor((id-z*layer)/nx); local x=id%nx
+			d = math.max(d,-position(x,y,z).Y)
+			values[id] = d
+			if d < 0 then
+				for dz=-1,0 do for dy=-1,0 do for dx=-1,0 do
+					if x+dx>=0 and x+dx<nx-1 and y+dy>=0 and y+dy<ny-1 and z+dz>=0 and z+dz<nz-1 then
+						cells[key(x+dx,y+dy,z+dz)] = true
+					end
+				end end end
+			end
+		end
+		local vertices,faces,edgeCache = {},{},{}
+		local function crossing(a,b)
+			local ka,kb=a.Id,b.Id
+			local edge=if ka<kb then ka..":"..kb else kb..":"..ka
+			local index=edgeCache[edge]
+			if not index then
+				table.insert(vertices,a.P:Lerp(b.P,a.D/(a.D-b.D)))
+				index=#vertices; edgeCache[edge]=index
+			end
+			return index
+		end
+		local function triangle(a,b,c,outward)
+			local cross=(vertices[b]-vertices[a]):Cross(vertices[c]-vertices[a])
+			if cross.Magnitude==0 then return end
+			if cross:Dot(outward)<0 then b,c=c,b end
+			table.insert(faces,{a,b,c})
+		end
+		local cellIds={}; for id in cells do table.insert(cellIds,id) end; table.sort(cellIds)
+		for ci,id in cellIds do
+			local z=math.floor(id/layer); local y=math.floor((id-z*layer)/nx); local x=id%nx
+			local corners={}
+			for i,c in cube do
+				local node=key(x+c[1],y+c[2],z+c[3])
+				corners[i]={Id=node,D=values[node] or step*3,P=position(x+c[1],y+c[2],z+c[3])}
+			end
+			for _,tet in tetrahedra do
+				local inside,outside={},{}
+				for _,i in tet do table.insert(if corners[i].D<0 then inside else outside,corners[i]) end
+				if #inside==1 then
+					local a=inside[1]
+					triangle(crossing(a,outside[1]),crossing(a,outside[2]),crossing(a,outside[3]),outside[1].P-a.P)
+				elseif #inside==3 then
+					local a=outside[1]
+					triangle(crossing(a,inside[1]),crossing(a,inside[2]),crossing(a,inside[3]),a.P-inside[1].P)
+				elseif #inside==2 then
+					local a,b,c,d=inside[1],inside[2],outside[1],outside[2]
+					local ac,ad,bc,bd=crossing(a,c),crossing(a,d),crossing(b,c),crossing(b,d)
+					local outward=(c.P+d.P-a.P-b.P)*.5
+					triangle(ac,ad,bd,outward); triangle(ac,bd,bc,outward)
+				end
+			end
+			if ci%1200==0 then progress(.4+.4*ci/#cellIds) end
+		end
+		-- Discard sub-voxel tip specks, never a large disconnected limb.
+		local adjacency={}
+		for i=1,#vertices do adjacency[i]={} end
+		for _,f in faces do
+			for j=1,3 do local a,b=f[j],f[j%3+1]; adjacency[a][b]=true; adjacency[b][a]=true end
+		end
+		local seen,components={},{}
+		for i=1,#vertices do
+			if not seen[i] then
+				local component={}; local stack={i}; seen[i]=true
+				while #stack>0 do
+					local v=table.remove(stack); table.insert(component,v)
+					for other in adjacency[v] do if not seen[other] then seen[other]=true; table.insert(stack,other) end end
+				end
+				table.insert(components,component)
+			end
+		end
+		table.sort(components,function(a,b) return #a>#b end)
+		if options.Debug then local sizes={}; for _,c in components do table.insert(sizes,#c) end; print('islands',table.concat(sizes,',')) end
+		assert(#components>0,"Empty wood surface")
+		local discarded=0; for i=2,#components do discarded+=#components[i] end
+		assert((not components[2] or #components[2] < #components[1]*.025) and discarded < #components[1]*.15,
+			"A branch disconnected from the trunk; reduce spread or thickness")
+		local keep={}; for _,v in components[1] do keep[v]=true end
+		local keptFaces={}; for _,f in faces do if keep[f[1]] then table.insert(keptFaces,f) end end
+		faces=keptFaces
+		-- Restrained Taubin smoothing rounds collars without collapsing their volume.
+		for _,factor in {.32,-.30,.32,-.30} do
+			local nextVertices={}
+			for i,p in vertices do
+				local sum,count=Vector3.zero,0
+				for other in adjacency[i] do sum+=vertices[other]; count+=1 end
+				nextVertices[i]=if count>0 and p.Y>.025 then p+(sum/count-p)*factor else p
+			end
+			vertices=nextVertices
+		end
+		for i,p in vertices do
+			if keep[i] and p.Y>.025 then
+				for _=1,3 do
+					local d,g=surface(p)
+					local length2=g:Dot(g)
+					if length2>1e-8 then p-=g*(d/length2) end
+				end
+				vertices[i]=p
+			end
+			if i%2000==0 then progress(.8+.18*i/#vertices) end
+		end
+		-- Refine only edges whose straight chord visibly cuts into the analytic
+		-- surface. Thin limbs need more vertices around their circumference, not
+		-- a globally dense voxel grid. Shared edge points keep the mesh watertight.
+		local midpoints={}
+		for _,f in faces do
+			for j=1,3 do
+				local a,b=f[j],f[j%3+1]
+				local id=if a<b then a..':'..b else b..':'..a
+				if midpoints[id]==nil then
+					local p=(vertices[a]+vertices[b])*.5
+					local d,g=surface(p)
+					if d<-.008 and p.Y>.025 and g:Dot(g)>1e-8 then
+						for _=1,3 do
+							local length2=g:Dot(g)
+							if length2>1e-8 then p-=g*(d/length2) end
+							d,g=surface(p)
+						end
+						table.insert(vertices,p); keep[#vertices]=true; midpoints[id]=#vertices
+					else midpoints[id]=false end
+				end
+			end
+		end
+		local refined={}
+		local function add(a,b,c) table.insert(refined,{a,b,c}) end
+		for _,f in faces do
+			local mids,count={},0
+			for j=1,3 do
+				local a,b=f[j],f[j%3+1]
+				mids[j]=midpoints[if a<b then a..':'..b else b..':'..a]
+				if mids[j] then count+=1 end
+			end
+			local a,b,c=f[1],f[2],f[3]
+			if count==0 then table.insert(refined,f)
+			elseif count==3 then
+				add(a,mids[1],mids[3]); add(mids[1],b,mids[2]); add(mids[3],mids[2],c); add(mids[1],mids[2],mids[3])
+			elseif count==1 then
+				for j=1,3 do if mids[j] then
+					add(f[j],mids[j],f[(j+1)%3+1]); add(mids[j],f[j%3+1],f[(j+1)%3+1])
+				end end
+			else
+				for j=1,3 do if mids[j] and mids[j%3+1] then
+					local x,y,z=f[j],f[j%3+1],f[(j+1)%3+1]
+					local m,n=mids[j],mids[j%3+1]
+					add(y,n,m); add(m,n,z); add(x,m,z)
+				end end
+			end
+		end
+		faces=refined
+		local remap,compact={},{}
+		for i,p in vertices do if keep[i] then remap[i]=#compact+1; table.insert(compact,p) end end
+		vertices=compact
+		local normals={}; for i=1,#vertices do normals[i]=Vector3.zero end
+		for _,f in faces do
+			for j=1,3 do f[j]=remap[f[j]] end
+			local n=(vertices[f[2]]-vertices[f[1]]):Cross(vertices[f[3]]-vertices[f[1]])
+			for _,v in f do normals[v]+=n end
+		end
+		minimum,maximum=Vector3.one*math.huge,Vector3.one*-math.huge
+		for i,p in vertices do
+			minimum=minimum:Min(p); maximum=maximum:Max(p)
+			local _,gradient=surface(p)
+			normals[i]=if gradient.Magnitude>1e-8 then gradient.Unit else normals[i].Unit
+		end
+		local center=(minimum+maximum)*.5
+		local uvs={}
+		for i,p in vertices do
+			-- Repeating restrained bark uses world vertical grain; no reused atlas islands.
+			uvs[i]={ (p.X*.41+p.Z*.29),p.Y*.32 }
+			vertices[i]=p-center
+		end
+		progress(1)
+		return { Vertices=vertices, Faces=faces, Normals=normals, UVs=uvs,
+			Center=center, Bounds=maximum-minimum, Step=step, Components=1, DiscardedVertices=discarded }
+	end
+	return Mesher
+end
+
+]]></string>
+      </Properties>
+    </Item>
+    <Item class="ModuleScript" referent="7">
+      <Properties>
+        <string name="Name"><![CDATA[TreeMeshBackend]]></string>
+        <string name="Source"><![CDATA[-- Engine adapter. The global welded surface is split only at the API face limit.
+-- Shared positions and normals remain identical across chunk boundaries.
+return function(AssetService, Content, Vector3, Vector2, Color3, Enum, barkTexture)
+	return function(data)
+		local parts={}
+		local ok,err=pcall(function()
+			for start=1,#data.Faces,18000 do
+				local last=math.min(start+17999,#data.Faces)
+				local used={}; local indices={}
+				local minimum,maximum=Vector3.one*math.huge,Vector3.one*-math.huge
+				for fi=start,last do for _,v in data.Faces[fi] do
+					if not used[v] then used[v]=true; table.insert(indices,v); minimum=minimum:Min(data.Vertices[v]); maximum=maximum:Max(data.Vertices[v]) end
+				end end
+				table.sort(indices)
+				local center=(minimum+maximum)*.5
+				local editable=AssetService:CreateEditableMesh()
+				assert(editable,"Could not allocate editable wood mesh")
+				local part
+				local built,buildError=pcall(function()
+					local ids,normals,uvs={},{},{}
+					for _,v in indices do
+						ids[v]=editable:AddVertex(data.Vertices[v]-center)
+						normals[v]=editable:AddNormal(data.Normals[v])
+						uvs[v]=editable:AddUV(Vector2.new(data.UVs[v][1],1-data.UVs[v][2]))
+					end
+					for fi=start,last do
+						local f=data.Faces[fi]
+						local face=editable:AddTriangle(ids[f[1]],ids[f[2]],ids[f[3]])
+						editable:SetFaceNormals(face,{normals[f[1]],normals[f[2]],normals[f[3]]})
+						editable:SetFaceUVs(face,{uvs[f[1]],uvs[f[2]],uvs[f[3]]})
+					end
+					local result,content=AssetService:CreateDataModelContentAsync(Content.fromObject(editable))
+					assert(result==Enum.CreateContentResult.Success,"Wood bake failed: "..tostring(result))
+					part=AssetService:CreateMeshPartAsync(content,{CollisionFidelity=Enum.CollisionFidelity.Box})
+					part.TextureID=barkTexture
+					part.Color=Color3.new(1,1,1)
+					part.DoubleSided=false
+				end)
+				editable:Destroy()
+				if not built then if part then part:Destroy() end; error(buildError) end
+				part.Name="Wood"..(#parts+1)
+				part:SetAttribute("BaseSize",maximum-minimum)
+				part:SetAttribute("BaseCenter",data.Center+center)
+				part:SetAttribute("Triangles",last-start+1)
+				table.insert(parts,part)
+			end
+		end)
+		if not ok then for _,part in parts do part:Destroy() end; error(err) end
+		return parts
+	end
+end
+]]></string>
+      </Properties>
+    </Item>
+    <Item class="ModuleScript" referent="8">
+      <Properties>
+        <string name="Name"><![CDATA[ProceduralTreeFactory]]></string>
+        <string name="Source"><![CDATA[return function(api,rules,catalog,Parameters,Skeleton,Mesher)
+	local Instance,Vector3,CFrame,Enum,Color3,UDim2=api.Instance,api.Vector3,api.CFrame,api.Enum,api.Color3,api.UDim2
+	local Factory={}
+	local function part(parent,name)
+		local p=Instance.new("Part")
+		p.Name,p.Anchored=name,true
+		p.CanCollide,p.CanTouch,p.CanQuery=false,false,false
+		p.Material,p.Color=Enum.Material.SmoothPlastic,Color3.new(1,1,1)
+		p.TopSurface,p.BottomSurface=Enum.SurfaceType.Smooth,Enum.SurfaceType.Smooth
+		p.Parent=parent
+		return p
+	end
+	function Factory.foliage(skeleton)
+		local config=skeleton.Config
+		local leaves={}
+		local state=config.Seed+17
+		local function random() state=state*48271%2147483647; return state/2147483647 end
+		local cards=math.floor(#skeleton.Anchors*3*config.LeafDensity+.5)
+		for i=1,cards do
+			local anchor=skeleton.Anchors[(i-1)%#skeleton.Anchors+1]
+			local size=4.3*(.88+random()*.26)
+			local tier=math.floor((i-1)/#skeleton.Anchors)%3
+			local center=if tier==2 then anchor*Vector3.new(.78,1,.78) else anchor
+			center+=Vector3.new((random()-.5)*size*.75,(random()-.5)*size*.48,(random()-.5)*size*.75)
+			local tilt=if tier==2 then math.rad(48+random()*25) else math.rad(-42+random()*84)
+			local rotation=CFrame.Angles(0,random()*math.pi*2,0)*CFrame.Angles(tilt,0,math.rad(-17+random()*34))
+			table.insert(leaves,{Center=center,Rotation=rotation,Size=Vector3.new(size,size*(.83+random()*.13),.02),Tint=.91+random()*.09})
+		end
+		return leaves
+	end
+	local function makeCard(parent,name,item)
+		local p=part(parent,name)
+		p.Transparency,p.CastShadow=1,false
+		p:SetAttribute("BaseCenter",item.Center)
+		p:SetAttribute("BaseSize",item.Size)
+		p:SetAttribute("BaseRotation",item.Rotation)
+		for _,face in {Enum.NormalId.Front,Enum.NormalId.Back} do
+			local gui=Instance.new("SurfaceGui")
+			gui.Name,gui.Face,gui.AlwaysOnTop,gui.LightInfluence=face.Name,face,false,1
+			gui.SizingMode,gui.PixelsPerStud,gui.MaxDistance=Enum.SurfaceGuiSizingMode.PixelsPerStud,96,300
+			gui.Active,gui.Parent=false,p
+			local image=Instance.new("ImageLabel")
+			image.Name,image.Image="Foliage",catalog.Leaf.Texture
+			image.BackgroundTransparency,image.Size=1,UDim2.fromScale(1,1)
+			image.ImageColor3=Color3.new(item.Tint,item.Tint,item.Tint)
+			image.Parent=gui
+		end
+	end
+	function Factory.isTree(model)
+		return model and model:IsA("Model") and model:GetAttribute("AssetKind")=="BoraGrowthTree"
+	end
+	function Factory.validate(model)
+		assert(Factory.isTree(model) and model:GetAttribute("SchemaVersion")==4,"Select a procedural tree")
+		assert(model:GetAttribute("RecipeVersion")==Parameters.Version,"Unsupported tree recipe version")
+		assert(model:FindFirstChild("Root") and model.Root:IsA("BasePart"),"Tree root is missing")
+		local g=model:FindFirstChild("Geometry")
+		assert(g and g:FindFirstChild("Wood") and #g.Wood:GetChildren()>0 and g:FindFirstChild("Leaves"),"Tree geometry is missing")
+		Parameters.fromModel(model)
+	end
+	function Factory.setGrowth(model,value)
+		Factory.validate(model)
+		local d=rules.dimensions(value)
+		local scale=Vector3.new(d.Diameter/2.2,d.Height/18,d.Diameter/2.2)
+		local base=model.Root.CFrame
+		for _,p in model.Geometry.Wood:GetChildren() do
+			p.CFrame=base*CFrame.new(p:GetAttribute("BaseCenter")*scale)
+			local size=p:GetAttribute("BaseSize")*scale
+			p.Size=Vector3.new(math.max(.001,size.X),math.max(.001,size.Y),math.max(.001,size.Z))
+			if p:FindFirstChild("Geometry") then p.Geometry.Scale=scale end
+		end
+		local leafScale=d.LeafSize/4.3
+		for _,p in model.Geometry.Leaves:GetChildren() do
+			p.CFrame=base*CFrame.new(p:GetAttribute("BaseCenter")*scale)*p:GetAttribute("BaseRotation")
+			local s=p:GetAttribute("BaseSize")*leafScale
+			p.Size=Vector3.new(s.X,s.Y,.02)
+		end
+		model.Collision.Size=Vector3.new(d.Diameter*model:GetAttribute("Thickness"),d.Height*.42,d.Diameter*model:GetAttribute("Thickness"))
+		model.Collision.CFrame=base*CFrame.new(0,model.Collision.Size.Y/2,0)
+		model:SetAttribute("Growth",d.Growth)
+	end
+	local function stage(config,progress)
+		local skeleton=Skeleton.build(config)
+		local data=Mesher.build(skeleton,{Progress=progress})
+		local geometry=Instance.new("Folder"); geometry.Name="Geometry"
+		local ok,err=pcall(function()
+			local wood=Instance.new("Folder"); wood.Name,wood.Parent="Wood",geometry
+			local pieces=api.BuildWood(data,config)
+			for _,p in pieces do p.Anchored,p.CanCollide,p.CanTouch,p.CanQuery=true,false,false,true; p.Parent=wood end
+			local leaves=Instance.new("Folder"); leaves.Name,leaves.Parent="Leaves",geometry
+			for i,item in Factory.foliage(skeleton) do makeCard(leaves,"Leaves"..i,item) end
+		end)
+		if not ok then geometry:Destroy(); error(err) end
+		return geometry,data,skeleton
+	end
+	function Factory.rebuild(model,input,progress)
+		assert(Factory.isTree(model) and model:FindFirstChild("Root") and model:FindFirstChild("Collision"),"Select a Bora tree")
+		local config=Parameters.normalize(input)
+		local growth=rules.normalize(model:GetAttribute("Growth") or 1)
+		local geometry,data=stage(config,progress)
+		if not model:FindFirstChild("Root") or not model:FindFirstChild("Collision") then geometry:Destroy(); error("Tree removed during generation") end
+		local old=model:FindFirstChild("Geometry")
+		-- Commit after all asynchronous mesh work succeeds. Root and ObjectId stay intact.
+		if old then old.Name="PreviousGeometry" end
+		geometry.Parent=model
+		for name,value in config do model:SetAttribute(name,value) end
+		model:SetAttribute("SchemaVersion",4)
+		model:SetAttribute("RecipeVersion",Parameters.Version)
+		model:SetAttribute("LiveMesh",api.LiveMesh~=false)
+		model:SetAttribute("WoodTriangles",#data.Faces)
+		model:SetAttribute("BranchGraphCount",config.BranchCount*3+1)
+		model:SetAttribute("AssetSource","Procedural smooth union / OpenAI foliage")
+		Factory.setGrowth(model,growth)
+		if old then
+			if api.RetireGeometry then api.RetireGeometry(old) else old:Destroy() end
+		end
+		return model
+	end
+	function Factory.create(input,transform,progress)
+		local config=Parameters.normalize(input)
+		local growth=rules.normalize(if input.Growth==nil then 0 else input.Growth)
+		local model=Instance.new("Model")
+		model.Name="은행나무"
+		model:SetAttribute("AssetKind","BoraGrowthTree")
+		model:SetAttribute("Species","Ginkgo")
+		model:SetAttribute("Growth",growth)
+		model:SetAttribute("ObjectId",input.ObjectId)
+		local root=part(model,"Root")
+		root.Size,root.Transparency,root.CFrame=Vector3.new(.1,.1,.1),1,transform or CFrame.new()
+		model.PrimaryPart=root
+		local collision=part(model,"Collision")
+		collision.Transparency,collision.CanCollide=1,true
+		local ok,err=pcall(Factory.rebuild,model,config,progress)
+		if not ok then model:Destroy(); error(err) end
+		return model
+	end
+	return Factory
+end
+]]></string>
+      </Properties>
+    </Item>
+    <Item class="Script" referent="9">
+      <Properties>
+        <string name="Name"><![CDATA[TreePlugin]]></string>
+        <string name="Source"><![CDATA[if not plugin then return end
+local RunService=game:GetService('RunService')
+if RunService:IsRunning() then return end
+local Selection=game:GetService('Selection')
+local History=game:GetService('ChangeHistoryService')
+local UserInput=game:GetService('UserInputService')
+local Http=game:GetService('HttpService')
+local ContentProvider=game:GetService('ContentProvider')
+local rules=require(script.Parent.GrowthMath)
+local catalog=require(script.Parent.TreeAssetCatalog)
+local Parameters=require(script.Parent.TreeParameters)
+local Skeleton=require(script.Parent.TreeSkeleton)(Vector3,Parameters)
+local Mesher=require(script.Parent.TreeMesher)(Vector3)
+local api={Instance=Instance,Vector3=Vector3,CFrame=CFrame,Color3=Color3,Enum=Enum,UDim2=UDim2}
+-- Preserve detached snapshots for Studio's undo service. Destroy() would lock
+-- their hierarchy before Studio can reparent it on Undo.
+local historyGeometry={}
+api.RetireGeometry=function(geometry) geometry.Parent=nil; table.insert(historyGeometry,geometry) end
+api.BuildWood=require(script.Parent.TreeMeshBackend)(game:GetService('AssetService'),Content,Vector3,Vector2,Color3,Enum,catalog.ProceduralBark)
+local factory=require(script.Parent.ProceduralTreeFactory)(api,rules,catalog,Parameters,Skeleton,Mesher)
+local legacy=require(script.Parent.GrowthTreeFactory)(api,rules,catalog)
+local toolbar=plugin:CreateToolbar('보라동 나무')
+local placeButton=toolbar:CreateButton('BoraTreePlace_v4','지면을 클릭해 어린 은행나무를 설치합니다','','나무 설치')
+local editButton=toolbar:CreateButton('BoraTreeEdit_v4','선택한 나무의 성장과 가지 구조를 편집합니다','','나무 편집')
+placeButton.ClickableWhenViewportHidden=true
+local widget=plugin:CreateDockWidgetPluginGuiAsync('BoraTreeInspector_v4_sliders',DockWidgetPluginGuiInfo.new(Enum.InitialDockState.Float,false,true,360,670,330,655))
+widget.Title='나무 인스펙터'
+local bg=Instance.new('Frame')
+bg.Size,bg.BackgroundColor3,bg.BorderSizePixel,bg.Parent=UDim2.fromScale(1,1),Color3.fromRGB(30,34,40),0,widget
+local function label(name,value,x,y,w,h,size)
+	local item=Instance.new('TextLabel')
+	item.Name,item.Text,item.Position,item.Size=name,value,UDim2.fromOffset(x,y),UDim2.new(1,w,0,h)
+	item.BackgroundTransparency,item.TextColor3,item.TextSize=1,Color3.fromRGB(231,236,239),size or 16
+	item.Font,item.TextXAlignment,item.TextWrapped=Enum.Font.SourceSans,Enum.TextXAlignment.Left,true
+	item.Parent=bg
+	return item
+end
+label('Title','은행나무 · 가지 생성기',20,12,-40,32,24)
+label('Description','슬라이더를 끌고 놓으면 나무에 적용',20,49,-40,25,15)
+local percentage=label('Percentage','성장 0%',20,88,-40,25,18)
+local track=Instance.new('TextButton')
+track.Name,track.Text,track.Position,track.Size='GrowthSlider','',UDim2.fromOffset(20,121),UDim2.new(1,-40,0,28)
+track.BackgroundColor3,track.BorderSizePixel,track.AutoButtonColor,track.Parent=Color3.fromRGB(65,73,80),0,false,bg
+local fill=Instance.new('Frame')
+fill.Size,fill.BackgroundColor3,fill.BorderSizePixel,fill.Parent=UDim2.fromScale(0,1),Color3.fromRGB(190,163,100),0,track
+local knob=Instance.new('Frame')
+knob.Name,knob.Size,knob.AnchorPoint='Handle',UDim2.fromOffset(7,36),Vector2.new(.5,.5)
+knob.Position,knob.BackgroundColor3,knob.BorderSizePixel,knob.Parent=UDim2.fromScale(0,.5),Color3.fromRGB(248,229,180),0,track
+label('GrowthHint','어린 나무                                      성목',20,155,-40,25,14)
+local fields,sliders={},{}
+-- UI units: ratios use whole percentages. Seed has a useful drag range while
+-- the number field still accepts the complete saved-recipe range.
+local specs={{'BranchCount','큰 가지 수 · 4~14',9,4,14},{'Spread','가지 퍼짐 · 65~140%',100,65,140},
+	{'Thickness','목재 굵기 · 65~150%',100,65,150},{'LeafDensity','잎 밀도 · 0~150%',100,0,150},{'Seed','모양 시드 · 드래그 0~999',42,0,999}}
+local function paintSlider(name,value)
+	local slider=sliders[name]
+	local ratio=math.clamp((value-slider.Min)/(slider.Max-slider.Min),0,1)
+	slider.Fill.Size,slider.Knob.Position=UDim2.fromScale(ratio,1),UDim2.fromScale(ratio,.5)
+end
+for i,spec in specs do
+	local y=188+(i-1)*65
+	label(spec[1]..'Label',spec[2],20,y,-130,32,16)
+	local input=Instance.new('TextBox')
+	input.Name,input.Text,input.ClearTextOnFocus=spec[1]..'Input',tostring(spec[3]),false
+	input.Position,input.Size=UDim2.new(1,-99,0,y),UDim2.fromOffset(79,32)
+	input.BackgroundColor3,input.TextColor3=Color3.fromRGB(49,56,65),Color3.fromRGB(240,240,230)
+	input.Font,input.TextSize,input.Parent=Enum.Font.SourceSans,18,bg
+	fields[spec[1]]=input
+	local bar=Instance.new('TextButton')
+	bar.Name,bar.Text,bar.Position,bar.Size=spec[1]..'Slider','',UDim2.fromOffset(20,y+37),UDim2.new(1,-40,0,18)
+	bar.BackgroundColor3,bar.BorderSizePixel,bar.AutoButtonColor,bar.Parent=Color3.fromRGB(65,73,80),0,false,bg
+	local filled=Instance.new('Frame')
+	filled.BackgroundColor3,filled.BorderSizePixel,filled.Parent=Color3.fromRGB(102,157,127),0,bar
+	local handle=Instance.new('Frame')
+	handle.Name,handle.Size,handle.AnchorPoint='Handle',UDim2.fromOffset(7,26),Vector2.new(.5,.5)
+	handle.BackgroundColor3,handle.BorderSizePixel,handle.Parent=Color3.fromRGB(212,238,220),0,bar
+	sliders[spec[1]]={Track=bar,Fill=filled,Knob=handle,Min=spec[4],Max=spec[5]}
+	paintSlider(spec[1],spec[3])
+	input:GetPropertyChangedSignal('Text'):Connect(function()
+		local value=tonumber(input.Text)
+		if value and value==value and math.abs(value)<math.huge then paintSlider(spec[1],value) end
+	end)
+end
+local apply=Instance.new('TextButton')
+apply.Name,apply.Text,apply.Position,apply.Size='ApplyStructure','가지 설정 적용',UDim2.fromOffset(20,527),UDim2.new(1,-40,0,39)
+apply.BackgroundColor3,apply.TextColor3=Color3.fromRGB(80,124,97),Color3.new(1,1,1)
+apply.Font,apply.TextSize,apply.Parent=Enum.Font.SourceSansBold,18,bg
+local status=label('Status','드래그로 조절하거나 숫자를 직접 입력하세요.',20,579,-40,68,15)
+local current,busy,placing,marker,dragRecord,dragInput,unloaded=nil,false,false,nil,nil,nil,false
+local parameterDrag=nil
+local applyConfig
+local assetsReady=false
+local mouse=plugin:GetMouse()
+local function readConfig()
+	local config={}
+	for _,spec in specs do
+		local value=tonumber(fields[spec[1]].Text)
+		assert(value,'숫자를 입력하세요: '..spec[2])
+		if spec[1]=='Spread' or spec[1]=='Thickness' or spec[1]=='LeafDensity' then value/=100 end
+		config[spec[1]]=value
+	end
+	return Parameters.normalize(config)
+end
+local function refresh(parameters)
+	if not current or not current.Parent then return end
+	local g=current:GetAttribute('Growth') or 0
+	percentage.Text=string.format('성장 %d%%',math.floor(g*100+.5))
+	fill.Size,knob.Position=UDim2.fromScale(g,1),UDim2.fromScale(g,.5)
+	if parameters then
+		for _,spec in specs do
+			local value=current:GetAttribute(spec[1])
+			if value==nil then value=Parameters.Defaults[spec[1]] end
+			if spec[1]=='Spread' or spec[1]=='Thickness' or spec[1]=='LeafDensity' then value=math.floor(value*100+.5) end
+			fields[spec[1]].Text=tostring(value)
+		end
+	end
+end
+local function finishDrag(commit)
+	local id=dragRecord; dragRecord,dragInput=nil,nil
+	if id then History:FinishRecording(id,if commit then Enum.FinishRecordingOperation.Commit else Enum.FinishRecordingOperation.Cancel) end
+end
+local function selectedTree()
+	local items=Selection:Get()
+	if #items~=1 then return nil end
+	local item=items[1]
+	while item and item~=workspace do if factory.isTree(item) then return item end; item=item.Parent end
+	return nil
+end
+local function inspect()
+	finishDrag(true)
+	parameterDrag=nil
+	current=selectedTree()
+	if current then
+		widget.Enabled=true; refresh(true)
+		status.Text=if current:GetAttribute('SchemaVersion')==4 then '가지 적용과 성장 편집은 Ctrl+Z로 되돌릴 수 있어요.' else '적용하면 현재 위치를 유지하며 새 생성기 구조로 전환합니다.'
+	end
+end
+local function ensureRuntime()
+	local server=game:GetService('ServerScriptService')
+	local old=server:FindFirstChild('BoraProceduralRuntime')
+	if old then
+		assert(old:GetAttribute('BoraOwned')==true,'Runtime name already used')
+		-- Existing saved places must use the same mesher in Play as in edit mode.
+		if old:GetAttribute('GeneratorVersion')~='0.4.2' then
+			old.Source=script.Parent.RuntimeTemplate.Source
+			for _,name in {'GrowthMath','TreeAssetCatalog','TreeParameters','TreeSkeleton','TreeMesher','TreeMeshBackend','ProceduralTreeFactory'} do
+				local existing=old:FindFirstChild(name)
+				if existing then existing.Source=script.Parent[name].Source else script.Parent[name]:Clone().Parent=old end
+			end
+			old:SetAttribute('GeneratorVersion','0.4.2')
+		end
+		return
+	end
+	local runtime=script.Parent.RuntimeTemplate:Clone()
+	runtime.Name,runtime.Disabled='BoraProceduralRuntime',false
+	runtime:SetAttribute('BoraOwned',true)
+	runtime:SetAttribute('GeneratorVersion','0.4.2')
+	for _,name in {'GrowthMath','TreeAssetCatalog','TreeParameters','TreeSkeleton','TreeMesher','TreeMeshBackend','ProceduralTreeFactory'} do script.Parent[name]:Clone().Parent=runtime end
+	runtime.Parent=server
+end
+local function progress(value)
+	assert(not unloaded,'Plugin unloaded')
+	status.Text=string.format('목재 표면 생성 중 · %d%%',math.floor(value*100))
+	task.wait()
+end
+applyConfig=function()
+	if busy or RunService:IsRunning() then return end
+	if not assetsReady then status.Text='로컬 에셋을 로딩 중이거나 누락됐습니다. 설치 상태를 확인하세요.'; return end
+	if not current or not current.Parent then status.Text='편집할 나무 한 그루를 선택하세요.'; return end
+	finishDrag(true)
+	local valid,config=pcall(readConfig)
+	if not valid then status.Text='숫자와 입력 범위를 확인하세요.'; warn(config); return end
+	local target=current
+	local record=History:TryBeginRecording('BoraTreeStructure','나무 가지 구조 변경')
+	if not record then status.Text='다른 편집이 끝난 뒤 시도하세요.'; return end
+	busy,apply.Text=true,'만드는 중…'
+	local started=os.clock()
+	local ok,err=pcall(function() ensureRuntime(); factory.rebuild(target,config,progress) end)
+	History:FinishRecording(record,if ok then Enum.FinishRecordingOperation.Commit else Enum.FinishRecordingOperation.Cancel)
+	busy,apply.Text=false,'가지 설정 적용'
+	if ok then
+		refresh(true)
+		status.Text=string.format('완료 · 큰 가지 %d개 · %.1f초',config.BranchCount,os.clock()-started)
+		print(string.format('[BoraTree] structure applied: branches=%d triangles=%d id=%s',config.BranchCount,target:GetAttribute('WoodTriangles'),target:GetAttribute('ObjectId') or ''))
+	else status.Text='생성하지 못했습니다. 기존 나무를 유지합니다.'; warn('[BoraTree] structure: '..tostring(err)) end
+end
+apply.Activated:Connect(applyConfig)
+local function updateParameterDrag()
+	if not parameterDrag or busy then return end
+	local slider=sliders[parameterDrag.Name]
+	local point=widget:GetRelativeMousePosition()
+	local ratio=math.clamp((point.X-slider.Track.AbsolutePosition.X)/slider.Track.AbsoluteSize.X,0,1)
+	local value=math.floor(slider.Min+ratio*(slider.Max-slider.Min)+.5)
+	fields[parameterDrag.Name].Text=tostring(value)
+	parameterDrag.Changed=parameterDrag.Changed or value~=parameterDrag.Start
+end
+local function finishParameterDrag(commit)
+	local drag=parameterDrag; parameterDrag=nil
+	if not drag then return end
+	if not commit then fields[drag.Name].Text=drag.Original; return end
+	if drag.Changed and current and current.Parent then applyConfig() end
+end
+for _,spec in specs do
+	local name=spec[1]
+	sliders[name].Track.InputBegan:Connect(function(input)
+		if busy or RunService:IsRunning() or input.UserInputType~=Enum.UserInputType.MouseButton1 then return end
+		finishDrag(true)
+		parameterDrag={Name=name,Input=input,Original=fields[name].Text,Start=tonumber(fields[name].Text),Changed=false}
+		updateParameterDrag()
+	end)
+end
+local function updateDrag()
+	if not dragRecord or busy or not current or not current.Parent then return end
+	local point=widget:GetRelativeMousePosition()
+	local value=math.clamp((point.X-track.AbsolutePosition.X)/track.AbsoluteSize.X,0,1)
+	local ok,err=pcall(function()
+		if current:GetAttribute('SchemaVersion')==4 then factory.setGrowth(current,value) else legacy.setGrowth(current,value) end
+	end)
+	if not ok then finishDrag(false); status.Text='성장 값을 변경하지 못했습니다.'; warn(err) end
+	refresh(false)
+end
+track.InputBegan:Connect(function(input)
+	if busy or not current or RunService:IsRunning() or input.UserInputType~=Enum.UserInputType.MouseButton1 then return end
+	finishDrag(true)
+	finishParameterDrag(false)
+	dragRecord=History:TryBeginRecording('BoraTreeGrowth','나무 성장 조절')
+	if dragRecord then dragInput=input; updateDrag() end
+end)
+UserInput.InputEnded:Connect(function(input)
+	if input.UserInputType==Enum.UserInputType.MouseButton1 then
+		if parameterDrag then updateParameterDrag(); finishParameterDrag(true) end
+		finishDrag(true)
+	end
+end)
+widget.WindowFocusReleased:Connect(function() finishDrag(true); finishParameterDrag(true) end)
+widget:BindToClose(function() finishDrag(true); finishParameterDrag(true); widget.Enabled=false end)
+RunService.Heartbeat:Connect(function()
+	if parameterDrag then
+		if busy or RunService:IsRunning() then finishParameterDrag(false)
+		elseif parameterDrag.Input.UserInputState==Enum.UserInputState.End then updateParameterDrag(); finishParameterDrag(true)
+		else updateParameterDrag() end
+	end
+	if dragRecord then
+		if not current or not current.Parent or RunService:IsRunning() then finishDrag(false)
+		elseif dragInput.UserInputState==Enum.UserInputState.End then finishDrag(true)
+		else updateDrag() end
+	end
+end)
+local function treeFolder()
+	local folder=workspace:FindFirstChild('BoraTrees')
+	if folder then assert(folder:IsA('Folder'),'BoraTrees must be a folder'); return folder end
+	folder=Instance.new('Folder'); folder.Name,folder.Parent='BoraTrees',workspace; return folder
+end
+local function pickGround()
+	local ray=mouse.UnitRay
+	local parameters=RaycastParams.new()
+	parameters.FilterType=Enum.RaycastFilterType.Exclude
+	local excluded={}
+	if marker then table.insert(excluded,marker) end
+	if workspace:FindFirstChild('BoraTrees') then table.insert(excluded,workspace.BoraTrees) end
+	parameters.FilterDescendantsInstances=excluded
+	local hit=workspace:Raycast(ray.Origin,ray.Direction*3000,parameters)
+	return if hit and hit.Normal.Y>=.65 then hit else nil
+end
+local function stopPlacement()
+	placing=false; placeButton:SetActive(false)
+	if marker then marker:Destroy(); marker=nil end
+	plugin:Deactivate()
+end
+local function moveMarker()
+	if not placing or not marker then return end
+	local hit=pickGround()
+	if hit then marker.CFrame=CFrame.new(hit.Position+Vector3.new(0,.05,0)); marker.Transparency=.4 else marker.Transparency=1 end
+end
+placeButton.Click:Connect(function()
+	if busy or RunService:IsRunning() then return end
+	if not assetsReady then widget.Enabled=true; status.Text='로컬 에셋을 로딩 중이거나 누락됐습니다. 설치 상태를 확인하세요.'; return end
+	if placing then stopPlacement(); return end
+	widget.Enabled=true
+	placing=true; plugin:Activate(true); placeButton:SetActive(true)
+	marker=Instance.new('Part')
+	marker.Name,marker.Size,marker.Anchored='BoraTreePlacementMarker',Vector3.new(2,.08,2),true
+	marker.CanCollide,marker.CanQuery,marker.CanTouch=false,false,false
+	marker.Material,marker.Color,marker.Parent=Enum.Material.Neon,Color3.fromRGB(79,206,184),workspace
+	moveMarker()
+end)
+mouse.Move:Connect(moveMarker)
+mouse.Button1Down:Connect(function()
+	if busy or not placing or RunService:IsRunning() then return end
+	local hit=pickGround(); if not hit then return end
+	local valid,config=pcall(readConfig)
+	if not valid then status.Text='입력 범위를 확인하세요.'; return end
+	local record=History:TryBeginRecording('BoraTreePlace','나무 설치'); if not record then return end
+	busy=true
+	local ok,tree=pcall(function()
+		ensureRuntime()
+		config.Growth,config.ObjectId=0,Http:GenerateGUID(false)
+		local created=factory.create(config,CFrame.new(hit.Position),progress)
+		created.Parent=treeFolder(); return created
+	end)
+	History:FinishRecording(record,if ok then Enum.FinishRecordingOperation.Commit else Enum.FinishRecordingOperation.Cancel)
+	busy=false
+	if ok then stopPlacement(); Selection:Set({tree}); inspect() else status.Text='설치하지 못했습니다.'; warn(tree) end
+end)
+editButton.Click:Connect(function() widget.Enabled=true; inspect() end)
+Selection.SelectionChanged:Connect(function() if not busy then inspect() end end)
+History.OnUndo:Connect(function() if current and current.Parent then refresh(true) end end)
+History.OnRedo:Connect(function() if current and current.Parent then refresh(true) end end)
+UserInput.InputBegan:Connect(function(input)
+	if input.KeyCode==Enum.KeyCode.Escape then
+		finishParameterDrag(false)
+		if placing then stopPlacement() end
+	end
+end)
+plugin.Deactivation:Connect(function() placing=false; placeButton:SetActive(false); if marker then marker:Destroy(); marker=nil end end)
+plugin.Unloading:Connect(function() unloaded=true; parameterDrag=nil; finishDrag(true); if marker then marker:Destroy() end; widget:Destroy() end)
+print('[BoraTree] v0.4.2 ready: smooth wood / all parameter sliders')
+task.spawn(function()
+	local image=Instance.new('ImageLabel'); image.Image=catalog.Leaf.Texture
+	local mesh=Instance.new('SpecialMesh'); mesh.MeshType=Enum.MeshType.FileMesh; mesh.MeshId=catalog.Wood.Mesh; mesh.TextureId=catalog.ProceduralBark
+	local failures={}
+	local ok,err=pcall(function() ContentProvider:PreloadAsync({image,mesh},function(uri,state) if state~=Enum.AssetFetchStatus.Success then table.insert(failures,uri) end end) end)
+	image:Destroy(); mesh:Destroy()
+	assetsReady=ok and #failures==0
+	if assetsReady then print('[BoraTree] procedural assets ready') else warn('[BoraTree] missing local assets: '..tostring(err or table.concat(failures,', '))) end
+end)
+task.defer(function()
+	local folder=workspace:FindFirstChild('BoraTrees'); if not folder then return end
+	if game:GetService('ServerScriptService'):FindFirstChild('BoraProceduralRuntime') then ensureRuntime() end
+	busy=true
+	for _,tree in folder:GetChildren() do
+		if factory.isTree(tree) and tree:GetAttribute('SchemaVersion')==4 and tree:GetAttribute('LiveMesh') then
+			local ok,err=pcall(function() factory.rebuild(tree,Parameters.fromModel(tree),progress) end)
+			if ok then print('[BoraTree] restored recipe: '..(tree:GetAttribute('ObjectId') or tree.Name)) else warn('[BoraTree] restore: '..tostring(err)) end
+		end
+	end
+	busy=false
+end)
+]]></string>
+      </Properties>
+    </Item>
+    <Item class="Script" referent="10">
+      <Properties>
+        <string name="Name"><![CDATA[RuntimeTemplate]]></string>
+        <bool name="Disabled">true</bool>
+        <string name="Source"><![CDATA[-- Restore saved recipes once per play session. No per-frame tree loop.
+local Parameters=require(script.TreeParameters)
+local Skeleton=require(script.TreeSkeleton)(Vector3,Parameters)
+local Mesher=require(script.TreeMesher)(Vector3)
+local catalog=require(script.TreeAssetCatalog)
+local api={Instance=Instance,Vector3=Vector3,CFrame=CFrame,Color3=Color3,Enum=Enum,UDim2=UDim2}
+api.BuildWood=require(script.TreeMeshBackend)(game:GetService('AssetService'),Content,Vector3,Vector2,Color3,Enum,catalog.ProceduralBark)
+local factory=require(script.ProceduralTreeFactory)(api,require(script.GrowthMath),catalog,Parameters,Skeleton,Mesher)
+local folder=workspace:FindFirstChild('BoraTrees')
+if not folder then return end
+local function restore(tree)
+	if not factory.isTree(tree) or tree:GetAttribute('SchemaVersion')~=4 or not tree:GetAttribute('LiveMesh') then return end
+	local ok,err=pcall(function() factory.rebuild(tree,Parameters.fromModel(tree),function() task.wait() end) end)
+	if ok then print('[BoraTree] runtime restored '..(tree:GetAttribute('ObjectId') or tree.Name)) else warn('[BoraTree] runtime: '..tostring(err)) end
+end
+for _,tree in folder:GetChildren() do restore(tree) end
+folder.ChildAdded:Connect(restore)
+]]></string>
+      </Properties>
+    </Item>
+  </Item>
+</roblox>

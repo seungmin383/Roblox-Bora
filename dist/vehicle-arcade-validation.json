@@ -1,0 +1,26 @@
+{
+  "CenterSupportCanDrive": true,
+  "FixedWheelMounts": true,
+  "FlatHeightStable": true,
+  "FourWheelsOnPlane": true,
+  "FrameRates": [
+    30,
+    60,
+    120
+  ],
+  "Mode": "Actual controller with deterministic plane/wall queries; Studio Play pending",
+  "NoForwardMotionIntoVoid": true,
+  "NoIdleCreep": true,
+  "NoSpringForces": true,
+  "PositionsMeters": [
+    -42.412151489257816,
+    -42.19990844726563,
+    -42.093959960937504
+  ],
+  "RoadSlopes": [
+    -0.2,
+    0.2
+  ],
+  "SeamHeightVariation": 0.000011444091796875,
+  "WallBlocksMovement": true
+}

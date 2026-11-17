@@ -1,0 +1,1787 @@
+{
+  "Version": 3,
+  "Design": "BORA S3 approved independent sedan",
+  "Units": "meters",
+  "Dimensions": [
+    2.194,
+    1.508,
+    4.628
+  ],
+  "Wheelbase": 2.75,
+  "WheelRadius": 0.344,
+  "Parts": [
+    {
+      "Group": "Body",
+      "Material": "Screen",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_Body_000_00.mesh",
+      "Color": [
+        255,
+        255,
+        255
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.3200000002980232,
+        0.164536714553833,
+        0.03590729832649231
+      ],
+      "Triangles": 12,
+      "Texture": "S3_Navigation.png"
+    },
+    {
+      "Group": "Body",
+      "Material": "Plate",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_Body_001_00.mesh",
+      "Color": [
+        255,
+        255,
+        255
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.36800000071525574,
+        0.06999999284744263,
+        0.001
+      ],
+      "Triangles": 12,
+      "Texture": "S3_Plate.png"
+    },
+    {
+      "Group": "Body",
+      "Material": "Screen",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_Body_002_00.mesh",
+      "Color": [
+        255,
+        255,
+        255
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.3149999976158142,
+        0.11954188346862793,
+        0.02634340524673462
+      ],
+      "Triangles": 12,
+      "Texture": "S3_Instruments.png"
+    },
+    {
+      "Group": "Body",
+      "Material": "Plate",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_Body_003_00.mesh",
+      "Color": [
+        255,
+        255,
+        255
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.36800000071525574,
+        0.0700000524520874,
+        0.001
+      ],
+      "Triangles": 12,
+      "Texture": "S3_Plate.png"
+    },
+    {
+      "Group": "Body",
+      "Material": "Brake",
+      "RobloxMaterial": "Metal",
+      "File": "S3_Body_004_00.mesh",
+      "Color": [
+        144,
+        53,
+        42
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.32500001788139343,
+        0.008999943733215332,
+        0.03299999237060547
+      ],
+      "Triangles": 376
+    },
+    {
+      "Group": "Body",
+      "Material": "Silver",
+      "RobloxMaterial": "Metal",
+      "File": "S3_Body_005_00.mesh",
+      "Color": [
+        181,
+        192,
+        199
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        2.1610000133514404,
+        1.097464144229889,
+        3.3823148012161255
+      ],
+      "Triangles": 7600
+    },
+    {
+      "Group": "Body",
+      "Material": "Silver",
+      "RobloxMaterial": "Metal",
+      "File": "S3_Body_006_01.mesh",
+      "Color": [
+        181,
+        192,
+        199
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.1770000010728836,
+        0.046000003814697266,
+        0.0040000081062316895
+      ],
+      "Triangles": 168
+    },
+    {
+      "Group": "Body",
+      "Material": "Leather",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_Body_007_00.mesh",
+      "Color": [
+        60,
+        68,
+        72
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        1.44904625415802,
+        0.9494999647140503,
+        1.6600000262260437
+      ],
+      "Triangles": 6972
+    },
+    {
+      "Group": "Body",
+      "Material": "Glass",
+      "RobloxMaterial": "Glass",
+      "File": "S3_Body_008_00.mesh",
+      "Color": [
+        218,
+        235,
+        242
+      ],
+      "Transparency": 0.7,
+      "Bounds": [
+        1.4939475059509277,
+        0.43432140350341797,
+        2.25764000415802
+      ],
+      "Triangles": 4400
+    },
+    {
+      "Group": "Body",
+      "Material": "LED",
+      "RobloxMaterial": "Neon",
+      "File": "S3_Body_009_00.mesh",
+      "Color": [
+        221,
+        242,
+        255
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        2.140000104904175,
+        0.3074982166290283,
+        1.496139407157898
+      ],
+      "Triangles": 2144
+    },
+    {
+      "Group": "Body",
+      "Material": "Lens",
+      "RobloxMaterial": "Glass",
+      "File": "S3_Body_010_00.mesh",
+      "Color": [
+        239,
+        247,
+        253
+      ],
+      "Transparency": 0.48,
+      "Bounds": [
+        1.697326898574829,
+        0.10795092582702637,
+        0.06758928298950195
+      ],
+      "Triangles": 1832
+    },
+    {
+      "Group": "Body",
+      "Material": "Headliner",
+      "RobloxMaterial": "Fabric",
+      "File": "S3_Body_011_00.mesh",
+      "Color": [
+        144,
+        151,
+        153
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        1.335679292678833,
+        0.08497405052185059,
+        1.0171051919460297
+      ],
+      "Triangles": 1760
+    },
+    {
+      "Group": "Body",
+      "Material": "CarPaint",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_Body_012_00.mesh",
+      "Color": [
+        77,
+        118,
+        136
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        1.930246114730835,
+        0.8274690210819244,
+        4.360000133514404
+      ],
+      "Triangles": 7600
+    },
+    {
+      "Group": "Body",
+      "Material": "CarPaint",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_Body_013_01.mesh",
+      "Color": [
+        77,
+        118,
+        136
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        1.8941990733146667,
+        0.8549180328845978,
+        4.43233060836792
+      ],
+      "Triangles": 7600
+    },
+    {
+      "Group": "Body",
+      "Material": "CarPaint",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_Body_014_02.mesh",
+      "Color": [
+        77,
+        118,
+        136
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        1.8949038982391357,
+        0.8549180328845978,
+        4.555211544036865
+      ],
+      "Triangles": 7600
+    },
+    {
+      "Group": "Body",
+      "Material": "CarPaint",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_Body_015_03.mesh",
+      "Color": [
+        77,
+        118,
+        136
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        1.7582143545150757,
+        1.2880000174045563,
+        3.1335328221321106
+      ],
+      "Triangles": 7600
+    },
+    {
+      "Group": "Body",
+      "Material": "CarPaint",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_Body_016_04.mesh",
+      "Color": [
+        77,
+        118,
+        136
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        2.194000005722046,
+        0.49465489387512207,
+        2.209999918937683
+      ],
+      "Triangles": 1528
+    },
+    {
+      "Group": "Body",
+      "Material": "TailLens",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_Body_017_00.mesh",
+      "Color": [
+        166,
+        18,
+        29
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        1.7085341215133667,
+        0.10360962152481079,
+        0.09309768676757812
+      ],
+      "Triangles": 1704
+    },
+    {
+      "Group": "Body",
+      "Material": "Tail",
+      "RobloxMaterial": "Neon",
+      "File": "S3_Body_018_00.mesh",
+      "Color": [
+        221,
+        24,
+        35
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        1.6952542066574097,
+        0.08101797103881836,
+        0.0986630916595459
+      ],
+      "Triangles": 2784
+    },
+    {
+      "Group": "Body",
+      "Material": "Black",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_Body_019_00.mesh",
+      "Color": [
+        29,
+        38,
+        43
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        1.9095604419708252,
+        0.8553524017333984,
+        4.360000133514404
+      ],
+      "Triangles": 7600
+    },
+    {
+      "Group": "Body",
+      "Material": "Black",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_Body_020_01.mesh",
+      "Color": [
+        29,
+        38,
+        43
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        1.8948262929916382,
+        0.8755000829696655,
+        4.536044120788574
+      ],
+      "Triangles": 7600
+    },
+    {
+      "Group": "Body",
+      "Material": "Black",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_Body_021_02.mesh",
+      "Color": [
+        29,
+        38,
+        43
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        1.7234828472137451,
+        0.5772232115268707,
+        4.576558828353882
+      ],
+      "Triangles": 7600
+    },
+    {
+      "Group": "Body",
+      "Material": "Black",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_Body_022_03.mesh",
+      "Color": [
+        29,
+        38,
+        43
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        1.7234852313995361,
+        0.6327151954174042,
+        4.588916778564453
+      ],
+      "Triangles": 7600
+    },
+    {
+      "Group": "Body",
+      "Material": "Black",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_Body_023_04.mesh",
+      "Color": [
+        29,
+        38,
+        43
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        1.9392210245132446,
+        1.2316303998231888,
+        4.625653505325317
+      ],
+      "Triangles": 5280
+    },
+    {
+      "Group": "Body",
+      "Material": "Cabin",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_Body_024_00.mesh",
+      "Color": [
+        42,
+        49,
+        55
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        1.590000033378601,
+        0.7300000488758087,
+        2.3950000405311584
+      ],
+      "Triangles": 2556
+    },
+    {
+      "Group": "Body",
+      "Material": "Rubber",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_Body_025_00.mesh",
+      "Color": [
+        29,
+        33,
+        38
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        1.5198211669921875,
+        0.4437059164047241,
+        2.275399923324585
+      ],
+      "Triangles": 952
+    },
+    {
+      "Group": "Body",
+      "Material": "Metal",
+      "RobloxMaterial": "Metal",
+      "File": "S3_Body_026_00.mesh",
+      "Color": [
+        69,
+        77,
+        83
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        1.0896381735801697,
+        0.3574986755847931,
+        2.491331160068512
+      ],
+      "Triangles": 3812
+    },
+    {
+      "Group": "Body",
+      "Material": "Cloth",
+      "RobloxMaterial": "Fabric",
+      "File": "S3_Body_027_00.mesh",
+      "Color": [
+        77,
+        85,
+        88
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        1.2599999904632568,
+        0.530500054359436,
+        1.3449999690055847
+      ],
+      "Triangles": 2324
+    },
+    {
+      "Group": "DoorFL",
+      "Material": "Silver",
+      "RobloxMaterial": "Metal",
+      "File": "S3_DoorFL_028_00.mesh",
+      "Color": [
+        181,
+        192,
+        199
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.16828936338424683,
+        0.22917401790618896,
+        1.0427574515342712
+      ],
+      "Triangles": 804
+    },
+    {
+      "Group": "DoorFL",
+      "Material": "Leather",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_DoorFL_029_00.mesh",
+      "Color": [
+        60,
+        68,
+        72
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.09589523077011108,
+        0.6823405921459198,
+        1.0300000309944153
+      ],
+      "Triangles": 920
+    },
+    {
+      "Group": "DoorFL",
+      "Material": "Glass",
+      "RobloxMaterial": "Glass",
+      "File": "S3_DoorFL_030_00.mesh",
+      "Color": [
+        218,
+        235,
+        242
+      ],
+      "Transparency": 0.7,
+      "Bounds": [
+        0.09685224294662476,
+        0.36441493034362793,
+        0.972568929195404
+      ],
+      "Triangles": 832
+    },
+    {
+      "Group": "DoorFL",
+      "Material": "CarPaint",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_DoorFL_031_00.mesh",
+      "Color": [
+        77,
+        118,
+        136
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.2688220143318176,
+        1.2279999256134033,
+        1.10814768075943
+      ],
+      "Triangles": 2364
+    },
+    {
+      "Group": "DoorFL",
+      "Material": "Black",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_DoorFL_032_00.mesh",
+      "Color": [
+        29,
+        38,
+        43
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.01900005340576172,
+        0.02799999713897705,
+        0.15700006484985352
+      ],
+      "Triangles": 188
+    },
+    {
+      "Group": "DoorFL",
+      "Material": "Cabin",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_DoorFL_033_00.mesh",
+      "Color": [
+        42,
+        49,
+        55
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.04999995231628418,
+        0.04999995231628418,
+        0.85999995470047
+      ],
+      "Triangles": 332
+    },
+    {
+      "Group": "DoorFL",
+      "Material": "Rubber",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_DoorFL_034_00.mesh",
+      "Color": [
+        29,
+        33,
+        38
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.09908008575439453,
+        0.37984490394592285,
+        1.005987823009491
+      ],
+      "Triangles": 448
+    },
+    {
+      "Group": "DoorFR",
+      "Material": "Silver",
+      "RobloxMaterial": "Metal",
+      "File": "S3_DoorFR_035_00.mesh",
+      "Color": [
+        181,
+        192,
+        199
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.16828936338424683,
+        0.22917401790618896,
+        1.0427574515342712
+      ],
+      "Triangles": 804
+    },
+    {
+      "Group": "DoorFR",
+      "Material": "Leather",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_DoorFR_036_00.mesh",
+      "Color": [
+        60,
+        68,
+        72
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.09589523077011108,
+        0.6823405921459198,
+        1.0300000309944153
+      ],
+      "Triangles": 920
+    },
+    {
+      "Group": "DoorFR",
+      "Material": "Glass",
+      "RobloxMaterial": "Glass",
+      "File": "S3_DoorFR_037_00.mesh",
+      "Color": [
+        218,
+        235,
+        242
+      ],
+      "Transparency": 0.7,
+      "Bounds": [
+        0.09685224294662476,
+        0.36441493034362793,
+        0.972568929195404
+      ],
+      "Triangles": 832
+    },
+    {
+      "Group": "DoorFR",
+      "Material": "CarPaint",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_DoorFR_038_00.mesh",
+      "Color": [
+        77,
+        118,
+        136
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.2688220143318176,
+        1.2279999256134033,
+        1.10814768075943
+      ],
+      "Triangles": 2364
+    },
+    {
+      "Group": "DoorFR",
+      "Material": "Black",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_DoorFR_039_00.mesh",
+      "Color": [
+        29,
+        38,
+        43
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.01900005340576172,
+        0.02799999713897705,
+        0.15700006484985352
+      ],
+      "Triangles": 188
+    },
+    {
+      "Group": "DoorFR",
+      "Material": "Cabin",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_DoorFR_040_00.mesh",
+      "Color": [
+        42,
+        49,
+        55
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.04999995231628418,
+        0.04999995231628418,
+        0.85999995470047
+      ],
+      "Triangles": 332
+    },
+    {
+      "Group": "DoorFR",
+      "Material": "Rubber",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_DoorFR_041_00.mesh",
+      "Color": [
+        29,
+        33,
+        38
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.09908008575439453,
+        0.37984490394592285,
+        1.005987823009491
+      ],
+      "Triangles": 448
+    },
+    {
+      "Group": "DoorRL",
+      "Material": "Silver",
+      "RobloxMaterial": "Metal",
+      "File": "S3_DoorRL_042_00.mesh",
+      "Color": [
+        181,
+        192,
+        199
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.19165611267089844,
+        0.23762738704681396,
+        1.078794926404953
+      ],
+      "Triangles": 804
+    },
+    {
+      "Group": "DoorRL",
+      "Material": "Leather",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_DoorRL_043_00.mesh",
+      "Color": [
+        60,
+        68,
+        72
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.11006617546081543,
+        0.6823070049285889,
+        0.8601493835449219
+      ],
+      "Triangles": 920
+    },
+    {
+      "Group": "DoorRL",
+      "Material": "Glass",
+      "RobloxMaterial": "Glass",
+      "File": "S3_DoorRL_044_00.mesh",
+      "Color": [
+        218,
+        235,
+        242
+      ],
+      "Transparency": 0.7,
+      "Bounds": [
+        0.09669375419616699,
+        0.3445357084274292,
+        1.006462723016739
+      ],
+      "Triangles": 832
+    },
+    {
+      "Group": "DoorRL",
+      "Material": "CarPaint",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_DoorRL_045_00.mesh",
+      "Color": [
+        77,
+        118,
+        136
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.29012566804885864,
+        1.2279999256134033,
+        1.1300140917301178
+      ],
+      "Triangles": 2336
+    },
+    {
+      "Group": "DoorRL",
+      "Material": "Black",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_DoorRL_046_00.mesh",
+      "Color": [
+        29,
+        38,
+        43
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.01900005340576172,
+        0.02799999713897705,
+        0.15699994564056396
+      ],
+      "Triangles": 188
+    },
+    {
+      "Group": "DoorRL",
+      "Material": "Cabin",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_DoorRL_047_00.mesh",
+      "Color": [
+        42,
+        49,
+        55
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.04999995231628418,
+        0.04999995231628418,
+        0.6899999976158142
+      ],
+      "Triangles": 332
+    },
+    {
+      "Group": "DoorRL",
+      "Material": "Rubber",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_DoorRL_048_00.mesh",
+      "Color": [
+        29,
+        33,
+        38
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.09895342588424683,
+        0.35989809036254883,
+        1.041348159313202
+      ],
+      "Triangles": 448
+    },
+    {
+      "Group": "DoorRR",
+      "Material": "Silver",
+      "RobloxMaterial": "Metal",
+      "File": "S3_DoorRR_049_00.mesh",
+      "Color": [
+        181,
+        192,
+        199
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.19165611267089844,
+        0.23762738704681396,
+        1.078794926404953
+      ],
+      "Triangles": 804
+    },
+    {
+      "Group": "DoorRR",
+      "Material": "Leather",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_DoorRR_050_00.mesh",
+      "Color": [
+        60,
+        68,
+        72
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.11006617546081543,
+        0.6823070049285889,
+        0.8601493835449219
+      ],
+      "Triangles": 920
+    },
+    {
+      "Group": "DoorRR",
+      "Material": "Glass",
+      "RobloxMaterial": "Glass",
+      "File": "S3_DoorRR_051_00.mesh",
+      "Color": [
+        218,
+        235,
+        242
+      ],
+      "Transparency": 0.7,
+      "Bounds": [
+        0.09669375419616699,
+        0.3445357084274292,
+        1.006462723016739
+      ],
+      "Triangles": 832
+    },
+    {
+      "Group": "DoorRR",
+      "Material": "CarPaint",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_DoorRR_052_00.mesh",
+      "Color": [
+        77,
+        118,
+        136
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.29012566804885864,
+        1.2279999256134033,
+        1.1300140917301178
+      ],
+      "Triangles": 2336
+    },
+    {
+      "Group": "DoorRR",
+      "Material": "Black",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_DoorRR_053_00.mesh",
+      "Color": [
+        29,
+        38,
+        43
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.01900005340576172,
+        0.02799999713897705,
+        0.15699994564056396
+      ],
+      "Triangles": 188
+    },
+    {
+      "Group": "DoorRR",
+      "Material": "Cabin",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_DoorRR_054_00.mesh",
+      "Color": [
+        42,
+        49,
+        55
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.04999995231628418,
+        0.04999995231628418,
+        0.6899999976158142
+      ],
+      "Triangles": 332
+    },
+    {
+      "Group": "DoorRR",
+      "Material": "Rubber",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_DoorRR_055_00.mesh",
+      "Color": [
+        29,
+        33,
+        38
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.09895342588424683,
+        0.35989809036254883,
+        1.041348159313202
+      ],
+      "Triangles": 448
+    },
+    {
+      "Group": "Steering",
+      "Material": "Silver",
+      "RobloxMaterial": "Metal",
+      "File": "S3_Steering_056_00.mesh",
+      "Color": [
+        181,
+        192,
+        199
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.21599996089935303,
+        0.015990376472473145,
+        0.011232078075408936
+      ],
+      "Triangles": 752
+    },
+    {
+      "Group": "Steering",
+      "Material": "Leather",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_Steering_057_00.mesh",
+      "Color": [
+        60,
+        68,
+        72
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.369999960064888,
+        0.3253551721572876,
+        0.2038910686969757
+      ],
+      "Triangles": 2236
+    },
+    {
+      "Group": "Steering",
+      "Material": "Black",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_Steering_058_00.mesh",
+      "Color": [
+        29,
+        38,
+        43
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.23699995875358582,
+        0.03768658638000488,
+        0.034026265144348145
+      ],
+      "Triangles": 376
+    },
+    {
+      "Group": "Steering",
+      "Material": "Metal",
+      "RobloxMaterial": "Metal",
+      "File": "S3_Steering_059_00.mesh",
+      "Color": [
+        69,
+        77,
+        83
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.27399998903274536,
+        0.15005934238433838,
+        0.1076200008392334
+      ],
+      "Triangles": 84
+    },
+    {
+      "Group": "WheelFL",
+      "Material": "Brake",
+      "RobloxMaterial": "Metal",
+      "File": "S3_WheelFL_060_00.mesh",
+      "Color": [
+        144,
+        53,
+        42
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.03600001335144043,
+        0.13499999046325684,
+        0.06399989128112793
+      ],
+      "Triangles": 188
+    },
+    {
+      "Group": "WheelFL",
+      "Material": "Rotor",
+      "RobloxMaterial": "Metal",
+      "File": "S3_WheelFL_061_00.mesh",
+      "Color": [
+        129,
+        134,
+        137
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.008999943733215332,
+        0.41199997067451477,
+        0.4119999408721924
+      ],
+      "Triangles": 252
+    },
+    {
+      "Group": "WheelFL",
+      "Material": "Silver",
+      "RobloxMaterial": "Metal",
+      "File": "S3_WheelFL_062_00.mesh",
+      "Color": [
+        181,
+        192,
+        199
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.03600001335144043,
+        0.5460000038146973,
+        0.5460000038146973
+      ],
+      "Triangles": 3268
+    },
+    {
+      "Group": "WheelFL",
+      "Material": "Black",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_WheelFL_063_00.mesh",
+      "Color": [
+        29,
+        38,
+        43
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.18756425380706787,
+        0.69166299700737,
+        0.6916629076004028
+      ],
+      "Triangles": 4944
+    },
+    {
+      "Group": "WheelFL",
+      "Material": "Rubber",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_WheelFL_064_00.mesh",
+      "Color": [
+        29,
+        33,
+        38
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.23000001907348633,
+        0.6879999935626984,
+        0.687999963760376
+      ],
+      "Triangles": 1280
+    },
+    {
+      "Group": "WheelFL",
+      "Material": "Metal",
+      "RobloxMaterial": "Metal",
+      "File": "S3_WheelFL_065_00.mesh",
+      "Color": [
+        69,
+        77,
+        83
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.20200002193450928,
+        0.49399998784065247,
+        0.4939999580383301
+      ],
+      "Triangles": 668
+    },
+    {
+      "Group": "WheelFR",
+      "Material": "Brake",
+      "RobloxMaterial": "Metal",
+      "File": "S3_WheelFR_066_00.mesh",
+      "Color": [
+        144,
+        53,
+        42
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.03600001335144043,
+        0.13499999046325684,
+        0.06399989128112793
+      ],
+      "Triangles": 188
+    },
+    {
+      "Group": "WheelFR",
+      "Material": "Rotor",
+      "RobloxMaterial": "Metal",
+      "File": "S3_WheelFR_067_00.mesh",
+      "Color": [
+        129,
+        134,
+        137
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.008999943733215332,
+        0.41199997067451477,
+        0.4119999408721924
+      ],
+      "Triangles": 252
+    },
+    {
+      "Group": "WheelFR",
+      "Material": "Silver",
+      "RobloxMaterial": "Metal",
+      "File": "S3_WheelFR_068_00.mesh",
+      "Color": [
+        181,
+        192,
+        199
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.03600001335144043,
+        0.5460000038146973,
+        0.5460000038146973
+      ],
+      "Triangles": 3268
+    },
+    {
+      "Group": "WheelFR",
+      "Material": "Black",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_WheelFR_069_00.mesh",
+      "Color": [
+        29,
+        38,
+        43
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.18756425380706787,
+        0.69166299700737,
+        0.6916629076004028
+      ],
+      "Triangles": 4944
+    },
+    {
+      "Group": "WheelFR",
+      "Material": "Rubber",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_WheelFR_070_00.mesh",
+      "Color": [
+        29,
+        33,
+        38
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.23000001907348633,
+        0.6879999935626984,
+        0.687999963760376
+      ],
+      "Triangles": 1280
+    },
+    {
+      "Group": "WheelFR",
+      "Material": "Metal",
+      "RobloxMaterial": "Metal",
+      "File": "S3_WheelFR_071_00.mesh",
+      "Color": [
+        69,
+        77,
+        83
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.20200002193450928,
+        0.49399998784065247,
+        0.4939999580383301
+      ],
+      "Triangles": 668
+    },
+    {
+      "Group": "WheelRL",
+      "Material": "Brake",
+      "RobloxMaterial": "Metal",
+      "File": "S3_WheelRL_072_00.mesh",
+      "Color": [
+        144,
+        53,
+        42
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.03600001335144043,
+        0.13499999046325684,
+        0.06399989128112793
+      ],
+      "Triangles": 188
+    },
+    {
+      "Group": "WheelRL",
+      "Material": "Rotor",
+      "RobloxMaterial": "Metal",
+      "File": "S3_WheelRL_073_00.mesh",
+      "Color": [
+        129,
+        134,
+        137
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.008999943733215332,
+        0.41199997067451477,
+        0.4119999408721924
+      ],
+      "Triangles": 252
+    },
+    {
+      "Group": "WheelRL",
+      "Material": "Silver",
+      "RobloxMaterial": "Metal",
+      "File": "S3_WheelRL_074_00.mesh",
+      "Color": [
+        181,
+        192,
+        199
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.03600001335144043,
+        0.5460000038146973,
+        0.5460000038146973
+      ],
+      "Triangles": 3268
+    },
+    {
+      "Group": "WheelRL",
+      "Material": "Black",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_WheelRL_075_00.mesh",
+      "Color": [
+        29,
+        38,
+        43
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.18756425380706787,
+        0.69166299700737,
+        0.6916629076004028
+      ],
+      "Triangles": 4944
+    },
+    {
+      "Group": "WheelRL",
+      "Material": "Rubber",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_WheelRL_076_00.mesh",
+      "Color": [
+        29,
+        33,
+        38
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.23000001907348633,
+        0.6879999935626984,
+        0.687999963760376
+      ],
+      "Triangles": 1280
+    },
+    {
+      "Group": "WheelRL",
+      "Material": "Metal",
+      "RobloxMaterial": "Metal",
+      "File": "S3_WheelRL_077_00.mesh",
+      "Color": [
+        69,
+        77,
+        83
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.20200002193450928,
+        0.49399998784065247,
+        0.4939999580383301
+      ],
+      "Triangles": 668
+    },
+    {
+      "Group": "WheelRR",
+      "Material": "Brake",
+      "RobloxMaterial": "Metal",
+      "File": "S3_WheelRR_078_00.mesh",
+      "Color": [
+        144,
+        53,
+        42
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.03600001335144043,
+        0.13499999046325684,
+        0.06399989128112793
+      ],
+      "Triangles": 188
+    },
+    {
+      "Group": "WheelRR",
+      "Material": "Rotor",
+      "RobloxMaterial": "Metal",
+      "File": "S3_WheelRR_079_00.mesh",
+      "Color": [
+        129,
+        134,
+        137
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.008999943733215332,
+        0.41199997067451477,
+        0.4119999408721924
+      ],
+      "Triangles": 252
+    },
+    {
+      "Group": "WheelRR",
+      "Material": "Silver",
+      "RobloxMaterial": "Metal",
+      "File": "S3_WheelRR_080_00.mesh",
+      "Color": [
+        181,
+        192,
+        199
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.03600001335144043,
+        0.5460000038146973,
+        0.5460000038146973
+      ],
+      "Triangles": 3268
+    },
+    {
+      "Group": "WheelRR",
+      "Material": "Black",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_WheelRR_081_00.mesh",
+      "Color": [
+        29,
+        38,
+        43
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.18756425380706787,
+        0.69166299700737,
+        0.6916629076004028
+      ],
+      "Triangles": 4944
+    },
+    {
+      "Group": "WheelRR",
+      "Material": "Rubber",
+      "RobloxMaterial": "SmoothPlastic",
+      "File": "S3_WheelRR_082_00.mesh",
+      "Color": [
+        29,
+        33,
+        38
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.23000001907348633,
+        0.6879999935626984,
+        0.687999963760376
+      ],
+      "Triangles": 1280
+    },
+    {
+      "Group": "WheelRR",
+      "Material": "Metal",
+      "RobloxMaterial": "Metal",
+      "File": "S3_WheelRR_083_00.mesh",
+      "Color": [
+        69,
+        77,
+        83
+      ],
+      "Transparency": 0,
+      "Bounds": [
+        0.20200002193450928,
+        0.49399998784065247,
+        0.4939999580383301
+      ],
+      "Triangles": 668
+    }
+  ],
+  "Pivots": {
+    "WheelFL": [
+      -0.824999988079071,
+      0.34700000286102295,
+      -1.3899999856948853
+    ],
+    "WheelRL": [
+      -0.824999988079071,
+      0.34700000286102295,
+      1.3600000143051147
+    ],
+    "WheelFR": [
+      0.824999988079071,
+      0.34700000286102295,
+      -1.3899999856948853
+    ],
+    "WheelRR": [
+      0.824999988079071,
+      0.34700000286102295,
+      1.3600000143051147
+    ],
+    "Steering": [
+      -0.4050000011920929,
+      0.9629999995231628,
+      -0.3700000047683716
+    ],
+    "DoorFL": [
+      -0.8799999952316284,
+      0.7300000190734863,
+      -0.7900000214576721
+    ],
+    "DoorRL": [
+      -0.8999999761581421,
+      0.75,
+      0.3050000071525574
+    ],
+    "DoorFR": [
+      0.8799999952316284,
+      0.7300000190734863,
+      -0.7900000214576721
+    ],
+    "DoorRR": [
+      0.8999999761581421,
+      0.75,
+      0.3050000071525574
+    ],
+    "Body": [
+      0,
+      0,
+      0
+    ]
+  },
+  "Markers": {
+    "Eye": [
+      -0.405,
+      0.63,
+      0.065
+    ],
+    "SeatedRoot": [
+      -0.405,
+      0.25,
+      0.11
+    ],
+    "OutsideDriver": [
+      -1.36,
+      0.32999999999999996,
+      -0.02
+    ],
+    "DriverHandle": [
+      -1.0,
+      0.20999999999999996,
+      -0.18
+    ],
+    "SuspensionFL": [
+      -0.824999988079071,
+      0.0020000000000000018,
+      -1.3899999856948853
+    ],
+    "SuspensionFR": [
+      0.824999988079071,
+      0.0020000000000000018,
+      -1.3899999856948853
+    ],
+    "SuspensionRL": [
+      -0.824999988079071,
+      0.0020000000000000018,
+      1.3600000143051147
+    ],
+    "SuspensionRR": [
+      0.824999988079071,
+      0.0020000000000000018,
+      1.3600000143051147
+    ]
+  },
+  "SeatPosition": [
+    -0.405,
+    0.45,
+    0.11
+  ],
+  "LegacyLayout": {
+    "Pivots": {
+      "Body": [
+        0,
+        0,
+        0
+      ],
+      "DoorFL": [
+        -0.88,
+        0.84,
+        -0.83
+      ],
+      "DoorFR": [
+        0.88,
+        0.84,
+        -0.83
+      ],
+      "DoorRL": [
+        -0.89,
+        0.83,
+        0.3
+      ],
+      "DoorRR": [
+        0.89,
+        0.83,
+        0.3
+      ],
+      "Steering": [
+        -0.43,
+        0.88,
+        -0.47
+      ],
+      "WheelFL": [
+        -0.795,
+        0.325,
+        -1.36
+      ],
+      "WheelFR": [
+        0.795,
+        0.325,
+        -1.36
+      ],
+      "WheelRL": [
+        -0.795,
+        0.325,
+        1.36
+      ],
+      "WheelRR": [
+        0.795,
+        0.325,
+        1.36
+      ]
+    },
+    "Markers": {
+      "Eye": [
+        -0.43,
+        0.58,
+        0.08
+      ],
+      "SeatedRoot": [
+        -0.43,
+        0.25,
+        0.22
+      ],
+      "OutsideDriver": [
+        -1.35,
+        0.33,
+        -0.02
+      ],
+      "DriverHandle": [
+        -1.0,
+        0.21,
+        0.1
+      ],
+      "SuspensionFL": [
+        -0.795,
+        -0.02,
+        -1.36
+      ],
+      "SuspensionFR": [
+        0.795,
+        -0.02,
+        -1.36
+      ],
+      "SuspensionRL": [
+        -0.795,
+        -0.02,
+        1.36
+      ],
+      "SuspensionRR": [
+        0.795,
+        -0.02,
+        1.36
+      ]
+    },
+    "SeatPosition": [
+      -0.43,
+      0.43,
+      0.24
+    ]
+  },
+  "LayoutJson": "{\"Pivots\":{\"WheelFL\":[-0.824999988079071,0.34700000286102295,-1.3899999856948853],\"WheelRL\":[-0.824999988079071,0.34700000286102295,1.3600000143051147],\"WheelFR\":[0.824999988079071,0.34700000286102295,-1.3899999856948853],\"WheelRR\":[0.824999988079071,0.34700000286102295,1.3600000143051147],\"Steering\":[-0.4050000011920929,0.9629999995231628,-0.3700000047683716],\"DoorFL\":[-0.8799999952316284,0.7300000190734863,-0.7900000214576721],\"DoorRL\":[-0.8999999761581421,0.75,0.3050000071525574],\"DoorFR\":[0.8799999952316284,0.7300000190734863,-0.7900000214576721],\"DoorRR\":[0.8999999761581421,0.75,0.3050000071525574],\"Body\":[0,0,0]},\"Markers\":{\"Eye\":[-0.405,0.63,0.065],\"SeatedRoot\":[-0.405,0.25,0.11],\"OutsideDriver\":[-1.36,0.32999999999999996,-0.02],\"DriverHandle\":[-1.0,0.20999999999999996,-0.18],\"SuspensionFL\":[-0.824999988079071,0.0020000000000000018,-1.3899999856948853],\"SuspensionFR\":[0.824999988079071,0.0020000000000000018,-1.3899999856948853],\"SuspensionRL\":[-0.824999988079071,0.0020000000000000018,1.3600000143051147],\"SuspensionRR\":[0.824999988079071,0.0020000000000000018,1.3600000143051147]},\"SeatPosition\":[-0.405,0.45,0.11]}",
+  "VisualRevision": 5,
+  "VisualHash": "e3502e2ed7d6d8fa",
+  "VirtualBrand": "BORA",
+  "DisplayName": "BORA S3",
+  "Source": "Independently authored BORA S3 / Tripo proportion study",
+  "ApprovedBlend": "assets/vehicles/BoraS3/BoraS3.blend",
+  "ApprovedBlendSha256": "e3502e2ed7d6d8fadbe87f4b37e56409dae53ea28fe436041548d71c9396b953",
+  "RobloxConversion": [
+    [
+      -1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0
+    ]
+  ],
+  "SteeringAxis": [
+    0,
+    0.5,
+    0.8660254037844387
+  ],
+  "Screens": {
+    "DashboardDisplay": {
+      "Position": [
+        -0.405,
+        1.025,
+        -0.598
+      ],
+      "Size": [
+        0.315,
+        0.122
+      ],
+      "Tilt": 12
+    },
+    "CenterDisplay": {
+      "Position": [
+        0.12,
+        1.008,
+        -0.479
+      ],
+      "Size": [
+        0.32,
+        0.168
+      ],
+      "Tilt": 12
+    }
+  },
+  "TotalTriangles": 176384
+}

@@ -1,0 +1,15 @@
+00:01.687  blend            | Read blend: "C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\assets\vehicles\retopology\BoraS2_Clean.blend"
+Source custom normals True
+Traceback (most recent call last):
+  File "C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\tools\polish_s2_normals.py", line 33, in <module>
+    print('Transferred loops',transfer_source_normals(source,[o for o in bpy.context.scene.objects if o.type=='MESH' and o.get('asset')=='BORA S2']),flush=True)
+                              ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\tools\polish_s2_normals.py", line 21, in transfer_source_normals
+    point=(o.matrix_world@me.vertices[me.loops[li].vertex_index].co)/SCALE
+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~
+TypeError: Vector division: Vector must be divided by a float
+
+Error: script failed, file: 'tools/polish_s2_normals.py', exiting.
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

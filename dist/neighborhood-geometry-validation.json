@@ -1,0 +1,11 @@
+{
+  "newParts": 1294,
+  "newCollidersCheckedAgainstActualRoads": 173,
+  "buildings": 4,
+  "streetlights": 8,
+  "tactileLandings": 8,
+  "asphaltClear": true,
+  "existingWorldAndServicesPreserved": true,
+  "repeatBuildPreservesUserEdits": true,
+  "studioPlaytestPerformed": false
+}

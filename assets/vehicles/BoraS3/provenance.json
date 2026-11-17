@@ -1,0 +1,86 @@
+{
+  "name": "BORA S3",
+  "stage": "new complete editable candidate, not user-approved",
+  "sourceProportions": "assets\\vehicles\\source\\BoraS2_Quad_OBJ\\BoraS2_Tripo_Quad_OBJ.obj",
+  "sourceBounds": [
+    [
+      -0.242431640625,
+      -0.499755859375,
+      -2.180518166028378e-08
+    ],
+    [
+      0.242431640625,
+      0.499755859375,
+      0.34423828125
+    ]
+  ],
+  "reference": "assets\\example\\Car\\temp.blend",
+  "referenceGeometryCopied": false,
+  "rejectedS2Used": false,
+  "description": "New matched parametric panels, greenhouse and independently authored interior; based on existing Tripo sedan proportions.",
+  "protectedFiles": {
+    "Ro.rbxlx": "44a51904b7790135eb299a4b07f061cf76bbe633871a6ceb66459220076fe47a",
+    "assets\\vehicles\\source\\BoraS2_Quad_OBJ\\BoraS2_Tripo_Quad_OBJ.obj": "f90f72b5f4eb31cbb4eff45d50c6d5dc76c857ba3ab500ea989843ba669e4a5c",
+    "assets\\example\\Car\\temp.blend": "b2a717f3e90f528cd9e1f1f7a8a00709ce739b409da803b669331b23767dbc76",
+    "assets\\vehicles\\retopology\\BoraS2_FitFix.blend": "079aab175a6cb050774d8027dbde2427b3fb83462bded1582eb5d683e0861ce8"
+  },
+  "protectedUnchanged": true,
+  "pivots": {
+    "WheelFL": [
+      0.825,
+      -1.39,
+      0.347
+    ],
+    "WheelRL": [
+      0.825,
+      1.36,
+      0.347
+    ],
+    "WheelFR": [
+      -0.825,
+      -1.39,
+      0.347
+    ],
+    "WheelRR": [
+      -0.825,
+      1.36,
+      0.347
+    ],
+    "Steering": [
+      0.4050000011920929,
+      -0.3700000047683716,
+      0.9629999995231628
+    ],
+    "DoorFL": [
+      0.88,
+      -0.79,
+      0.73
+    ],
+    "DoorRL": [
+      0.9,
+      0.305,
+      0.75
+    ],
+    "DoorFR": [
+      -0.88,
+      -0.79,
+      0.73
+    ],
+    "DoorRR": [
+      -0.9,
+      0.305,
+      0.75
+    ],
+    "Body": [
+      0,
+      0,
+      0.6
+    ],
+    "Interior": [
+      0,
+      0,
+      0.6
+    ]
+  },
+  "installedInPlace": false
+}

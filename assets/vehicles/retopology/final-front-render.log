@@ -1,0 +1,166 @@
+00:01.688  blend            | Read blend: "C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\assets\vehicles\retopology\BoraS2_Clean.blend"
+00:01.703  render           | Rendering single frame
+00:01.703  render           | Rendering frame 1
+00:01.703  render           | Start rendering: Scene, ViewLayer
+00:01.703  render           | Engine: Cycles
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | QA_Ground
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | QA_Softbox
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | QA_CabinRear
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | Roof_fitted_lining
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | Front_Glass
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | Front_upper_seal
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | Rear_Glass
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | Rear_lower_seal
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | Rear_upper_seal
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | Rear_L_pillar
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | Rear_R_pillar
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | L_A_pillar
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | L_B_pillar
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | L_QuarterGlass
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | L_QuarterGlass_belt_seal
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | L_QuarterGlass_roof_seal
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | L_C_pillar
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | L_window_belt_trim.002
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | R_A_pillar
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | R_B_pillar
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | R_Quarter_divider
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | R_QuarterGlass
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | R_C_pillar
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | R_window_belt_trim.002
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | L_fitted_belt_flange.001
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | Front_fitted_cowl
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | Rear_fitted_cowl
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | Front_grille_surround
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | Cabin_floor
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | Dashboard_upper
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | Console_inlay
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | Gear_selector
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | Center_screen
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | Navigation_display
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | Dash_vent.001
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | Dash_vent.002
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | Dash_vent.003
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | Front_L_seat_back
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | Front_L_seat_insert
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | Front_R_seat_cushion
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | Front_R_seat_back
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | Front_R_headrest
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | Front_R_seat_insert
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | Rear_bench_cushion
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | Rear_bench_back
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | Rear_headrest
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | Rear_headrest.002
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | L_A_pillar_inner
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | WheelRR_Brake
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | R_C_pillar_inner
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | Steering_column
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | DoorFL_paint
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | DoorFL_handle
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | L_FrontGlass_belt_seal
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | L_window_belt_trim
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | L_mirror_stem
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | L_mirror_cap
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | L_mirror_glass
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | L_fitted_belt_flange
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | DoorFL_inner_card
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | DoorFL_inner_handle
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | DoorFR_paint
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | DoorFR_handle
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | R_FrontGlass_belt_seal
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | R_FrontGlass_roof_seal
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | R_window_belt_trim
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | WheelRR_Cap
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | R_mirror_cap
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | DoorFR_inner_card
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | DoorFR_inner_handle
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | DoorRL_paint
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | DoorRL_handle
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | L_RearGlass
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | L_RearGlass_belt_seal
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | L_window_belt_trim.001
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | DoorRL_inner_card
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | DoorRL_armrest
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | DoorRL_inner_handle
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | DoorRR_paint
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | R_RearGlass
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | DoorRR_handle
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | R_RearGlass_belt_seal
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | R_window_belt_trim.001
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | R_fitted_belt_flange.002
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | DoorRR_armrest
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | DoorRR_inner_handle
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | Steering_rim
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | Steering_spoke.001
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | Steering_spoke.002
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | Steering_hub
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | WheelFL_Rim
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | WheelFL_Spoke1
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | WheelFL_Brake
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | WheelFR_Tire
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | WheelFR_Spoke2
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | WheelFR_Spoke3
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | WheelFR_Spoke4
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | WheelFR_Spoke5
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | WheelFR_Cap
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | WheelRL_Tire
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | WheelRL_Rim
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | WheelRL_Spoke1
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | WheelRL_Spoke2
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | WheelRL_Spoke4
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | WheelRL_Spoke5
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | WheelRR_Rim
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | WheelRR_Spoke1
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | WheelRR_Spoke2
+00:01.719  render           | Fra: 1 | Mem: 0M | Synchronizing object | WheelRR_Spoke3
+00:01.719  render           | Fra: 1 | Mem: 0M | Initializing
+00:01.719  render           | Fra: 1 | Mem: 0M | Updating Images | Loading BoraS2_Instruments.png
+00:01.719  render           | Fra: 1 | Mem: 0M | Updating Images | Loading S2_LampGraphics
+00:01.719  render           | Fra: 1 | Mem: 0M | Updating Images | Loading S2_GrillePattern
+00:01.719  render           | Fra: 1 | Mem: 0M | Updating Images | Loading BoraS2_Navigation.png
+00:01.844  render           | Fra: 1 | Mem: 0M | Waiting for render to start
+00:01.844  render           | Fra: 1 | Mem: 0M | Updating Scene
+00:01.844  render           | Fra: 1 | Mem: 0M | Updating Shaders
+00:01.844  render           | Fra: 1 | Mem: 0M | Loading render kernels (may take a few minutes the first time)
+00:01.844  render           | Fra: 1 | Mem: 1M | Updating Procedurals
+00:01.844  render           | Fra: 1 | Mem: 1M | Updating Background
+00:01.844  render           | Fra: 1 | Mem: 1M | Updating Scene Attribute
+00:01.844  render           | Fra: 1 | Mem: 1M | Updating Camera
+00:01.844  render           | Fra: 1 | Mem: 1M | Updating Meshes Flags
+00:01.860  render           | Fra: 1 | Mem: 1M | Updating Objects
+00:01.860  render           | Fra: 1 | Mem: 1M | Updating Objects | Copying Transformations to device
+00:01.860  render           | Fra: 1 | Mem: 1M | Updating Particle Systems
+00:01.860  render           | Fra: 1 | Mem: 1M | Updating Particle Systems | Copying Particles to device
+00:01.860  render           | Fra: 1 | Mem: 1M | Updating Meshes
+00:01.860  render           | Fra: 1 | Mem: 1M | Updating Objects | Applying Static Transformations
+00:01.860  render           | Fra: 1 | Mem: 1M | Updating Scene BVH | Building
+00:01.860  render           | Fra: 1 | Mem: 1M | Updating Scene BVH | Building BVH
+00:01.860  render           | Fra: 1 | Mem: 2M | Updating Scene BVH | Building BVH 0%
+00:01.860  render           | Fra: 1 | Mem: 3M | Updating Scene BVH | Copying BVH to device
+00:01.860  render           | Fra: 1 | Mem: 3M | Updating Mesh | Computing attributes
+00:01.860  render           | Fra: 1 | Mem: 3M | Updating Mesh | Copying Attributes to device
+00:01.860  render           | Fra: 1 | Mem: 4M | Updating Mesh | Computing normals
+00:01.860  render           | Fra: 1 | Mem: 4M | Updating Mesh | Copying Mesh to device
+00:01.860  render           | Fra: 1 | Mem: 5M | Updating Objects Flags
+00:01.860  render           | Fra: 1 | Mem: 5M | Updating Primitive Offsets
+00:01.860  render           | Fra: 1 | Mem: 5M | Updating Images
+00:01.860  render           | Fra: 1 | Mem: 25M | Updating Volume
+00:01.860  render           | Fra: 1 | Mem: 25M | Updating Camera Volume
+00:01.860  render           | Fra: 1 | Mem: 25M | Updating Lookup Tables
+00:01.860  render           | Fra: 1 | Mem: 25M | Updating Lights
+00:01.860  render           | Fra: 1 | Mem: 25M | Updating Lights | Computing tree
+00:01.860  render           | Fra: 1 | Mem: 25M | Updating Integrator
+00:01.860  render           | Fra: 1 | Mem: 25M | Updating Film
+00:01.860  render           | Fra: 1 | Mem: 25M | Updating Lookup Tables
+00:01.860  render           | Fra: 1 | Mem: 25M | Updating Baking
+00:01.860  render           | Fra: 1 | Mem: 25M | Updating Device | Writing constant memory
+00:01.860  render           | Fra: 1 | Mem: 25M | Loading denoising kernels (may take a few minutes the first time)
+00:01.860  render           | Fra: 1 | Mem: 25M | Sample 0/24
+00:02.094  render           | Fra: 1 | Remaining: 00:05.29 | Mem: 117M | Sample 1/24
+00:20.563  render           | Fra: 1 | Mem: 117M | Sample 24/24
+00:20.563  render           | Fra: 1 | Mem: 117M | Finished
+00:20.860  image            | ERROR Couldn't create directory for file C:\assets\vehicles\retopology\s2-final-front-0001.png: No such file or directory
+00:20.860  reports          | ERROR Render error (No such file or directory) cannot save: 'C:\assets\vehicles\retopology\s2-final-front-0001.png'
+00:20.860  render           | Time: 00:19.15
+
+Blender quit

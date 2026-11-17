@@ -1,0 +1,14 @@
+00:01.891  blend            | Read blend: "C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\assets\vehicles\retopology\BoraS2_Clean.blend"
+Preserved complex skin junction Body_paint 6
+Closed source skin junctions DoorFL_paint
+Closed source skin junctions DoorFR_paint
+Closed source skin junctions DoorRL_paint
+Closed source skin junctions DoorRR_paint
+00:02.094  image.write      | ERROR OpenImageIO write failed: Could not open file "C:\Users\jinug\.thumbnails\large\blender_42788_5129d9f4e0e5c444f0647b6b75d983cd.png.png"
+00:22.438  render           | Saved: 'C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\assets\vehicles\retopology\s2-clean-front.png'
+00:43.375  render           | Saved: 'C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\assets\vehicles\retopology\s2-clean-side.png'
+01:05.922  render           | Saved: 'C:\Users\jinug\Desktop\SEUNGMIN_BAEK\Ro\assets\vehicles\retopology\s2-clean-rear.png'
+Info: Saved as "BoraS2_Clean.blend"
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit
