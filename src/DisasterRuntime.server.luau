@@ -18,7 +18,8 @@ local function folder(parent,name)
 end
 
 local buildings=World:WaitForChild('BoraNeighborhood_01'):WaitForChild('Buildings')
-local lobby=World:WaitForChild('CenterSpawn')
+local lobbyModel=World:FindFirstChild('BoraSkyLobby')
+local lobby=if lobbyModel then lobbyModel:WaitForChild('LobbySpawn') else World:WaitForChild('CenterSpawn')
 local originals={}
 local center=Vector3.zero
 local anchorCount=0
@@ -42,6 +43,7 @@ terrainCast.FilterType=Enum.RaycastFilterType.Exclude
 terrainCast.RespectCanCollide=true
 local function castParams()
 	local ignore={arena}
+	if lobbyModel then table.insert(ignore,lobbyModel) end
 	for _,player in Players:GetPlayers() do
 		if player.Character then table.insert(ignore,player.Character) end
 	end
@@ -263,7 +265,9 @@ local function finish(roster,winners)
 		if player.Parent==Players then player:SetAttribute('BoraInRound',false) end
 		local humanoid,root=health(player,character)
 		if humanoid then
-			characterTo(humanoid,root,character,lobby.CFrame*CFrame.new(i%5*4-8,5,math.floor(i/5)*4))
+			local slot=i%56
+			local offset=CFrame.new((slot%8-3.5)*4,5,(math.floor(slot/8)-3)*3)
+			characterTo(humanoid,root,character,lobby.CFrame*offset)
 			i+=1
 		end
 	end
